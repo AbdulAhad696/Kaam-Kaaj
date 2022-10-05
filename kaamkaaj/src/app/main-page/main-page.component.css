@@ -1,0 +1,13 @@
+.deal_done{
+    background-image: url("../../assets/main_page_deal_done.png");
+    /* height: 716px; */
+    min-height: 90vh;
+    background-size:cover;
+    width: 100%;
+}
+.deal_done > p{
+    text-align: center;
+    line-height: 25px;
+}
+
+
