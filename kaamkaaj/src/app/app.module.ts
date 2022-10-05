@@ -16,7 +16,6 @@ import { MainPageComponent } from './main-page/main-page.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    SignInComponent,
     MainPageComponent,
     routingcomponents
   ],
