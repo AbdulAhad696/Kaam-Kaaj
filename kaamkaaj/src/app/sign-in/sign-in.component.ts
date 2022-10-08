@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SignInService } from '../Services/sign-in/sign-in.service';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,19 +13,22 @@ export class SignInComponent implements OnInit {
   passInput = "";
   private username = "";
   private password = "";
+  loggedInUser: any = []
   constructor(private signinService: SignInService) { }
-  onLogin() {
+
+
+
+  async onLogin() {
     this.username = this.userInput;
     this.password = this.passInput;
-    this.userInput = "";
-    this.passInput = "";
     var credentials = {
-      cnicPhoneUsername: this.username,
+      email: this.username,
       password: this.password
     }
-    console.log(credentials);
-
-    //send request to express API here
+    this.loggedInUser = await lastValueFrom(this.signinService.findUserLogin(credentials))
+    if (this.loggedInUser.length > 0) {
+      alert("LOGGED IN" + this.loggedInUser[0].address)
+    }
   }
   ngOnInit(): void {
   }
