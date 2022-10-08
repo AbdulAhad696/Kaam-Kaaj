@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { isEmpty, lastValueFrom } from 'rxjs';
 import { SignUpService } from './../Services/sign-up/sign-up.service';
 
 @Component({
@@ -18,25 +19,39 @@ export class SignUpComponent implements OnInit {
   phone="";
   cnic="";
   address="";
+  role=""
   allUsers:any
 
 
-   validateUser(user:any){
-    
-    
-    for(let eachUser of this.allUsers){
-      if(user.email==eachUser.email){
-        return false
-      }
-    }
+  async validateUser(user:any){
+    // if(this.signUpService.getUsersApi({email:this.email})){
+      
+    //   return false
+    // }
+    // else{
+    //   return true
+    // }
 
-    return true
+    alert(await lastValueFrom(this.signUpService.getUsersApi({email:this.email})));
+
+
+
+
+    
+    
+    // for(let eachUser of this.allUsers){
+    //   if(user.email==eachUser.email){
+    //     return false
+    //   }
+    // }
+
+    // return true
   }
 
   async addUser(user:any){
-    if( this.validateUser(user)){
-      this.isRegister=this.signUpService.registerUserApi(user)
-      if(this.isRegister){
+    if(!(await lastValueFrom(this.signUpService.getUsersApi({email:this.email})))){
+      // this.isRegister=this.signUpService.registerUserApi(user)
+      if(await lastValueFrom(this.signUpService.registerUserApi(user))){
         return "User is registered successfully!!"
       }
       else{
@@ -47,9 +62,16 @@ export class SignUpComponent implements OnInit {
       return "User with this email is already registered";
     }
 
-  }
 
-  handleClientSubmit(){
+  }
+  
+  clientClick(){
+    this.role="Client"
+  }
+  workerClick(){
+    this.role="Client"
+  }
+  async handleSubmit(){
     this.userData={
       userName:this.userName,
       email:this.email,
@@ -57,28 +79,15 @@ export class SignUpComponent implements OnInit {
       phone:this.phone,
       cnic:this.cnic,
       address:this.address,
-      role:"Client"
+      role:this.role
     }
-    alert(this.signUpService.registerUserApi(this.userData))
-    window.location.reload()
-  }
-    async handleWorkerSubmit(){
-      this.userData={
-        userName:this.userName,
-        email:this.email,
-        password:this.password,
-        phone:this.phone,
-        cnic:this.cnic,
-        address:this.address,
-        role:"Worker"
-      }
-      alert(await this.addUser(this.userData))
-      window.location.reload()
+    alert(await this.addUser(this.userData))
+    // window.location.reload()
   }
   ngOnInit(): void {
-    this.signUpService.getUsersApi().subscribe(data=>{
-      this.allUsers=data
-    })
+    // this.signUpService.getUsersApi({email:this.email}).subscribe(data=>{
+    //   this.allUsers=data
+    // })
   }
 
 
