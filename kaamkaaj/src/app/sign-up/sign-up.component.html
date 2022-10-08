@@ -1,6 +1,4 @@
-
-<form class="container-fluid"  ngNativeValidate>
-
+<form class="container-fluid"  ngNativeValidate (ngSubmit)="handleSubmit()">
     <div class="d-flex justify-content-center align-items-center">
         <div class="col-md-4 col-sm-6 col-10 shadow-lg m-5 p-5 bg-body rounded-3">
             <h1 class="d-flex justify-content-center fs-1 mb-5">Sign Up</h1>
@@ -41,10 +39,10 @@
 
                 <div class="row">
                     <div class="col-lg-6 d-flex justify-content-center mb-3">
-                        <button (click)="handleClientSubmit()"  type="submit" class="px-3 btn btn-outline-dark fs-5  bg-dark text-light">Sign  Up as client</button>  
+                        <button   type="submit" (click)="clientClick()" class="px-3 btn btn-outline-dark fs-5  bg-dark text-light">Sign  Up as client</button>  
                     </div>
                     <div class="col-lg-6 d-flex justify-content-center mb-3">
-                        <button (click)="handleWorkerSubmit()" type="submit" class="px-3 btn btn-outline-dark fs-5  bg-dark text-light">Sign  Up as worker</button>  
+                        <button (click)="workerClick()" type="submit" class="px-3 btn btn-outline-dark fs-5  bg-dark text-light">Sign  Up as worker</button>  
                     </div>
                     
                    
