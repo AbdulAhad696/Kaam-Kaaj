@@ -9,6 +9,7 @@ export class SignUpService {
   constructor(private http:HttpClient) { }
   getUsersApi(user:any ) {
     // return this.http.get(environment.baseUrl+'/signup/'+user.email,user)
+
     // .subscribe(res=>{
     //   return res
     // })
@@ -18,6 +19,7 @@ export class SignUpService {
     //   return res
     // }));
     
+
   };
   
 
@@ -26,5 +28,6 @@ export class SignUpService {
     // .subscribe(res=>{
     //   return true
     // })
+
   }
 }
