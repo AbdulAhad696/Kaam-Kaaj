@@ -1,17 +1,60 @@
 
-<div class="container-fluid p-0 bg-dark" style="background-color:black !important;">
-    <div class="d-flex align-items-center">
-        <div class="col-lg-10 col-md-9 col-sm-10 col-8  align-items-center">
-            <div class="d-flex row align-items-center">
-                <div class="col-lg-1 col-md-2 col-sm-3 col-6 d-flex justify-content-center">
-                    <img class="img-fluid pl-0" src="../../assets/kaamkaaj-removebg-preview.png" style="height: 60px;">
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-4 col-6 text-white fs-2 p-0">Kaam Kaaj</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color:black !important; position:sticky; top: 0;">
+    <div class="container-fluid">
+        <img class="img-fluid" src="../../assets/kaamkaaj-removebg-preview.png" style="height: 50px;">
+        <a class="navbar-brand fs-2 text-white" href="#">Kaam Kaaj</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="col-lg-12 col-md-9 col-sm-10 col-8 d-flex" *ngIf="loggedin!='localhost:4200'">
+                <ul class="col-lg-12 navbar-nav justify-content-around" *ngIf="loggedin.indexOf('admin') >= 0">
+                    <li class="nav-item" *ngFor="let button of adminbuttons">
+                        <a class="nav-link active" aria-current="page" href="#">{{button}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <img class="img-fluid" src="../../assets/PngItem_1300400.png" style="height: 30px;">
+                    </li>
+                </ul>
+                <ul class="col-lg-12 navbar-nav justify-content-around" *ngIf="loggedin.indexOf('user') >= 0">
+                    <li class="nav-item" *ngFor="let button of userbuttons">
+                        <a class="nav-link active" aria-current="page" href="#">{{button}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <img class="img-fluid" src="../../assets/PngItem_1300400.png" style="height: 30px;">
+                    </li>
+                </ul>
+                <ul class="col-lg-12 navbar-nav justify-content-around" *ngIf="loggedin.indexOf('sp') >= 0">
+                    <li class="nav-item" *ngFor="let button of spbuttons">
+                        <a class="nav-link active" aria-current="page" href="#">{{button}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <img class="img-fluid" src="../../assets/PngItem_1300400.png" style="height: 30px;">
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-10 col-md-9 col-sm-10 col-8 d-flex" *ngIf="loggedin=='localhost:4200'">
+                <ul class="col-lg-12 navbar-nav justify-content-around">
+                    <li class="nav-item" *ngFor="let button of mainpagebuttons">
+                        <a class="nav-link active" aria-current="page" href="#">{{button}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-md-9 col-sm-10 col-8 d-flex" *ngIf="loggedin=='localhost:4200'">
+                <ul class="col-lg-12 navbar-nav justify-content-around p-0"> 
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-outline-light" routerLink="/signin">Sign in</button>
+                    </li>
+                    <br>
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-outline-light" routerLink="/signup">Sign Up</button>
+                    </li>
+                </ul>
+            </div>
+            <div class=" col-lg-12 col-md-3 col-sm-2 col-4 d-flex justify-content-end" *ngIf="loggedin.indexOf('sign') >= 0">
+                <button type="button" class=" btn btn-outline-light ">Home</button>
             </div>
         </div>
-        <div class=" col-lg-2 col-md-3 col-sm-2 col-4 d-flex justify-content-end">
-            <button type="button" class=" btn btn-outline-light ">Home</button>  
-        </div>
     </div>
-</div>
-
+</nav>
