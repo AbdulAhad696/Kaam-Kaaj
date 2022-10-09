@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { isEmpty, lastValueFrom } from 'rxjs';
+import { firstValueFrom, isEmpty, lastValueFrom } from 'rxjs';
 import { SignUpService } from './../Services/sign-up/sign-up.service';
+import { SpinnerService } from './../Services/spinner/spinner.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,7 +9,7 @@ import { SignUpService } from './../Services/sign-up/sign-up.service';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-  constructor(private signUpService:SignUpService) { }
+  constructor(private signUpService:SignUpService,private SpinnerService:SpinnerService) { }
   
   isRegister:any;
   userData:any;
@@ -81,7 +82,14 @@ export class SignUpComponent implements OnInit {
       address:this.address,
       role:this.role
     }
-    alert(await this.addUser(this.userData))
+    this.SpinnerService.requestStarted()
+    this.isRegister=await this.addUser(this.userData)
+    this.SpinnerService.requestEnded()
+    setTimeout(()=>{
+      alert(this.isRegister)
+
+    },10)
+    
     // window.location.reload()
   }
   ngOnInit(): void {
