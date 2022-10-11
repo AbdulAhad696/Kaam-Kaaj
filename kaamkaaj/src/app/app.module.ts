@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+
 
 @NgModule({
   declarations: [
@@ -22,10 +24,10 @@ import { AboutUsComponent } from './about-us/about-us.component';
     FooterComponent,
     routingcomponents,
     ContactUsComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    SpinnerComponent
   ],
   imports: [
-  BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
