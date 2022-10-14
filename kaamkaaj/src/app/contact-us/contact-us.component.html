@@ -1,24 +1,31 @@
+<div *ngIf="success==true" class="alert alert-success p-3" role="alert">
+    Successfully Submitted!
+  </div>
+<div *ngIf="success==false" class="alert alert-danger p-3" role="alert">
+Failed to Submit!
+</div>
+
 <div class="p-5 container-fluid d-flex justify-content-center display-4">
     <p>Contact Us</p>
 </div>
 
-<form class="p-5">
+<form class="p-5" ngNativeValidate>
     <div class="container-fluid d-flex justify-content-center">
         <div class="col-lg-8 row d-flex justify-content-around">
-            <div class="col-lg-4 pt-2"><input class="form-control" type="name" placeholder="Name"></div>
-            <div class="col-lg-4 pt-2"><input class="form-control" type="tel" placeholder="Phone Number"></div>
-            <div class="col-lg-4 pt-2"><input class="form-control" type="email" placeholder="Email Address"></div>
+            <div   class="col-lg-4 pt-2"><input [(ngModel)]="nameInput" [ngModelOptions]="{standalone: true}" class="form-control" type="name" placeholder="Name"></div>
+            <div   class="col-lg-4 pt-2"><input [(ngModel)]="numInput" [ngModelOptions]="{standalone: true}" class="form-control" type="tel" placeholder="Phone Number"></div>
+            <div   class="col-lg-4 pt-2"><input [(ngModel)]="mailInput" [ngModelOptions]="{standalone: true}" class="form-control" type="email" placeholder="Email Address"></div>
             
         </div>
     </div>
     <div class="col-lg-12 d-flex justify-content-center p-5">
         <div class="col-lg-4">
-            <textarea class="form-control" placeholder="Your Concern" style="height:15vh ;"></textarea>
+            <textarea name="inputText" [(ngModel)]="concernInput" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Your Concern" style="height:15vh ;"></textarea>
         </div>
     </div>
     <div class="col-lg-12 pt-2 d-flex justify-content-center">
         <div class="col-lg-4 d-flex justify-content-center">
-            <button type="submit" class="btn btn-outline-dark">Submit</button>
+            <button (click)="SubmitConcern()" type="submit" class="btn btn-outline-dark">Submit</button>
         </div>
     </div>
 </form>
@@ -36,26 +43,26 @@
 </div>
 <div class="col-lg-12 d-flex justify-content-center pt-3 pb-3">
     <div class="col-10 row d-flex justify-content-around">
-        <div class="col-md-3">
-            <p>Muhammad Huzaifa Khan</p>
+        <div class="col-md-3 pt-5">
+            <p class="fw-bold">Muhammad Huzaifa Khan</p>
             <hr class="text-black" width="80%">
             <p>Email: 2020cs2@student.uet.edu.pk</p>
             <p>Contact: +92-343-1544033</p>
         </div>
-        <div class="col-md-3">
-            <p>Umair Ahmed</p>
+        <div class="col-md-3 pt-5">
+            <p class="fw-bold">Umair Ahmed</p>
             <hr class="text-black" width="80%">
             <p>Email: 2020cs3@student.uet.edu.pk</p>
             <p>Contact: +92-320-5803580</p>
         </div>
-        <div class="col-md-3">
-            <p>Abdul Ahad</p>
+        <div class="col-md-3 pt-5">
+            <p class="fw-bold">Abdul Ahad</p>
             <hr class="text-black" width="80%">
             <p>Email: 2020cs5@student.uet.edu.pk</p>
             <p>Contact: +92-333-4587233</p>
         </div>
-        <div class="col-md-3">
-            <p>Kashir Saeed</p>
+        <div class="col-md-3 pt-5">
+            <p class="fw-bold">Kashir Saeed</p>
             <hr class="text-black" width="80%">
             <p>Email: 2020cs27@student.uet.edu.pk</p>
             <p>Contact: +92-301-9123200</p>
