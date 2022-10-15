@@ -1,15 +1,11 @@
+/* ----------------------backgroung styling-------------------- */
 .backgroungProperties {
     background-color: rgba(143, 41, 5, 255);
     text-align: center;
 
 }
 
-.paraProperties {
-    margin-top: 30px;
-    font-size: large;
-    padding: 40px;
-}
-
+/* ---------------------Buttons Styling---------------------- */
 .btn {
     border-radius: 10px;
     width: 200px;
@@ -17,26 +13,29 @@
     padding: 10px;
     font-size: large;
 }
-
+.btnRow {
+    justify-content: center;
+}
+.viewMoreButtonRow {
+    justify-content: center;
+}
+.viewMoreButton {
+    background-color: rgba(212, 231, 182, 255);
+}
 .postJobButton {
     background-color: rgba(247, 149, 32, 255);
 }
 
-.btnRow {
-    justify-content: center;
-}
-
+/* ----------------------image Styling------------------------- */
 .imgsize {
     width: 100%;
     height: 100%;
 }
-
 .imageContainer {
     position: relative;
     text-align: center;
     color: white;
 }
-
 .centered {
     position: absolute;
     top: 50%;
@@ -44,10 +43,17 @@
     transform: translate(-50%, -50%);
 }
 
-.viewMoreButtonRow {
-    justify-content: center;
+/* ----------------------------paragraph styling------------------------ */
+.paraProperties {
+    margin-top: 30px;
+    font-size: large;
+    padding: 40px;
 }
 
-.viewMoreButton {
-    background-color: rgba(212, 231, 182, 255);
-}
+
+
+
+
+
+
+

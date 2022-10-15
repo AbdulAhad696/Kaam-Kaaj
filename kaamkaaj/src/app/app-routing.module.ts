@@ -16,6 +16,8 @@ const routes: Routes = [
 
   {path:'customer-mainpage',component:CustomerLandingPageComponent},
 
+
+  
   {path:'contactus',component:ContactUsComponent},
   {path:'aboutus',component:AboutUsComponent},
   {path:'services',component:ServicesPageComponent}
