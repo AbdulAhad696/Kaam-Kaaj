@@ -11,9 +11,7 @@ const routes: Routes = [
   {path:'signup',component:SignUpComponent},
   {path: 'signin',component:SignInComponent},
   {path:'',component:MainPageComponent},
-
-  {path:'customer-mainpage',component:CustomerLandingPageComponent}
-
+  {path:'customer-mainpage',component:CustomerLandingPageComponent},
   {path:'contactus',component:ContactUsComponent},
   {path:'aboutus',component:AboutUsComponent}
 
