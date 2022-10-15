@@ -16,7 +16,14 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { CustomerLandingPageComponent } from './customer-landing-page/customer-landing-page.component';
+
 import { FilterBarComponent } from './filter-bar/filter-bar.component';
+
+import { ServicesPageComponent } from './services-page/services-page.component';
+import { ServiceComponent } from './service/service.component';
+import { RatingComponent } from './rating/rating.component';
+import { AllServicesComponent } from './all-services/all-services.component';
+
 
 
 @NgModule({
@@ -32,7 +39,14 @@ import { FilterBarComponent } from './filter-bar/filter-bar.component';
     ContactUsComponent,
     AboutUsComponent,
     SpinnerComponent,
-    FilterBarComponent
+
+    FilterBarComponent,
+
+    ServicesPageComponent,
+    ServiceComponent,
+    RatingComponent,
+    AllServicesComponent
+
 
   ],
   imports: [
@@ -40,7 +54,7 @@ import { FilterBarComponent } from './filter-bar/filter-bar.component';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    GoogleMapsModule
+    GoogleMapsModule,
 
   ],
   providers: [],
