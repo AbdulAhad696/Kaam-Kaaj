@@ -26,7 +26,7 @@ import { CustomerLandingPageComponent } from './customer-landing-page/customer-l
     routingcomponents,
 
     SpinnerComponent,
-    CustomerLandingPageComponent
+    CustomerLandingPageComponent,
 
     ContactUsComponent,
     AboutUsComponent,
