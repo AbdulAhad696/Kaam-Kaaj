@@ -11,7 +11,11 @@ import { FooterComponent } from './footer/footer.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { AboutUsComponent } from './about-us/about-us.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { CustomerLandingPageComponent } from './customer-landing-page/customer-landing-page.component';
 
 
 @NgModule({
@@ -20,14 +24,21 @@ import { SpinnerComponent } from './spinner/spinner.component';
     HeaderComponent,
     FooterComponent,
     routingcomponents,
+
+    SpinnerComponent,
+    CustomerLandingPageComponent
+
+    ContactUsComponent,
+    AboutUsComponent,
     SpinnerComponent
+
   ],
   imports: [
-  BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    GoogleMapsModule
 
   ],
   providers: [],
