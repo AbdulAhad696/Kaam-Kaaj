@@ -15,6 +15,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { CustomerLandingPageComponent } from './customer-landing-page/customer-landing-page.component';
 
 
 @NgModule({
@@ -23,9 +24,14 @@ import { SpinnerComponent } from './spinner/spinner.component';
     HeaderComponent,
     FooterComponent,
     routingcomponents,
+
+    SpinnerComponent,
+    CustomerLandingPageComponent
+
     ContactUsComponent,
     AboutUsComponent,
     SpinnerComponent
+
   ],
   imports: [
     AppRoutingModule,
