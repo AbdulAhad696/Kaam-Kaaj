@@ -12,6 +12,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { CustomerLandingPageComponent } from './customer-landing-page/customer-landing-page.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     HeaderComponent,
     FooterComponent,
     routingcomponents,
-    SpinnerComponent
+    SpinnerComponent,
+    CustomerLandingPageComponent
   ],
   imports: [
   BrowserModule,

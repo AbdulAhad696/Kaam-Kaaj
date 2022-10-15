@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SignInService } from '../Services/sign-in/sign-in.service';
 import { lastValueFrom } from 'rxjs';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -14,9 +16,7 @@ export class SignInComponent implements OnInit {
   private username = "";
   private password = "";
   loggedInUser: any = []
-  constructor(private signinService: SignInService) { }
-
-
+  constructor(private signinService: SignInService , private router:Router) { }
 
   async onLogin() {
     this.username = this.userInput;
@@ -27,7 +27,10 @@ export class SignInComponent implements OnInit {
     }
     this.loggedInUser = await lastValueFrom(this.signinService.findUserLogin(credentials))
     if (this.loggedInUser.length > 0) {
-      alert("LOGGED IN" + this.loggedInUser[0].address)
+      if(this.loggedInUser[0].role == "Client"){
+        alert("LOGGED IN" + (this.loggedInUser[0].role));
+        this.router.navigate(['/customer-mainpage'])
+      }
     }
   }
   ngOnInit(): void {

@@ -70,7 +70,7 @@ export class SignUpComponent implements OnInit {
     this.role="Client"
   }
   workerClick(){
-    this.role="Client"
+    this.role="Worker"
   }
   async handleSubmit(){
     this.userData={
