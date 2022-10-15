@@ -32,28 +32,10 @@
         <div class="col-lg-8 d-flex justify-content-center">
             <div class="col-lg-12 d-flex flex-row justify-content-around">
                 <div class="row justify-content-center ">
-                    <div class="p-3 col-lg-3 col-md-5 col-10 li-size imageContainer">
-                        <img class="img-fluid imgsize rounded " src="../../assets/main_page_movers.jpeg">
+                    <div class="p-3 col-lg-3 col-md-5 col-10 li-size imageContainer" *ngFor="let service of allServices; let i = index" >
+                        <img class="img-fluid imgsize rounded " src={{service.image}}>
                         <div class="centered">
-                            <h2>Mover</h2>
-                        </div>
-                    </div>
-                    <div class="p-3 col-lg-3 col-md-5 col-10 li-size imageContainer">
-                        <img class="img-fluid imgsize rounded" src="../../assets/main_page_plumber.jpg">
-                        <div class="centered">
-                            <h2>Plumber</h2>
-                        </div>
-                    </div>
-                    <div class="p-3 col-lg-3 col-md-5 col-10 li-size imageContainer">
-                        <img class="img-fluid imgsize rounded" src="../../assets/main_page_carpenter.jpg">
-                        <div class="centered">
-                            <h2>Carpenter</h2>
-                        </div>
-                    </div>
-                    <div class="p-3 col-lg-3 col-md-5 col-10 li-size imageContainer">
-                        <img class="img-fluid imgsize rounded" src="../../assets/main_page_electrician.jpg">
-                        <div class="centered">
-                            <h2>Electrician</h2>
+                            <h2>{{service.tittle}}</h2>
                         </div>
                     </div>
                 </div>
@@ -65,5 +47,5 @@
 <!-- -------------------------view more button----------------------------- -->
 
 <div class="row viewMoreButtonRow">
-    <button type="button" class="btn btn-danger viewMoreButton text-dark"><b>View More</b></button>
+    <button type="button"  class="btn btn-danger viewMoreButton text-dark"><b>View More</b></button>
 </div>  
