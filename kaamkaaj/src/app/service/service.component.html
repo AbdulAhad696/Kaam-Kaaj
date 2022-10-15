@@ -1,0 +1,21 @@
+<h1 class=" d-flex m-4 justify-content-center align-items-center">All Services</h1>
+
+
+<div class="row container-fluid">
+    <div class="col-lg-3 col-md-6 col-sm-12 col-12" *ngFor="let service of services; ">
+        <div class=" shadow-lg m-4  p-4 bg-body rounded-3 d-flex flex-column  justify-content-center align-items-center">
+            <img class="serviceImage" src="../../assets/main_page_electrician.jpg" alt="Avatar">
+            <h1 class="mt-2 mb-0">{{service.name}}</h1>
+            <div class="d-flex flex-row">
+                <!-- <i class=" fa fa-star rateStar"></i> -->
+                <span class="material-icons rateStar">star</span>
+                <h2>{{service.rating}}</h2><h2>/5</h2>
+            </div>
+            <div class="rating">
+                <h4 class="mb-1">Rating</h4>
+                {{child.setSelectedValue(service.rating | number: '1.0-0')}}                
+                <app-rating #child ></app-rating>
+            </div>
+        </div>
+    </div>
+</div>
