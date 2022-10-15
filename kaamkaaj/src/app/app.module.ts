@@ -16,6 +16,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { CustomerLandingPageComponent } from './customer-landing-page/customer-landing-page.component';
+import { FilterBarComponent } from './filter-bar/filter-bar.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { CustomerLandingPageComponent } from './customer-landing-page/customer-l
 
     ContactUsComponent,
     AboutUsComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    FilterBarComponent
 
   ],
   imports: [

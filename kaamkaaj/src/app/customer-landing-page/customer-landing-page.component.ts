@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { lastValueFrom } from 'rxjs';
+import { GetServicesService } from '../Services/get-services/get-services.service';
 
 @Component({
   selector: 'app-customer-landing-page',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerLandingPageComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private GetServicesService:GetServicesService) { }
+  allServices: any;
+  async gettingServices(){
+    this.allServices = await lastValueFrom(this.GetServicesService.fetchingServices());
+    console.log(this.allServices[3].tittle);
+  }
+  
   ngOnInit(): void {
+    this.gettingServices();
   }
 
 }
