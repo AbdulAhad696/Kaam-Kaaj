@@ -1,0 +1,17 @@
+<div class="row container-fluid">
+    <div  class="col-lg-6 col-md-6 col-sm-12 col-12" *ngFor="let serviceProvider of serviceProviders"    >
+        <div class=" shadow-lg m-4  p-4 bg-body rounded-3 d-flex flex-column  justify-content-center align-items-center">
+            <img class="serviceImage" src={{serviceProvider.profilePicture}} alt="Avater">
+            <h1 class="mt-2 mb-0">{{serviceProvider.userName}}</h1>
+            <h3>{{serviceProvider.service}}</h3>
+            <div class="d-flex flex-row mt-2 mb-2 textColor">
+                <h4>Jobs Completed:</h4><h4>{{serviceProvider.jobsCompleted}}</h4>
+            </div>
+            <div class="rating">
+                <h4 class="mb-1">Rating</h4>
+                {{child.setSelectedValue(serviceProvider.rating | number: '1.0-0')}}                
+                <app-rating #child ></app-rating>
+            </div>
+        </div>
+    </div>
+</div>

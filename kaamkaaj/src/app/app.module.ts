@@ -23,6 +23,7 @@ import { ServicesPageComponent } from './services-page/services-page.component';
 import { ServiceComponent } from './service/service.component';
 import { RatingComponent } from './rating/rating.component';
 import { AllServicesComponent } from './all-services/all-services.component';
+import { ServiceProvidersComponent } from './service-providers/service-providers.component';
 
 
 
@@ -45,7 +46,8 @@ import { AllServicesComponent } from './all-services/all-services.component';
     ServicesPageComponent,
     ServiceComponent,
     RatingComponent,
-    AllServicesComponent
+    AllServicesComponent,
+    ServiceProvidersComponent
 
 
   ],
