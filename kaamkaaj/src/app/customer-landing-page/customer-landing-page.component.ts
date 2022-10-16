@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
 import { lastValueFrom } from 'rxjs';
 import { GetServicesService } from '../Services/get-services/get-services.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-customer-landing-page',
@@ -9,7 +12,8 @@ import { GetServicesService } from '../Services/get-services/get-services.servic
 })
 export class CustomerLandingPageComponent implements OnInit {
 
-  constructor(private GetServicesService:GetServicesService) { }
+
+  constructor(private GetServicesService:GetServicesService,private router:Router) { }
   allServices: any;
   
   async gettingServices(){
@@ -19,6 +23,13 @@ export class CustomerLandingPageComponent implements OnInit {
     console.log(this.allServices[3].tittle);
   }
   
+
+
+  handleViewMoreCategory() {
+    this.router.navigate(['/services'])
+  } 
+
+
   ngOnInit(): void {
     this.gettingServices();
   }
