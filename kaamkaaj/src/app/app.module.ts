@@ -4,17 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule, routingcomponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './Header/Header.component';
-
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { FooterComponent } from './footer/footer.component';
-import { SignInComponent } from './sign-in/sign-in.component';
-import { MainPageComponent } from './main-page/main-page.component';
+import { HeaderComponent } from './Shared/Header/Header.component';
+import { FooterComponent } from './Shared/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ContactUsComponent } from './contact-us/contact-us.component';
 import { GoogleMapsModule } from '@angular/google-maps';
-import { AboutUsComponent } from './about-us/about-us.component';
-import { SpinnerComponent } from './spinner/spinner.component';
+import { SpinnerComponent } from './Shared/spinner/spinner.component';
 
 
 @NgModule({
@@ -23,8 +17,6 @@ import { SpinnerComponent } from './spinner/spinner.component';
     HeaderComponent,
     FooterComponent,
     routingcomponents,
-    ContactUsComponent,
-    AboutUsComponent,
     SpinnerComponent
   ],
   imports: [
@@ -32,8 +24,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    GoogleMapsModule
-
+    GoogleMapsModule,
+    BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

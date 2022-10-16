@@ -1,17 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { SignInComponent } from './sign-in/sign-in.component';
-import { MainPageComponent } from './main-page/main-page.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
-import { AboutUsComponent } from './about-us/about-us.component';
+import { SignUpComponent } from './main-app/sign-up/sign-up.component';
+import { SignInComponent } from './main-app/sign-in/sign-in.component';
+import { MainPageComponent } from './main-app/main-page/main-page.component';
+import { ContactUsComponent } from './Shared/contact-us/contact-us.component';
+import { AboutUsComponent } from './main-app/about-us/about-us.component';
+import { SpDashboardComponent } from './service-provider/pages/sp-dashboard/sp-dashboard.component';
+import { AuthenticationGuard } from './authentication.guard';
 
 const routes: Routes = [
   {path:'signup',component:SignUpComponent},
   {path: 'signin',component:SignInComponent},
   {path:'',component:MainPageComponent},
   {path:'contactus',component:ContactUsComponent},
-  {path:'aboutus',component:AboutUsComponent}
+  {path:'aboutus',component:AboutUsComponent},
+  {path:'spdashboard',canActivate:[AuthenticationGuard],component:SpDashboardComponent}
+  // ,children:[{path:'',component:}]
 ];
 
 @NgModule({
@@ -19,4 +23,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingcomponents=[SignUpComponent,SignInComponent,MainPageComponent,ContactUsComponent,AboutUsComponent]
+export const routingcomponents=[SignUpComponent,SignInComponent,MainPageComponent,ContactUsComponent,AboutUsComponent,SpDashboardComponent]

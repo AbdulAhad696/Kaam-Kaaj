@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SignInService } from '../Services/sign-in/sign-in.service';
+import { SignInService } from 'src/app/Services/sign-in/sign-in.service';
 import { lastValueFrom } from 'rxjs';
 
 @Component({
@@ -27,8 +27,12 @@ export class SignInComponent implements OnInit {
     }
     this.loggedInUser = await lastValueFrom(this.signinService.findUserLogin(credentials))
     if (this.loggedInUser.length > 0) {
-      alert("LOGGED IN" + this.loggedInUser[0].address)
+      alert("LOGGED IN" + this.loggedInUser[0].role)
+      this.signinService.storeinlocalstorage(this.loggedInUser[0]);
     }
+  }
+  logout(){
+    this.signinService.clearsession();
   }
   ngOnInit(): void {
   }
