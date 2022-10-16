@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SignInService } from '../Services/sign-in/sign-in.service';
 import { lastValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
+import { SpinnerComponent } from './../spinner/spinner.component';
+import { SpinnerService } from './../Services/spinner/spinner.service';
 
 
 @Component({
@@ -16,7 +18,7 @@ export class SignInComponent implements OnInit {
   private username = "";
   private password = "";
   loggedInUser: any = []
-  constructor(private signinService: SignInService , private router:Router) { }
+  constructor(private signinService: SignInService , private router:Router,private SpinnerService:SpinnerService) { }
 
   async onLogin() {
     this.username = this.userInput;
@@ -25,10 +27,11 @@ export class SignInComponent implements OnInit {
       email: this.username,
       password: this.password
     }
+    this.SpinnerService.requestStarted()
     this.loggedInUser = await lastValueFrom(this.signinService.findUserLogin(credentials))
+    this.SpinnerService.requestEnded()
     if (this.loggedInUser.length > 0) {
       if(this.loggedInUser[0].role == "Client"){
-        alert("LOGGED IN" + (this.loggedInUser[0].role));
         this.router.navigate(['/customer-mainpage'])
       }
     }

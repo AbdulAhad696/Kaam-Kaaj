@@ -99,3 +99,9 @@
           height: 100%;
       }
   }
+  .serviceProviders{
+    border-radius: 10px;
+    border: 1px solid gray;
+    margin-bottom: 30px;
+    
+  }

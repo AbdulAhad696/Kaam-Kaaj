@@ -7,6 +7,9 @@ import { CustomerLandingPageComponent } from './customer-landing-page/customer-l
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ServicesPageComponent } from './services-page/services-page.component';
+import { ServiceProvidersComponent } from './service-providers/service-providers.component';
+import { FilterBarComponent } from './filter-bar/filter-bar.component';
+
 
 
 const routes: Routes = [
@@ -20,7 +23,8 @@ const routes: Routes = [
   
   {path:'contactus',component:ContactUsComponent},
   {path:'aboutus',component:AboutUsComponent},
-  {path:'services',component:ServicesPageComponent}
+  {path:'services',component:ServicesPageComponent},
+  {path:'serviceproviders/:service',component:FilterBarComponent}
 
 ];
 

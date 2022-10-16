@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { lastValueFrom } from 'rxjs';
 import { GetServicesService } from '../Services/get-services/get-services.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { GetServicesService } from '../Services/get-services/get-services.servic
 export class CustomerLandingPageComponent implements OnInit {
 
 
-  constructor(private GetServicesService:GetServicesService) { }
+  constructor(private GetServicesService:GetServicesService,private router:Router) { }
   allServices: any;
   async gettingServices(){
     this.allServices = await lastValueFrom(this.GetServicesService.fetchingServices());
@@ -20,7 +21,6 @@ export class CustomerLandingPageComponent implements OnInit {
   }
   
 
-  constructor(private router:Router) { }
 
   handleViewMoreCategory() {
     this.router.navigate(['/services'])

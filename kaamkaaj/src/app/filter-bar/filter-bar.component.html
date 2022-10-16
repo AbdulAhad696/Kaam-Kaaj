@@ -23,20 +23,20 @@
 <!-- ---------------------------filter bar--------------------------------- -->
 
     <div class="row">
-        <div class="col-lg-3">
+        <div class="col-lg-4">
             <nav id="sidebarMenu" class=" d-lg-block sidebar">
                 <div class="position-sticky">
                     <div class="list-group list-group-flush mx-3 mt-4">
                         <h1>Filters</h1>
                         <hr>
                         <h4>Categories</h4>
-                        <a href="#" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+                        <a href="{{baseUrlFrontEnd}}/serviceproviders/Plumber" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
                             <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Plumber</span>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action py-2 ripple ">
+                        <a href="{{baseUrlFrontEnd}}/serviceproviders/Electrician" class="list-group-item list-group-item-action py-2 ripple ">
                             <i class="fas fa-chart-area fa-fw me-3"></i><span>Electrician</span>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+                        <a href="{{baseUrlFrontEnd}}/serviceproviders/Carpanter" class="list-group-item list-group-item-action py-2 ripple"><i
                                 class="fas fa-lock fa-fw me-3"></i><span>Carpanter</span></a>
                         <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
                                 class="fas fa-chart-line fa-fw me-3"></i><span>Black Smith</span></a>
@@ -58,9 +58,9 @@
                 </div>
             </nav>
         </div>
-        <div class="col-lg-9">
-            <div class="container">
-                kjkjji
+        <div class="col-lg-8">
+            <div class="container serviceProviders">
+                <app-service-providers></app-service-providers>
             </div>
         </div>
     </div>
