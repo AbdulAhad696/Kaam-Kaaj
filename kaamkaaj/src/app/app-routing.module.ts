@@ -12,17 +12,15 @@ import { MainPageComponent } from './main-app/main-page/main-page.component';
 import { ContactUsComponent } from './Shared/contact-us/contact-us.component';
 import { AboutUsComponent } from './main-app/about-us/about-us.component';
 import { SpDashboardComponent } from './service-provider/pages/sp-dashboard/sp-dashboard.component';
-import { AuthenticationGuard } from './authentication.guard';
+import { AuthenticationGuard } from './auth-guards/authentication.guard';
+import { AdminGuardGuard } from './auth-guards/admin-guard.guard';
+import { ClientGuardGuard } from './auth-guards/client-guard.guard';
 
 const routes: Routes = [
   {path:'signup',component:SignUpComponent},
   {path: 'signin',component:SignInComponent},
   {path:'',component:MainPageComponent},
-
-  {path:'customer-mainpage',component:CustomerLandingPageComponent},
-
-
-  
+  {path:'customer-mainpage',canActivate:[ClientGuardGuard],component:CustomerLandingPageComponent},
   {path:'contactus',component:ContactUsComponent},
   {path:'aboutus',component:AboutUsComponent},
   {path:'services',component:ServicesPageComponent},

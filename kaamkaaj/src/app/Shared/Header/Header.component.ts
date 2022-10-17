@@ -47,7 +47,10 @@ export class HeaderComponent implements OnInit {
     });
     
   }
-  
+  clearsession(){
+    console.log("here");
+    this.signinservice.clearsession();
+  }
   ngOnInit(): void {
   }
 
