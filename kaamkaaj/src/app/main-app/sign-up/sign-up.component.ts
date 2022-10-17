@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { firstValueFrom, isEmpty, lastValueFrom } from 'rxjs';
-import { SignUpService } from './../Services/sign-up/sign-up.service';
-import { SpinnerService } from './../Services/spinner/spinner.service';
+import { SignUpService } from 'src/app/Services/sign-up/sign-up.service';
+import { SpinnerService } from 'src/app/Services/spinner/spinner.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -25,28 +25,7 @@ export class SignUpComponent implements OnInit {
 
 
   async validateUser(user:any){
-    // if(this.signUpService.getUsersApi({email:this.email})){
-      
-    //   return false
-    // }
-    // else{
-    //   return true
-    // }
-
     alert(await lastValueFrom(this.signUpService.getUsersApi({email:this.email})));
-
-
-
-
-    
-    
-    // for(let eachUser of this.allUsers){
-    //   if(user.email==eachUser.email){
-    //     return false
-    //   }
-    // }
-
-    // return true
   }
 
   async addUser(user:any){
@@ -77,14 +56,22 @@ export class SignUpComponent implements OnInit {
       userName:this.userName,
       email:this.email,
       password:this.password,
-      phone:this.phone,
       cnic:this.cnic,
+      phoneNumber:this.phone,
       address:this.address,
       role:this.role
     }
+    
     this.SpinnerService.requestStarted()
     this.isRegister=await this.addUser(this.userData)
     this.SpinnerService.requestEnded()
+    this.userName="";
+    this.email="";
+    this.password="";
+    this.cnic="";
+    this.phone="";
+    this.address="";
+    this.role="";
     setTimeout(()=>{
       alert(this.isRegister)
 
@@ -93,9 +80,6 @@ export class SignUpComponent implements OnInit {
     // window.location.reload()
   }
   ngOnInit(): void {
-    // this.signUpService.getUsersApi({email:this.email}).subscribe(data=>{
-    //   this.allUsers=data
-    // })
   }
 
 
