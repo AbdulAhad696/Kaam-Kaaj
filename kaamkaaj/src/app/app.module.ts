@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule, routingcomponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,6 +15,13 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { ServiceProviderProfileComponent } from './service-provider-profile/service-provider-profile.component';
+import { EditSPModalComponent } from './edit-spmodal/edit-spmodal.component';
+// import { MatToolbarModule } from '@angular/material/toolbar';
+// import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+// import { MatInputModule } from '@angular/material/input';
+
 
 
 @NgModule({
@@ -25,14 +32,17 @@ import { SpinnerComponent } from './spinner/spinner.component';
     routingcomponents,
     ContactUsComponent,
     AboutUsComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ServiceProviderProfileComponent,
+    EditSPModalComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    MatDialogModule
 
   ],
   providers: [],
