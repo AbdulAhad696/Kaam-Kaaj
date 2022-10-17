@@ -1,9 +1,9 @@
 <h1 class=" d-flex m-4 justify-content-center align-items-center">All Services</h1>
 
 
-<div class="row container-fluid">
+<div class="row m-0 p-0 container-fluid">
     <div (click)="showServiceProviders(service.tittle)" class="col-lg-3 col-md-6 col-sm-12 col-12" *ngFor="let service of services; ">
-        <div class=" shadow-lg m-4  p-4 bg-body rounded-3 d-flex flex-column  justify-content-center align-items-center">
+        <div class=" shadow-lg m-4 p-4 bg-body rounded-3 d-flex flex-column  justify-content-center align-items-center">
             <img class="serviceImage" src={{service.image}} alt="Avatar">
             <h1 class="mt-2 mb-0">{{service.tittle}}</h1>
             <div class="d-flex flex-row">
