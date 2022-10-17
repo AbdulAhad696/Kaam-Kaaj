@@ -30,10 +30,10 @@
                         <h1>Filters</h1>
                         <hr>
                         <h4>Categories</h4>
-                        <a href="{{baseUrlFrontEnd}}/serviceproviders/Plumber" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+                        <a routerLink="/serviceproviders/Plumber" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
                             <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Plumber</span>
                         </a>
-                        <a href="{{baseUrlFrontEnd}}/serviceproviders/Electrician" class="list-group-item list-group-item-action py-2 ripple ">
+                        <a routerLink="/serviceproviders/Electrician" class="list-group-item list-group-item-action py-2 ripple ">
                             <i class="fas fa-chart-area fa-fw me-3"></i><span>Electrician</span>
                         </a>
                         <a href="{{baseUrlFrontEnd}}/serviceproviders/Carpanter" class="list-group-item list-group-item-action py-2 ripple"><i
@@ -60,7 +60,8 @@
         </div>
         <div class="col-lg-8">
             <div class="container serviceProviders">
-                <app-service-providers></app-service-providers>
+            
+                <app-service-providers *mcRerender="trigger"></app-service-providers>
             </div>
         </div>
     </div>

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CustomerLandingPageComponent } from './customer-landing-page/customer-landing-page.component';
+import { CustomerLandingPageComponent } from './UserSite/customer-landing-page/customer-landing-page.component';
 import { ServicesPageComponent } from './services-page/services-page.component';
-import { ServiceProvidersComponent } from './service-providers/service-providers.component';
-import { FilterBarComponent } from './filter-bar/filter-bar.component';
+import { ServiceProvidersComponent } from './UserSite/service-providers/service-providers.component';
+import { FilterBarComponent } from './UserSite/filter-bar/filter-bar.component';
 
 
 import { SignUpComponent } from './main-app/sign-up/sign-up.component';
