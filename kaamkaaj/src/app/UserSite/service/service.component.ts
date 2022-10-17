@@ -1,9 +1,8 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { RatingComponent } from './../rating/rating.component';
-import { angularMath } from 'angular-ts-math/dist/angular-ts-math/angular-ts-math';
-import { GetServicesService } from '../Services/get-services/get-services.service';
+import { RatingComponent } from '../../Shared/rating/rating.component';
+import { GetServicesService } from '../../Services/get-services/get-services.service';
 import { lastValueFrom } from 'rxjs';
-import { SpinnerService } from './../Services/spinner/spinner.service';
+import { SpinnerService } from '../../Services/spinner/spinner.service';
 import { Router } from '@angular/router';
 
 

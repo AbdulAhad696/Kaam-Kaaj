@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SignInService } from 'src/app/Services/sign-in/sign-in.service';
 import { lastValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
-import { SpinnerComponent } from './../spinner/spinner.component';
-import { SpinnerService } from './../Services/spinner/spinner.service';
+import { SpinnerService } from './../../Services/spinner/spinner.service';
 
 
 @Component({

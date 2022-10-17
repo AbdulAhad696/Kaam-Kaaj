@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ServiceProviderService } from './../Services/serviceProvider/service-provider.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ServiceProviderService } from '../../Services/serviceProvider/service-provider.service';
 import { lastValueFrom } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { SpinnerService } from './../Services/spinner/spinner.service';
+import { SpinnerService } from '../../Services/spinner/spinner.service';
 
 @Component({
   selector: 'app-service-providers',
@@ -10,6 +10,7 @@ import { SpinnerService } from './../Services/spinner/spinner.service';
   styleUrls: ['./service-providers.component.css']
 })
 export class ServiceProvidersComponent implements OnInit {
+  
   service:any
   serviceProviders:any=[]
   constructor(private ServiceProviderService:ServiceProviderService,private ActivatedRoute:ActivatedRoute,private SpinnerService:SpinnerService) {
@@ -23,7 +24,7 @@ export class ServiceProvidersComponent implements OnInit {
     this.SpinnerService.requestEnded()
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.service=this.ActivatedRoute.snapshot.params['service']
     this.getServiceProviders(this.service)
   }
