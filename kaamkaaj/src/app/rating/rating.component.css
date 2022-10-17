@@ -1,0 +1,15 @@
+.rating-list {
+    display: inline-block;
+    list-style: none;
+  }
+  .rating-list li {
+    float: right;
+    color: #ddd;
+    margin-top: 0px;
+  }
+  .rating-list li.selected {
+    color: orange;
+  }
+  .material-icons{
+    font-size: 15px;
+  }

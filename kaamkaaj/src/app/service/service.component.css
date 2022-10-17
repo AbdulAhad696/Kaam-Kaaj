@@ -1,0 +1,14 @@
+.serviceImage{
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+.rateStar{
+    color: orange;
+    font-size: 20px;
+    margin-top: 5px;
+}
+.rating{
+    width: 100%;
+    float: left;
+}
