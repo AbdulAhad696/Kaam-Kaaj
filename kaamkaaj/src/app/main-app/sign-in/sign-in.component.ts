@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SignInService } from '../Services/sign-in/sign-in.service';
+import { SignInService } from 'src/app/Services/sign-in/sign-in.service';
 import { lastValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
 import { SpinnerComponent } from './../spinner/spinner.component';
@@ -31,10 +31,15 @@ export class SignInComponent implements OnInit {
     this.loggedInUser = await lastValueFrom(this.signinService.findUserLogin(credentials))
     this.SpinnerService.requestEnded()
     if (this.loggedInUser.length > 0) {
+      this.signinService.storeinlocalstorage(this.loggedInUser[0]);
       if(this.loggedInUser[0].role == "Client"){
         this.router.navigate(['/customer-mainpage'])
       }
+      
     }
+  }
+  logout(){
+    this.signinService.clearsession();
   }
   ngOnInit(): void {
   }

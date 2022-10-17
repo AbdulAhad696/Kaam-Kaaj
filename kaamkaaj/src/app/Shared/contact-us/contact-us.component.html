@@ -10,7 +10,7 @@ Failed to Submit!
 </div>
 
 <form class="p-5" ngNativeValidate>
-    <div class="container-fluid d-flex justify-content-center">
+    <div class="container-fluid d-flex justify-content-center" *ngIf="currentuser==null">
         <div class="col-lg-8 row d-flex justify-content-around">
             <div   class="col-lg-4 pt-2"><input [(ngModel)]="nameInput" [ngModelOptions]="{standalone: true}" class="form-control" type="name" placeholder="Name"></div>
             <div   class="col-lg-4 pt-2"><input [(ngModel)]="numInput" [ngModelOptions]="{standalone: true}" class="form-control" type="tel" placeholder="Phone Number"></div>
