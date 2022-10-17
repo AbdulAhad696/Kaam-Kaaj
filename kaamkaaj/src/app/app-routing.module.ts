@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CustomerLandingPageComponent } from './UserSite/customer-landing-page/customer-landing-page.component';
-import { ServicesPageComponent } from './services-page/services-page.component';
 import { ServiceProvidersComponent } from './UserSite/service-providers/service-providers.component';
 import { FilterBarComponent } from './UserSite/filter-bar/filter-bar.component';
 
@@ -13,6 +12,9 @@ import { ContactUsComponent } from './Shared/contact-us/contact-us.component';
 import { AboutUsComponent } from './main-app/about-us/about-us.component';
 import { SpDashboardComponent } from './service-provider/pages/sp-dashboard/sp-dashboard.component';
 import { AuthenticationGuard } from './authentication.guard';
+import { ServiceComponent } from './UserSite/service/service.component';
+
+
 
 const routes: Routes = [
   {path:'signup',component:SignUpComponent},
@@ -25,7 +27,7 @@ const routes: Routes = [
   
   {path:'contactus',component:ContactUsComponent},
   {path:'aboutus',component:AboutUsComponent},
-  {path:'services',component:ServicesPageComponent},
+  {path:'services',component:ServiceComponent},
   {path:'serviceproviders/:service',component:FilterBarComponent},
   {path:'spdashboard',canActivate:[AuthenticationGuard],component:SpDashboardComponent}
   // ,children:[{path:'',component:}]
