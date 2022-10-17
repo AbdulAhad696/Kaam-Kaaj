@@ -27,6 +27,7 @@ export class SignInService {
     return false;
   }
 
+
   getusertype() {
     return localStorage.getItem("usertype");
   }

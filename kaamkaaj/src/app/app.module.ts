@@ -16,17 +16,16 @@ import { EditSPModalComponent } from './edit-spmodal/edit-spmodal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ContactUsComponent } from './Shared/contact-us/contact-us.component';
 
-import { CustomerLandingPageComponent } from './customer-landing-page/customer-landing-page.component';
+import { CustomerLandingPageComponent } from './UserSite/customer-landing-page/customer-landing-page.component';
 
-import { FilterBarComponent } from './filter-bar/filter-bar.component';
+import { FilterBarComponent } from './UserSite/filter-bar/filter-bar.component';
 
-import { ServicesPageComponent } from './services-page/services-page.component';
-import { ServiceComponent } from './service/service.component';
-import { RatingComponent } from './rating/rating.component';
-import { AllServicesComponent } from './all-services/all-services.component';
-import { ServiceProvidersComponent } from './service-providers/service-providers.component';
+import { ServiceComponent } from './UserSite/service/service.component';
+import { RatingComponent } from './Shared/rating/rating.component';
+import { ServiceProvidersComponent } from './UserSite/service-providers/service-providers.component';
 
 import { SpinnerComponent } from './Shared/spinner/spinner.component';
+import { NgxRerenderModule } from 'ngx-rerender';
 
 
 @NgModule({
@@ -40,17 +39,10 @@ import { SpinnerComponent } from './Shared/spinner/spinner.component';
     SpinnerComponent,
     ServiceProviderProfileComponent,
     EditSPModalComponent,
-
-    SpinnerComponent,
     CustomerLandingPageComponent,
-    SpinnerComponent,
-
     FilterBarComponent,
-
-    ServicesPageComponent,
     ServiceComponent,
     RatingComponent,
-    AllServicesComponent,
     ServiceProvidersComponent
 
 
@@ -63,6 +55,7 @@ import { SpinnerComponent } from './Shared/spinner/spinner.component';
     GoogleMapsModule,
     MatDialogModule,
     BrowserModule
+    NgxRerenderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
