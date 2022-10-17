@@ -4,27 +4,21 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule, routingcomponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './Header/Header.component';
-
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { FooterComponent } from './footer/footer.component';
-import { SignInComponent } from './sign-in/sign-in.component';
-import { MainPageComponent } from './main-page/main-page.component';
+import { HeaderComponent } from './Shared/Header/Header.component';
+import { FooterComponent } from './Shared/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ContactUsComponent } from './contact-us/contact-us.component';
 import { GoogleMapsModule } from '@angular/google-maps';
-import { AboutUsComponent } from './about-us/about-us.component';
-import { SpinnerComponent } from './spinner/spinner.component';
-import { CustomerLandingPageComponent } from './customer-landing-page/customer-landing-page.component';
+import { CustomerLandingPageComponent } from './UserSite/customer-landing-page/customer-landing-page.component';
 
-import { FilterBarComponent } from './filter-bar/filter-bar.component';
+import { FilterBarComponent } from './UserSite/filter-bar/filter-bar.component';
 
 import { ServicesPageComponent } from './services-page/services-page.component';
-import { ServiceComponent } from './service/service.component';
-import { RatingComponent } from './rating/rating.component';
-import { AllServicesComponent } from './all-services/all-services.component';
-import { ServiceProvidersComponent } from './service-providers/service-providers.component';
+import { ServiceComponent } from './UserSite/service/service.component';
+import { RatingComponent } from './Shared/rating/rating.component';
+import { ServiceProvidersComponent } from './UserSite/service-providers/service-providers.component';
 
+import { SpinnerComponent } from './Shared/spinner/spinner.component';
+import { NgxRerenderModule } from 'ngx-rerender';
 
 
 @NgModule({
@@ -33,12 +27,8 @@ import { ServiceProvidersComponent } from './service-providers/service-providers
     HeaderComponent,
     FooterComponent,
     routingcomponents,
-
     SpinnerComponent,
     CustomerLandingPageComponent,
-
-    ContactUsComponent,
-    AboutUsComponent,
     SpinnerComponent,
 
     FilterBarComponent,
@@ -46,7 +36,6 @@ import { ServiceProvidersComponent } from './service-providers/service-providers
     ServicesPageComponent,
     ServiceComponent,
     RatingComponent,
-    AllServicesComponent,
     ServiceProvidersComponent
 
 
@@ -57,7 +46,9 @@ import { ServiceProvidersComponent } from './service-providers/service-providers
     FormsModule,
     HttpClientModule,
     GoogleMapsModule,
-
+    
+    NgxRerenderModule,
+    BrowserModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

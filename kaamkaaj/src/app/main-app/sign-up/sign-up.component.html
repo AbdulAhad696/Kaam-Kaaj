@@ -1,0 +1,69 @@
+<form class="container-fluid"  ngNativeValidate (ngSubmit)="handleSubmit()">
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="col-md-4 col-sm-6 col-10 shadow-lg m-5 p-5 bg-body rounded-3">
+            <h1 class="d-flex justify-content-center fs-1 mb-5">Sign Up</h1>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 mb-3">
+
+                        <input placeholder="Username" type="text" required [(ngModel)]="userName" [ngModelOptions]="{standalone: true}"
+                            class="form-control border-start-0 border-end-0 border-top-0 rounded-0" id="inputUsername">
+                    </div>
+                    <div class="col-lg-6 d-flex justify-content-center mb-3">
+                        <input placeholder="Email" type="email" required [(ngModel)]="email" [ngModelOptions]="{standalone: true}"
+                            class="form-control border-start-0 border-end-0 border-top-0 rounded-0" id="inputEmail">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 d-flex justify-content-center mb-3">
+                        <input placeholder="Password" type="password"  [(ngModel)]="password" [ngModelOptions]="{standalone: true}"
+                            class="form-control border-start-0 border-end-0 border-top-0 rounded-0" id="inputPassword" required>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <input placeholder="CNIC" type="text" required [(ngModel)]="cnic" [ngModelOptions]="{standalone: true}"
+                            class="form-control border-start-0 border-end-0 border-top-0 rounded-0" id="inputCNIC">
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col-lg-6 d-flex justify-content-center mb-3">
+
+                        <input placeholder="phone number" type="text" required [(ngModel)]="phone" [ngModelOptions]="{standalone: true}"
+                            class="form-control border-start-0 border-end-0 border-top-0 rounded-0" id="inputPhoneNumber">
+                    </div>
+                    <div class="col-lg-6 d-flex justify-content-center mb-3">
+                        <input placeholder="Address" type="text" required [(ngModel)]="address" [ngModelOptions]="{standalone: true}"
+                            class="form-control border-start-0 border-end-0 border-top-0 rounded-0" id="inputAddress">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 d-flex justify-content-center mb-3">
+                        <button   type="submit" (click)="clientClick()" class="px-3 btn btn-outline-dark fs-5  bg-dark text-light">Sign up Client</button>  
+                    </div>
+                    <div class="col-lg-6 d-flex justify-content-center mb-3">
+                        <button (click)="workerClick()" type="submit" class="px-3 btn btn-outline-dark fs-5  bg-dark text-light">Sign up Worker</button>  
+                    </div>
+                    
+                   
+                </div>
+
+                <div class="row">
+                    <div class="d-flex justify-content-center mb-3">
+                        <label class="fs-4" style="opacity: 50%;">or</label>
+                    </div>
+                    <hr>
+                    <br>
+                </div>
+
+                <div class="row">
+                    <div class="d-flex justify-content-center">
+                        <button type="button" class="px-3 btn btn-outline-dark fs-5   bg-dark  "><a class="text-light" routerLink="/signin">Login</a></button>  
+                    </div> 
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+
