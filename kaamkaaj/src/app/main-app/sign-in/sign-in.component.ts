@@ -17,7 +17,7 @@ export class SignInComponent implements OnInit {
   private username = "";
   private password = "";
   loggedInUser: any = []
-  constructor(private signinService: SignInService , private router:Router,private SpinnerService:SpinnerService) { }
+  constructor(private signinService: SignInService, private router: Router, private SpinnerService: SpinnerService) { }
 
   async onLogin() {
     this.username = this.userInput;
@@ -31,13 +31,13 @@ export class SignInComponent implements OnInit {
     this.SpinnerService.requestEnded()
     if (this.loggedInUser.length > 0) {
       this.signinService.storeinlocalstorage(this.loggedInUser[0]);
-      if(this.loggedInUser[0].role == "Client"){
+      if (this.loggedInUser[0].role == "Client") {
         this.router.navigate(['/customer-mainpage'])
       }
-      
+
     }
   }
-  logout(){
+  logout() {
     this.signinService.clearsession();
   }
   ngOnInit(): void {

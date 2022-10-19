@@ -1,0 +1,6 @@
+.editProfilePicture {
+    object-fit: cover;
+    height: 20vh;
+    width: 20vh;
+    border-radius: 50%;
+}
