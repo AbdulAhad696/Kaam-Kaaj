@@ -1,68 +1,90 @@
-
 <div class="container">
     <div class="row profileImageRow mb-5">
         <div class="col-xs-12 profileImageColumns">
             <div class="profilePictureDiv centerColumn">
                 <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTf9d3vymakpWH5l6ZT7FHXPWmVATlApygyg&usqp=CAU"
+                    src={{serviceProviderProfile[0].profilePicture}}
                     alt="profilePicture" class="profilePicture">
             </div>
-            <h5 class="profileName fs-3 mt-3">{{profile.name}}</h5>
+            <h5 class="profileName fs-3 mt-3">{{serviceProviderProfile[0].serviceProviderDetails[0].userName}}</h5>
             <div class="starsContainer">
-                <span class="fa fa-star checked" *ngFor="let rate of
+                <!-- <span class="fa fa-star checked" *ngFor="let rate of
                     ratings">
                 </span>
                 <span class="fa fa-star" *ngFor="let rate of
                     noratings">
-                </span>
+                </span> -->
+                {{child.setSelectedValue(serviceProviderProfile[0].rating| number: '1.0-0')}}
+                <app-rating #child></app-rating>
             </div>
         </div>
     </div>
     <div class="row profilInfoRow mb-5">
         <div class="col-md-4 col-6 col-sm-6 mb-3 centerColumn">
             <i class="fa fa-list-ul fa-2x mb-3"></i>
-            <h4 class="fs-5">{{profile.category}}</h4>
+            <h4 class="fs-5">{{serviceProviderProfile[0].serviceDetails[0].tittle}}</h4>
         </div>
 
         <div class="col-md-4 col-6 col-sm-6 mb-3 centerColumn">
             <button *ngIf="loggedInUser.length> 0 && loggedInUser[0].role ==
                 'Client'" type="button" class="btn btn-success btn-lg
-                editProfileButton fs-5" (click) = "openModal()">Edit Profile</button>
+                editProfileButton fs-5" (click) = "openModal()">Send Proposal</button>
             <button *ngIf="loggedInUser.length> 0 && loggedInUser[0].role ==
                 'Worker'" type="button" class="btn btn-success btn-lg
-                editProfileButton fs-5">Send Proposal</button>
+                editProfileButton fs-5">Edit Profile</button>
             <button *ngIf="loggedInUser.length> 0 && loggedInUser[0].role ==
                 'Admin'" type="button" class="btn btn-success btn-lg
                 editProfileButton fs-5">Disable Profile</button>
         </div>
         <div class="col-md-4 col-12 centerColumn">
             <i class="fa fa-map-marker fa-2x mb-3"></i>
-            <h5 class="fs-5">Baghbanpura, Lahore</h5>
+            <h5 class="fs-5">{{serviceProviderProfile[0].serviceProviderDetails[0].address}}</h5>
         </div>
         <div class="col-md-4 mb-4">
             <div class="infoBox centerColumn">
                 <h4 class="fs-2 fw-bold">Total Earnings</h4>
-                <h5 class="fs-4 mt-3 text-secondary fw-bold">Rs. 12,000</h5>
+                <h5 class="fs-4 mt-3 text-secondary fw-bold">{{serviceProviderProfile[0].totalEarning}}</h5>
             </div>
 
         </div>
         <div class="col-md-4 mb-4">
             <div class="infoBox centerColumn">
                 <h4 class="fs-2 fw-bold">Experience</h4>
-                <h5 class="fs-4 mt-3 text-secondary fw-bold">5 Years</h5>
+                <h5 class="fs-4 mt-3 text-secondary fw-bold">{{serviceProviderProfile[0].experience}}</h5>
             </div>
         </div>
         <div class="col-md-4 mb-4">
             <div class="infoBox centerColumn">
                 <h4 class="fs-2 fw-bold">Jobs Completed</h4>
-                <h5 class="fs-4 mt-3 text-secondary fw-bold">10</h5>
+                <h5 class="fs-4 mt-3 text-secondary fw-bold">{{serviceProviderProfile[0].jobsCompleted}}</h5>
             </div>
         </div>
     </div>
     <div>
         <h4 class="fs-3 centerColumn">Portfolio</h4>
         <div class="container portfolioContainer p-5 mb-5">
-            <div class="row m-4">
+            <div class="row m-4" >
+                <div class="col-md-3 mb-5 centerColumn" *ngFor="let image of serviceProviderProfile[0].portfolioImages">
+                    <img
+                        src={{image}}
+                        alt="portfolioPic" class= 'portfolioPicture'>
+                </div>
+                <!-- <div class="col-md-3 mb-5 centerColumn">
+                    <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
+                        alt="portfolioPic" class= 'portfolioPicture'>
+                </div>
+                <div class="col-md-3 mb-5 centerColumn">
+                    <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
+                        alt="portfolioPic" class= 'portfolioPicture'>
+                </div>
+                <div class="col-md-3 mb-5 centerColumn">
+                    <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
+                        alt="portfolioPic" class= '
+                        portfolioPicture'>
+                </div>
                 <div class="col-md-3 mb-5 centerColumn">
                     <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
@@ -83,28 +105,7 @@
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
                         alt="portfolioPic" class= '
                         portfolioPicture'>
-                </div>
-                <div class="col-md-3 mb-5 centerColumn">
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
-                        alt="portfolioPic" class= 'portfolioPicture'>
-                </div>
-                <div class="col-md-3 mb-5 centerColumn">
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
-                        alt="portfolioPic" class= 'portfolioPicture'>
-                </div>
-                <div class="col-md-3 mb-5 centerColumn">
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
-                        alt="portfolioPic" class= 'portfolioPicture'>
-                </div>
-                <div class="col-md-3 mb-5 centerColumn">
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
-                        alt="portfolioPic" class= '
-                        portfolioPicture'>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

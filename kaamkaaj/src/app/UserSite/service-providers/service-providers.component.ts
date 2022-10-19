@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ServiceProviderService } from '../../Services/serviceProvider/service-provider.service';
 import { lastValueFrom } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SpinnerService } from '../../Services/spinner/spinner.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class ServiceProvidersComponent implements OnInit {
   
   service:any
   serviceProviders:any=[]
-  constructor(private ServiceProviderService:ServiceProviderService,private ActivatedRoute:ActivatedRoute,private SpinnerService:SpinnerService) {
+  constructor(private ServiceProviderService:ServiceProviderService,private ActivatedRoute:ActivatedRoute,private SpinnerService:SpinnerService,private router:Router) {
 
    }
 
@@ -23,7 +23,9 @@ export class ServiceProvidersComponent implements OnInit {
     
     this.SpinnerService.requestEnded()
   }
-
+  showServiceProviderProfile(email:any){
+    this.router.navigate([`serviceprovider/profile/${email}`])
+  }
   public ngOnInit(): void {
     this.service=this.ActivatedRoute.snapshot.params['service']
     this.getServiceProviders(this.service)

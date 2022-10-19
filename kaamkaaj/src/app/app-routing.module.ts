@@ -18,6 +18,8 @@ import { ServiceComponent } from './UserSite/service/service.component';
 import { AuthenticationGuard } from './auth-guards/authentication.guard';
 import { AdminGuardGuard } from './auth-guards/admin-guard.guard';
 import { ClientGuardGuard } from './auth-guards/client-guard.guard';
+import { ServiceProviderProfileComponent } from './service-provider/pages/service-provider-profile/service-provider-profile.component';
+
 
 
 const routes: Routes = [
@@ -29,6 +31,7 @@ const routes: Routes = [
   {path:'aboutus',component:AboutUsComponent},
   {path:'services',component:ServiceComponent},
   {path:'serviceproviders/:service',component:FilterBarComponent},
+  {path:'serviceprovider/profile/:email',component:ServiceProviderProfileComponent},
   {path:'spdashboard',canActivate:[AuthenticationGuard],component:SpDashboardComponent}
   // ,children:[{path:'',component:}]
 ];

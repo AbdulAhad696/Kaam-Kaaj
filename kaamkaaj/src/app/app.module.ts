@@ -9,8 +9,9 @@ import { FooterComponent } from './Shared/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { AboutUsComponent } from './main-app/about-us/about-us.component';
-import { ServiceProviderProfileComponent } from './service-provider-profile/service-provider-profile.component';
 import { EditSPModalComponent } from './edit-spmodal/edit-spmodal.component';
+import { ServiceProviderProfileComponent } from './service-provider/pages/service-provider-profile/service-provider-profile.component';
+
 // import { MatToolbarModule } from '@angular/material/toolbar';
 // import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -48,13 +49,13 @@ import { NgxRerenderModule } from 'ngx-rerender';
 
   ],
   imports: [
-    AppRoutingModule,
+  AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     GoogleMapsModule,
     MatDialogModule,
-    BrowserModule
+    BrowserModule,
     NgxRerenderModule,
   ],
   providers: [],
