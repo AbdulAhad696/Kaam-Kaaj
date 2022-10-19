@@ -70,6 +70,10 @@ ul {
         object-fit: contain;
         width: 40px;
     }
+
+    .deal_done>p {
+        font-size: 25px;
+    }
 }
 
 @media(min-width:768px) {

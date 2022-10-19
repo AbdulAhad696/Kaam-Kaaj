@@ -1,86 +1,123 @@
 
-<nav class="navbar navbar-expand-xl navbar-dark bg-dark" style="background-color:black !important; position:sticky; top: 0; z-index: 500;">
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark"
+    style="background-color:black !important; position:sticky; top: 0; z-index:
+    500;">
     <div class="container-fluid">
-        <img class="img-fluid" src="../../assets/kaamkaaj-removebg-preview.png" style="height: 50px;">
+        <img class="img-fluid" src="../../assets/kaamkaaj-removebg-preview.png"
+            style="height: 50px;">
         <a class="navbar-brand fs-2 text-white" routerLink="/">KaamKaaj</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle
+            navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <div class="col-lg-12 col-md-9 col-sm-10 col-8 d-flex" *ngIf="usertype!=null">
-                <ul class="col-lg-12 navbar-nav justify-content-around" *ngIf="usertype=='admin'">
+            <div class="col-lg-12 col-md-9 col-sm-10 col-8 d-flex"
+                *ngIf="usertype!=null">
+                <ul class="col-lg-12 navbar-nav justify-content-around"
+                    *ngIf="usertype=='admin'">
                     <li class="nav-item" *ngFor="let button of adminbuttons">
-                        <a class="nav-link active" aria-current="page" routerLink={{button.ref}}>{{button.title}}</a>
+                        <a class="nav-link active" aria-current="page"
+                            routerLink={{button.ref}}>{{button.title}}</a>
                     </li>
                     <li class="nav-item">
-                        <img type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="img-fluid" src="../../assets/PngItem_1300400.png" style="height: 30px;">
-                        
+                        <img type="button" class="btn dropdown-toggle"
+                            data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" class="img-fluid"
+                            src="../../assets/PngItem_1300400.png"
+                            style="height: 30px;">
+
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="#">Something else
+                                here</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" (click)="clearsession()" routerLink="/signin" >logout</a>
+                            <a class="dropdown-item" (click)="clearsession()"
+                                routerLink="/signin">logout</a>
                         </div>
                     </li>
                 </ul>
-                <ul class="col-lg-12 navbar-nav justify-content-around" *ngIf="usertype=='Client'">
+                <ul class="col-lg-12 navbar-nav justify-content-around"
+                    *ngIf="usertype=='Client'">
                     <li class="nav-item" *ngFor="let button of userbuttons">
-                        <a class="nav-link active" aria-current="page" routerLink={{button.ref}}>{{button.title}}</a>
+                        <a class="nav-link active" aria-current="page"
+                            routerLink={{button.ref}}>{{button.title}}</a>
                     </li>
-                    <li class="nav-item">   
-                        <img type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="img-fluid" src="../../assets/PngItem_1300400.png" style="height: 30px;">
-                        
+                    <li class="nav-item">
+                        <img type="button" class="btn dropdown-toggle"
+                            data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" class="img-fluid"
+                            src="../../assets/PngItem_1300400.png"
+                            style="height: 30px;">
+
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="#">Something else
+                                here</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" (click)="clearsession()" routerLink="/signin" >logout</a>
+                            <a class="dropdown-item" (click)="clearsession()"
+                                routerLink="/signin">logout</a>
                         </div>
                     </li>
                 </ul>
-                <ul class="col-lg-12 navbar-nav justify-content-around" *ngIf="usertype=='Worker'">
+                <ul class="col-lg-12 navbar-nav justify-content-around"
+                    *ngIf="usertype=='Worker'">
                     <li class="nav-item" *ngFor="let button of spbuttons">
-                        <a class="nav-link active" aria-current="page" routerLink={{button.ref}}>{{button.title}}</a>
+                        <a class="nav-link active" aria-current="page"
+                            routerLink={{button.ref}}>{{button.title}}</a>
                     </li>
                     <li class="nav-item">
-                        
-                        <img type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="img-fluid" src="../../assets/PngItem_1300400.png" style="height: 30px;">
-                        
+
+                        <img type="button" class="btn dropdown-toggle"
+                            data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" class="img-fluid"
+                            src="../../assets/PngItem_1300400.png"
+                            style="height: 30px;">
+
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Action</a>
                             <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="#">Something else
+                                here</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" (click)="clearsession()" routerLink="/signin" >logout</a>
+                            <a class="dropdown-item" (click)="clearsession()"
+                                routerLink="/signin">logout</a>
                         </div>
                     </li>
                 </ul>
             </div>
-            <div class="col-12 d-flex" *ngIf="usertype==null && !loggedin.includes('sign')">
+            <div class="col-12 d-flex" *ngIf="usertype==null &&
+                !loggedin.includes('sign')">
                 <div class="col-lg-10 col-md-9 col-sm-10 col-8 d-flex">
                     <ul class="col-lg-12 navbar-nav justify-content-around">
-                        <li class="nav-item" *ngFor="let button of mainpagebuttons">
-                            <a class="nav-link active" aria-current="page" routerLink={{button.ref}}>{{button.title}}</a>
+                        <li class="nav-item" *ngFor="let button of
+                            mainpagebuttons">
+                            <a class="nav-link active" aria-current="page"
+                                routerLink={{button.ref}}>{{button.title}}</a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-9 col-sm-10 col-8 d-flex">
-                    <ul class="col-lg-12 navbar-nav justify-content-around p-0"> 
+                    <ul class="col-lg-12 navbar-nav justify-content-around p-0">
                         <li class="nav-item">
-                            <button type="button" class="btn btn-outline-light" routerLink="/signin">Sign in</button>
+                            <button type="button" class="btn btn-outline-light"
+                                routerLink="/signin">Sign in</button>
                         </li>
                         <br>
                         <li class="nav-item">
-                            <button type="button" class="btn btn-outline-light" routerLink="/signup">Sign Up</button>
+                            <button type="button" class="btn btn-outline-light"
+                                routerLink="/signup">Sign Up</button>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class=" col-lg-12 col-md-3 col-sm-2 col-4 d-flex justify-content-end" *ngIf="loggedin.includes('sign')">
-                <button type="button" class=" btn btn-outline-light "><a class="nav-link active" routerLink="/">Home</a></button>
+            <div class=" col-lg-12 col-md-3 col-sm-2 col-4 d-flex
+                justify-content-end" *ngIf="loggedin.includes('sign')">
+                <button type="button" class=" btn btn-outline-light "><a
+                        class="nav-link active" routerLink="/">Home</a></button>
             </div>
         </div>
     </div>
