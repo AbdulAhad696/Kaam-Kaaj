@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule, routingcomponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -8,11 +8,18 @@ import { HeaderComponent } from './Shared/Header/Header.component';
 import { FooterComponent } from './Shared/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { AboutUsComponent } from './main-app/about-us/about-us.component';
+import { ServiceProviderProfileComponent } from './service-provider-profile/service-provider-profile.component';
+import { EditSPModalComponent } from './edit-spmodal/edit-spmodal.component';
+// import { MatToolbarModule } from '@angular/material/toolbar';
+// import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ContactUsComponent } from './Shared/contact-us/contact-us.component';
+
 import { CustomerLandingPageComponent } from './UserSite/customer-landing-page/customer-landing-page.component';
 
 import { FilterBarComponent } from './UserSite/filter-bar/filter-bar.component';
 
-import { ServicesPageComponent } from './services-page/services-page.component';
 import { ServiceComponent } from './UserSite/service/service.component';
 import { RatingComponent } from './Shared/rating/rating.component';
 import { ServiceProvidersComponent } from './UserSite/service-providers/service-providers.component';
@@ -30,13 +37,13 @@ import { GigCardComponent } from './service-provider/components/gig-card/gig-car
     HeaderComponent,
     FooterComponent,
     routingcomponents,
+    ContactUsComponent,
+    AboutUsComponent,
     SpinnerComponent,
+    ServiceProviderProfileComponent,
+    EditSPModalComponent,
     CustomerLandingPageComponent,
-    SpinnerComponent,
-
     FilterBarComponent,
-
-    ServicesPageComponent,
     ServiceComponent,
     RatingComponent,
     ServiceProvidersComponent,
@@ -52,9 +59,9 @@ import { GigCardComponent } from './service-provider/components/gig-card/gig-car
     FormsModule,
     HttpClientModule,
     GoogleMapsModule,
-    
+    MatDialogModule,
+    BrowserModule
     NgxRerenderModule,
-    BrowserModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

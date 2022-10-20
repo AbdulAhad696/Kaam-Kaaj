@@ -1,3 +1,4 @@
+css
   /* -------------------------body--------------------- */
   body {
       background-color: #fbfbfb;
@@ -12,9 +13,10 @@
   /* Sidebar */
   .sidebar {
       box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
-      width: 240px;
+      /* width: 240px; */
       z-index: 600;
       margin-bottom: 30px;
+
   }
 
   @media (max-width: 991.98px) {
@@ -104,4 +106,13 @@
     border: 1px solid gray;
     margin-bottom: 30px;
     
+  }
+/* -----------------rating styling---------------------------- */
+  .checked {
+    color: orange;
+    display: contents;
+  }
+
+  .unchecked{
+    color: rgb(209, 203, 203);
   }
