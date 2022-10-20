@@ -1,7 +1,12 @@
 <div class="row m-0 p-0 container-fluid">
-    <div (click)="showServiceProviderProfile(serviceProvider.serviceProviderDetails[0].email)"  class="col-lg-6 col-md-6 col-sm-12 col-12" *ngFor="let serviceProvider of serviceProviders"    >
-        <div class=" shadow-lg m-4  p-4 bg-body rounded-3 d-flex flex-column  justify-content-center align-items-center">
-            <img class="serviceImage" src={{serviceProvider.profilePicture}} alt="Avater">
+    <div
+        (click)="showServiceProviderProfile(serviceProvider.serviceProviderDetails[0].email)"
+        class="col-lg-6 col-md-6 col-sm-12 col-12" *ngFor="let serviceProvider
+        of serviceProviders">
+        <div class=" shadow-lg m-4 p-4 bg-body rounded-3 d-flex flex-column
+            justify-content-center align-items-center">
+            <img class="serviceImage" src={{serviceProvider.profilePicture}}
+                alt="Avater">
             <h1 class="mt-2 mb-0">{{serviceProvider.serviceProviderDetails[0].userName}}</h1>
             <h3>{{serviceProvider.serviceDetails[0].tittle}}</h3>
             <div class="d-flex flex-row mt-2 mb-2 textColor">
@@ -9,8 +14,9 @@
             </div>
             <div class="rating">
                 <h4 class="mb-1">Rating</h4>
-                {{child.setSelectedValue(serviceProvider.rating | number: '1.0-0')}}                
-                <app-rating #child ></app-rating>
+                {{child.setSelectedValue(serviceProvider.rating | number:
+                '1.0-0')}}
+                <app-rating #child></app-rating>
             </div>
         </div>
     </div>
