@@ -19,6 +19,9 @@ import { ServiceProvidersComponent } from './UserSite/service-providers/service-
 
 import { SpinnerComponent } from './Shared/spinner/spinner.component';
 import { NgxRerenderModule } from 'ngx-rerender';
+import { SpViewjobsComponent } from './service-provider/pages/sp-viewjobs/sp-viewjobs.component';
+import { ServiceprovidermainComponent } from './service-provider/pages/serviceprovidermain/serviceprovidermain.component';
+import { GigCardComponent } from './service-provider/components/gig-card/gig-card.component';
 
 
 @NgModule({
@@ -36,7 +39,10 @@ import { NgxRerenderModule } from 'ngx-rerender';
     ServicesPageComponent,
     ServiceComponent,
     RatingComponent,
-    ServiceProvidersComponent
+    ServiceProvidersComponent,
+    SpViewjobsComponent,
+    ServiceprovidermainComponent,
+    GigCardComponent
 
 
   ],

@@ -34,6 +34,9 @@ export class SignInComponent implements OnInit {
       if(this.loggedInUser[0].role == "Client"){
         this.router.navigate(['/customer-mainpage'])
       }
+      else if(this.loggedInUser[0].role=="Worker"){
+        this.router.navigate(['/service-provider'])
+      }
       
     }
   }
