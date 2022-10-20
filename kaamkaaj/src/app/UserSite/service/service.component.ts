@@ -26,7 +26,7 @@ constructor(private getServices:GetServicesService,private SpinnerService:Spinne
   }
   showServiceProviders(service:any){
 
-    this.router.navigate([`/serviceproviders/${service}`])
+    this.router.navigate([`customer-mainpage/serviceproviders/${service}`])
     
     // this.router.navigateByUrl('/serviceproviders', { state: { service:service} });
   } 

@@ -21,11 +21,9 @@ export class SignInService {
   }
 
   getdata() {
-    if (localStorage.getItem("email")) {
+    
       let data = localStorage.getItem("email") || "";
       return this.decrypt(data);
-    }
-    return false;
   }
 
   getId() {

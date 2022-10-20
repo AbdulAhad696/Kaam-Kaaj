@@ -23,14 +23,8 @@ export class ServiceProvidersComponent implements OnInit {
 
     this.SpinnerService.requestEnded()
   }
-  // showServiceProviderProfile(email:any){
-  //   this.router.navigate([`serviceprovider/profile/${email}`])
-  // }
   showServiceProviderProfile(email: any) {
-    console.log("DUBARA WAR")
-    this.router.navigate([`serviceprovider/profile/${email}`])
-    console.log("DUBARA WAR2.0")
-
+    this.router.navigate([`customer-mainpage/serviceprovider/profile/${email}`])
   }
   public ngOnInit(): void {
     this.service = this.ActivatedRoute.snapshot.params['service']

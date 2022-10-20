@@ -14,7 +14,7 @@ export class EditSPModalComponent implements OnInit {
   constructor() {
   }
   closeModal() {
-    $('#exampleModalCenter').modal('toggle')
+    // $('#exampleModalCenter').modal('toggle')
   }
   useImage(event: any) {
     if (event.target.files && event.target.files[0]) {
