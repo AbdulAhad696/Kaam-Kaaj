@@ -12,7 +12,6 @@ import { CustomerLandingPageComponent } from './UserSite/customer-landing-page/c
 
 import { FilterBarComponent } from './UserSite/filter-bar/filter-bar.component';
 
-import { ServicesPageComponent } from './services-page/services-page.component';
 import { ServiceComponent } from './UserSite/service/service.component';
 import { RatingComponent } from './Shared/rating/rating.component';
 import { ServiceProvidersComponent } from './UserSite/service-providers/service-providers.component';
@@ -34,7 +33,6 @@ import { JobGigsComponent } from './UserSite/job-gigs/job-gigs.component';
 
     FilterBarComponent,
 
-    ServicesPageComponent,
     ServiceComponent,
     RatingComponent,
     ServiceProvidersComponent,
