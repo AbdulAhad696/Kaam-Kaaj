@@ -20,8 +20,6 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CustomerLandingPageComponent } from './UserSite/customer-landing-page/customer-landing-page.component';
 
 import { FilterBarComponent } from './UserSite/filter-bar/filter-bar.component';
-import * as bootstrap from "bootstrap";
-import * as $ from "jquery";
 import { ServiceComponent } from './UserSite/service/service.component';
 import { RatingComponent } from './Shared/rating/rating.component';
 import { ServiceProvidersComponent } from './UserSite/service-providers/service-providers.component';
@@ -54,8 +52,6 @@ import { GigCardComponent } from './service-provider/components/gig-card/gig-car
     SpViewjobsComponent,
     ServiceprovidermainComponent,
     GigCardComponent
-
-
   ],
   imports: [
   AppRoutingModule,

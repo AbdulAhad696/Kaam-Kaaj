@@ -16,7 +16,7 @@ export class EditSPModalComponent implements OnInit {
   constructor() {
   }
   closeModal() {
-    $('#exampleModalCenter').modal('toggle')
+    // $('#exampleModalCenter').modal('toggle')
   }
 
   ngOnInit(): void {

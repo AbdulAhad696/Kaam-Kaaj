@@ -22,17 +22,20 @@ import { ServiceProviderProfileComponent } from './service-provider/pages/servic
 
 import { SpViewjobsComponent } from './service-provider/pages/sp-viewjobs/sp-viewjobs.component';
 import { ServiceprovidermainComponent } from './service-provider/pages/serviceprovidermain/serviceprovidermain.component';
+import { JobGigsComponent } from './UserSite/job-gigs/job-gigs.component';
 
 
 const routes: Routes = [
   {path:'signup',component:SignUpComponent},
   {path: 'signin',component:SignInComponent},
   {path:'',component:MainPageComponent},
-  {path:'customer-mainpage',canActivate:[ClientGuardGuard],component:CustomerLandingPageComponent},
+  {path:'customer-mainpage',component:CustomerLandingPageComponent,canActivate:[ClientGuardGuard]},
+  {path:'customer-mainpage/jobgigs',component:JobGigsComponent,canActivate:[ClientGuardGuard]},
+  {path:'customer-mainpage/contactadmin',component:ContactUsComponent,canActivate:[ClientGuardGuard]},
   {path:'contactus',component:ContactUsComponent},
   {path:'aboutus',component:AboutUsComponent},
   {path:'services',component:ServiceComponent},
-  {path:'serviceproviders/:service',component:FilterBarComponent},
+  {path:'serviceproviders/:service',component:FilterBarComponent,canActivate:[ClientGuardGuard]},
   {path:'serviceprovider/profile/:email',component:ServiceProviderProfileComponent},
   {
     path:'service-provider',
@@ -40,7 +43,8 @@ const routes: Routes = [
     component:ServiceprovidermainComponent,
     children:[{path:'',component:SpDashboardComponent},
             {path:'viewjobs',component:SpViewjobsComponent},
-            {path:'contactadmin',component:ContactUsComponent}]
+            {path:'contactadmin',component:ContactUsComponent},
+          {path:'profile/:email',component:ServiceProviderProfileComponent}]
 }
 ];
 
@@ -49,4 +53,11 @@ const routes: Routes = [
 exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingcomponents=[SignUpComponent,SignInComponent,MainPageComponent,ContactUsComponent,AboutUsComponent,SpDashboardComponent,SpViewjobsComponent]
+export const routingcomponents=[SignUpComponent,
+  SignInComponent,
+  MainPageComponent,
+  ContactUsComponent,
+  AboutUsComponent,
+  SpDashboardComponent,
+  SpViewjobsComponent,  
+]

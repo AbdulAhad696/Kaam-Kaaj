@@ -26,13 +26,13 @@
         </div>
 
         <div class="col-md-4 col-6 col-sm-6 mb-3 centerColumn">
-            <button *ngIf="loggedInUser.length> 0 && loggedInUser[0].role ==
+            <button *ngIf="usertype==
                 'Client'" type="button" class="btn btn-success btn-lg
-                editProfileButton fs-5" (click) = "openModal()">Send Proposal</button>
-            <button *ngIf="loggedInUser.length> 0 && loggedInUser[0].role ==
+                editProfileButton fs-5" ><a class="text-white" href="customer-mainpage/jobgigs">Send Proposal</a></button>
+            <button *ngIf="usertype==
                 'Worker'" type="button" class="btn btn-success btn-lg
                 editProfileButton fs-5">Edit Profile</button>
-            <button *ngIf="loggedInUser.length> 0 && loggedInUser[0].role ==
+            <button *ngIf="usertype==
                 'Admin'" type="button" class="btn btn-success btn-lg
                 editProfileButton fs-5">Disable Profile</button>
         </div>

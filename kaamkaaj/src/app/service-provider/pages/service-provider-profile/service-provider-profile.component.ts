@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ServiceProviderProfileService } from './../../../Services/serviceProviderProfile/service-provider-profile.service';
 import { SpinnerService } from './../../../Services/spinner/spinner.service';
 import { lastValueFrom } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-service-provider-profile',
@@ -16,7 +17,7 @@ import { lastValueFrom } from 'rxjs';
   providers: [SignInService]
 })
 export class ServiceProviderProfileComponent implements OnInit {
-
+  usertype:any;
   constructor(private SpinnerService:SpinnerService,private signinService:SignInService, private dialogRef: MatDialog,private ActivatedRoute:ActivatedRoute,private ServiceProviderProfileService:ServiceProviderProfileService) { }
   email:any
   serviceProviderProfile:any
@@ -52,11 +53,12 @@ export class ServiceProviderProfileComponent implements OnInit {
     this.SpinnerService.requestEnded()
   }
   openModal() {
-    $('#exampleModalCenter').modal('toggle')
+    // $('#exampleModalCenter').modal('toggle')
   }
   ngOnInit(): void {
     this.email=this.ActivatedRoute.snapshot.params['email']
     this.getProfile(this.email)
+    this.usertype=this.signinService.getusertype()
   }
   }
 

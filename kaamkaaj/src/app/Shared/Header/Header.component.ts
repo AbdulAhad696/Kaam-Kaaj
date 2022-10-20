@@ -10,20 +10,21 @@ import { SignInService } from 'src/app/Services/sign-in/sign-in.service';
 })
 export class HeaderComponent implements OnInit {
   adminbuttons: any;
+  email="";
   userbuttons=
-  [{title:"Home",ref:"/"},
-  {title:"Service",ref:""},
-  {title:"My Jobs",ref:""},
-  {title:"Contact Admin",ref:"customer/contactadmin"},
-  {title:"Wallet",ref:""},
-  {title:"Add a Job",ref:""}];
+  [{title:"Home",ref:"customer-mainpage"},
+  {title:"Service",ref:"services"},
+  {title:"My Jobs",ref:"customer-mainpage/myjobs"},
+  {title:"Contact Admin",ref:"customer-mainpage/contactadmin"},
+  {title:"Wallet",ref:"customer-mainpage/mywallet"},
+  {title:"Add a Job",ref:"customer-mainpage/jobgigs"}];
   spbuttons= 
   [{title:"Dashboard",ref:"service-provider"},
   {title:"View Jobs",ref:"service-provider/viewjobs"},
   {title:"My Projects",ref:"service-provider/myprojects"},
   {title:"Wallet",ref:"service-provider/wallet"},
   {title:"Contact Admin",ref:"service-provider/contactadmin"},
-  {title:"Profile",ref:"service-provider/profile"}]
+  {title:"Profile",ref:`service-provider/profile/${this.email}`}]
   mainpagebuttons=
   [{title:"Categories", ref:"services"},
   {title:"About Us",ref:"aboutus"},
@@ -42,6 +43,8 @@ export class HeaderComponent implements OnInit {
           //Hide progress spinner or progress bar
           this.loggedin=window.location.href.toString();
           this.usertype=this.signinservice.getusertype();
+          this.email = this.signinservice.getdata();
+          this.spbuttons[5].ref= `service-provider/profile/${this.email}`
           console.log(this.usertype);
       }
     });

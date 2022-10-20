@@ -26,7 +26,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"
                                     *ngFor="let service of allServices ; let i = index">
                                     <li  *ngFor="let service of allServices ; let i = index"><a (click)="currentService(service.tittle)" class="dropdown-item"
-                                            href="#">{{service.tittle}}</a></li>
+                                            >{{service.tittle}}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -62,9 +62,9 @@
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                         <!-- <li><a  class="dropdown-item" href="#">Flexible</a></li> -->
-                                        <li><a (click)="gettingAmount(500)" class="dropdown-item" href="#">500</a></li>
-                                        <li><a (click)="gettingAmount(1000)" class="dropdown-item" href="#">1000</a></li>
-                                        <li (click)="amountToogle()"><a class="dropdown-item" href="#">others...</a>
+                                        <li><a (click)="gettingAmount(500)" class="dropdown-item" >500</a></li>
+                                        <li><a (click)="gettingAmount(1000)" class="dropdown-item" >1000</a></li>
+                                        <li (click)="amountToogle()"><a class="dropdown-item" >others...</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -90,10 +90,9 @@
                                         <i class="fa fa-arrow-circle-down fa-2xl"></i>
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <!-- <li><a class="dropdown-item" href="#">Flexible</a></li> -->
-                                        <li><a (click)="gettingTime('one week')" class="dropdown-item" href="#">one week</a></li>
-                                        <li><a (click)="gettingTime('two week')" class="dropdown-item" href="#">two weeks</a></li>
-                                        <li (click)="timeToogle()"><a class="dropdown-item" href="#">others...</a></li>
+                                        <li><a (click)="gettingTime('one week')" class="dropdown-item">one week</a></li>
+                                        <li><a (click)="gettingTime('two week')" class="dropdown-item" >two weeks</a></li>
+                                        <li (click)="timeToogle()"><a class="dropdown-item">others...</a></li>
                                     </ul>
                                 </div>
                             </div>
