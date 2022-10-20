@@ -11,12 +11,13 @@ export class SignInService {
   private key = "the4horsemen";
   constructor(private http: HttpClient) { }
 
-  storeinlocalstorage(credentials: any) {
-    localStorage.setItem("phonenumber", this.encrypt(credentials.phoneNumber));
-    localStorage.setItem("usertype", credentials.role);
-    localStorage.setItem("username", this.encrypt(credentials.userName))
-    localStorage.setItem("email", this.encrypt(credentials.email));
-    localStorage.setItem("password", this.encrypt(credentials.password));
+  storeinlocalstorage(credentials: any){
+    localStorage.setItem("_id" , credentials._id)
+    localStorage.setItem("phonenumber",this.encrypt(credentials.phoneNumber));
+    localStorage.setItem("usertype",credentials.role);
+    localStorage.setItem("username",this.encrypt(credentials.userName))
+    localStorage.setItem("email",this.encrypt(credentials.email));
+    localStorage.setItem("password",this.encrypt(credentials.password));
   }
 
   getdata() {
@@ -26,6 +27,15 @@ export class SignInService {
     }
     return false;
   }
+
+  getId(){
+    if(localStorage.getItem("_id")){
+      let data = localStorage.getItem("_id")|| "";
+      return data;
+    }
+    return false;
+  }
+
 
 
   getusertype() {

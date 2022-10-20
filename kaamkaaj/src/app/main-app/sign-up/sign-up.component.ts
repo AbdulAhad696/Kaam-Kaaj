@@ -74,7 +74,6 @@ export class SignUpComponent implements OnInit {
     this.role="";
     setTimeout(()=>{
       alert(this.isRegister)
-
     },10)
     
     // window.location.reload()

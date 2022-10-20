@@ -19,7 +19,7 @@ export class CustomerLandingPageComponent implements OnInit {
   async gettingServices(){
     this.allServices = await lastValueFrom(this.GetServicesService.fetchingServices());
     this.allServices.length = 4;
-    console.log(this.allServices[3].tittle);
+    // console.log(this.allServices[3].tittle);
   }
   
 

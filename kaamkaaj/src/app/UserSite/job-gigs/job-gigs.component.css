@@ -1,0 +1,57 @@
+
+/* -------------------drop down icons styling---------------------------- */
+.dropDownIcon{
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    height: 50px;
+    background-color: transparent;
+    color: black;
+    border: none;
+    background-color: white;
+    border-bottom: 5px solid black;
+    
+}
+
+/* -------------------drop down buttons---------------------------- */
+.dropDownBtn{
+    height: 50px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    background-color: transparent;
+    background-color: white;
+    border: none;
+     border-bottom: 5px solid black;
+}
+
+/* -------------------width of fields---------------------------- */
+.jobNameWidth{
+    width: 75%;
+}
+
+/* -------------------background of fields and form---------------------------- */
+.textFields{
+    background-color: rgba(217,217,217,255);
+}
+.formContainer{
+    background-color: rgba(248,248,248,255);
+}
+
+/* -------------------fileds of styling---------------------------- */
+.amountField{
+    width: 68%;
+    height: 50px;
+}
+
+.timeDurationBtn{
+    width: 180px;
+    height: 50px;
+}
+
+/* -------------------hiding cotent---------------------------- */
+.hide{
+    display: none;
+}
+
+
