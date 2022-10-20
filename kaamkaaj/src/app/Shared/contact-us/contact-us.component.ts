@@ -85,6 +85,7 @@ export class ContactUsComponent implements OnInit {
     this.response=await lastValueFrom(this.contactservice.reserve(this.reservation));
     if(this.response){
       this.success=true;
+      setTimeout(()=>{this.success=null}, 3000)
     }
     else{
       this.success=false;
