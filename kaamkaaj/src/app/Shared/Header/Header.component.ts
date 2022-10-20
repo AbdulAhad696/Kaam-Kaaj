@@ -14,22 +14,22 @@ export class HeaderComponent implements OnInit {
   [{title:"Home",ref:"/"},
   {title:"Service",ref:""},
   {title:"My Jobs",ref:""},
-  {title:"Contact Admin",ref:"/contactus"},
+  {title:"Contact Admin",ref:"customer/contactadmin"},
   {title:"Wallet",ref:""},
   {title:"Add a Job",ref:""}];
   spbuttons= 
-  [{title:"Dashboard",ref:""},
-  {title:"View Jobs",ref:""},
-  {title:"My Projects",ref:""},
-  {title:"Wallet",ref:""},
-  {title:"Contact Admin",ref:"/contactus"},
-  {title:"Profile",ref:""}]
+  [{title:"Dashboard",ref:"service-provider"},
+  {title:"View Jobs",ref:"service-provider/viewjobs"},
+  {title:"My Projects",ref:"service-provider/myprojects"},
+  {title:"Wallet",ref:"service-provider/wallet"},
+  {title:"Contact Admin",ref:"service-provider/contactadmin"},
+  {title:"Profile",ref:"service-provider/profile"}]
   mainpagebuttons=
-  [{title:"Categories", ref:""},
-  {title:"Community",ref:""},
+  [{title:"Categories", ref:"services"},
+  {title:"About Us",ref:"aboutus"},
   {title:"Contact Us",ref:"contactus"},
-  {title:"Find Work",ref:""},
-  {title:"Find Service",ref:""}]
+  {title:"Find Work",ref:"/signin"},
+  {title:"Find Service",ref:"/signin"}]
 
   loggedin="localhost:4200";
   usertype:any="";

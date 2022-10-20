@@ -11,24 +11,24 @@
                 <div class="row justify-content-center ">
                     <div class="p-3 col-lg-3 col-md-5 col-10 li-size ">
                         <p class="fs-3 pt-3 d-flex justify-content-center">Plumber</p>
-                        <img class="img-fluid imgsize rounded"
+                        <img routerLink="/services" class="img-fluid imgsize rounded"
                             src="../../../assets/main_page_plumber.jpg">
                     </div>
                     <div class="p-3 col-lg-3 col-md-5 col-10 li-size">
                         <p class="fs-3 pt-3 d-flex justify-content-center">Carpenter</p>
-                        <img class="img-fluid imgsize rounded"
+                        <img routerLink="/services" class="img-fluid imgsize rounded"
                             src="../../../assets/main_page_carpenter.jpg">
 
                     </div>
                     <div class="p-3 col-lg-3 col-md-5 col-10 li-size">
                         <p class="fs-3 mt-3 d-flex justify-content-center">Electrician</p>
-                        <img class="img-fluid imgsize rounded"
+                        <img routerLink="/services" class="img-fluid imgsize rounded"
                             src="../../../assets/main_page_electrician.jpg">
 
                     </div>
                     <div class="p-3 col-lg-3 col-md-5 col-10 li-size">
                         <p class="fs-3 mt-3 d-flex justify-content-center">Movers</p>
-                        <img class="img-fluid imgsize rounded"
+                        <img routerLink="/services" class="img-fluid imgsize rounded"
                             src="../../../assets/main_page_movers.jpeg">
 
                     </div>
@@ -39,8 +39,7 @@
 </div>
 <br>
 <div class="col-12 d-flex justify-content-center">
-    <button type="button" class="btn btn-outline-primary btn-lg">View More
-        Categories</button>
+    <a class="btn btn-outline-primary" routerLink="/services">View More Categories</a>
 </div>
 <!-- ENTERPRISE BLOCK -->
 
@@ -108,7 +107,7 @@
 
 <!-- CLIENT BLOCK -->
 
-<div class="container-fluid">
+<div class="container-fluid pt-5 pb-5">
     <div class="row client-block ">
         <div class="col-lg-12">
             <p class="display-4 justify-content-center d-flex card-text
@@ -121,7 +120,7 @@
         </div>
         <!-- adding the two blocks at the bottom right corner -->
         <div class="row client-block1 d-flex justify-content-around p-0 m-0">
-            <div class="col-lg-3 col-md-4 col-sm-5 col-12 m-2 bg-warning">
+            <div class="col-lg-3 col-md-4 col-sm-5 col-12 m-2 bg-warning rounded-3">
                 <p class="mt-2 ms-2 fs-4 texttocenter">Post a job and Hire a
                     pro</p>
                 <hr>
@@ -138,7 +137,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4 col-sm-5 col-12 m-2 bg-warning">
+            <div class="col-lg-3 col-md-4 col-sm-5 col-12 m-2 bg-warning rounded-3">
                 <p class="mt-2 ms-2 fs-4 texttocenter">Post a job and Hire a
                     pro</p>
                 <hr>
@@ -203,6 +202,102 @@
         </div>
         <div class="col-lg-6 order-lg-2 order-1 p-0">
             <img class=" img-fluid" src="../../../assets/main_page_talent.jpg">
+        </div>
+    </div>
+</div>
+<div class="pt-5 pb-5 col-12 justify-content-center d-flex">
+    <div class="col-11">
+        <hr>
+    </div>
+</div>
+
+<!-- Need Something Done -->
+
+<div class="container-fluid">
+    <div class="col-12 justify-content-center d-flex" style="height:15vh;">
+        <div class="justify-content-center d-flex">
+            <p class="display-5 fw-bold texttocenter">
+                Need something done?
+            </p>
+        </div>
+    </div>
+    <div class="ps-5 pe-5 justify-content-center d-flex">
+        <div class="row justify-content-center col-10">
+            <div class="col-lg-3 col-md-6 col-8">
+                <div class="row col-md-12">
+                    <img class="img-fluid col-3 p-0"  src="../../../assets/post-a-project.svg">
+                    <h2 class="fw-bold col-9 d-flex align-items-center m-0 p-0">Post a job</h2>
+                </div>
+                <h3 class="pt-3">It’s free and easy to post a job. Simply fill in a title, description and budget and competitive bids come within minutes.</h3>
+            </div>
+            <div class="col-lg-3 col-md-6 col-8">
+                <div class="row col-md-12">
+                    <img class="img-fluid col-3 p-0"  src="../../../assets/work.svg">
+                    <h2 class="fw-bold col-9 d-flex align-items-center m-0 p-0">Choose freelancers</h2>
+                </div>
+                <h3 class="pt-3">No job is too big or too small. We've got freelancers for jobs of any size or budget, across 1800+ skills. No job is too complex. We can get it done!</h3>
+            </div>
+            <div class="col-lg-3 col-md-6 col-8">
+                <div class="row col-md-12">
+                    <img class="img-fluid col-3 p-0"  src="../../../assets/pay-safely.svg">
+                    <h2 class="fw-bold col-9 d-flex align-items-center m-0 p-0">Pay safely</h2>
+                </div>
+                <h3 class="pt-3">Only pay for work when it has been completed and you're 100% satisfied with the quality using our milestone payment system.</h3>
+            </div>
+            <div class="col-lg-3 col-md-6 col-8">
+                <div class="row col-md-12">
+                    <img class="img-fluid col-3 p-0"  src="../../../assets/about-me.svg">
+                    <h2 class="fw-bold col-9 d-flex align-items-center m-0 p-0">We’re here to help</h2>
+                </div>
+                <h3 class="pt-3">Our talented team of recruiters can help you find the best freelancer for the job and our technical co-pilots can even manage the project for you.</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pt-5 pb-5 col-12 justify-content-center d-flex">
+    <div class="col-11">
+        <hr>
+    </div>
+</div>
+<!-- Whats great about it? -->
+<div class="container-fluid pb-5">
+    <div class="col-12 justify-content-center d-flex" style="height:15vh;">
+        <div class="justify-content-center d-flex">
+            <p class="display-5 fw-bold texttocenter">
+                What's great about it?
+            </p>
+        </div>
+    </div>
+    <div class="ps-5 pe-5 justify-content-center d-flex">
+        <div class="row justify-content-center col-10">
+            <div class="col-lg-3 col-md-6 col-8">
+                <div class="row col-md-12">
+                    <img class="img-fluid col-3 p-0"  src="../../../assets/browse-portfolios.svg">
+                    <h2 class="fw-bold col-9 d-flex align-items-center m-0 p-0">Browse Portfolios</h2>
+                </div>
+                <h3 class="pt-3">Find professionals you can trust by browsing their samples of previous work and reading their profile reviews.</h3>
+            </div>
+            <div class="col-lg-3 col-md-6 col-8">
+                <div class="row col-md-12">
+                    <img class="img-fluid col-3 p-0"  src="../../../assets/bids-alt.svg">
+                    <h2 class="fw-bold col-9 d-flex align-items-center m-0 p-0">Fast Bids</h2>
+                </div>
+                <h3 class="pt-3">Receive obligation free quotes from our talented freelancers fast. 80% of projects get bid on within 60 seconds.</h3>
+            </div>
+            <div class="col-lg-3 col-md-6 col-8">
+                <div class="row col-md-12">
+                    <img class="img-fluid col-3 p-0"  src="../../../assets/rank-higher.svg">
+                    <h2 class="fw-bold col-9 d-flex align-items-center m-0 p-0">Quality Work</h2>
+                </div>
+                <h3 class="pt-3">KaamKaaj.com has by far the largest pool of quality freelancers globally- over 50 million to choose from.</h3>
+            </div>
+            <div class="col-lg-3 col-md-6 col-8">
+                <div class="row col-md-12">
+                    <img class="img-fluid col-3 p-0"  src="../../../assets/track-progress.svg">
+                    <h2 class="fw-bold col-9 d-flex align-items-center m-0 p-0">Track Progress</h2>
+                </div>
+                <h3 class="pt-3">Keep up-to-date and on-the-go with our time tracker, and mobile app. Always know what freelancers are up to.</h3>
+            </div>
         </div>
     </div>
 </div>

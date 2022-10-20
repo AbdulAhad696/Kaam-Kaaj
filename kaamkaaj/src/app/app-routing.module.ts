@@ -20,6 +20,8 @@ import { AdminGuardGuard } from './auth-guards/admin-guard.guard';
 import { ClientGuardGuard } from './auth-guards/client-guard.guard';
 import { ServiceProviderProfileComponent } from './service-provider/pages/service-provider-profile/service-provider-profile.component';
 
+import { SpViewjobsComponent } from './service-provider/pages/sp-viewjobs/sp-viewjobs.component';
+import { ServiceprovidermainComponent } from './service-provider/pages/serviceprovidermain/serviceprovidermain.component';
 
 
 const routes: Routes = [
@@ -32,8 +34,14 @@ const routes: Routes = [
   {path:'services',component:ServiceComponent},
   {path:'serviceproviders/:service',component:FilterBarComponent},
   {path:'serviceprovider/profile/:email',component:ServiceProviderProfileComponent},
-  {path:'spdashboard',canActivate:[AuthenticationGuard],component:SpDashboardComponent}
-  // ,children:[{path:'',component:}]
+  {
+    path:'service-provider',
+    canActivate:[AuthenticationGuard],
+    component:ServiceprovidermainComponent,
+    children:[{path:'',component:SpDashboardComponent},
+            {path:'viewjobs',component:SpViewjobsComponent},
+            {path:'contactadmin',component:ContactUsComponent}]
+}
 ];
 
 @NgModule({
@@ -41,4 +49,4 @@ const routes: Routes = [
 exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingcomponents=[SignUpComponent,SignInComponent,MainPageComponent,ContactUsComponent,AboutUsComponent,SpDashboardComponent]
+export const routingcomponents=[SignUpComponent,SignInComponent,MainPageComponent,ContactUsComponent,AboutUsComponent,SpDashboardComponent,SpViewjobsComponent]
