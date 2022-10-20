@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { SignInService } from '../Services/sign-in/sign-in.service';
 import { MatDialog } from "@angular/material/dialog"
 import { EditSPModalComponent } from '../edit-spmodal/edit-spmodal.component';
-// import * as $ from 'jquery';
 
 @Component({
   selector: 'app-service-provider-profile',
@@ -31,14 +30,14 @@ export class ServiceProviderProfileComponent implements OnInit {
     jobsCompleted: 6,
     category: "Carpenter",
     address: "Baghbanpura, Lahore",
-    rating: 2,
+    rating: 4,
     role: 'Client'
   }]
   ratings = Array(this.loggedInUser[0].rating).fill(0);
   noratings = Array(5 - this.loggedInUser[0].rating).fill(0);
 
   openModal() {
-    this.dialogRef.open(EditSPModalComponent, { data: { name: this.loggedInUser[0].name } });
+    $('#exampleModalCenter').modal('toggle')
   }
   ngOnInit(): void {
   }

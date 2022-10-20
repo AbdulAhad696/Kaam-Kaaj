@@ -1,26 +1,62 @@
-<form>
-    <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="editName"
-            aria-describedby="emailHelp" [(ngModel)]="name"
-            [ngModelOptions]="{standalone: true}">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Edit Profile</h5>
+                <button type="button" class="close" (click)="closeModal()"
+                    aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="d-flex justify-content-center flex-column
+                align-items-center">
+                <div class="d-flex mb-2 mt-2
+                    justify-content-center editProfilePictureDiv ">
+                    <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTf9d3vymakpWH5l6ZT7FHXPWmVATlApygyg&usqp=CAU"
+                        alt="profilePicture" class="editProfilePicture">
+                </div>
+                <div class="row editName mb-2 mt-2">
+                    <div class="col-md-4 col-12 d-flex justify-content-center">
+                        <label for="editingName">Name</label>
+                    </div>
+                    <div class="col-md-8 col-12 d-flex justify-content-center">
+                        <input type="text" name="editedName"
+                            class="form-control"
+                            placeholder="Huzaifa Khan">
+                    </div>
+                </div>
+                <div class="row editLocation mb-2 mt-2">
+                    <div class="col-md-4 col-12 d-flex justify-content-center">
+                        <label for="editingName">Location</label>
+                    </div>
+                    <div class="col-md-8 col-12 d-flex justify-content-center">
+                        <input type="text" name="editedName"
+                            class="form-control"
+                            placeholder="Baghbanpura, Lahore">
+                    </div>
+                </div>
+                <div class="row editCategory mb-2 mt-2">
+                    <div class="col-md-4 col-12 d-flex justify-content-center">
+                        <label for="editingName">Category</label>
+                    </div>
+                    <div class="col-md-8 col-12 d-flex justify-content-center">
+                        <select class="form-select" id="inputGroupSelect02"
+                            style="width:100%">
+                            <option selected>Carpenter</option>
+                            <option value="1">Plumber</option>
+                            <option value="2">Electrician</option>
+                            <option value="3">Mover</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning"
+                    data-dismiss="modal" (click)="closeModal()">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Address</label>
-        <input type="password" class="form-control" id="exampleInputPassword1"
-            placeholder="Password">
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Category</label>
-        <mat-form-field>
-            <mat-label>Favorite food</mat-label>
-            <mat-select>
-                <mat-option *ngFor="let food of foods" [value]="food.value">
-                    {{food.viewValue}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-
-    </div>
-    <button type="submit" class="btn btn-success">Submit</button>
-</form>
+</div>

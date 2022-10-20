@@ -15,11 +15,12 @@ import { EditSPModalComponent } from './edit-spmodal/edit-spmodal.component';
 // import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ContactUsComponent } from './Shared/contact-us/contact-us.component';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CustomerLandingPageComponent } from './UserSite/customer-landing-page/customer-landing-page.component';
 
 import { FilterBarComponent } from './UserSite/filter-bar/filter-bar.component';
-
+import * as bootstrap from "bootstrap";
+import * as $ from "jquery";
 import { ServiceComponent } from './UserSite/service/service.component';
 import { RatingComponent } from './Shared/rating/rating.component';
 import { ServiceProvidersComponent } from './UserSite/service-providers/service-providers.component';
@@ -56,10 +57,12 @@ import { JobGigsComponent } from './UserSite/job-gigs/job-gigs.component';
     HttpClientModule,
     GoogleMapsModule,
     MatDialogModule,
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule,
     NgxRerenderModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
