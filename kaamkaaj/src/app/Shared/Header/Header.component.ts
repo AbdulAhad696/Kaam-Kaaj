@@ -29,8 +29,8 @@ export class HeaderComponent implements OnInit {
   [{title:"Categories", ref:"services"},
   {title:"About Us",ref:"aboutus"},
   {title:"Contact Us",ref:"contactus"},
-  {title:"Find Work",ref:"/signin"},
-  {title:"Find Service",ref:"/signin"}]
+  {title:"Find Work",ref:"signin"},
+  {title:"Find Service",ref:"signin"}]
 
   loggedin="localhost:4200";
   usertype:any="";

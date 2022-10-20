@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
+import { SignInService } from './Services/sign-in/sign-in.service';
 
 
 @Component({
@@ -6,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnDestroy {
   title = 'kaamkaaj';
+  constructor(private signinservice:SignInService){}
   ngOnInit() {
+  }
+  ngOnDestroy(){
+    this.signinservice.clearsession();
   }
 }

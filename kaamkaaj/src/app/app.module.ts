@@ -30,6 +30,7 @@ import { JobGigsComponent } from './UserSite/job-gigs/job-gigs.component';
 import { SpViewjobsComponent } from './service-provider/pages/sp-viewjobs/sp-viewjobs.component';
 import { ServiceprovidermainComponent } from './service-provider/pages/serviceprovidermain/serviceprovidermain.component';
 import { GigCardComponent } from './service-provider/components/gig-card/gig-card.component';
+import { CustomermainpageComponent } from './UserSite/customermainpage/customermainpage.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { GigCardComponent } from './service-provider/components/gig-card/gig-car
     JobGigsComponent,
     SpViewjobsComponent,
     ServiceprovidermainComponent,
-    GigCardComponent
+    GigCardComponent,
+    CustomermainpageComponent
   ],
   imports: [
   AppRoutingModule,

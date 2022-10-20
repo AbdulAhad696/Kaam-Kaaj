@@ -24,7 +24,7 @@ export class ServiceProvidersComponent implements OnInit {
     this.SpinnerService.requestEnded()
   }
   showServiceProviderProfile(email:any){
-    this.router.navigate([`serviceprovider/profile/${email}`])
+    this.router.navigate([`customer-mainpage/serviceprovider/profile/${email}`])
   }
   public ngOnInit(): void {
     this.service=this.ActivatedRoute.snapshot.params['service']
