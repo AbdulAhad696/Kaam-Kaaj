@@ -19,6 +19,7 @@ import { ServiceProvidersComponent } from './UserSite/service-providers/service-
 
 import { SpinnerComponent } from './Shared/spinner/spinner.component';
 import { NgxRerenderModule } from 'ngx-rerender';
+import { JobGigsComponent } from './UserSite/job-gigs/job-gigs.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { NgxRerenderModule } from 'ngx-rerender';
     ServicesPageComponent,
     ServiceComponent,
     RatingComponent,
-    ServiceProvidersComponent
+    ServiceProvidersComponent,
+    JobGigsComponent
 
 
   ],

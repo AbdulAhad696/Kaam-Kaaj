@@ -1,0 +1,134 @@
+<div class="container">
+    <!-- --------------------------------main heading----------------------- -->
+    <div class="row">
+        <div class="row">
+            <div class="mb-3 ms-3 mt-3">
+                <h1>Add a Job</h1>
+            </div>
+        </div>
+    </div> 
+    <div class="row">
+        <!-- --------------------------------form----------------------- -->
+        <form ngNativeValidate (ngSubmit)="handleSubmit()" >
+            <!-- --------------------------------services dropdown----------------------- -->
+            <div class="formContainer">
+                <div class="row">
+                    <div class="mb-3 ms-3">
+                        <div class="btn-group mt-3">
+                            <button type="button" class="btn btn-secondary dropDownBtn  text-dark">Choose Job
+                                Category</button>
+                            <div class="dropdown">
+                                <button  type="button" class="btn btn-secondary  dropdown-toggle-split dropDownIcon"
+                                    id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-arrow-circle-down fa-2xl"></i>
+
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"
+                                    *ngFor="let service of allServices ; let i = index">
+                                    <li  *ngFor="let service of allServices ; let i = index"><a (click)="currentService(service.tittle)" class="dropdown-item"
+                                            href="#">{{service.tittle}}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- --------------------------------job tittle----------------------- -->
+                <div class="row">
+                    <div class="mb-3 ms-3 jobNameWidth">
+                        <label for="exampleInputEmail1" class="form-label">Choose a job name</label>
+                        <input type="text"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required [(ngModel)]="title" [ngModelOptions]="{standalone: true}" >
+                    </div>
+                </div>
+                <!-- --------------------------------job description----------------------- -->
+                <div class="row">
+                    <div class="mb-3  ms-3 jobNameWidth">
+                        <h2>Choose a description of your job</h2>
+                        <textarea class="form-control textFields" id="exampleFormControlTextarea1 " rows="3" required [(ngModel)]="description" [ngModelOptions]="{standalone: true}" ></textarea>
+                    </div>
+                </div>
+                <!-- --------------------------------enter  amount ----------------------- -->
+                <div class="row  mb-3 ms-1 jobNameWidth ">
+                    <h2>Your job budget and duration</h2>
+                    <div class="col-xxl-3">
+                        <div class="mb-3 " id="amountdropdown">
+                            <div class="btn-group mt-3">
+                                <button type="button"
+                                    class="btn btn-secondary dropDownBtn timeDurationBtn text-dark">Choose
+                                    amount</button>
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-secondary  dropdown-toggle-split dropDownIcon"
+                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa fa-arrow-circle-down fa-2xl"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <!-- <li><a  class="dropdown-item" href="#">Flexible</a></li> -->
+                                        <li><a (click)="gettingAmount(500)" class="dropdown-item" href="#">500</a></li>
+                                        <li><a (click)="gettingAmount(1000)" class="dropdown-item" href="#">1000</a></li>
+                                        <li (click)="amountToogle()"><a class="dropdown-item" href="#">others...</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3  hide" id="amountFields">
+                            <label for="exampleInputEmail1" class="form-label">Enter amount: </label>
+                            <input type="number" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" required [(ngModel)]="estAmount" [ngModelOptions]="{standalone: true}" >
+                        </div>
+                    </div>
+                    <!-- --------------------------------enter duration----------------------- -->
+                    <div class="col-xxl-3">
+                        <div class="mb-3  " id="Durationdropdown">
+                            <div class="btn-group mt-3">
+                                <button type="button"
+                                    class="btn btn-secondary dropDownBtn timeDurationBtn text-dark">Choose
+                                    duration</button>
+                                <div class="dropdown">
+                                    <button type="button" class="btn btn-secondary  dropdown-toggle-split dropDownIcon"
+                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fa fa-arrow-circle-down fa-2xl"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <!-- <li><a class="dropdown-item" href="#">Flexible</a></li> -->
+                                        <li><a (click)="gettingTime('one week')" class="dropdown-item" href="#">one week</a></li>
+                                        <li><a (click)="gettingTime('two week')" class="dropdown-item" href="#">two weeks</a></li>
+                                        <li (click)="timeToogle()"><a class="dropdown-item" href="#">others...</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3  hide" id="DurationFields">
+                            <label for="exampleInputEmail1" class="form-label">Enter duration:</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" required [(ngModel)]="estCompletionTime" [ngModelOptions]="{standalone: true}" >
+                        </div>
+                    </div>
+                </div>
+                <!-- --------------------------------enter address----------------------- -->
+                <div class="row">
+                    <div class="mb-3  ms-3 jobNameWidth">
+                        <h2>Enter Your Address</h2>
+                        <textarea class="form-control textFields" id="exampleFormControlTextarea1 " rows="3" required [(ngModel)]="jobAddress" [ngModelOptions]="{standalone: true}" ></textarea>
+                    </div>
+                </div>
+                <!-- --------------------------------upload image----------------------- -->
+                <div class="row">
+                    <div class="mb-3  ms-3 jobNameWidth">
+                        <label for="formFileLg" class="form-label"></label>
+                        <input class="form-control form-control-lg" id="formFileLg" type="file" />
+                    </div>
+                </div>
+                <!-- --------------------------------submit button----------------------- -->
+                <div class="row ">
+                    <div class="col-sm-12">
+                        <div class="mb-3  ms-3 jobNameWidth text-center">
+                            <button type="submit" class="btn btn-success btn-lg">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

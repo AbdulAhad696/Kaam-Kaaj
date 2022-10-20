@@ -11,6 +11,7 @@ export class SignInService {
   constructor(private http: HttpClient) { }
 
   storeinlocalstorage(credentials: any){
+    localStorage.setItem("_id" , credentials._id)
     localStorage.setItem("phonenumber",this.encrypt(credentials.phoneNumber));
     localStorage.setItem("usertype",credentials.role);
     localStorage.setItem("username",this.encrypt(credentials.userName))
@@ -25,6 +26,16 @@ export class SignInService {
     }
     return false;
   }
+
+  getId(){
+    if(localStorage.getItem("_id")){
+      let data = localStorage.getItem("_id")|| "";
+      return data;
+    }
+    return false;
+  }
+
+
 
   getusertype(){
     return localStorage.getItem("usertype");
