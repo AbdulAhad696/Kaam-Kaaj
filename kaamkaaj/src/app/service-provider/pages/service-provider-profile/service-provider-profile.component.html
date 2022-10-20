@@ -1,3 +1,6 @@
+<button type="button" class="btn btn-success btn-lg
+    editProfileButton fs-5" (click)="openModal()">Send Proposal</button>
+<app-edit-spmodal></app-edit-spmodal>
 <div class="container">
     <div class="row profileImageRow mb-5">
         <div class="col-xs-12 profileImageColumns">
@@ -8,14 +11,12 @@
             </div>
             <h5 class="profileName fs-3 mt-3">{{serviceProviderProfile[0].serviceProviderDetails[0].userName}}</h5>
             <div class="starsContainer">
-                <!-- <span class="fa fa-star checked" *ngFor="let rate of
+                <span class="fa fa-star checked" *ngFor="let rate of
                     ratings">
                 </span>
                 <span class="fa fa-star" *ngFor="let rate of
                     noratings">
-                </span> -->
-                {{child.setSelectedValue(serviceProviderProfile[0].rating| number: '1.0-0')}}
-                <app-rating #child></app-rating>
+                </span>
             </div>
         </div>
     </div>
@@ -63,8 +64,9 @@
     <div>
         <h4 class="fs-3 centerColumn">Portfolio</h4>
         <div class="container portfolioContainer p-5 mb-5">
-            <div class="row m-4" >
-                <div class="col-md-3 mb-5 centerColumn" *ngFor="let image of serviceProviderProfile[0].portfolioImages">
+            <div class="row m-4">
+                <div class="col-md-3 mb-5 centerColumn" *ngFor="let image of
+                    serviceProviderProfile[0].portfolioImages">
                     <img
                         src={{image}}
                         alt="portfolioPic" class= 'portfolioPicture'>
@@ -74,33 +76,38 @@
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
                         alt="portfolioPic" class= 'portfolioPicture'>
                 </div>
-                <div class="col-md-3 mb-5 centerColumn">
+                <div class="col-md-6 col-lg-3 col-12 col-sm-6 mb-5
+                    centerColumn">
                     <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
                         alt="portfolioPic" class= 'portfolioPicture'>
                 </div>
-                <div class="col-md-3 mb-5 centerColumn">
+                <div class="col-md-6 col-lg-3 col-12 mb-5
+                    centerColumn">
                     <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
                         alt="portfolioPic" class= '
                         portfolioPicture'>
                 </div>
-                <div class="col-md-3 mb-5 centerColumn">
+                <div class="col-md-6 col-lg-3 col-12 mb-5
+                    centerColumn">
                     <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
                         alt="portfolioPic" class= 'portfolioPicture'>
                 </div>
-                <div class="col-md-3 mb-5 centerColumn">
+                <div class="col-md-6 col-lg-3 col-12 col-sm-6 mb-5
+                    centerColumn">
                     <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
                         alt="portfolioPic" class= 'portfolioPicture'>
                 </div>
-                <div class="col-md-3 mb-5 centerColumn">
+                <div class="col-md-6 col-lg-3 col-12 col-sm-6 mb-5
+                    centerColumn">
                     <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
                         alt="portfolioPic" class= 'portfolioPicture'>
                 </div>
-                <div class="col-md-3 mb-5 centerColumn">
+                <div class="col-md-6 col-lg-3 mb-5 centerColumn">
                     <img
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
                         alt="portfolioPic" class= '

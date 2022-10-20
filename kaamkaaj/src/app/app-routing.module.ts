@@ -25,28 +25,28 @@ import { ServiceprovidermainComponent } from './service-provider/pages/servicepr
 
 
 const routes: Routes = [
-  {path:'signup',component:SignUpComponent},
-  {path: 'signin',component:SignInComponent},
-  {path:'',component:MainPageComponent},
-  {path:'customer-mainpage',canActivate:[ClientGuardGuard],component:CustomerLandingPageComponent},
-  {path:'contactus',component:ContactUsComponent},
-  {path:'aboutus',component:AboutUsComponent},
-  {path:'services',component:ServiceComponent},
-  {path:'serviceproviders/:service',component:FilterBarComponent},
-  {path:'serviceprovider/profile/:email',component:ServiceProviderProfileComponent},
+  { path: 'signup', component: SignUpComponent },
+  { path: 'signin', component: SignInComponent },
+  { path: '', component: MainPageComponent },
+  { path: 'customer-mainpage', canActivate: [ClientGuardGuard], component: CustomerLandingPageComponent },
+  { path: 'contactus', component: ContactUsComponent },
+  { path: 'aboutus', component: AboutUsComponent },
+  { path: 'services', component: ServiceComponent },
+  { path: 'serviceproviders/:service', component: FilterBarComponent },
+  { path: 'serviceprovider/profile/:email', component: ServiceProviderProfileComponent },
   {
-    path:'service-provider',
-    canActivate:[AuthenticationGuard],
-    component:ServiceprovidermainComponent,
-    children:[{path:'',component:SpDashboardComponent},
-            {path:'viewjobs',component:SpViewjobsComponent},
-            {path:'contactadmin',component:ContactUsComponent}]
-}
+    path: 'service-provider',
+    canActivate: [AuthenticationGuard],
+    component: ServiceprovidermainComponent,
+    children: [{ path: '', component: SpDashboardComponent },
+    { path: 'viewjobs', component: SpViewjobsComponent },
+    { path: 'contactadmin', component: ContactUsComponent }]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-exports: [RouterModule]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingcomponents=[SignUpComponent,SignInComponent,MainPageComponent,ContactUsComponent,AboutUsComponent,SpDashboardComponent,SpViewjobsComponent]
+export const routingcomponents = [SignUpComponent, SignInComponent, MainPageComponent, ContactUsComponent, AboutUsComponent, SpDashboardComponent, SpViewjobsComponent]

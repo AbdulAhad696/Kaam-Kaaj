@@ -1,13 +1,15 @@
-.serviceImage{
+.serviceImage {
+    object-fit: cover;
     border-radius: 50%;
     height: 100px;
     width: 100px;
 }
 
-.rating{
+.rating {
     width: 100%;
     float: left;
 }
-.textColor{
+
+.textColor {
     color: #b3b3b3;
 }

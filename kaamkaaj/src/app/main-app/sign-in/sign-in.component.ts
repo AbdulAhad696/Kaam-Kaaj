@@ -28,16 +28,26 @@ export class SignInComponent implements OnInit {
     }
     this.SpinnerService.requestStarted()
     this.loggedInUser = await lastValueFrom(this.signinService.findUserLogin(credentials))
-    this.SpinnerService.requestEnded()
+    console.log(this.loggedInUser)
+    setTimeout(() => {
+      this.SpinnerService.requestEnded()
+    }, 1000)
     if (this.loggedInUser.length > 0) {
       this.signinService.storeinlocalstorage(this.loggedInUser[0]);
+      // if (this.loggedInUser[0].role == "Client") {
+      //   this.router.navigate([' /customer-mainpage'])
+      // }
+      // else if (this.loggedInUser[0].role == "Worker") {
+      //   this.router.navigate(['/service-provider'])
+      // }
       if (this.loggedInUser[0].role == "Client") {
+        console.log("WAR")
         this.router.navigate(['/customer-mainpage'])
       }
-      else if(this.loggedInUser[0].role=="Worker"){
+      else if (this.loggedInUser[0].role == "Worker") {
         this.router.navigate(['/service-provider'])
       }
-      
+
     }
   }
   logout() {

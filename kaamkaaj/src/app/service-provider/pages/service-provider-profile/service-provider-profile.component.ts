@@ -17,9 +17,9 @@ import { lastValueFrom } from 'rxjs';
 })
 export class ServiceProviderProfileComponent implements OnInit {
 
-  constructor(private SpinnerService:SpinnerService,private signinService:SignInService, private dialogRef: MatDialog,private ActivatedRoute:ActivatedRoute,private ServiceProviderProfileService:ServiceProviderProfileService) { }
-  email:any
-  serviceProviderProfile:any
+  constructor(private SpinnerService: SpinnerService, private signinService: SignInService, private dialogRef: MatDialog, private ActivatedRoute: ActivatedRoute, private ServiceProviderProfileService: ServiceProviderProfileService) { }
+  email: any
+  serviceProviderProfile: any
   profile = {
     name: "Abdul Ahad",
     totalEarnings: "Rs. 12,000",
@@ -44,20 +44,18 @@ export class ServiceProviderProfileComponent implements OnInit {
   // noratings:any
   ratings = Array(this.loggedInUser[0].rating).fill(0);
   noratings = Array(5 - this.loggedInUser[0].rating).fill(0);
-  async getProfile(email:any){
+  async getProfile(email: any) {
     this.SpinnerService.requestStarted()
-    this.serviceProviderProfile=await lastValueFrom(this.ServiceProviderProfileService.fetchingServiceProviderProfile(email))
-
-
+    // this.serviceProviderProfile = await lastValueFrom(this.ServiceProviderProfileService.fetchingServiceProviderProfile(email))
     this.SpinnerService.requestEnded()
   }
   openModal() {
     $('#exampleModalCenter').modal('toggle')
   }
   ngOnInit(): void {
-    this.email=this.ActivatedRoute.snapshot.params['email']
+    this.email = this.ActivatedRoute.snapshot.params['email']
     this.getProfile(this.email)
   }
-  }
+}
 
 

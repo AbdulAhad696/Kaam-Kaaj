@@ -27,7 +27,9 @@ export class ServiceProvidersComponent implements OnInit {
   //   this.router.navigate([`serviceprovider/profile/${email}`])
   // }
   showServiceProviderProfile(email: any) {
+    console.log("DUBARA WAR")
     this.router.navigate([`serviceprovider/profile/${email}`])
+    console.log("DUBARA WAR2.0")
 
   }
   public ngOnInit(): void {
