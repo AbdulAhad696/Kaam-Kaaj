@@ -34,18 +34,14 @@ export class SignInComponent implements OnInit {
     }, 1000)
     if (this.loggedInUser.length > 0) {
       this.signinService.storeinlocalstorage(this.loggedInUser[0]);
-      // if (this.loggedInUser[0].role == "Client") {
-      //   this.router.navigate([' /customer-mainpage'])
-      // }
-      // else if (this.loggedInUser[0].role == "Worker") {
-      //   this.router.navigate(['/service-provider'])
-      // }
       if (this.loggedInUser[0].role == "Client") {
-        console.log("WAR")
         this.router.navigate(['/customer-mainpage'])
       }
       else if (this.loggedInUser[0].role == "Worker") {
         this.router.navigate(['/service-provider'])
+      }
+      else if (this.loggedInUser[0].role == "Admin") {
+        alert("Route Needs to be set")
       }
 
     }
