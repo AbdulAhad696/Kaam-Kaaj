@@ -1,3 +1,5 @@
+<app-edit-spmodal [profile]="serviceProviderProfile"></app-edit-spmodal>
+
 <div class="container">
     <div class="row profileImageRow mb-5">
         <div class="col-xs-12 profileImageColumns">
@@ -8,13 +10,8 @@
             </div>
             <h5 class="profileName fs-3 mt-3">{{serviceProviderProfile[0].serviceProviderDetails[0].userName}}</h5>
             <div class="starsContainer">
-                <!-- <span class="fa fa-star checked" *ngFor="let rate of
-                    ratings">
-                </span>
-                <span class="fa fa-star" *ngFor="let rate of
-                    noratings">
-                </span> -->
-                {{child.setSelectedValue(serviceProviderProfile[0].rating| number: '1.0-0')}}
+                {{child.setSelectedValue(serviceProviderProfile[0].rating|
+                number: '1.0-0')}}
                 <app-rating #child></app-rating>
             </div>
         </div>
@@ -26,18 +23,23 @@
         </div>
 
         <div class="col-md-4 col-6 col-sm-6 mb-3 centerColumn">
-            <button *ngIf="usertype==
+            <button
+                *ngIf="usertype==
                 'Client'" type="button" class="btn btn-success btn-lg
-                editProfileButton fs-5" ><a class="text-white" href="customer-mainpage/jobgigs">Send Proposal</a></button>
-            <button *ngIf="usertype==
+                editProfileButton fs-5"><a class="text-white"
+                    href="customer-mainpage/jobgigs">Send Proposal</a></button>
+            <button
+                *ngIf="usertype==
                 'Worker'" type="button" class="btn btn-success btn-lg
-                editProfileButton fs-5">Edit Profile</button>
-            <button *ngIf="usertype==
+                editProfileButton fs-5" (click)="openModal()">Edit Profile</button>
+            <button
+                *ngIf="usertype
+                ==
                 'Admin'" type="button" class="btn btn-success btn-lg
                 editProfileButton fs-5">Disable Profile</button>
         </div>
         <div class="col-md-4 col-12 centerColumn">
-            <i class="fa fa-map-marker fa-2x mb-3"></i>
+            <i class='fas fa-map-marker-alt fa-2x mb-3'></i>
             <h5 class="fs-5">{{serviceProviderProfile[0].serviceProviderDetails[0].address}}</h5>
         </div>
         <div class="col-md-4 mb-4">
@@ -61,51 +63,41 @@
         </div>
     </div>
     <div>
-        <h4 class="fs-3 centerColumn">Portfolio</h4>
+        <div class="container"
+            style="max-width: 80%;">
+            <div class="row">
+                <div class="col-sm-2 col-0"></div>
+                <div class="col-sm-8 col-12">
+                    <h4 class="fs-3 centerColumn">Portfolio</h4>
+                </div>
+                <div class="col-sm-2 col-12 d-flex justify-content-end">
+                    <div class="row justify-content-center align-items-center"
+                        style="cursor: pointer;">
+                        <label for="portfolioImageCapturer">
+                            <i class='far fa-edit fa-2x' style="cursor:
+                                pointer;"></i>
+                        </label>
+                        <input type="file" accept="image/*"
+                            id="portfolioImageCapturer"
+                            style="display: none;" (change)="useImage($event)">
+                    </div>
+                    <!-- <button class="btn btn-sm btn-success addPortfolioBtn">Upload</button> -->
+                </div>
+
+            </div>
+        </div>
+
         <div class="container portfolioContainer p-5 mb-5">
-            <div class="row m-4" >
-                <div class="col-md-3 mb-5 centerColumn" *ngFor="let image of serviceProviderProfile[0].portfolioImages">
+            <div class="row m-4">
+                <div class="col-md-6 col-lg-4 mb-5 col-sm-12 centerColumn"
+                    *ngFor="let image of
+                    serviceProviderProfile[0].portfolioImages">
                     <img
-                        src={{image}}
+                        src="{{domain + '/' + image}}"
+                        (click)="deletePortfolioImage(image)"
                         alt="portfolioPic" class= 'portfolioPicture'>
                 </div>
-                <!-- <div class="col-md-3 mb-5 centerColumn">
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
-                        alt="portfolioPic" class= 'portfolioPicture'>
-                </div>
-                <div class="col-md-3 mb-5 centerColumn">
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
-                        alt="portfolioPic" class= 'portfolioPicture'>
-                </div>
-                <div class="col-md-3 mb-5 centerColumn">
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
-                        alt="portfolioPic" class= '
-                        portfolioPicture'>
-                </div>
-                <div class="col-md-3 mb-5 centerColumn">
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
-                        alt="portfolioPic" class= 'portfolioPicture'>
-                </div>
-                <div class="col-md-3 mb-5 centerColumn">
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
-                        alt="portfolioPic" class= 'portfolioPicture'>
-                </div>
-                <div class="col-md-3 mb-5 centerColumn">
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
-                        alt="portfolioPic" class= 'portfolioPicture'>
-                </div>
-                <div class="col-md-3 mb-5 centerColumn">
-                    <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8MP7h1EikaSEioEPq-qVKTF_0xEAFcXEI-w&usqp=CAU"
-                        alt="portfolioPic" class= '
-                        portfolioPicture'>
-                </div> -->
+
             </div>
         </div>
     </div>

@@ -23,50 +23,50 @@ import { CustomermainpageComponent } from './UserSite/customermainpage/customerm
 
 const routes: Routes = [
   // Main page, Sign In, Sign up Components routing
-  {path:'',component:MainPageComponent},
-  {path:'signup',component:SignUpComponent},
-  {path: 'signin',component:SignInComponent},
-  
+  { path: '', component: MainPageComponent },
+  { path: 'signup', component: SignUpComponent },
+  { path: 'signin', component: SignInComponent },
+
   {
-    path:'customer-mainpage',
-    canActivate:[ClientGuardGuard],
-    component:CustomermainpageComponent,
-    children:[
-      {path:'',component:CustomerLandingPageComponent},
-      {path:'jobgigs',component:JobGigsComponent},
-      {path:'contactadmin',component:ContactUsComponent},
-      {path:'serviceproviders/:service',component:FilterBarComponent},
-      {path:'serviceprovider/profile/:email',component:ServiceProviderProfileComponent},
-     ]
+    path: 'customer-mainpage',
+    canActivate: [ClientGuardGuard],
+    component: CustomermainpageComponent,
+    children: [
+      { path: '', component: CustomerLandingPageComponent },
+      { path: 'jobgigs', component: JobGigsComponent },
+      { path: 'contactadmin', component: ContactUsComponent },
+      { path: 'serviceproviders/:service', component: FilterBarComponent },
+      { path: 'serviceprovider/profile/:email', component: ServiceProviderProfileComponent },
+    ]
   },
-  
-  
-  {path:'contactus',component:ContactUsComponent},
-  {path:'aboutus',component:AboutUsComponent},
-  {path:'services',component:ServiceComponent},
-  
-  
+
+
+  { path: 'contactus', component: ContactUsComponent },
+  { path: 'aboutus', component: AboutUsComponent },
+  { path: 'services', component: ServiceComponent },
+
+
   {
-    path:'service-provider',
-    canActivate:[AuthenticationGuard],
-    component:ServiceprovidermainComponent,
-    children:[{path:'',component:SpDashboardComponent},
-            {path:'viewjobs',component:SpViewjobsComponent},
-            {path:'contactadmin',component:ContactUsComponent},
-            {path:'profile/:email',component:ServiceProviderProfileComponent}]
+    path: 'service-provider',
+    canActivate: [AuthenticationGuard],
+    component: ServiceprovidermainComponent,
+    children: [{ path: '', component: SpDashboardComponent },
+    { path: 'viewjobs', component: SpViewjobsComponent },
+    { path: 'contactadmin', component: ContactUsComponent },
+    { path: 'profile/:email', component: ServiceProviderProfileComponent }]
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-exports: [RouterModule]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingcomponents=[SignUpComponent,
+export const routingcomponents = [SignUpComponent,
   SignInComponent,
   MainPageComponent,
   ContactUsComponent,
   AboutUsComponent,
   SpDashboardComponent,
-  SpViewjobsComponent,  
+  SpViewjobsComponent,
 ]
