@@ -51,6 +51,7 @@ export class JobGigsComponent implements OnInit {
   async currentService(currentService:string){
     this.selectedServiceObject =await lastValueFrom(this.AddJobService.getSpecificJob(currentService))
     this.category = this.selectedServiceObject[0]._id;
+
   }
 
   // ----------------------------getting selected amount--------------------
