@@ -1,12 +1,13 @@
 <div class="row m-0 p-0 container-fluid">
-    <div
-        (click)="showServiceProviderProfile(serviceProvider.serviceProviderDetails[0].email)"
-        class="col-lg-6 col-md-6 col-sm-12 col-12" *ngFor="let serviceProvider
-        of serviceProviders">
-        <div class=" shadow-lg m-4 p-4 bg-body rounded-3 d-flex flex-column
-            justify-content-center align-items-center">
-            <img class="serviceImage" src={{imgUrl}}
-                alt="Avater">
+    <div *ngIf="serviceProviders.length==0">
+        <div class="m-5 d-flex justify-content-center flex-column">
+            <img src="../../../assets/noRecordFound.svg" alt="Avater">
+            <h1 class="record">No record found</h1>
+        </div>
+    </div>
+    <div (click)="showServiceProviderProfile(serviceProvider.serviceProviderDetails[0].email)"  class="col-lg-6 col-md-6 col-sm-12 col-12" *ngFor="let serviceProvider of serviceProviders"    >
+        <div class=" shadow-lg m-4  p-4 bg-body rounded-3 d-flex flex-column  justify-content-center align-items-center">
+            <img class="serviceImage" src={{serviceProvider.profilePicture}} alt="Avater">
             <h1 class="mt-2 mb-0">{{serviceProvider.serviceProviderDetails[0].userName}}</h1>
             <h3>{{serviceProvider.serviceDetails[0].tittle}}</h3>
             <div class="d-flex flex-row mt-2 mb-2 textColor">
