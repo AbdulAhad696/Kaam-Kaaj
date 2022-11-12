@@ -34,6 +34,10 @@ import { ServiceprovidermainComponent } from './service-provider/pages/servicepr
 import { GigCardComponent } from './service-provider/components/gig-card/gig-card.component';
 import { CustomermainpageComponent } from './UserSite/customermainpage/customermainpage.component';
 
+import {NgxMaskModule} from 'ngx-mask';
+import {Ng2SearchPipeModule} from 'ng2-search-filter'
+
+
 
 @NgModule({
   declarations: [
@@ -67,6 +71,8 @@ import { CustomermainpageComponent } from './UserSite/customermainpage/customerm
     BrowserModule,
     ReactiveFormsModule,
     NgxRerenderModule,
+    NgxMaskModule.forRoot(),
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -5,7 +5,8 @@
             <h1 class="record">No record found</h1>
         </div>
     </div>
-    <div (click)="showServiceProviderProfile(serviceProvider.serviceProviderDetails[0].email)"  class="col-lg-6 col-md-6 col-sm-12 col-12" *ngFor="let serviceProvider of serviceProviders"    >
+    <input type="text" name="search" [(ngModel)]="searchText" placeholder="Search..">
+    <div (click)="showServiceProviderProfile(serviceProvider.serviceProviderDetails[0].email)"  class="col-lg-6 col-md-6 col-sm-12 col-12" *ngFor="let serviceProvider of serviceProviders | filter:searchText"    >
         <div class=" shadow-lg m-4  p-4 bg-body rounded-3 d-flex flex-column  justify-content-center align-items-center">
             <img class="serviceImage" src={{serviceProvider.profilePicture}} alt="Avater">
             <h1 class="mt-2 mb-0">{{serviceProvider.serviceProviderDetails[0].userName}}</h1>
