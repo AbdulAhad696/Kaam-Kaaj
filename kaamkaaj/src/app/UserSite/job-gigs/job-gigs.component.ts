@@ -18,6 +18,9 @@ export class JobGigsComponent implements OnInit {
   jobData:any;
   isJobAdded:any;
   selectedServiceObject:any;
+  currentCategory="Choose Category";
+  currentAmount = "Choose Amount";
+  currentDuration = "Choose Duration";
 
 // -----------------------------schema variables-------------------------
   title:string;
@@ -51,17 +54,20 @@ export class JobGigsComponent implements OnInit {
   async currentService(currentService:string){
     this.selectedServiceObject =await lastValueFrom(this.AddJobService.getSpecificJob(currentService))
     this.category = this.selectedServiceObject[0]._id;
+    this.currentCategory = currentService;
   }
 
   // ----------------------------getting selected amount--------------------
   gettingAmount(amount:number){
     this.estAmount = amount;
+    this.currentAmount = String(amount); 
   }
 
   // ------------------------------getting selected time----------------------
 
   gettingTime(duration:string){
     this.estCompletionTime = duration;
+    this.currentDuration = duration;
   }
 
 // -----------------------------------form submission--------------------------
