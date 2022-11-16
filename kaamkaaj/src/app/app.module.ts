@@ -5,6 +5,8 @@ import { AppRoutingModule, routingcomponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './Shared/Header/Header.component';
+import * as bootstrap from "bootstrap";
+import * as $ from "jquery";
 import { FooterComponent } from './Shared/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GoogleMapsModule } from '@angular/google-maps';
@@ -32,6 +34,10 @@ import { ServiceprovidermainComponent } from './service-provider/pages/servicepr
 import { GigCardComponent } from './service-provider/components/gig-card/gig-card.component';
 import { CustomermainpageComponent } from './UserSite/customermainpage/customermainpage.component';
 
+import {NgxMaskModule} from 'ngx-mask';
+import {Ng2SearchPipeModule} from 'ng2-search-filter'
+
+
 
 @NgModule({
   declarations: [
@@ -56,7 +62,7 @@ import { CustomermainpageComponent } from './UserSite/customermainpage/customerm
     CustomermainpageComponent
   ],
   imports: [
-  AppRoutingModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
@@ -65,6 +71,8 @@ import { CustomermainpageComponent } from './UserSite/customermainpage/customerm
     BrowserModule,
     ReactiveFormsModule,
     NgxRerenderModule,
+    NgxMaskModule.forRoot(),
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -115,4 +115,11 @@ css
 
   .unchecked{
     color: rgb(209, 203, 203);
+    font-size: 20px;
+    margin-top: 5px;
   }
+  .rateStar{
+    color: orange;
+    font-size: 20px;
+    margin-top: 5px;
+}
