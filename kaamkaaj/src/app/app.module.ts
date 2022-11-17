@@ -33,7 +33,8 @@ import { SpViewjobsComponent } from './service-provider/pages/sp-viewjobs/sp-vie
 import { ServiceprovidermainComponent } from './service-provider/pages/serviceprovidermain/serviceprovidermain.component';
 import { GigCardComponent } from './service-provider/components/gig-card/gig-card.component';
 import { CustomermainpageComponent } from './UserSite/customermainpage/customermainpage.component';
-
+import * as CanvasJSAngularChart from '../canvasjs.angular.component';
+var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { CustomermainpageComponent } from './UserSite/customermainpage/customerm
     SpViewjobsComponent,
     ServiceprovidermainComponent,
     GigCardComponent,
-    CustomermainpageComponent
+    CustomermainpageComponent,
+    CanvasJSChart
   ],
   imports: [
     AppRoutingModule,
