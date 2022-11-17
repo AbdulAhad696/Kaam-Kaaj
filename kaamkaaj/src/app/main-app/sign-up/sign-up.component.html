@@ -1,3 +1,9 @@
+<div *ngIf="success==true" class="alert alert-success p-3" role="alert">
+    {{isRegister}}
+</div>
+<div *ngIf="success==false" class="alert alert-danger p-3" role="alert">
+    {{isRegister}}
+</div>
 <form class="container-fluid" ngNativeValidate (ngSubmit)="handleSubmit()">
     <div class="d-flex justify-content-center align-items-center">
         <div class="col-md-4 col-sm-6 col-10 shadow-lg m-5 p-5 bg-body
@@ -9,8 +15,8 @@
                         <input placeholder="Username" type="text" required
                             [(ngModel)]="userName"
                             [ngModelOptions]="{standalone: true}"
-                            class="form-control border-start-0 border-end-0
-                            border-top-0 rounded-0" id="inputUsername">
+                            class="name form-control border-start-0 border-end-0
+                            border-top-0 rounded-0" id="inputUsername" >
                     </div>
                     <div class="col-lg-6 d-flex justify-content-center mb-3">
                         <input placeholder="Email" type="email" required
@@ -23,14 +29,18 @@
 
                 <div class="row">
                     <div class="col-lg-6 d-flex justify-content-center mb-3">
-                        <input placeholder="Password" type="password"
+                        <input placeholder="Password" type="password" minlength="6"
                             [(ngModel)]="password"
-                            [ngModelOptions]="{standalone: true}"
+                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                            title="At least one number, one lowercase, one uppercase letter and at least six characters"
+                            [ngModelOptions]="{standalone: true}" 
                             class="form-control border-start-0 border-end-0
-                            border-top-0 rounded-0" id="inputPassword" required>
+                            border-top-0 rounded-0" id="inputPassword" required/>
                     </div>
                     <div class="col-lg-6 mb-3">
                         <input placeholder="CNIC" type="text" required
+                            pattern="[0-9]{5}-[0-9]{7}-[0-9]{1}"
+                            [mask]="'00000-0000000-0'"
                             [(ngModel)]="cnic" [ngModelOptions]="{standalone:
                             true}"
                             class="form-control border-start-0 border-end-0
@@ -39,13 +49,16 @@
                 </div>
                 <div class="row mb-5">
                     <div class="col-lg-6 d-flex justify-content-center mb-3">
-                        <input placeholder="phone number" type="text" required
+                        <input placeholder="Phone Number" type="tel" required
+                            pattern="03[0-9]{2}-(?!1234567)(?!1111111)(?!7654321)[0-9]{7}"
                             [(ngModel)]="phone" [ngModelOptions]="{standalone:
                             true}"
+                            [mask]="'0000-0000000'"
                             class="form-control border-start-0 border-end-0
                             border-top-0 rounded-0" id="inputPhoneNumber">
                     </div>
                     <div class="col-lg-6 d-flex justify-content-center mb-3">
+                        <i (click)="getLocation()" class="bi bi-geo-alt-fill location"></i>
                         <input placeholder="Address" type="text" required
                             [(ngModel)]="address" [ngModelOptions]="{standalone:
                             true}"

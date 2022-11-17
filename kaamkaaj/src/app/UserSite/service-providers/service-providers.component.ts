@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./service-providers.component.css']
 })
 export class ServiceProvidersComponent implements OnInit {
-
+  searchText:any
   service: any
   serviceProviders: any = []
   imgUrl: string;

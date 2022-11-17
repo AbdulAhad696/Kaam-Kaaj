@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { firstValueFrom, isEmpty, lastValueFrom } from 'rxjs';
 import { SignUpService } from 'src/app/Services/sign-up/sign-up.service';
 import { SpinnerService } from 'src/app/Services/spinner/spinner.service';
+import { Router } from '@angular/router';
+import { GetLocationService } from './../../Services/location/get-location.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -9,11 +11,11 @@ import { SpinnerService } from 'src/app/Services/spinner/spinner.service';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-  constructor(private signUpService:SignUpService,private SpinnerService:SpinnerService) { }
+  constructor(private signUpService:SignUpService,private SpinnerService:SpinnerService,private router:Router,private getLocationService:GetLocationService) { }
   
   isRegister:any;
   userData:any;
-
+  success:any;
   userName="";
   email="";
   password="";
@@ -22,6 +24,7 @@ export class SignUpComponent implements OnInit {
   address="";
   role=""
   allUsers:any
+  data:any
 
 
   async validateUser(user:any){
@@ -32,13 +35,16 @@ export class SignUpComponent implements OnInit {
     if(!(await lastValueFrom(this.signUpService.getUsersApi({email:this.email})))){
       // this.isRegister=this.signUpService.registerUserApi(user)
       if(await lastValueFrom(this.signUpService.registerUserApi(user))){
-        return "User is registered successfully!!"
+        this.success=true
+        return "Successfully registered! Please verify your account through email."
       }
       else{
+        this.success=false
         return "Service is down currently. You may try later.."
       }
     }
     else{
+      this.success=false
       return "User with this email is already registered";
     }
 
@@ -51,6 +57,16 @@ export class SignUpComponent implements OnInit {
   workerClick(){
     this.role="Worker"
   }
+  async getLocation(){
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((pos)=>{
+        this.getLocationService.getAddress(pos.coords.latitude,pos.coords.longitude).subscribe((res)=>{
+          // @ts-ignore
+          this.address=res.results[0].formatted_address
+        })
+      });
+    }
+  }
   async handleSubmit(){
     this.userData={
       userName:this.userName,
@@ -59,7 +75,8 @@ export class SignUpComponent implements OnInit {
       cnic:this.cnic,
       phoneNumber:this.phone,
       address:this.address,
-      role:this.role
+      role:this.role,
+      authentication:"false"
     }
     
     this.SpinnerService.requestStarted()
@@ -73,11 +90,18 @@ export class SignUpComponent implements OnInit {
     this.address="";
     this.role="";
     setTimeout(()=>{
-      alert(this.isRegister)
-    },10)
-    
-    // window.location.reload()
+      if(this.success==true){
+        this.success=null;
+        this.router.navigate(['/signin'])
+      }
+      this.success=null;
+
+      
+    },5000);
   }
+  
+  
+  
   ngOnInit(): void {
   }
 

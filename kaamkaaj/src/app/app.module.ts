@@ -36,6 +36,11 @@ import { CustomermainpageComponent } from './UserSite/customermainpage/customerm
 import * as CanvasJSAngularChart from '../canvasjs.angular.component';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
+import {NgxMaskModule} from 'ngx-mask';
+import {Ng2SearchPipeModule} from 'ng2-search-filter'
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +74,8 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     BrowserModule,
     ReactiveFormsModule,
     NgxRerenderModule,
+    NgxMaskModule.forRoot(),
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent],
