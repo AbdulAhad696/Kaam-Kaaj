@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./gig-card.component.css']
 })
 export class GigCardComponent implements OnInit {
-
+    Alljobgigs:any
     title:string
     description:string
     category:string
@@ -21,14 +21,15 @@ export class GigCardComponent implements OnInit {
   }
 
   getdata(obj:any){
-    this.title=obj.title
-    this.description = obj.description
-    this.category = obj.category
-    this.clientrating = obj.clientrating
-    this.location = obj.location
-    this.time = obj.time
+    // this.title=obj.title
+    // this.description = obj.description
+    // this.category = obj.category
+    // this.clientrating = obj.clientrating
+    // this.location = obj.location
+    // this.time = obj.time
 
-    console.log(this.time)
+    console.log(obj)
+    this.Alljobgigs=obj
   }
 
 }

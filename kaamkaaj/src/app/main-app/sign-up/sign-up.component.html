@@ -58,7 +58,7 @@
                             border-top-0 rounded-0" id="inputPhoneNumber">
                     </div>
                     <div class="col-lg-6 d-flex justify-content-center mb-3">
-                        <i (click)="getLocation()" class="bi bi-geo-alt-fill location"></i>
+                        <button type="button" style="background:transparent; border:0;"><i (click)="getLocation()" class="bi bi-geo-alt-fill location"></i></button>
                         <input placeholder="Address" type="text" required
                             [(ngModel)]="address" [ngModelOptions]="{standalone:
                             true}"

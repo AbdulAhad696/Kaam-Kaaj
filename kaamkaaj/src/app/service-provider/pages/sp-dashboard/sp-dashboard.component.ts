@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { globalcomponent } from 'src/app/objects/global';
 
 @Component({
   selector: 'app-sp-dashboard',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sp-dashboard.component.css']
 })
 export class SpDashboardComponent implements OnInit {
-
+  public currency = globalcomponent.currency
   constructor() { }
 
   ngOnInit(): void {

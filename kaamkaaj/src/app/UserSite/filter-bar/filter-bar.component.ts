@@ -11,15 +11,16 @@ import { Router,NavigationEnd,Event } from '@angular/router';
 export class FilterBarComponent implements OnInit {
   trigger=0;
   constructor(private router:Router) {
-    this.router.events.subscribe((event: Event) => {
-      if (event instanceof NavigationEnd) {
-        this.trigger++;
-      }
-    });
+    // this.router.events.subscribe((event: Event) => {
+    //   if (event instanceof NavigationEnd) {
+    //     this.trigger++;
+    //   }
+    // });
    }
   baseUrlFrontEnd=environment.baseUrlFronrEnd
 
   ngOnInit(): void {
+    // console.log(this.trigger)
   }
 
 }
