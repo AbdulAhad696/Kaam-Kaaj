@@ -42,10 +42,18 @@ export class HeaderComponent implements OnInit {
       if (event instanceof NavigationEnd) {
           //Hide progress spinner or progress bar
           this.loggedin=window.location.href.toString();
-          this.usertype=this.signinservice.getusertype();
-          this.email = this.signinservice.getdata();
-          this.spbuttons[5].ref= `service-provider/profile/${this.email}`
-          console.log(this.usertype);
+          
+          if (this.loggedin.includes('sign')){
+            this.clearsession();
+            console.log("session cleared");
+            this.usertype=null
+          }
+          else{
+            this.usertype=this.signinservice.getusertype();
+            this.email = this.signinservice.getdata();
+            this.spbuttons[5].ref= `service-provider/profile/${this.email}`
+            console.log(this.usertype);
+          }
       }
     });
     

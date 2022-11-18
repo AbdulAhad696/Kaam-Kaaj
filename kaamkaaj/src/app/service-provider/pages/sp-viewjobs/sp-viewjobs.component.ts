@@ -25,7 +25,6 @@ export class SpViewjobsComponent implements OnInit {
 
   async getjobs(category:string){
     this.response = await (this.viewjob.getjobs(category)) 
-    // console.log(this.response[0].title)
     this.data={
       title:this.response[0].title,
       description:this.response[0].description,
