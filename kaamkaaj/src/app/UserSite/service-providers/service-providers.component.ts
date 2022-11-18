@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ServiceProviderService } from '../../Services/serviceProvider/service-provider.service';
 import { lastValueFrom } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd, Event } from '@angular/router';
 import { SpinnerService } from '../../Services/spinner/spinner.service';
 import { environment } from 'src/environments/environment';
 
@@ -11,11 +11,17 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./service-providers.component.css']
 })
 export class ServiceProvidersComponent implements OnInit {
-
+  searchText: any
   service: any
   serviceProviders: any = []
   imgUrl: string;
   constructor(private ServiceProviderService: ServiceProviderService, private ActivatedRoute: ActivatedRoute, private SpinnerService: SpinnerService, private router: Router) {
+
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        this.ngOnInit()
+      }
+    });
 
   }
 

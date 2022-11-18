@@ -1,16 +1,16 @@
-<div class="container-fluid gig-card rounded-3">
+<div class="container-fluid gig-card rounded-3" *ngFor="let gig of Alljobgigs">
     <div class="row">
         <div class="col-md-10 col-sm-9  d-flex align-items-center">
-            <h1 class="m-0 p-3">{{this.title}}</h1>
+            <h1 class="m-0 p-3">{{gig.title}}</h1>
         </div>
         <div class="col-md-1 col-sm-2 d-flex align-items-center">
             <img>
-            <h3 class="m-0 p-3">{{this.category}}</h3>
+            <h3 class="m-0 p-3">{{gig.serviceDetails[0].tittle}}</h3>
         </div>
     </div>
     <div class="row">
         <div class="col-md-10 col-sm-9 d-flex align-items-center">
-            <p class="m-0 p-3">{{this.description}}</p>
+            <p class="m-0 p-3">{{gig.description}}</p>
         </div>
         <div class="col-md-1 col-sm-2 d-flex align-items-center ps-4">
             <button type="button" class="btn btn-success rounded-4 ps-4 pe-4">Bid</button>
@@ -19,15 +19,15 @@
     <div class="ps-3 pt-3 row d-flex justify-content-around">
         <div class="col-md-4 col-sm-6 d-flex flex-row">
             <p class="m-0">Client Rating:</p>
-            {{child.setSelectedValue(this.clientrating)}}
+            {{child.setSelectedValue(gig.clientrating)}}
             <app-rating class="star" #child></app-rating>
         </div>
         <div class="col-md-4 col-sm-6 d-flex flex-row ">
             <img>
-            <h3 class="m-0">{{this.location}}</h3>
+            <h3 class="m-0">{{gig.location}}</h3>
         </div>
         <div class="col-md-4 d-flex">
-            <h3 class="m-0">{{this.time}}</h3>
+            <h3 class="m-0">{{gig.time}}</h3>
         </div>
     </div>
 </div>
