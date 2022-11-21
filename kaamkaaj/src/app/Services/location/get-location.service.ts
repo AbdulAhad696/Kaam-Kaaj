@@ -8,6 +8,6 @@ import { environment } from './../../../environments/environment';
 export class GetLocationService {
   constructor(private http:HttpClient) { }
   getAddress(latitude:any,longitude:any ) {
-    return this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyCS382kltP5DES6NXzbbcxftgjcM5hsdL4`)
+    return this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=`)
   };
 }
