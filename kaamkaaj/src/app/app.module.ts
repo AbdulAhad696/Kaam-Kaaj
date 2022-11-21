@@ -33,6 +33,8 @@ import { SpViewjobsComponent } from './service-provider/pages/sp-viewjobs/sp-vie
 import { ServiceprovidermainComponent } from './service-provider/pages/serviceprovidermain/serviceprovidermain.component';
 import { GigCardComponent } from './service-provider/components/gig-card/gig-card.component';
 import { CustomermainpageComponent } from './UserSite/customermainpage/customermainpage.component';
+import * as CanvasJSAngularChart from '../canvasjs.angular.component';
+var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 import {NgxMaskModule} from 'ngx-mask';
 import {Ng2SearchPipeModule} from 'ng2-search-filter'
@@ -59,7 +61,8 @@ import {Ng2SearchPipeModule} from 'ng2-search-filter'
     SpViewjobsComponent,
     ServiceprovidermainComponent,
     GigCardComponent,
-    CustomermainpageComponent
+    CustomermainpageComponent,
+    CanvasJSChart
   ],
   imports: [
     AppRoutingModule,

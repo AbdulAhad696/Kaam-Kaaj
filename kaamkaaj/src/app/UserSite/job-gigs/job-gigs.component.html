@@ -15,14 +15,11 @@
                 <div class="row">
                     <div class="mb-3 ms-3">
                         <div class="btn-group mt-3">
-                            <button type="button" class="btn btn-secondary dropDownBtn  text-dark">Choose Job
-                                Category</button>
-                                <!-- <input type="text" placeholder="Choose Job Category"  class="form-control" id="currentServiceField" aria-describedby="emailHelp" required [(ngModel)]="" [ngModelOptions]="{standalone: true}" > -->
-                            <div class="dropdown"  >
+                            <button type="button" class="btn btn-secondary dropDownBtn dropdown-toggle-split text-dark" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">{{currentCategory}}</button>
+                            <div class="dropdown">
                                 <button  type="button" class="btn btn-secondary  dropdown-toggle-split dropDownIcon"
                                     id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa fa-arrow-circle-down fa-2xl"></i>
-
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"
                                     *ngFor="let service of allServices ; let i = index">
@@ -54,8 +51,7 @@
                         <div class="mb-3 " id="amountdropdown">
                             <div class="btn-group mt-3">
                                 <button type="button"
-                                    class="btn btn-secondary dropDownBtn timeDurationBtn text-dark">Choose
-                                    amount</button>
+                                    class="btn btn-secondary dropDownBtn  dropdown-toggle-split timeDurationBtn text-dark" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">{{currentAmount}}</button>
                                 <div class="dropdown">
                                     <button type="button" class="btn btn-secondary  dropdown-toggle-split dropDownIcon"
                                         id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -83,8 +79,7 @@
                         <div class="mb-3  " id="Durationdropdown">
                             <div class="btn-group mt-3">
                                 <button type="button"
-                                    class="btn btn-secondary dropDownBtn timeDurationBtn text-dark">Choose
-                                    duration</button>
+                                    class="btn btn-secondary dropDownBtn dropdown-toggle-split timeDurationBtn text-dark"  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">{{currentDuration}}</button>
                                 <div class="dropdown">
                                     <button type="button" class="btn btn-secondary  dropdown-toggle-split dropDownIcon"
                                         id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -117,7 +112,7 @@
                 <div class="row">
                     <div class="mb-3  ms-3 jobNameWidth">
                         <label for="formFileLg" class="form-label"></label>
-                        <input class="form-control form-control-lg" id="formFileLg" type="file" />
+                        <input class="form-control form-control-lg" id="formFileLg" type="file" name="image" multiple (change)="selectMultipleImages($event)" />
                     </div>
                 </div>
                 <!-- --------------------------------submit button----------------------- -->

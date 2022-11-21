@@ -4,6 +4,11 @@ import { AddJobService } from 'src/app/Services/add-job/add-job.service';
 import { SignInService } from 'src/app/Services/sign-in/sign-in.service';
 import { SpinnerService } from 'src/app/Services/spinner/spinner.service';
 import { GetServicesService } from '../../Services/get-services/get-services.service';
+import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import {HttpClient,HttpParams} from '@angular/common/http'
+
+
 
 @Component({
   selector: 'app-job-gigs',
@@ -12,12 +17,15 @@ import { GetServicesService } from '../../Services/get-services/get-services.ser
 })
 export class JobGigsComponent implements OnInit {
 
-  constructor( private GetServicesService:GetServicesService , private AddJobService:AddJobService , private SignInService:SignInService , private SpinnerService: SpinnerService ) { }
+  constructor( private GetServicesService:GetServicesService , private AddJobService:AddJobService , private SignInService:SignInService , private SpinnerService: SpinnerService , private http: HttpClient ) { }
 // -----------------------variable required--------------------------
   allServices: any;
   jobData:any;
   isJobAdded:any;
   selectedServiceObject:any;
+  currentCategory="Choose Category";
+  currentAmount = "Choose Amount";
+  currentDuration = "Choose Duration";
 
 // -----------------------------schema variables-------------------------
   title:string;
@@ -26,7 +34,7 @@ export class JobGigsComponent implements OnInit {
   estAmount:number;
   // clientRating:number;
   // bids:any;
-  // gigPics:any;
+  gigPics:any;
   // spRating:number;
   status:string;
   jobAddress:string;
@@ -51,18 +59,20 @@ export class JobGigsComponent implements OnInit {
   async currentService(currentService:string){
     this.selectedServiceObject =await lastValueFrom(this.AddJobService.getSpecificJob(currentService))
     this.category = this.selectedServiceObject[0]._id;
-
+    this.currentCategory = currentService;
   }
 
   // ----------------------------getting selected amount--------------------
   gettingAmount(amount:number){
     this.estAmount = amount;
+    this.currentAmount = String(amount); 
   }
 
   // ------------------------------getting selected time----------------------
 
   gettingTime(duration:string){
     this.estCompletionTime = duration;
+    this.currentDuration = duration;
   }
 
 // -----------------------------------form submission--------------------------
@@ -77,9 +87,10 @@ export class JobGigsComponent implements OnInit {
       jobAddress:this.jobAddress,
       estCompletionTime:this.estCompletionTime,
       category:this.category,
-      jobAssignedBy:this.jobAssignedBy
+      jobAssignedBy:this.jobAssignedBy,
+      gigPics: this.gigPics
     }
-
+    this.onMultipleSubmittingImages();
     this.SpinnerService.requestStarted();
     this.isJobAdded =await this.addingJob(this.jobData);
     this.SpinnerService.requestEnded();
@@ -118,6 +129,25 @@ export class JobGigsComponent implements OnInit {
     document.getElementById("Durationdropdown")?.classList.add("hide");
     document.getElementById("DurationFields")?.classList.remove("hide");
     document.getElementById("DurationFields")?.focus();
+  }
+
+// -----------------------------uploading images----------------------------
+
+  selectMultipleImages(event){
+    if(event.target.files.length > 0){
+      this.gigPics = event.target.files;
+    }
+  }
+
+  onMultipleSubmittingImages(){
+    const formData = new FormData();
+    for(let img of this.gigPics){
+      formData.append('files',img)
+    }
+    this.gigPics = this.http.post<any>(`${environment.baseUrl}/addJobs/multipleFiles` , formData).subscribe(
+      (res) => console.log(res),
+      (err) => console.log(err)
+    );
   }
 
   ngOnInit(): void { 
