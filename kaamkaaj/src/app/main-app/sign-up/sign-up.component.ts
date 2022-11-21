@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { firstValueFrom, isEmpty, lastValueFrom } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 import { SignUpService } from 'src/app/Services/sign-up/sign-up.service';
 import { SpinnerService } from 'src/app/Services/spinner/spinner.service';
 import { Router } from '@angular/router';
