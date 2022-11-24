@@ -39,10 +39,11 @@
             <h1 class="record">No record found</h1>
         </div>
     </div>
-    <div (click)="showServiceProviderProfile(serviceProvider.serviceProviderDetails[0].email)"
-        class="col-lg-6 col-md-6 col-sm-12 col-12" *ngFor="let serviceProvider of serviceProviders | filter:searchText">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-12"
+        *ngFor="let serviceProvider of serviceProviders | filter:searchText">
         <!-- <div class=""> -->
-        <div class="flexInner">
+        <div (click)="showServiceProviderProfile(serviceProvider.serviceProviderDetails[0].email)"
+            class="flexInner pointerClass">
             <div class="flexFront">
                 <div
                     class=" shadow-lg m-4  p-4 bg-body rounded-3 d-flex flex-column  justify-content-center align-items-center ">
