@@ -4,7 +4,8 @@
         <div class="input-group ">
             <div class="col-12 d-flex w-100 justify-content-end ">
                 <div class="form-outline searchBox">
-                    <input placeholder="search..." [(ngModel)]="searchText" type="search" id="form1" class="form-control searchFieled" />
+                    <input placeholder="search..." [(ngModel)]="searchText" type="search" id="form1"
+                        class="form-control searchFieled" />
                     <label class="form-label" for="form1"></label>
                 </div>
                 <button type="button" class="btn btn-primary searchBtn ">
@@ -15,31 +16,79 @@
     </div>
 </div>
 
+<!-- --------------------Filter Buttons------------------------------ -->
+<div id="filterButtons">
+    <button (click)="fillterButtonClick('rating')"
+        class="{{'btn btn-outline-dark  filterButton '+ (activeButton=='rating'?'active':'')}}">Rating</button>
+    <button (click)="fillterButtonClick('jobsCompleted')"
+        class="{{'btn btn-outline-dark  filterButton '+ (activeButton=='jobsCompleted'?'active':'')}}">Jobs</button>
+    <button (click)="fillterButtonClick('experience')"
+        class="{{'btn btn-outline-dark  filterButton '+ (activeButton=='experience'?'active':'')}}">Experience</button>
+    <button (click)="fillterButtonClick('location')"
+        class="{{'btn btn-outline-dark  filterButton '+ (activeButton=='location'?'active':'')}}">Location</button>
+    <button (click)="fillterButtonClick('earning')"
+        class="{{'btn btn-outline-dark  filterButton '+ (activeButton=='earning'?'active':'')}}">Earning</button>
+</div>
 
-<div class="row m-0 p-0 container-fluid serviceProviders">
-<!-- --------------------No record found------------------------------ -->
-    <div class="default" >
+
+<div class="row  p-0 container-fluid serviceProviders">
+    <!-- --------------------No record found------------------------------ -->
+    <div class="default">
         <div class="m-5 d-flex justify-content-center flex-column">
             <img src="../../../assets/noRecordFound.svg" alt="Avater">
             <h1 class="record">No record found</h1>
         </div>
     </div>
-
-<!-- --------------------All service providers------------------------------ -->
-    <div  (click)="showServiceProviderProfile(serviceProvider.serviceProviderDetails[0].email)"  class="col-lg-6 col-md-6 col-sm-12 col-12" *ngFor="let serviceProvider of serviceProviders | filter:searchText">
-            <div class=" shadow-lg m-4  p-4 bg-body rounded-3 d-flex flex-column  justify-content-center align-items-center">
-            <img class="serviceImage" src={{serviceProvider.profilePicture}} alt="Avater">
-            <h1 class="mt-2 mb-0">{{serviceProvider.serviceProviderDetails[0].userName}}</h1>
-            <h3>{{serviceProvider.serviceDetails[0].tittle}}</h3>
-            <div class="d-flex flex-row mt-2 mb-2 textColor">
-                <h4>Jobs Completed:</h4><h4>{{serviceProvider.jobsCompleted}}</h4>
+    <div (click)="showServiceProviderProfile(serviceProvider.serviceProviderDetails[0].email)"
+        class="col-lg-6 col-md-6 col-sm-12 col-12" *ngFor="let serviceProvider of serviceProviders | filter:searchText">
+        <!-- <div class=""> -->
+        <div class="flexInner">
+            <div class="flexFront">
+                <div
+                    class=" shadow-lg m-4  p-4 bg-body rounded-3 d-flex flex-column  justify-content-center align-items-center ">
+                    <img class="serviceImage" src={{serviceProvider.profilePicture}} alt="Avater">
+                    <h1 class="mt-2 mb-0">{{serviceProvider.serviceProviderDetails[0].userName}}</h1>
+                    <h3>{{serviceProvider.serviceDetails[0].tittle}}</h3>
+                    <div class="d-flex flex-row mt-2 mb-0 textColor">
+                        <h4>Jobs Completed:</h4>
+                        <h4>{{serviceProvider.jobsCompleted}}</h4>
+                    </div>
+                    <div class="d-flex flex-row mt-0 mb-2 textColor">
+                        <h4>Experience:</h4>
+                        <h4>{{serviceProvider.experience}}</h4>
+                        <h4 class="ps-1">Year</h4>
+                    </div>
+                    <div class="rating">
+                        <h4 class="mb-1">Rating</h4>
+                        {{child.setSelectedValue(serviceProvider.rating | number:
+                        '1.0-0')}}
+                        <app-rating #child></app-rating>
+                    </div>
+                </div>
             </div>
-            <div class="rating">
-                <h4 class="mb-1">Rating</h4>
-                {{child.setSelectedValue(serviceProvider.rating | number:
-                '1.0-0')}}
-                <app-rating #child></app-rating>
+            <div class="flexBack">
+                <div
+                    class=" shadow-lg m-4  p-4 bg-body rounded-3 d-flex flex-column  justify-content-center align-items-center">
+                    <img class="serviceImage" src={{serviceProvider.profilePicture}} alt="Avater">
+                    <h1 class="mt-2 mb-0">{{serviceProvider.serviceProviderDetails[0].userName}}</h1>
+                    <h3>{{serviceProvider.serviceDetails[0].tittle}}</h3>
+                    <div class="d-flex flex-row mt-2 mb-0 textColor">
+                        <h4>Earning:</h4>
+                        <h4>{{serviceProvider.totalEarning}}</h4>
+                        <h4 class="ps-1">PKR</h4>
+                    </div>
+                    <div class="d-flex flex-row mt-0 mb-2 textColor">
+                        <h4>Distance:</h4>
+                        <h4>{{serviceProvider.currentDistance}}</h4>
+                        <h4 class="ps-1">Km</h4>
+                    </div>
+                    <div class="d-flex flex-row intRating">
+                        <!-- <i class=" fa fa-star rateStar"></i> -->
+                        <span class="material-icons rateStar">star</span>
+                        <h2>{{serviceProvider.rating}}</h2>
+                        <h2>/5</h2>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>

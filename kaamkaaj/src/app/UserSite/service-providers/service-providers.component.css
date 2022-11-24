@@ -10,6 +10,15 @@
     float: left;
 }
 
+.intRating{
+    margin-top: 20px;
+}
+.rateStar{
+    color: orange;
+    font-size: 20px;
+    margin-top: 5px;
+}
+
 .textColor {
     color: #b3b3b3;
 }
@@ -20,7 +29,7 @@
 .serviceProviders{
     border-radius: 10px;
     border: 1px solid gray;
-    margin-bottom: 30px;
+    margin-bottom: 45px;
     
 }
 
@@ -50,9 +59,77 @@ input:focus {
     }
 }
 
+.filterButton{
+    /* background-color: gray; */
+    border: none;
+    background-color: #f2f2f2;
+    font-size: 15px;
+    height: 32px;
+    border-radius: 8px;
+    padding: 7px;
+    margin-bottom: 15px;
+    margin-right: 15px;    
+}
+.filterButton:hover{
+    background-color: black;
+    color: white;
+}
+.filterButton.active{
+    background-color: black;
+    color: white;
+}
+
 
 
 /* -- --------------------Show no record found when serviceprovider div is empty------------------------------ -- */
 .default:not(:only-child) {
     display: none;
  }
+
+
+/* -- --------------------Flex Box css------------------------------ -- */
+.flexBox{
+    perspective: 1000px; 
+
+} 
+.flexInner:hover{
+    transform: rotateX(180deg);
+}
+.flexInner{
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    position: relative;
+
+ }
+ /* .flexInner:hover .flexFront{
+    width: 100%;
+    position:absolute
+    
+ }
+*/
+ /* .flexBox:hover .flexBack{
+    position:absolute
+}  */
+
+
+ .flexFront,.flexBack{
+    backface-visibility: hidden;
+    position: relative; 
+    width: 100%;
+ }
+ .flexBack{
+    transform: rotateX(180deg);
+     margin-top: -420px; 
+     width: 100%;
+    /* position: absolute */
+ }  
+
+
+
+
+
+
+
+
+
+
