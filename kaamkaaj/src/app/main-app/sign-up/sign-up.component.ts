@@ -25,6 +25,7 @@ export class SignUpComponent implements OnInit {
   role=""
   allUsers:any
   data:any
+  location:any
 
 
   async validateUser(user:any){
@@ -63,6 +64,7 @@ export class SignUpComponent implements OnInit {
         this.getLocationService.getAddress(pos.coords.latitude,pos.coords.longitude).subscribe((res)=>{
           // @ts-ignore
           this.address=res.results[0].formatted_address
+          this.location={latitude:pos.coords.latitude,longitude:pos.coords.longitude}
         })
       });
     }
@@ -76,7 +78,8 @@ export class SignUpComponent implements OnInit {
       phoneNumber:this.phone,
       address:this.address,
       role:this.role,
-      authentication:"false"
+      authentication:"false",
+      location:this.location
     }
     
     this.SpinnerService.requestStarted()
@@ -99,6 +102,7 @@ export class SignUpComponent implements OnInit {
       
     },5000);
   }
+
   
   
   

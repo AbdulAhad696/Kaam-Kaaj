@@ -1,0 +1,108 @@
+<div (click)="showServiceProviderProfile(serviceProvider.serviceProviderDetails[0].email)"
+class="col-lg-6 col-md-6 col-sm-12 col-12 position-relative"
+*ngFor="let serviceProvider of serviceProviders | filter:searchText">
+<!-- <div class=""> -->
+<!-- <div class="flexInner"> -->
+<div class="flexFront">
+    <div
+        class=" shadow-lg m-4  p-4 bg-body rounded-3 d-flex flex-column  justify-content-center align-items-center box">
+        <img class="serviceImage" src={{serviceProvider.profilePicture}} alt="Avater">
+        <h1 class="mt-2 mb-0">{{serviceProvider.serviceProviderDetails[0].userName}}</h1>
+        <h3>{{serviceProvider.serviceDetails[0].tittle}}</h3>
+        <div class="d-flex flex-row mt-2 mb-0 textColor">
+            <h4>Jobs Completed:</h4>
+            <h4>{{serviceProvider.jobsCompleted}}</h4>
+        </div>
+        <div class="d-flex flex-row mt-0 mb-2 textColor">
+            <h4>Experience:</h4>
+            <h4>{{serviceProvider.experience}}</h4>
+            <h4 class="ps-1">Year</h4>
+        </div>
+        <div class="rating">
+            <h4 class="mb-1">Rating</h4>
+            {{child.setSelectedValue(serviceProvider.rating | number:
+            '1.0-0')}}
+            <app-rating #child></app-rating>
+        </div>
+    </div>
+</div>
+<div class="flexBack">
+    <div
+        class=" shadow-lg m-4  p-4 bg-body rounded-3 d-flex flex-column  justify-content-center align-items-center">
+        <img class="serviceImage" src={{serviceProvider.profilePicture}} alt="Avater">
+        <h1 class="mt-2 mb-0">{{serviceProvider.serviceProviderDetails[0].userName}}</h1>
+        <h3>{{serviceProvider.serviceDetails[0].tittle}}</h3>
+        <div class="d-flex flex-row mt-2 mb-0 textColor">
+            <h4>Earning:</h4>
+            <h4>{{serviceProvider.totalEarning}}</h4>
+            <h4 class="ps-1">PKR</h4>
+        </div>
+        <div class="d-flex flex-row mt-0 mb-2 textColor">
+            <h4>Distance:</h4>
+            <h4>{{serviceProvider.currentDistance}}</h4>
+            <h4 class="ps-1">Km</h4>
+        </div>
+        <div class="d-flex flex-row intRating">
+            <!-- <i class=" fa fa-star rateStar"></i> -->
+            <span class="material-icons rateStar">star</span>
+            <h2>{{serviceProvider.rating}}</h2>
+            <h2>/5</h2>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div class="position-relative col-lg-6" *ngFor="let serviceProvider of serviceProviders | filter:searchText">
+    <!-- <div class="w-100 h-100 position-absolute top-0 start-0">Hello</div> -->
+    <!-- <div class="w-100 h-100 position-absolute top-0 start-0">Hellow</div> -->
+    <div class="flexFront" style="display: none;">
+        <div
+            class=" shadow-lg m-4  p-4 bg-body rounded-3 d-flex flex-column  justify-content-center align-items-center box">
+            <img class="serviceImage" src={{serviceProvider.profilePicture}} alt="Avater">
+            <h1 class="mt-2 mb-0">{{serviceProvider.serviceProviderDetails[0].userName}}</h1>
+            <h3>{{serviceProvider.serviceDetails[0].tittle}}</h3>
+            <div class="d-flex flex-row mt-2 mb-0 textColor">
+                <h4>Jobs Completed:</h4>
+                <h4>{{serviceProvider.jobsCompleted}}</h4>
+            </div>
+            <div class="d-flex flex-row mt-0 mb-2 textColor">
+                <h4>Experience:</h4>
+                <h4>{{serviceProvider.experience}}</h4>
+                <h4 class="ps-1">Year</h4>
+            </div>
+            <div class="rating">
+                <h4 class="mb-1">Rating</h4>
+                {{child.setSelectedValue(serviceProvider.rating | number:
+                '1.0-0')}}
+                <app-rating #child></app-rating>
+            </div>
+        </div>
+    </div>
+    <div class="flexBack" style="display: block;">
+        <div
+            class=" shadow-lg m-4  p-4 bg-body rounded-3 d-flex flex-column  justify-content-center align-items-center">
+            <img class="serviceImage" src={{serviceProvider.profilePicture}} alt="Avater">
+            <h1 class="mt-2 mb-0">{{serviceProvider.serviceProviderDetails[0].userName}}</h1>
+            <h3>{{serviceProvider.serviceDetails[0].tittle}}</h3>
+            <div class="d-flex flex-row mt-2 mb-0 textColor">
+                <h4>Earning:</h4>
+                <h4>{{serviceProvider.totalEarning}}</h4>
+                <h4 class="ps-1">PKR</h4>
+            </div>
+            <div class="d-flex flex-row mt-0 mb-2 textColor">
+                <h4>Distance:</h4>
+                <h4>{{serviceProvider.currentDistance}}</h4>
+                <h4 class="ps-1">Km</h4>
+            </div>
+            <div class="d-flex flex-row intRating">
+                <!-- <i class=" fa fa-star rateStar"></i> -->
+                <span class="material-icons rateStar">star</span>
+                <h2>{{serviceProvider.rating}}</h2>
+                <h2>/5</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+
