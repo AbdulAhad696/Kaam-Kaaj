@@ -36,6 +36,12 @@ import { CustomermainpageComponent } from './UserSite/customermainpage/customerm
 
 import {NgxMaskModule} from 'ngx-mask';
 import {Ng2SearchPipeModule} from 'ng2-search-filter'
+import { DatePipe } from '@angular/common';
+
+
+
+
+
 
 
 
@@ -74,7 +80,7 @@ import {Ng2SearchPipeModule} from 'ng2-search-filter'
     NgxMaskModule.forRoot(),
     Ng2SearchPipeModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

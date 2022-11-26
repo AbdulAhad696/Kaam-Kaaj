@@ -6,9 +6,10 @@ import { SpinnerService } from 'src/app/Services/spinner/spinner.service';
 import { GetServicesService } from '../../Services/get-services/get-services.service';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import {HttpClient,HttpParams} from '@angular/common/http'
-
-
+import {HttpClient,HttpParams} from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { ViewChild,ElementRef } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-job-gigs',
@@ -16,8 +17,11 @@ import {HttpClient,HttpParams} from '@angular/common/http'
   styleUrls: ['./job-gigs.component.css']
 })
 export class JobGigsComponent implements OnInit {
+  @ViewChild('fileUploader') fileUploader:ElementRef;
+  @ViewChild("amountNumberField") amountNumberField;
+  @ViewChild("durationNumberField") durationNumberField;
 
-  constructor( private GetServicesService:GetServicesService , private AddJobService:AddJobService , private SignInService:SignInService , private SpinnerService: SpinnerService , private http: HttpClient ) { }
+  constructor( private GetServicesService:GetServicesService , private AddJobService:AddJobService , private SignInService:SignInService , private SpinnerService: SpinnerService , private http: HttpClient  , private route: ActivatedRoute , private datePipe:DatePipe ) { }
 // -----------------------variable required--------------------------
   allServices: any;
   jobData:any;
@@ -26,10 +30,12 @@ export class JobGigsComponent implements OnInit {
   currentCategory="Choose Category";
   currentAmount = "Choose Amount";
   currentDuration = "Choose Duration";
+  currentServiceProviderCategory:any;
+  btnState:boolean = false;
 
 // -----------------------------schema variables-------------------------
   title:string;
-  jobPostDate:Date;
+  jobPostDate:string;
   description:string;
   estAmount:number;
   // clientRating:number;
@@ -38,7 +44,7 @@ export class JobGigsComponent implements OnInit {
   // spRating:number;
   status:string;
   jobAddress:string;
-  estCompletionTime:string;
+  estCompletionTime:number;
   category:any
   // jobAssignedTo:any;
   jobAssignedBy:any;
@@ -46,7 +52,7 @@ export class JobGigsComponent implements OnInit {
   // clientAddress:"";
 
   // ----------------------------posting job-----------------------
-  async addingJob(job:any){ 
+  async addingJob(job:any){
     if(await lastValueFrom( this.AddJobService.postJobApi(job) )){
       return "Job is added successfully!!!!..........";
     }
@@ -65,22 +71,22 @@ export class JobGigsComponent implements OnInit {
   // ----------------------------getting selected amount--------------------
   gettingAmount(amount:number){
     this.estAmount = amount;
-    this.currentAmount = String(amount); 
+    this.currentAmount = String(amount);
   }
 
   // ------------------------------getting selected time----------------------
-
   gettingTime(duration:string){
-    this.estCompletionTime = duration;
-    this.currentDuration = duration;
+    this.estCompletionTime = Number(duration);
+    this.currentDuration = String(duration);
   }
 
 // -----------------------------------form submission--------------------------
-
-  async handleSubmit(){
+async handleSubmit(){
+    const now = Date.now();
+    const myFormattedDate = this.datePipe.transform(now, 'short');
     this.jobData = {
       title:this.title,
-      jobPostDate:new Date(),
+      jobPostDate:myFormattedDate,
       description:this.description,
       estAmount:this.estAmount,
       status:"punched",
@@ -90,24 +96,37 @@ export class JobGigsComponent implements OnInit {
       jobAssignedBy:this.jobAssignedBy,
       gigPics: this.gigPics
     }
-    this.onMultipleSubmittingImages();
+    this.gigPics =await lastValueFrom(this.onMultipleSubmittingImages());
     this.SpinnerService.requestStarted();
     this.isJobAdded =await this.addingJob(this.jobData);
     this.SpinnerService.requestEnded();
 
-    this.title="";
+// -------------------------------------resetting the form--------------------------------
+    // this.title="";
     // this.jobPostDate= ;
-    this.description="";
-    this.estAmount=0;
-    this.status="";
-    this.jobAddress="";
-    this.estCompletionTime="";
-    this.category="";
-    this.jobAssignedBy="";
+    // this.description="";
+    // this.estAmount=0;
+    // this.status="";
+    // this.jobAddress="";
+    // this.estCompletionTime=0;
+    // this.category="";
+    // this.jobAssignedBy="";
+    // if(this.btnState == false){
+    //   this.currentCategory="Choose Category";
+    // }
+    // else{
+    //   this.currentCategory = this.currentServiceProviderCategory;
+    //   this.btnState = true;
+    // }
+    // this.currentAmount = "Choose Amount";
+    // this.currentDuration = "Choose Duration";
+    // this.fileUploader.nativeElement.value = null;
+    
     setTimeout(()=>{
       alert(this.isJobAdded);
     },10)
 
+    window.location.reload();
   }
 
   // --------------------------getting all services-----------------------------
@@ -116,43 +135,44 @@ export class JobGigsComponent implements OnInit {
   }
 
   // ----------------------------converting amount dropdown to input field------------------
-
   amountToogle(){
     document.getElementById("amountdropdown")?.classList.add("hide");
     document.getElementById("amountFields")?.classList.remove("hide");
-    document.getElementById("amountFields")?.focus();    
+    this.amountNumberField.nativeElement.focus();
   }
 
 // ----------------------------converting duration dropdown to input field-----------------------
-  
   timeToogle(){
     document.getElementById("Durationdropdown")?.classList.add("hide");
     document.getElementById("DurationFields")?.classList.remove("hide");
-    document.getElementById("DurationFields")?.focus();
+    this.durationNumberField.nativeElement.focus();
   }
 
 // -----------------------------uploading images----------------------------
-
   selectMultipleImages(event){
     if(event.target.files.length > 0){
       this.gigPics = event.target.files;
     }
   }
-
   onMultipleSubmittingImages(){
     const formData = new FormData();
-    for(let img of this.gigPics){
-      formData.append('files',img)
+    if(this.gigPics != null){
+      for(let img of this.gigPics){
+        formData.append('files',img)
+      }
     }
-    this.gigPics = this.http.post<any>(`${environment.baseUrl}/addJobs/multipleFiles` , formData).subscribe(
-      (res) => console.log(res),
-      (err) => console.log(err)
-    );
-  }
+    return this.http.post<any>(`${environment.baseUrl}/addJobs/multipleImages` , formData)  }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.gettingServices();
     this.jobAssignedBy = this.SignInService.getId()
+// ------------------------showing category ofspecific service provider-----------------------------
+    this.currentServiceProviderCategory = this.route.snapshot.paramMap.get('category');
+    if(typeof(this.currentServiceProviderCategory) == "string"){
+      this.currentCategory = this.currentServiceProviderCategory;
+      this.currentService(this.currentServiceProviderCategory)
+      this.btnState = true;
+    }
   }
-
 }
+  

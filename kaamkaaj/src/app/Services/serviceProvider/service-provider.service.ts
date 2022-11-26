@@ -14,4 +14,6 @@ export class ServiceProviderService {
   fetchSPData(id: any) {
     return (this.http.get(`${environment.baseUrl}/spdata/${id}`))
   }
+
+
 }

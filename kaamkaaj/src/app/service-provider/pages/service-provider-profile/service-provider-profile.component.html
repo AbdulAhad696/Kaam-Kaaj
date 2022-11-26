@@ -23,11 +23,11 @@
         </div>
 
         <div class="col-md-4 col-6 col-sm-6 mb-3 centerColumn">
-            <button
+            <button (click)="handleSendProposal()"
                 *ngIf="usertype==
                 'Client'" type="button" class="btn btn-success btn-lg
-                editProfileButton fs-5"><a class="text-white"
-                    href="customer-mainpage/jobgigs">Send Proposal</a></button>
+                editProfileButton fs-5">
+                Send Proposal </button>
             <button
                 *ngIf="usertype==
                 'Worker'" type="button" class="btn btn-success btn-lg

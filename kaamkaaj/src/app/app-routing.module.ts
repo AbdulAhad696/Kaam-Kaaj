@@ -34,6 +34,7 @@ const routes: Routes = [
     children: [
       { path: '', component: CustomerLandingPageComponent },
       { path: 'jobgigs', component: JobGigsComponent },
+      { path: 'jobgigs/:category', component: JobGigsComponent },
       { path: 'contactadmin', component: ContactUsComponent },
       { path: 'serviceproviders/:service', component: FilterBarComponent },
       { path: 'serviceprovider/profile/:email', component: ServiceProviderProfileComponent },
