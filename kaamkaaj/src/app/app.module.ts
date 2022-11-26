@@ -37,7 +37,8 @@ import * as CanvasJSAngularChart from '../canvasjs.angular.component';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 import {NgxMaskModule} from 'ngx-mask';
-import {Ng2SearchPipeModule} from 'ng2-search-filter'
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import { MyProjectsComponent } from './service-provider/components/my-projects/my-projects.component'
 
 
 
@@ -62,7 +63,8 @@ import {Ng2SearchPipeModule} from 'ng2-search-filter'
     ServiceprovidermainComponent,
     GigCardComponent,
     CustomermainpageComponent,
-    CanvasJSChart
+    CanvasJSChart,
+    MyProjectsComponent
   ],
   imports: [
     AppRoutingModule,

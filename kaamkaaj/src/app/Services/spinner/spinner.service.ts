@@ -18,13 +18,17 @@ export class SpinnerService {
   requestStarted() {
     if (++this.count === 1) {
       this.spinner$.next('start');
+      // setTimeout(()=>{
+      //   this.spinner$.next('stop')
+      // },8000)
     }
   }
 
   async requestEnded() {
-    if (this.count === 0 || --this.count === 0) {
+    // if (this.count === 0 || --this.count === 0) {
       this.spinner$.next('stop');
-    }
+      this.count=0
+    // }
   }
 
   resetSpinner() {

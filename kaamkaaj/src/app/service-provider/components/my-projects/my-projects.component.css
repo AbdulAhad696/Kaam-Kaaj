@@ -1,0 +1,12 @@
+.profileImage{
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+}
+
+.bgGradient{
+    background-image: linear-gradient(to right,#8a8bfb ,#a9edfb);
+}
+.price{
+    color: #02db96;
+}
