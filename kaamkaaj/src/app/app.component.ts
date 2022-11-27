@@ -19,7 +19,7 @@ export class AppComponent implements OnInit{
     this.initCount+=1;
     let usertype = this.signinservice.getusertype()
     if (usertype=="Client"){
-      // this.router.navigate(['/customer-mainpage'])
+      this.router.navigate(['/customer-mainpage'])
      
     }
     else if(usertype=="Worker"){

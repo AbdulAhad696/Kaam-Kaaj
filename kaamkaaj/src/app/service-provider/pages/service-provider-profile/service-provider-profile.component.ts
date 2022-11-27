@@ -1,7 +1,7 @@
 import { ArrayType } from '@angular/compiler';
 import { Component, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog"
-import { EditSPModalComponent } from '../../../edit-spmodal/edit-spmodal.component';
+import { EditSPModalComponent } from '../../components/edit-spmodal/edit-spmodal.component';
 
 import { SignInService } from './../../../Services/sign-in/sign-in.service';
 import { ActivatedRoute } from '@angular/router';

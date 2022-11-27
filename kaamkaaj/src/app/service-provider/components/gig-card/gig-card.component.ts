@@ -13,6 +13,7 @@ export class GigCardComponent implements OnInit {
     clientrating:number
     location:string
     time:string
+    editgig:any
 
   constructor() { }
 
@@ -21,15 +22,14 @@ export class GigCardComponent implements OnInit {
   }
 
   getdata(obj:any){
-    // this.title=obj.title
-    // this.description = obj.description
-    // this.category = obj.category
-    // this.clientrating = obj.clientrating
-    // this.location = obj.location
-    // this.time = obj.time
-
-    console.log(obj)
+    
     this.Alljobgigs=obj
+  }
+
+  openBidOverlay(obj:any){
+    $('#exampleModalCenter').modal('toggle')
+    this.editgig=obj
+    console.log(this.editgig)
   }
 
 }

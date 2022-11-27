@@ -1,10 +1,11 @@
-<div class="container-fluid gig-card rounded-3" *ngFor="let gig of Alljobgigs">
+<app-bid-overlay [gig]="editgig"></app-bid-overlay>
+<div class="container-fluid gig-card rounded-3 mt-3 pb-3" *ngFor="let gig of Alljobgigs">
     <div class="row">
         <div class="col-md-10 col-sm-9  d-flex align-items-center">
             <h1 class="m-0 p-3">{{gig.title}}</h1>
         </div>
         <div class="col-md-1 col-sm-2 d-flex align-items-center">
-            <img>
+
             <h3 class="m-0 p-3">{{gig.serviceDetails[0].tittle}}</h3>
         </div>
     </div>
@@ -13,21 +14,22 @@
             <p class="m-0 p-3">{{gig.description}}</p>
         </div>
         <div class="col-md-1 col-sm-2 d-flex align-items-center ps-4">
-            <button type="button" class="btn btn-success rounded-4 ps-4 pe-4">Bid</button>
+            <button type="button" (click)="openBidOverlay(gig)" class="btn btn-success rounded-4 ps-4 pe-4">Bid</button>
         </div>
     </div>
     <div class="ps-3 pt-3 row d-flex justify-content-around">
         <div class="col-md-4 col-sm-6 d-flex flex-row">
             <p class="m-0">Client Rating:</p>
-            {{child.setSelectedValue(gig.clientrating)}}
+            {{child.setSelectedValue(gig?.clientDetails[0]?.rating | number:'1.0-0')}}
             <app-rating class="star" #child></app-rating>
         </div>
-        <div class="col-md-4 col-sm-6 d-flex flex-row ">
-            <img>
-            <h3 class="m-0">{{gig.location}}</h3>
+        <div class="col-md-4 col-sm-6 d-flex row">
+            <i class="p-0 col-1 align-items-center d-flex justify-content-center bi bi-geo-alt-fill"></i>
+            <h3 class="col-11 m-0 ps-0">{{gig.jobAddress}}</h3>
         </div>
         <div class="col-md-4 d-flex">
-            <h3 class="m-0">{{gig.time}}</h3>
+            <i class="p-0 align-items-center d-flex justify-content-center col-1 bi bi-clock-fill"></i>
+            <h3 class="col-11 m-0 ps-0">{{gig.jobPostDate}}</h3>
         </div>
     </div>
 </div>

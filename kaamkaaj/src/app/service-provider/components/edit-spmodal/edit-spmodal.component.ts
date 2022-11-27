@@ -1,10 +1,10 @@
 import { createInjectableType } from '@angular/compiler';
 import { Component, OnInit, Inject, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { GetServicesService } from '../Services/get-services/get-services.service';
+import { GetServicesService } from '../../../Services/get-services/get-services.service';
 import { lastValueFrom } from 'rxjs';
-import { ServiceProviderProfileService } from '../Services/serviceProviderProfile/service-provider-profile.service';
-import { SpinnerService } from '../Services/spinner/spinner.service';
+import { ServiceProviderProfileService } from '../../../Services/serviceProviderProfile/service-provider-profile.service';
+import { SpinnerService } from '../../../Services/spinner/spinner.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 

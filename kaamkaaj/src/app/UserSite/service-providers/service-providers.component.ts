@@ -28,7 +28,7 @@ export class ServiceProvidersComponent implements OnInit {
   async getServiceProviders(service: any) {
     this.SpinnerService.requestStarted()
     this.serviceProviders = await lastValueFrom(this.ServiceProviderService.fetchingServiceProviders(service))
-    this.serviceProviders[0].profilePicture = environment.baseUrl + "/" + this.serviceProviders[0]?.profilePicture
+    // this.serviceProviders[0].profilePicture = environment.baseUrl + "/" + this.serviceProviders[0]?.profilePicture
     
     // console.log(this.serviceProviders[0])
     this.SpinnerService.requestEnded()

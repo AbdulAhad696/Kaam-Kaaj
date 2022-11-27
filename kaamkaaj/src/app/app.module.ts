@@ -11,7 +11,7 @@ import { FooterComponent } from './Shared/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { AboutUsComponent } from './main-app/about-us/about-us.component';
-import { EditSPModalComponent } from './edit-spmodal/edit-spmodal.component';
+import { EditSPModalComponent } from './service-provider/components/edit-spmodal/edit-spmodal.component';
 import { ServiceProviderProfileComponent } from './service-provider/pages/service-provider-profile/service-provider-profile.component';
 
 // import { MatToolbarModule } from '@angular/material/toolbar';
@@ -37,7 +37,8 @@ import * as CanvasJSAngularChart from '../canvasjs.angular.component';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 import {NgxMaskModule} from 'ngx-mask';
-import {Ng2SearchPipeModule} from 'ng2-search-filter'
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import { BidOverlayComponent } from './service-provider/components/bid-overlay/bid-overlay.component'
 
 
 
@@ -62,7 +63,8 @@ import {Ng2SearchPipeModule} from 'ng2-search-filter'
     ServiceprovidermainComponent,
     GigCardComponent,
     CustomermainpageComponent,
-    CanvasJSChart
+    CanvasJSChart,
+    BidOverlayComponent
   ],
   imports: [
     AppRoutingModule,

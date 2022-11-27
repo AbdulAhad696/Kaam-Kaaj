@@ -14,10 +14,23 @@ export class ViewjobService {
 
   async getcategory(){
     this.email = await (this.signinservice.getdata())
-    console.log("here",this.email)
+    
     return await lastValueFrom(this.http.get(`${environment.baseUrl}/service-provider/viewjobs/${this.email}`))
+    
   }
   async getjobs(cat:string){
     return await lastValueFrom(this.http.get(`${environment.baseUrl}/service-provider/viewjobs/categoryjobs/${cat}`))
+  }
+  async submitbid(bidamount:Number,id1:string){
+    let mail = await this.signinservice.getemail()
+    let dura = "4 weeks"
+    let obj={
+      duration:dura,
+      amount:bidamount,
+      email: mail,
+      id:id1
+    }
+    await lastValueFrom(this.http.patch(`${environment.baseUrl}/service-provider/viewjobs`,obj))
+    return
   }
 }

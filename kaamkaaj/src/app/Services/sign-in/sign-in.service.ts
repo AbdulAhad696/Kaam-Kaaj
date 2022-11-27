@@ -50,6 +50,9 @@ export class SignInService {
       type: localStorage.getItem("usertype")
     }
   }
+  getemail(){
+    return this.decrypt(localStorage.getItem("email") || "")
+  }
 
   clearsession() {
     localStorage.clear();
