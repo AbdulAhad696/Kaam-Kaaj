@@ -25,7 +25,10 @@
     border: 1px solid gray;
     margin-bottom: 45px;
 }
-
+.filter{
+    display: flex;
+    flex-direction: row-reverse;
+}
 /* Search Field */
 .searchBtn {
     height: 38px;
@@ -54,6 +57,11 @@ input:focus {
         height: 100%;
     }
 }
+@media (max-width: 991.98px) { 
+    .serviceProviderDetail{
+        display: none;
+    }
+ }
 
 
 /* Filter Button */

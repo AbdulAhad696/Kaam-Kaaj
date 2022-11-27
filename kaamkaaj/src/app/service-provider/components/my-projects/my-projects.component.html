@@ -1,7 +1,7 @@
 <h1 class=" d-flex m-4 justify-content-center align-items-center">My Projects</h1>
 
 <div class="row container-fluid">
-    <div class="col-lg-4">
+    <div class="col-lg-4  serviceProviderDetail">
         <div class=" shadow-lg m-4  p-4 bg-body rounded-3 d-flex flex-column ">
             <div class=" d-flex flex-column justify-content-center align-items-center">
                 <img class="profileImage" src={{serviceProviderData[0].profilePicture}} alt="Avater">
@@ -95,11 +95,11 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-8">
-        <div class="row m-4 mb-0 ">
+    <div class="col-lg-8 ">
+        <div class="row m-4 mb-0 filter">
             <div class="col-md-6">
                 <div class="input-group">
-                    <div class="col-12 d-flex w-100  ">
+                    <div class="col-12 d-flex w-100  justify-content-end">
                         <div class="form-outline searchBox">
                             <input placeholder="search..." [(ngModel)]="searchText" type="search"
                                 class="form-control searchFieled" />
@@ -112,7 +112,7 @@
                 </div>
             </div>
             <!-- --------------------Filter Buttons------------------------------ -->
-            <div class="col-md-6 d-flex justify-content-end" id="filterButtons">
+            <div class="col-md-6 d-flex " id="filterButtons">
                 <button (click)="fillterButtonClick('deadlines')"
                     class="{{'btn btn-outline-dark  filterButton '+ (activeButton=='deadlines'?'active':'')}}">Deadlines</button>
                 <button (click)="fillterButtonClick('compensation')"
