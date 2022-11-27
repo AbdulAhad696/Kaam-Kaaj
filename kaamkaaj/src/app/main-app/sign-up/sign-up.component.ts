@@ -11,101 +11,101 @@ import { GetLocationService } from './../../Services/location/get-location.servi
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-  constructor(private signUpService:SignUpService,private SpinnerService:SpinnerService,private router:Router,private getLocationService:GetLocationService) { }
-  
-  isRegister:any;
-  userData:any;
-  success:any;
-  userName="";
-  email="";
-  password="";
-  phone="";
-  cnic="";
-  address="";
-  role=""
-  allUsers:any
-  data:any
-  location:any
+  constructor(private signUpService: SignUpService, private SpinnerService: SpinnerService, private router: Router, private getLocationService: GetLocationService) { }
+
+  isRegister: any;
+  userData: any;
+  success: any;
+  userName = "";
+  email = "";
+  password = "";
+  phone = "";
+  cnic = "";
+  address = "";
+  role = ""
+  allUsers: any
+  data: any
+  location: any
 
 
-  async validateUser(user:any){
-    alert(await lastValueFrom(this.signUpService.getUsersApi({email:this.email})));
+  async validateUser(user: any) {
+    alert(await lastValueFrom(this.signUpService.getUsersApi({ email: this.email })));
   }
 
-  async addUser(user:any){
-    if(!(await lastValueFrom(this.signUpService.getUsersApi({email:this.email})))){
+  async addUser(user: any) {
+    if (!(await lastValueFrom(this.signUpService.getUsersApi({ email: this.email })))) {
       // this.isRegister=this.signUpService.registerUserApi(user)
-      if(await lastValueFrom(this.signUpService.registerUserApi(user))){
-        this.success=true
+      if (await lastValueFrom(this.signUpService.registerUserApi(user))) {
+        this.success = true
         return "Successfully registered! Please verify your account through email."
       }
-      else{
-        this.success=false
+      else {
+        this.success = false
         return "Service is down currently. You may try later.."
       }
     }
-    else{
-      this.success=false
+    else {
+      this.success = false
       return "User with this email is already registered";
     }
 
 
   }
-  
-  clientClick(){
-    this.role="Client"
+
+  clientClick() {
+    this.role = "Client"
   }
-  workerClick(){
-    this.role="Worker"
+  workerClick() {
+    this.role = "Worker"
   }
-  async getLocation(){
+  async getLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((pos)=>{
-        this.getLocationService.getAddress(pos.coords.latitude,pos.coords.longitude).subscribe((res)=>{
+      navigator.geolocation.getCurrentPosition((pos) => {
+        this.getLocationService.getAddress(pos.coords.latitude, pos.coords.longitude).subscribe((res) => {
           // @ts-ignore
-          this.address=res.results[0].formatted_address
-          this.location={latitude:pos.coords.latitude,longitude:pos.coords.longitude}
+          this.address = res.results[0].formatted_address
+          this.location = { latitude: pos.coords.latitude, longitude: pos.coords.longitude }
         })
       });
     }
   }
-  async handleSubmit(){
-    this.userData={
-      userName:this.userName,
-      email:this.email,
-      password:this.password,
-      cnic:this.cnic,
-      phoneNumber:this.phone,
-      address:this.address,
-      role:this.role,
-      authentication:"false",
-      location:this.location
+  async handleSubmit() {
+    this.userData = {
+      userName: this.userName,
+      email: this.email,
+      password: this.password,
+      cnic: this.cnic,
+      phoneNumber: this.phone,
+      address: this.address,
+      role: this.role,
+      authentication: "false",
+      location: this.location
     }
-    
+
     this.SpinnerService.requestStarted()
-    this.isRegister=await this.addUser(this.userData)
+    this.isRegister = await this.addUser(this.userData)
     this.SpinnerService.requestEnded()
-    this.userName="";
-    this.email="";
-    this.password="";
-    this.cnic="";
-    this.phone="";
-    this.address="";
-    this.role="";
-    setTimeout(()=>{
-      if(this.success==true){
-        this.success=null;
+    this.userName = "";
+    this.email = "";
+    this.password = "";
+    this.cnic = "";
+    this.phone = "";
+    this.address = "";
+    this.role = "";
+    setTimeout(() => {
+      if (this.success == true) {
+        this.success = null;
         this.router.navigate(['/signin'])
       }
-      this.success=null;
+      this.success = null;
 
-      
-    },5000);
+
+    }, 5000);
   }
 
-  
-  
-  
+
+
+
   ngOnInit(): void {
   }
 
