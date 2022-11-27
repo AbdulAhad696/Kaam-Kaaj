@@ -37,9 +37,21 @@ import { lastValueFrom } from 'rxjs';
 export class MyProjectService {
   constructor(private http:HttpClient) { }
 
-// ------------------------getting specific job object---------------
+// ------------------------getting service provider details---------------
 getServiceProviderDetails(email:string){
   return this.http.get(environment.baseUrl+'/serviceprovider/mydetails/umairahmedpaki72gmail.com')
   }
+
+
+
+// Getting service provider projects
+getServiceProviderProjects(_id:any){
+  return this.http.get(`${environment.baseUrl}/serviceprovider/projects/${_id}`)
 }
+
+
+
+};
  
+
+
