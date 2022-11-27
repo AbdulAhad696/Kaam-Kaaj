@@ -36,8 +36,9 @@ import { CustomermainpageComponent } from './UserSite/customermainpage/customerm
 import * as CanvasJSAngularChart from '../canvasjs.angular.component';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
-import {NgxMaskModule} from 'ngx-mask';
-import {Ng2SearchPipeModule} from 'ng2-search-filter'
+import { NgxMaskModule } from 'ngx-mask';
+import { Ng2SearchPipeModule } from 'ng2-search-filter'
+import { GooglePayButtonModule } from '@google-pay/button-angular';
 
 
 
@@ -66,6 +67,7 @@ import {Ng2SearchPipeModule} from 'ng2-search-filter'
   ],
   imports: [
     AppRoutingModule,
+    GooglePayButtonModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
@@ -73,6 +75,7 @@ import {Ng2SearchPipeModule} from 'ng2-search-filter'
     MatDialogModule,
     BrowserModule,
     ReactiveFormsModule,
+
     NgxRerenderModule,
     NgxMaskModule.forRoot(),
     Ng2SearchPipeModule
