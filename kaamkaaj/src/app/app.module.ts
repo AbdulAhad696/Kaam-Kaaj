@@ -35,10 +35,10 @@ import { GigCardComponent } from './service-provider/components/gig-card/gig-car
 import { CustomermainpageComponent } from './UserSite/customermainpage/customermainpage.component';
 import * as CanvasJSAngularChart from '../canvasjs.angular.component';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
-
-import {NgxMaskModule} from 'ngx-mask';
-import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import { BidOverlayComponent } from './service-provider/components/bid-overlay/bid-overlay.component'
+import { NgxMaskModule } from 'ngx-mask';
+import { Ng2SearchPipeModule } from 'ng2-search-filter'
+import { GooglePayButtonModule } from '@google-pay/button-angular';
 
 
 
@@ -68,6 +68,7 @@ import { BidOverlayComponent } from './service-provider/components/bid-overlay/b
   ],
   imports: [
     AppRoutingModule,
+    GooglePayButtonModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
@@ -75,6 +76,7 @@ import { BidOverlayComponent } from './service-provider/components/bid-overlay/b
     MatDialogModule,
     BrowserModule,
     ReactiveFormsModule,
+
     NgxRerenderModule,
     NgxMaskModule.forRoot(),
     Ng2SearchPipeModule
