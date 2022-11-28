@@ -28,6 +28,10 @@ export class CustomerLandingPageComponent implements OnInit {
     this.router.navigate(['/services'])
   } 
 
+  onServiceClick(service:any){
+    this.router.navigate([`customer-mainpage/serviceproviders/${service}`])
+    
+  }
 
   ngOnInit(): void {
     this.gettingServices();
