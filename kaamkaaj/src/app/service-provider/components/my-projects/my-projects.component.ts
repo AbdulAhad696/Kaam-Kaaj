@@ -3,6 +3,7 @@ import {  lastValueFrom } from 'rxjs';
 import { MyProjectService } from './../../../Services/myProjects/my-project.service';
 import { SignInService } from './../../../Services/sign-in/sign-in.service';
 import { environment } from 'src/environments/environment';
+import { SpinnerService } from './../../../Services/spinner/spinner.service';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./my-projects.component.css']
 })
 export class MyProjectsComponent implements OnInit {
-  constructor(private myProjectService:MyProjectService,private SignInService:SignInService) { }
+  constructor(private myProjectService:MyProjectService,private SignInService:SignInService,private SpinnerService:SpinnerService) { }
   date=new Date()
   serviceProviderData:any
   serviceProviderProjects:any
@@ -26,6 +27,7 @@ export class MyProjectsComponent implements OnInit {
 
   }
   async getServiceProviderProjects(){
+    this.SpinnerService.requestStarted()
     
     this.serviceProviderProjects=await lastValueFrom(this.myProjectService.getServiceProviderProjects(this.SignInService.getId()))
     this.serviceProviderProjects.forEach(element => {
@@ -45,6 +47,7 @@ export class MyProjectsComponent implements OnInit {
         element.timeStatus="zero"
       }
     });
+    this.SpinnerService.requestEnded()
   }
 
   fillterButtonClick(value:any){
