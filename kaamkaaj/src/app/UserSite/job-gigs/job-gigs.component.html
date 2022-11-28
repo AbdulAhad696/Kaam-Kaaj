@@ -9,19 +9,19 @@
     </div> 
     <div class="row">
         <!-- --------------------------------form----------------------- -->
-        <form ngNativeValidate (ngSubmit)="handleSubmit()" >
+        <form   ngNativeValidate (ngSubmit)="handleSubmit()" >
             <!-- --------------------------------services dropdown----------------------- -->
             <div class="formContainer">
                 <div class="row">
                     <div class="mb-3 ms-3">
                         <div class="btn-group mt-3">
-                            <button type="button" class="btn btn-secondary dropDownBtn dropdown-toggle-split text-dark" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">{{currentCategory}}</button>
-                            <div class="dropdown">
-                                <button  type="button" class="btn btn-secondary  dropdown-toggle-split dropDownIcon"
+                            <button  [disabled]="btnState" type="button" class="btn btn-secondary dropDownBtn dropdown-toggle-split text-dark" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">{{currentCategory}}</button>
+                            <div class="dropdown" >
+                                <button [disabled]="btnState" type="button" class="btn btn-secondary  dropdown-toggle-split dropDownIcon"
                                     id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa fa-arrow-circle-down fa-2xl"></i>
                                 </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"
+                                <ul  class="dropdown-menu" aria-labelledby="dropdownMenuButton1"
                                     *ngFor="let service of allServices ; let i = index">
                                     <li  *ngFor="let service of allServices ; let i = index"><a (click)="currentService(service.tittle)" class="dropdown-item"
                                             >{{service.tittle}}</a></li>
@@ -50,8 +50,8 @@
                     <div class="col-xxl-3">
                         <div class="mb-3 " id="amountdropdown">
                             <div class="btn-group mt-3">
-                                <button type="button"
-                                    class="btn btn-secondary dropDownBtn  dropdown-toggle-split timeDurationBtn text-dark" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">{{currentAmount}}</button>
+                                <button  type="button"
+                                    class="btn btn-secondary dropDownBtn  dropdown-toggle-split timeDurationBtn text-dark" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">{{currentAmount}}</button> 
                                 <div class="dropdown">
                                     <button type="button" class="btn btn-secondary  dropdown-toggle-split dropDownIcon"
                                         id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -70,7 +70,7 @@
 
                         <div class="mb-3  hide" id="amountFields">
                             <label for="exampleInputEmail1" class="form-label">Enter amount: </label>
-                            <input type="number" class="form-control" id="exampleInputEmail1"
+                            <input #amountNumberField required type="number" min="0" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp" required [(ngModel)]="estAmount" [ngModelOptions]="{standalone: true}" >
                         </div>
                     </div>
@@ -86,8 +86,8 @@
                                         <i class="fa fa-arrow-circle-down fa-2xl"></i>
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <li><a (click)="gettingTime('one week')" class="dropdown-item">one week</a></li>
-                                        <li><a (click)="gettingTime('two week')" class="dropdown-item" >two weeks</a></li>
+                                        <li><a (click)="gettingTime('5')" class="dropdown-item">5 days</a></li>
+                                        <li><a (click)="gettingTime('10')" class="dropdown-item" >10 days</a></li>
                                         <li (click)="timeToogle()"><a class="dropdown-item">others...</a></li>
                                     </ul>
                                 </div>
@@ -95,8 +95,8 @@
                         </div>
 
                         <div class="mb-3  hide" id="DurationFields">
-                            <label for="exampleInputEmail1" class="form-label">Enter duration:</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1"
+                            <label for="exampleInputEmail1" class="form-label">Enter number of days:</label>
+                            <input #durationNumberField required type="number" min="0" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp" required [(ngModel)]="estCompletionTime" [ngModelOptions]="{standalone: true}" >
                         </div>
                     </div>
@@ -112,14 +112,14 @@
                 <div class="row">
                     <div class="mb-3  ms-3 jobNameWidth">
                         <label for="formFileLg" class="form-label"></label>
-                        <input class="form-control form-control-lg" id="formFileLg" type="file" name="image" multiple (change)="selectMultipleImages($event)" />
+                        <input  #fileUploader class="form-control form-control-lg" id="formFileLg" type="file" name="image" multiple  (change)="selectMultipleImages($event)" accept="image/png, image/gif, image/jpeg,image/jpg"  />
                     </div>
                 </div>
                 <!-- --------------------------------submit button----------------------- -->
                 <div class="row ">
                     <div class="col-sm-12">
                         <div class="mb-3  ms-3 jobNameWidth text-center">
-                            <button type="submit" class="btn btn-success btn-lg">Submit</button>
+                            <button   type="submit" class="btn btn-success btn-lg">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -127,3 +127,4 @@
         </form>
     </div>
 </div>
+

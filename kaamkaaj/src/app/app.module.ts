@@ -38,8 +38,15 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 import {NgxMaskModule} from 'ngx-mask';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
-import { MyProjectsComponent } from './service-provider/components/my-projects/my-projects.component'
+import { MyProjectsComponent } from './service-provider/components/my-projects/my-projects.component';
 import { GooglePayButtonModule } from '@google-pay/button-angular';
+import { DatePipe } from '@angular/common';
+import { BidingsComponent } from './UserSite/bidings/bidings.component';
+
+
+
+
+
 
 
 
@@ -65,7 +72,8 @@ import { GooglePayButtonModule } from '@google-pay/button-angular';
     GigCardComponent,
     CustomermainpageComponent,
     CanvasJSChart,
-    MyProjectsComponent
+    MyProjectsComponent,
+    BidingsComponent
   ],
   imports: [
     AppRoutingModule,
@@ -82,7 +90,7 @@ import { GooglePayButtonModule } from '@google-pay/button-angular';
     NgxMaskModule.forRoot(),
     Ng2SearchPipeModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
