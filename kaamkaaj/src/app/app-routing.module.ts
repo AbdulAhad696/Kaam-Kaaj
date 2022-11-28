@@ -20,6 +20,7 @@ import { ServiceprovidermainComponent } from './service-provider/pages/servicepr
 import { JobGigsComponent } from './UserSite/job-gigs/job-gigs.component';
 import { CustomermainpageComponent } from './UserSite/customermainpage/customermainpage.component';
 import { MyProjectsComponent } from './service-provider/components/my-projects/my-projects.component';
+import { BidingsComponent } from './UserSite/bidings/bidings.component';
 
 
 
@@ -40,6 +41,7 @@ const routes: Routes = [
       { path: 'contactadmin', component: ContactUsComponent },
       { path: 'serviceproviders/:service', component: FilterBarComponent },
       { path: 'serviceprovider/profile/:email', component: ServiceProviderProfileComponent },
+      { path: 'job/bids/:id',component:BidingsComponent}
     ]
   },
 
@@ -63,7 +65,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-exports: [RouterModule]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
 export const routingcomponents = [SignUpComponent,

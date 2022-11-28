@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ViewBidsService } from '../../Services/viewBids/view-bids.service';
 import { environment } from 'src/environments/environment';
 
@@ -10,19 +10,37 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./bidings.component.css']
 })
 export class BidingsComponent implements OnInit {
-  constructor(private router: Router, private ViewBidsService: ViewBidsService) { }
+  constructor(private router: Router, private ViewBidsService: ViewBidsService, private ActivatedRoute: ActivatedRoute) { }
   allBids: any;
+  searchText:any
+  activeButton:string="amount"
+
+
 
   // ---------------------------getting  all bids data------------------------
   async gettingBidsData(id:string) {
     this.allBids = await lastValueFrom(this.ViewBidsService.fetchingBidsData(id))
-    for(let i = 0 ; i < this.allBids[0].serviveProviderDetails.length ; i++){
-      this.allBids[0].serviveProviderDetails[i].profilePicture = `${environment.baseUrl}/${this.allBids[0].serviveProviderDetails[i].profilePicture}`
+    this.allBids.forEach(element => {
+      element.serviveProviderDetails[0].profilePicture = environment.baseUrl + "/" + element.serviveProviderDetails[0].profilePicture
+    });
+    this.allBids.sort((a:any, b:any) => (a?.amount > b?.amount ? 1 : -1));
+  }
+
+  fillterButtonClick(value:any){
+    this.activeButton=value
+    switch(value){
+      case "amount":
+        this.allBids.sort((a:any, b:any) => (a?.amount > b?.amount ? 1 : -1));
+        break;
+      case "duration":
+        // this.allBids.sort((a:any, b:any) => (a?.duration > b?.duration ? 1 : -1));
+        break;
+
     }
   }
 
   ngOnInit(): void {
-    this.gettingBidsData('638145605b870b004f8d1510');
+    this.gettingBidsData(this.ActivatedRoute.snapshot.params['id']);
 
   }
 
