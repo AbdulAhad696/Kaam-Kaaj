@@ -1,14 +1,10 @@
-import { ArrayType } from '@angular/compiler';
 import { Component, OnChanges, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
-import { MatDialog } from "@angular/material/dialog"
-import { EditSPModalComponent } from '../../../edit-spmodal/edit-spmodal.component';
-
 import { SignInService } from './../../../Services/sign-in/sign-in.service';
 import { ActivatedRoute } from '@angular/router';
 import { ServiceProviderProfileService } from './../../../Services/serviceProviderProfile/service-provider-profile.service';
 import { SpinnerService } from './../../../Services/spinner/spinner.service';
 import { lastValueFrom } from 'rxjs';
-import { RouterLink } from '@angular/router';
+
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 
@@ -20,6 +16,7 @@ import { Router } from '@angular/router';
 })
 export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   usertype: any;
+  loggedInUserType: string | null;
   imageUrl: string
   domain: string = environment.baseUrl
   constructor(private spProfileService: ServiceProviderProfileService, private SpinnerService: SpinnerService, private signinService: SignInService, private ActivatedRoute: ActivatedRoute, private ServiceProviderProfileService: ServiceProviderProfileService ,private router:Router ) { }
@@ -72,6 +69,7 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
     this.getProfile(this.email)
     this.usertype = this.signinService.getusertype()
     console.log(this.usertype)
+    this.loggedInUserType = this.signinService.getusertype();
   }
   ngOnChanges(changes: SimpleChanges) {
     this.ngOnInit()

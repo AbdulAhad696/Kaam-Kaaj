@@ -45,8 +45,8 @@ export class SignInComponent implements OnInit {
       }
 
     }
-    else{
-      alert("Invalid credientials")
+    else {
+      alert("Account Not Found")
 
     }
   }

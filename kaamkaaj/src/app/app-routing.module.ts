@@ -19,6 +19,8 @@ import { SpViewjobsComponent } from './service-provider/pages/sp-viewjobs/sp-vie
 import { ServiceprovidermainComponent } from './service-provider/pages/serviceprovidermain/serviceprovidermain.component';
 import { JobGigsComponent } from './UserSite/job-gigs/job-gigs.component';
 import { CustomermainpageComponent } from './UserSite/customermainpage/customermainpage.component';
+import { MyProjectsComponent } from './service-provider/components/my-projects/my-projects.component';
+
 
 
 const routes: Routes = [
@@ -54,13 +56,14 @@ const routes: Routes = [
     children: [{ path: '', component: SpDashboardComponent },
     { path: 'viewjobs', component: SpViewjobsComponent },
     { path: 'contactadmin', component: ContactUsComponent },
-    { path: 'profile/:email', component: ServiceProviderProfileComponent }]
+    { path: 'profile/:email', component: ServiceProviderProfileComponent },
+    { path: 'myprojects' , component:MyProjectsComponent}]
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+exports: [RouterModule]
 })
 export class AppRoutingModule { }
 export const routingcomponents = [SignUpComponent,

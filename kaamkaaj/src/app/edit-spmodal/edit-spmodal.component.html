@@ -28,7 +28,7 @@
                     <label for="imageCapturer">
                         <i class='far fa-edit fa-1x'></i>
                     </label>
-                    <input type="file" accept="image/*" id="imageCapturer"
+                    <input type="file" accept="image/png, image/gif, image/jpeg,image/jfif" id="imageCapturer"
                         style="display: none;" (change)="useImage($event)">
                 </div>
 
@@ -58,25 +58,6 @@
                             value={{profile[0].serviceProviderDetails[0].address}}>
                     </div>
                 </div>
-                <div class="row editCategory mb-2 mt-2" style="width: 90%;">
-                    <div class="col-md-4 col-12 d-flex justify-content-start
-                        align-items-end">
-                        <label for="editingName">Category</label>
-                    </div>
-                    <div class="col-md-8 col-12 d-flex justify-content-center
-                        align-items-center">
-                        <select (change)="getCategory($event)"
-                            class="form-select" id="inputGroupSelect02"
-                            style="width:100%" [(ngModel)]="editedCategory">
-                            <option *ngFor="let service of allService" value=
-                                {{service.tittle}} [selected]="service.tittle ==
-                                profile[0].serviceDetails[0].tittle">
-                                {{service.tittle}}
-                            </option>
-                        </select>
-                    </div>
-                </div>
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-warning"

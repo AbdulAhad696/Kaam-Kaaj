@@ -33,9 +33,13 @@ import { SpViewjobsComponent } from './service-provider/pages/sp-viewjobs/sp-vie
 import { ServiceprovidermainComponent } from './service-provider/pages/serviceprovidermain/serviceprovidermain.component';
 import { GigCardComponent } from './service-provider/components/gig-card/gig-card.component';
 import { CustomermainpageComponent } from './UserSite/customermainpage/customermainpage.component';
+import * as CanvasJSAngularChart from '../canvasjs.angular.component';
+var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 import {NgxMaskModule} from 'ngx-mask';
-import {Ng2SearchPipeModule} from 'ng2-search-filter'
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import { MyProjectsComponent } from './service-provider/components/my-projects/my-projects.component';
+import { GooglePayButtonModule } from '@google-pay/button-angular';
 import { DatePipe } from '@angular/common';
 import { BidingsComponent } from './UserSite/bidings/bidings.component';
 
@@ -67,10 +71,13 @@ import { BidingsComponent } from './UserSite/bidings/bidings.component';
     ServiceprovidermainComponent,
     GigCardComponent,
     CustomermainpageComponent,
+    CanvasJSChart,
+    MyProjectsComponent,
     BidingsComponent
   ],
   imports: [
     AppRoutingModule,
+    GooglePayButtonModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
@@ -78,6 +85,7 @@ import { BidingsComponent } from './UserSite/bidings/bidings.component';
     MatDialogModule,
     BrowserModule,
     ReactiveFormsModule,
+
     NgxRerenderModule,
     NgxMaskModule.forRoot(),
     Ng2SearchPipeModule
