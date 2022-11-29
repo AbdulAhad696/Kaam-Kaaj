@@ -21,6 +21,8 @@ import { JobGigsComponent } from './UserSite/job-gigs/job-gigs.component';
 import { CustomermainpageComponent } from './UserSite/customermainpage/customermainpage.component';
 import { MyProjectsComponent } from './service-provider/components/my-projects/my-projects.component';
 import { BidingsComponent } from './UserSite/bidings/bidings.component';
+import { RunningJobsComponent } from './UserSite/running-jobs/running-jobs.component';
+import { PostedJobsComponent } from './UserSite/posted-jobs/posted-jobs.component';
 
 
 
@@ -41,7 +43,9 @@ const routes: Routes = [
       { path: 'contactadmin', component: ContactUsComponent },
       { path: 'serviceproviders/:service', component: FilterBarComponent },
       { path: 'serviceprovider/profile/:email', component: ServiceProviderProfileComponent },
-      { path: 'job/bids/:id',component:BidingsComponent}
+      {path:'jobs',component:PostedJobsComponent},
+      { path: 'jobs/bids/:id',component:BidingsComponent},
+      { path:'running',component:RunningJobsComponent}
     ]
   },
 

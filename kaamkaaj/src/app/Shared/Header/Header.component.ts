@@ -14,7 +14,9 @@ export class HeaderComponent implements OnInit {
   userbuttons=
   [{title:"Home",ref:"customer-mainpage"},
   {title:"Service",ref:"services"},
-  {title:"My Jobs",ref:"customer-mainpage/job/bids/638145605b870b004f8d1510"},
+  {title:"Posted Jobs",ref:"customer-mainpage/jobs/bids/638145605b870b004f8d1510"},
+  // {title:"Posted Jobs",ref:"customer-mainpage/jobs"},
+  {title:"Running Jobs",ref:"customer-mainpage/running"},
   {title:"Contact Admin",ref:"customer-mainpage/contactadmin"},
   {title:"Wallet",ref:"customer-mainpage/mywallet"},
   {title:"Add a Job",ref:"customer-mainpage/jobgigs"}];

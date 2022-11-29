@@ -1,7 +1,14 @@
-
-<div class="container-fluid d-flex justify-content-center pt-5 pb-3 body">
+<div class="pt-3 d-flex justify-content-center align-items-center">
+    <h1 class=" fs-2 m-0">View all jobs</h1>
+</div>
+<!-- filter -->
+<div></div>
+<!-- search -->
+<div></div>
+<!-- gigs -->
+<div class="container-fluid d-flex justify-content-center pt-3 pb-3 body">
     <div class="col-10">
-        {{child.getdata(this.response)}}
-        <app-gig-card #child></app-gig-card>
+        
+        <app-gig-card [Alljobgigs]="this.response" #child></app-gig-card>
     </div>
 </div>

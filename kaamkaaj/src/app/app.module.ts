@@ -43,12 +43,8 @@ import { MyProjectsComponent } from './service-provider/components/my-projects/m
 import { GooglePayButtonModule } from '@google-pay/button-angular';
 import { DatePipe } from '@angular/common';
 import { BidingsComponent } from './UserSite/bidings/bidings.component';
-
-
-
-
-
-
+import { RunningJobsComponent } from './UserSite/running-jobs/running-jobs.component';
+import { PostedJobsComponent } from './UserSite/posted-jobs/posted-jobs.component';
 
 
 @NgModule({
@@ -76,7 +72,9 @@ import { BidingsComponent } from './UserSite/bidings/bidings.component';
     BidOverlayComponent,
     ImgOverlayComponent,
     MyProjectsComponent,
-    BidingsComponent
+    BidingsComponent,
+    RunningJobsComponent,
+    PostedJobsComponent
   ],
   imports: [
     AppRoutingModule,

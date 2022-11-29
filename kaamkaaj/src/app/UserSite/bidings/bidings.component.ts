@@ -33,7 +33,7 @@ export class BidingsComponent implements OnInit {
         this.allBids.sort((a:any, b:any) => (a?.amount > b?.amount ? 1 : -1));
         break;
       case "duration":
-        // this.allBids.sort((a:any, b:any) => (a?.duration > b?.duration ? 1 : -1));
+        this.allBids.sort((a:any, b:any) => (a?.duration > b?.duration ? 1 : -1));
         break;
 
     }
