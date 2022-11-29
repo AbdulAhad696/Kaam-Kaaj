@@ -37,6 +37,7 @@ import { CustomermainpageComponent } from './UserSite/customermainpage/customerm
 import {NgxMaskModule} from 'ngx-mask';
 import {Ng2SearchPipeModule} from 'ng2-search-filter'
 import { DatePipe } from '@angular/common';
+import { BidingsComponent } from './UserSite/bidings/bidings.component';
 
 
 
@@ -65,7 +66,8 @@ import { DatePipe } from '@angular/common';
     SpViewjobsComponent,
     ServiceprovidermainComponent,
     GigCardComponent,
-    CustomermainpageComponent
+    CustomermainpageComponent,
+    BidingsComponent
   ],
   imports: [
     AppRoutingModule,
