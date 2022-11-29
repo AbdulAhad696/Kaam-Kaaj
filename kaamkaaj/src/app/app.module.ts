@@ -36,10 +36,18 @@ import { CustomermainpageComponent } from './UserSite/customermainpage/customerm
 import * as CanvasJSAngularChart from '../canvasjs.angular.component';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 import { BidOverlayComponent } from './service-provider/components/bid-overlay/bid-overlay.component'
-import { NgxMaskModule } from 'ngx-mask';
-import { Ng2SearchPipeModule } from 'ng2-search-filter'
-import { GooglePayButtonModule } from '@google-pay/button-angular';
 import { ImgOverlayComponent } from './service-provider/components/img-overlay/img-overlay.component';
+import {NgxMaskModule} from 'ngx-mask';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import { MyProjectsComponent } from './service-provider/components/my-projects/my-projects.component';
+import { GooglePayButtonModule } from '@google-pay/button-angular';
+import { DatePipe } from '@angular/common';
+import { BidingsComponent } from './UserSite/bidings/bidings.component';
+
+
+
+
+
 
 
 
@@ -66,7 +74,9 @@ import { ImgOverlayComponent } from './service-provider/components/img-overlay/i
     CustomermainpageComponent,
     CanvasJSChart,
     BidOverlayComponent,
-    ImgOverlayComponent
+    ImgOverlayComponent,
+    MyProjectsComponent,
+    BidingsComponent
   ],
   imports: [
     AppRoutingModule,
@@ -83,7 +93,7 @@ import { ImgOverlayComponent } from './service-provider/components/img-overlay/i
     NgxMaskModule.forRoot(),
     Ng2SearchPipeModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

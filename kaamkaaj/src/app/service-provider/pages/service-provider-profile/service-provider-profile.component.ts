@@ -7,6 +7,7 @@ import { SpinnerService } from './../../../Services/spinner/spinner.service';
 import { lastValueFrom } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-service-provider-profile',
@@ -19,9 +20,10 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   loggedInUserType: string | null;
   imageUrl: string
   domain: string = environment.baseUrl
-  constructor(private spProfileService: ServiceProviderProfileService, private SpinnerService: SpinnerService, private signinService: SignInService, private ActivatedRoute: ActivatedRoute, private ServiceProviderProfileService: ServiceProviderProfileService) { }
+  constructor(private spProfileService: ServiceProviderProfileService, private SpinnerService: SpinnerService, private signinService: SignInService, private ActivatedRoute: ActivatedRoute, private ServiceProviderProfileService: ServiceProviderProfileService ,private router:Router ) { }
   email: any
   serviceProviderProfile: any
+  currentServiceProviderCategory:any
 
   async useImage(event: any) {
     var formData = new FormData();
@@ -42,6 +44,8 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
     this.serviceProviderProfile[0].profilePicture = environment.baseUrl + "/" + this.serviceProviderProfile[0].profilePicture
     console.log(this.serviceProviderProfile)
     this.SpinnerService.requestEnded()
+    this.currentServiceProviderCategory = this.serviceProviderProfile[0].serviceDetails[0].tittle;
+
   }
   openModal() {
 
@@ -57,6 +61,10 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
     }
   }
 
+    // -------------------------handling sending proposal-------------------------
+    handleSendProposal(){
+      this.router.navigate([`customer-mainpage/jobgigs/${this.serviceProviderProfile[0].serviceDetails[0].tittle}`])
+    }
   ngOnInit(): void {
     this.email = this.ActivatedRoute.snapshot.params['email']
     this.getProfile(this.email)
@@ -66,6 +74,6 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   }
   ngOnChanges(changes: SimpleChanges) {
     this.ngOnInit()
-
   }
+  
 }

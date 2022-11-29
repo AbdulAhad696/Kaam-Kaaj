@@ -1,0 +1,125 @@
+<div class="container">
+    <!-- ---------------------------job bidding haeding----------------------- -->
+    <div class="row">
+        <h1 class=" d-flex m-4 justify-content-center align-items-center">Job Biddings</h1>
+    </div>
+
+    <div class="row m-4 mb-0 filter">
+        <!-- --------------------Search Bar------------------------------ -->
+
+        <div class="col-md-6">
+            <div class="input-group">
+                <div class="col-12 d-flex w-100  justify-content-end">
+                    <div class="form-outline searchBox">
+                        <input placeholder="search..." [(ngModel)]="searchText" type="search"
+                            class="form-control searchFieled" />
+                        <label class="form-label" for="form1"></label>
+                    </div>
+                    <button type="button" class="btn btn-primary searchBtn ">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- --------------------Filter Buttons------------------------------ -->
+        <div class="col-md-6 d-flex " id="filterButtons">
+            <button (click)="fillterButtonClick('amount')"
+                class="{{'btn btn-outline-dark  filterButton '+ (activeButton=='amount'?'active':'')}}">Amount</button>
+            <button (click)="fillterButtonClick('duration')"
+                class="{{'btn btn-outline-dark  filterButton '+ (activeButton=='duration'?'active':'')}}">Duration</button>
+        </div>
+
+    </div>
+
+    <div class="row ">
+        <div class="col-lg-8 mt-4  w-100 ">
+            <!-- --------------------No record found------------------------------ -->
+            <div class="default">
+                <div class="m-5 d-flex justify-content-center flex-column">
+                    <img src="../../../assets/noRecordFound.svg" alt="Avater">
+                    <h1 class="record">No record found</h1>
+                </div>
+            </div>
+            <div class="row shadow-lg rounded-3 review p-4 background mb-3 ms-4 me-4 "
+                *ngFor="let bid of allBids  | filter:searchText">
+                <div class="col-md-6">
+                    <div class="d-flex flex-row">
+                        <!-- --------------------------service provider profile pic------------------ -->
+                        <div class="reviewerImageDiv centerColumn ">
+                            <img src={{bid.serviveProviderDetails[0].profilePicture}} alt="profilePicture"
+                                class=" reviewerImage">
+                        </div>
+                        <div class="d-flex flex-column ps-3">
+                            <!-- -----------------------service provider username------------------ -->
+                            <div class="">
+                                <h1><strong>{{bid.userDetails[0].userName}}</strong></h1>
+                            </div>
+                            <!-- --------------------------service--------------------------- -->
+                            <!-- <div class=" reviewerName">
+                                <span>{{bid.serviveDetails[0].tittle}}</span>
+                            </div> -->
+                            <!-- ------------------------total jobs completed---------------------- -->
+                            <div class="">
+                                <span>Jobs Completed: {{bid.serviveProviderDetails[0].jobsCompleted}}</span>
+                            </div>
+                            <!-- --------------------------service provider experience----------------------- -->
+                            <div class="">
+                                <span>Experience: {{bid.serviveProviderDetails[0].experience}} years</span>
+                            </div>
+                            <!-- -------------------------service provider address----------------------- -->
+                            <div class="">
+                                <i class="bi bi-geo-alt-fill location"></i> {{bid.userDetails[0].address}}
+                            </div>
+                            <!-- -------------------------service provider rating-------------------- -->
+                            <div class="">
+                                <div class="rating">
+                                    <h4 class="mb-1">Rating</h4>
+                                    {{child.setSelectedValue(bid.serviveProviderDetails[0].rating | number:
+                                    '1.0-0')}}
+                                    <app-rating #child></app-rating>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="col-md-12 text-center">
+                        <div class="">
+                            <!-- ----------------------------bid amount-------------------------- -->
+                            <span>
+                                <h1 class="priceColor mb-0"><strong>PKR
+                                        {{bid.amount}}</strong>
+                                </h1>
+                            </span>
+                            <!-- -------------------------bid duration------------------------- -->
+                            <span>
+                                <h2>Completion Time: {{bid.duration}}</h2>
+                            </span>
+                        </div>
+                        <!-- ----------------------accept, decline buttons----------------------- -->
+                        <div class="">
+                            <button type="button" class="btn declineBtn w-50">Decline</button>
+                            <button type="button" class="btn acceptBtn w-50 ">Accept</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
