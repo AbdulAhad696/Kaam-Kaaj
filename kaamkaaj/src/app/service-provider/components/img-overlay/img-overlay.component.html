@@ -1,0 +1,19 @@
+<div class="modal" id="imgoverlay">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title mb-0">Images</h2>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid ps-3 pt-3 row d-flex justify-content-around m-0">
+                    <div class="col-sm-6 pb-2" *ngFor="let pic of images">
+                        <img class="img-fluid imges" src="{{base+'/'+pic}}" alt="N/A"/>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" (click)="goBacktoBid()">Go back</button>
+            </div>
+        </div>
+    </div>
+</div>

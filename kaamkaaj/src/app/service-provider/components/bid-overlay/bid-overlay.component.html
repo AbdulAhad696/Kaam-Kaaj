@@ -1,3 +1,4 @@
+<app-img-overlay [reOpenModal]="this.reOpenModal" [images]="this.gigImages"></app-img-overlay>
 <form class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true" ngNativeValidate>
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -17,25 +18,27 @@
                         <!-- <h1>{{gig[0]}}</h1> -->
                     </div>
 
-
                     <div class="col-md-10 col-sm-9 d-flex align-items-center">
                         <p class="m-0 ps-3 pt-3">{{this.gig?.description}}</p>
                     </div>
 
 
-                    <div class="col-md-4 d-flex">
-                        <h4 class="m-0 ps-3 pt-3">{{this.gig?.jobPostDate}}</h4>
+                    <div class="col-md-10 d-flex row pt-3">
+                        <h4 class="col-7 mb-0 align-items-center d-flex ps-3 justify-content-center">{{this.gig?.jobPostDate}}</h4>
+                        <div class="col-5 ps-0">
+                            <button class="btn btn-dark" *ngIf="this.gig?.gigPics[0]!=null" (click)="openImgOverlay(this.gig?.gigPics)" type="button" >View Images</button>
+                        </div>
                     </div>
 
                     <div class="ps-3 pt-3 row d-flex">
                         <div class="col-md-6 col-sm-10 d-flex flex-row">
                             <p class="m-0">Client Rating:</p>
-                            {{child.setSelectedValue(this.gig?.clientDetails[0].rating | number:'1.0-0')}}
+                            {{child.setSelectedValue(this.gig?.clientDetails[0]?.rating | number:'1.0-0')}}
                             <app-rating class="star" #child></app-rating>
                         </div>
                     </div>
                     <div class="ps-3 pb-3">
-                        <label style="color: grey;">Budget:{{this.gig?.estAmount}}</label>
+                        <label style="color: grey;">{{this.gig?.estAmount}}</label>
                     </div>
                     <div class="p-3 pt-0 row">
                         <div class="col-sm-6">
@@ -44,7 +47,7 @@
                             style="width:10vw ;" required [(ngModel)]="bidamount" [ngModelOptions]="{standalone:true}"/>
                         </div>
                         <div class="col-sm-6">
-                            <input  placeholder="Duration"  required [(ngModel)]="bidDuration" [ngModelOptions]="{standalone:true}" type="date" min={{this.date}}/>
+                            <input  placeholder="Duration"  required [(ngModel)]="bidDuration" [ngModelOptions]="{standalone:true}" type="number"/>
                         </div>
                     </div>
                 </div>

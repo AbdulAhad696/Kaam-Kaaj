@@ -21,11 +21,11 @@ export class ViewjobService {
   async getjobs(cat:string){
     return await lastValueFrom(this.http.get(`${environment.baseUrl}/service-provider/viewjobs/categoryjobs/${cat}`))
   }
-  async submitbid(bidamount:Number,id1:string){
+  async submitbid(bidamount:number,id1:string,duration:number){
     let mail = await this.signinservice.getemail()
-    let dura = "4 weeks"
+    
     let obj={
-      duration:dura,
+      duration:duration,
       amount:bidamount,
       email: mail,
       id:id1

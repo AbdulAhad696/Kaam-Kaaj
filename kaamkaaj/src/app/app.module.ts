@@ -39,6 +39,7 @@ import { BidOverlayComponent } from './service-provider/components/bid-overlay/b
 import { NgxMaskModule } from 'ngx-mask';
 import { Ng2SearchPipeModule } from 'ng2-search-filter'
 import { GooglePayButtonModule } from '@google-pay/button-angular';
+import { ImgOverlayComponent } from './service-provider/components/img-overlay/img-overlay.component';
 
 
 
@@ -64,7 +65,8 @@ import { GooglePayButtonModule } from '@google-pay/button-angular';
     GigCardComponent,
     CustomermainpageComponent,
     CanvasJSChart,
-    BidOverlayComponent
+    BidOverlayComponent,
+    ImgOverlayComponent
   ],
   imports: [
     AppRoutingModule,

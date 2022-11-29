@@ -1,5 +1,5 @@
 import { _isNumberValue } from '@angular/cdk/coercion';
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ViewjobService } from 'src/app/Services/viewjob/viewjob.service';
 
 @Component({
@@ -7,17 +7,18 @@ import { ViewjobService } from 'src/app/Services/viewjob/viewjob.service';
   templateUrl: './bid-overlay.component.html',
   styleUrls: ['./bid-overlay.component.css']
 })
-export class BidOverlayComponent implements OnInit {
+export class BidOverlayComponent implements OnInit,OnChanges {
   @Input() gig: any;
+  // hiddenImgOverlay:boolean
   bidamount:string
   bidDuration:string
-  private amount:Number
-  private duration:string
-  date:Date
-   currentDate:string
+  private amount:number
+  private duration:number
+  // date:date
+  currentDate:string
+  gigImages:[]
   constructor(private viewjobservice:ViewjobService) { 
-    this.date = new Date();
-    // this.currentDate=this.datepipe.transform(this.date, 'yyyy-MM-dd') || "";
+    // this.hiddenImgOverlay=false;
   }
 
   ngOnInit(): void {
@@ -30,11 +31,28 @@ export class BidOverlayComponent implements OnInit {
       alert("Enter an amount less than the budget!")
     }
     else{
-      alert("good oye")
+      alert("Good Oye")
       this.closeModal()
       this.amount=parseInt(this.bidamount)
       this.bidamount=""
-      this.viewjobservice.submitbid(this.amount,this.gig._id)
+      this.duration=parseInt(this.bidDuration)
+      this.bidDuration=""
+      this.viewjobservice.submitbid(this.amount,this.gig._id,this.duration)
     }
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.gig)
+  }
+  reOpenModal(){
+    $('#exampleModalCenter').modal('toggle') 
+    $('#imgoverlay').modal('toggle')
+    this.gigImages=[]
+  }
+  openImgOverlay(gigpics){
+    this.gigImages = gigpics
+    // this.hiddenImgOverlay=true
+    
+    $('#exampleModalCenter').modal('toggle')
+    $('#imgoverlay').modal('toggle')
   }
 }
