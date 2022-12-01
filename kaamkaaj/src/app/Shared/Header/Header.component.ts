@@ -15,9 +15,11 @@ export class HeaderComponent implements OnInit {
   [{title:"Home",ref:"customer-mainpage"},
   {title:"Service",ref:"services"},
   {title:"My Jobs",ref:"customer-mainpage/job/bids/638145605b870b004f8d1510"},
+  {title:"My Projects",ref:"customer-mainpage/myprojects"},
   {title:"Contact Admin",ref:"customer-mainpage/contactadmin"},
   {title:"Wallet",ref:"customer-mainpage/mywallet"},
-  {title:"Add a Job",ref:"customer-mainpage/jobgigs"}];
+  {title:"Add a Job",ref:"customer-mainpage/jobgigs"}
+  ];
   spbuttons= 
   [{title:"Dashboard",ref:"service-provider"},
   {title:"View Jobs",ref:"service-provider/viewjobs"},

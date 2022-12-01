@@ -42,6 +42,7 @@ import { MyProjectsComponent } from './service-provider/components/my-projects/m
 import { GooglePayButtonModule } from '@google-pay/button-angular';
 import { DatePipe } from '@angular/common';
 import { BidingsComponent } from './UserSite/bidings/bidings.component';
+import { ClientProjectsComponent } from './UserSite/client-projects/client-projects.component';
 
 
 
@@ -73,7 +74,8 @@ import { BidingsComponent } from './UserSite/bidings/bidings.component';
     CustomermainpageComponent,
     CanvasJSChart,
     MyProjectsComponent,
-    BidingsComponent
+    BidingsComponent,
+    ClientProjectsComponent
   ],
   imports: [
     AppRoutingModule,

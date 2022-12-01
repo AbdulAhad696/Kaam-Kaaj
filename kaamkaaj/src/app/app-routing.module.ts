@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CustomerLandingPageComponent } from './UserSite/customer-landing-page/customer-landing-page.component';
 import { ServiceProvidersComponent } from './UserSite/service-providers/service-providers.component';
@@ -21,6 +21,8 @@ import { JobGigsComponent } from './UserSite/job-gigs/job-gigs.component';
 import { CustomermainpageComponent } from './UserSite/customermainpage/customermainpage.component';
 import { MyProjectsComponent } from './service-provider/components/my-projects/my-projects.component';
 import { BidingsComponent } from './UserSite/bidings/bidings.component';
+import { ClientProjectsComponent } from './UserSite/client-projects/client-projects.component';
+
 
 
 
@@ -41,7 +43,8 @@ const routes: Routes = [
       { path: 'contactadmin', component: ContactUsComponent },
       { path: 'serviceproviders/:service', component: FilterBarComponent },
       { path: 'serviceprovider/profile/:email', component: ServiceProviderProfileComponent },
-      { path: 'job/bids/:id',component:BidingsComponent}
+      { path: 'job/bids/:id',component:BidingsComponent},
+      { path: 'myprojects',component:ClientProjectsComponent}
     ]
   },
 
