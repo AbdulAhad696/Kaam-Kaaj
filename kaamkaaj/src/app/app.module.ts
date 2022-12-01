@@ -45,6 +45,13 @@ import { DatePipe } from '@angular/common';
 import { BidingsComponent } from './UserSite/bidings/bidings.component';
 import { RunningJobsComponent } from './UserSite/running-jobs/running-jobs.component';
 import { PostedJobsComponent } from './UserSite/posted-jobs/posted-jobs.component';
+import { ClientProjectsComponent } from './UserSite/client-projects/client-projects.component';
+
+
+
+
+
+
 
 
 @NgModule({
@@ -74,7 +81,8 @@ import { PostedJobsComponent } from './UserSite/posted-jobs/posted-jobs.componen
     MyProjectsComponent,
     BidingsComponent,
     RunningJobsComponent,
-    PostedJobsComponent
+    PostedJobsComponent,
+    ClientProjectsComponent
   ],
   imports: [
     AppRoutingModule,
