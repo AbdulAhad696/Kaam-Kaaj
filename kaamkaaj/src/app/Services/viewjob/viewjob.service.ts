@@ -33,4 +33,8 @@ export class ViewjobService {
     await lastValueFrom(this.http.patch(`${environment.baseUrl}/service-provider/viewjobs`,obj))
     return
   }
+  getClientJobs(userId:any){
+    return this.http.get(`${environment.baseUrl}/customer-mainpage/jobs/${userId}`);
+    
+  }
 }

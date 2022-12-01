@@ -5,3 +5,32 @@
 .star{
     height:20px !important
 }
+.default:not(:only-child) {
+    display: none;
+ }
+ .record{
+    color: #b3b3b3;
+    text-align: center;
+}
+  /* Search Field */
+  .searchBtn {
+    height: 38px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.searchFieled{
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+input:focus { 
+    outline: none !important;
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;
+ }
+ 
+@media only screen and (max-width: 985px) {
+    .searchBox {
+        width: 100%;
+        height: 100%;
+    }
+}

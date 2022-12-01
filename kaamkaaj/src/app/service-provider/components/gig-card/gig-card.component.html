@@ -1,34 +1,71 @@
-<app-bid-overlay [gig]="editgig"></app-bid-overlay>
-<div class="container-fluid shadow-lg gig-card rounded-3 mt-3 pb-3" *ngFor="let gig of Alljobgigs">
-    <div class="row">
-        <div class="col-md-10 col-sm-9  d-flex align-items-center">
-            <h1 class="m-0 p-3">{{gig.title}}</h1>
-        </div>
-        <div class="col-md-1 col-sm-2 d-flex align-items-center">
-            <h3 class="m-0 p-3">{{gig.serviceDetails[0].tittle}}</h3>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-10 col-sm-9 d-flex align-items-center">
-            <p class="m-0 p-3">{{gig.description}}</p>
-        </div>
-        <div class="col-md-1 col-sm-2 d-flex align-items-center ps-4">
-            <button type="button" (click)="openBidOverlay(gig)" class="btn btn-success rounded-4 ps-4 pe-4">Bid</button>
+<app-bid-overlay *ngIf="loggedin=='Worker'" [gig]="editgig"></app-bid-overlay>
+
+<div class="row d-flex pt-3 pb-3">
+    <!-- filter -->
+    <div class="col-md-6 mb-0 filter pb-3">
+        <div class="col-12 d-flex " id="filterButtons">
+            <button (click)="filterButtonClick('amount')"
+                class="{{'btn btn-outline-dark  filterButton '+ (activeButton=='amount'?'active':'')}}">Amount</button>
+            <button (click)="filterButtonClick('duration')"
+                class="{{'btn btn-outline-dark  filterButton '+ (activeButton=='duration'?'active':'')}}">Duration</button>
         </div>
     </div>
-    <div class="ps-3 pt-3 row d-flex justify-content-around">
-        <div class="col-lg-4 col-md-6 col-sm-6 d-flex flex-row">
-            <p class="m-0">Client Rating:</p>
-            {{child.setSelectedValue(gig?.clientDetails[0]?.rating | number:'1.0-0')}}
-            <app-rating class="star" #child></app-rating>
-        </div>
-        <div class="col-lg-5 col-md-6 col-sm-6 d-flex row">
-            <i class="p-0 col-1 align-items-center d-flex justify-content-center bi bi-geo-alt-fill"></i>
-            <h3 class="col-11 m-0 ps-0">{{gig.jobAddress}}</h3>
-        </div>
-        <div class="col-lg-3 d-flex">
-            <i class="p-0 align-items-center d-flex justify-content-center col-1 bi bi-clock-fill"></i>
-            <h3 class="col-11 m-0 ps-0">{{gig.jobPostDate}}</h3>
+    <!-- search bar -->
+    <div class="col-md-6">
+        <div class="input-group">
+            <div class="col-12 d-flex w-100 justify-content-end">
+                <div class="form-outline searchBox">
+                    <input placeholder="search..." [(ngModel)]="searchText" type="search"
+                        class="form-control searchFieled" />
+                    <label class="form-label" for="form1"></label>
+                </div>
+                <button type="button" class="btn btn-primary searchBtn ">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
         </div>
     </div>
+</div>
+<div>
+    <div class="default">
+        <div class="m-5 d-flex justify-content-center flex-column">
+            <img src="../../../assets/noRecordFound.svg" alt="Avater">
+            <h1 class="record">No record found</h1>
+        </div>
+    </div>
+    <div class="container-fluid shadow-lg gig-card rounded-3 mt-3 pb-3" *ngFor="let gig of Alljobgigs | filter:searchText">
+        <div class="row">
+            <div class="col-md-10 col-sm-9  d-flex align-items-center">
+                <h1 class="m-0 p-3">{{gig.title}}</h1>
+            </div>
+            <div class="col-md-1 col-sm-2 d-flex align-items-center">
+                <h3 class="m-0 p-3">{{gig.serviceDetails[0].tittle}}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-sm-9 d-flex align-items-center">
+                <p class="m-0 p-3">{{gig.description}}</p>
+            </div>
+            <div class="col-md-1 col-sm-2 d-flex align-items-center ps-4">
+                <button *ngIf="loggedin=='Worker'" type="button" (click)="openBidOverlay(gig)" class="btn btn-success rounded-4 ps-4 pe-4">Bid</button>
+                <button routerLink="/customer-mainpage/jobs/bids/{{this.gig?._id}}" *ngIf="loggedin=='Client'" type="button" class="btn btn-success rounded-4 ps-4 pe-4">View Bids</button>
+            </div>
+        </div>
+        <div class="ps-3 pt-3 row d-flex justify-content-around">
+            <div class="col-lg-4 col-md-6 col-sm-6 d-flex flex-row">
+                <p class="m-0">Client Rating:</p>
+                {{child.setSelectedValue(gig?.clientDetails[0]?.rating | number:'1.0-0')}}
+                <app-rating class="star" #child></app-rating>
+            </div>
+            <div class="col-lg-5 col-md-6 col-sm-6 d-flex row">
+                <i class="p-0 col-1 align-items-center d-flex justify-content-center bi bi-geo-alt-fill"></i>
+                <h3 class="col-11 m-0 ps-0">{{gig.jobAddress}}</h3>
+            </div>
+            <div class="col-lg-3 d-flex">
+                <i class="p-0 align-items-center d-flex justify-content-center col-1 bi bi-clock-fill"></i>
+                <h3 class="col-11 m-0 ps-0">{{gig.jobPostDate}}</h3>
+            </div>
+        </div>
+    </div>
+    
 </div>

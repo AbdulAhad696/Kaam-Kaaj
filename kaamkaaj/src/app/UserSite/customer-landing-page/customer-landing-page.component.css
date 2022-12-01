@@ -44,10 +44,8 @@
 }
 
 /* ----------------------------paragraph styling------------------------ */
-.paraProperties {
-    margin-top: 30px;
-    font-size: large;
-    padding: 40px;
+.paraRow{
+    height: 10vh !important;
 }
 
 

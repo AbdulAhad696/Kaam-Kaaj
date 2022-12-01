@@ -11,7 +11,7 @@ export class SpViewjobsComponent implements OnInit {
   response:any
   categ:Object
   cat:string
-  activeButton:string="amount"
+  searchText:string
   constructor(private viewjob:ViewjobService) { }
 
   async ngOnInit() {
@@ -26,19 +26,9 @@ export class SpViewjobsComponent implements OnInit {
 
   async getjobs(category:any){
     this.response = await (this.viewjob.getjobs(category)) 
+    console.log(this.response)
   }
 
-  filterButtonClick(value:any){
-    this.activeButton=value
-    switch(value){
-      case "amount":
-        this.response.sort((a:any, b:any) => (a?.amount > b?.amount ? 1 : -1));
-        break;
-      case "duration":
-        this.response.sort((a:any, b:any) => (a?.duration > b?.duration ? 1 : -1));
-        break;
-
-    }
-  }
+  
 
 }
