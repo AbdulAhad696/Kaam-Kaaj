@@ -10,18 +10,21 @@ import {HttpClient,HttpParams} from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { ViewChild,ElementRef } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { Inject }  from '@angular/core';
+import { DOCUMENT } from '@angular/common'; 
 
 @Component({
   selector: 'app-job-gigs',
   templateUrl: './job-gigs.component.html',
   styleUrls: ['./job-gigs.component.css']
+  
 })
 export class JobGigsComponent implements OnInit {
   @ViewChild('fileUploader') fileUploader:ElementRef;
   @ViewChild("amountNumberField") amountNumberField;
   @ViewChild("durationNumberField") durationNumberField;
 
-  constructor( private GetServicesService:GetServicesService , private AddJobService:AddJobService , private SignInService:SignInService , private SpinnerService: SpinnerService , private http: HttpClient  , private route: ActivatedRoute , private datePipe:DatePipe ) { }
+  constructor( private GetServicesService:GetServicesService , private AddJobService:AddJobService , private SignInService:SignInService , private SpinnerService: SpinnerService , private http: HttpClient  , private route: ActivatedRoute , private datePipe:DatePipe,  @Inject(DOCUMENT) document: Document ) { }
 // -----------------------variable required--------------------------
   allServices: any;
   jobData:any;
@@ -44,7 +47,7 @@ export class JobGigsComponent implements OnInit {
   // spRating:number;
   status:string;
   jobAddress:string;
-  estCompletionTime:number;
+  estCompletionTime:Date;
   category:any
   // jobAssignedTo:any;
   jobAssignedBy:any;
@@ -74,12 +77,6 @@ export class JobGigsComponent implements OnInit {
     this.currentAmount = String(amount);
   }
 
-  // ------------------------------getting selected time----------------------
-  gettingTime(duration:string){
-    this.estCompletionTime = Number(duration);
-    this.currentDuration = String(duration);
-  }
-
 // -----------------------------------form submission--------------------------
 async handleSubmit(){
     const now = Date.now();
@@ -91,7 +88,7 @@ async handleSubmit(){
       estAmount:this.estAmount,
       status:"punched",
       jobAddress:this.jobAddress,
-      estCompletionTime:this.estCompletionTime,
+      estCompletionTime:(this.estCompletionTime),
       category:this.category,
       jobAssignedBy:this.jobAssignedBy,
       gigPics: this.gigPics
@@ -147,6 +144,7 @@ async handleSubmit(){
     document.getElementById("DurationFields")?.classList.remove("hide");
     this.durationNumberField.nativeElement.focus();
   }
+  
 
 // -----------------------------uploading images----------------------------
   selectMultipleImages(event){
@@ -162,8 +160,26 @@ async handleSubmit(){
       }
     }
     return this.http.post<any>(`${environment.baseUrl}/addJobs/multipleImages` , formData)  }
+  
+    gettingCurrentDate(){
+      var dtToday = new Date();
+      var month = dtToday.getMonth() + 1;
+      var day = dtToday.getDate();
+      var year = dtToday.getFullYear();
+      if(month < 10){
+        month = Number('0' + month.toString());
+      }
+      if(day < 10){
+        day = Number('0' + day.toString());
+      }
+      var currentDate= year + '-' + month + '-' + day;
+      (<HTMLInputElement>document.getElementById('date')).min = currentDate;
+    }
+      
+
 
   ngOnInit(): void {
+    this.gettingCurrentDate()
     this.gettingServices();
     this.jobAssignedBy = this.SignInService.getId()
 // ------------------------showing category ofspecific service provider-----------------------------

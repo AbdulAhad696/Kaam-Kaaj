@@ -3,6 +3,12 @@ import { environment } from '../../../environments/environment';
 import { Router,NavigationEnd,Event } from '@angular/router';
 
 
+
+import { Inject }  from '@angular/core';
+import { DOCUMENT } from '@angular/common'; 
+
+
+
 @Component({
   selector: 'app-filter-bar',
   templateUrl: './filter-bar.component.html',
@@ -10,7 +16,7 @@ import { Router,NavigationEnd,Event } from '@angular/router';
 })
 export class FilterBarComponent implements OnInit {
   trigger=0;
-  constructor(private router:Router) {
+  constructor(private router:Router ,   @Inject(DOCUMENT) document: Document) {
     // this.router.events.subscribe((event: Event) => {
     //   if (event instanceof NavigationEnd) {
     //     this.trigger++;
@@ -19,8 +25,22 @@ export class FilterBarComponent implements OnInit {
    }
   baseUrlFrontEnd=environment.baseUrlFronrEnd
 
+
+
+
+
+
+  filterBarToggle(){
+    (<HTMLInputElement>document.getElementById('sidebar')).classList.toggle('active')
+
+    
+  }
+
   ngOnInit(): void {
     // console.log(this.trigger)
   }
+
+
+
 
 }

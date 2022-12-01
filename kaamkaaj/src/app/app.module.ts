@@ -43,13 +43,6 @@ import { GooglePayButtonModule } from '@google-pay/button-angular';
 import { DatePipe } from '@angular/common';
 import { BidingsComponent } from './UserSite/bidings/bidings.component';
 
-
-
-
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +66,8 @@ import { BidingsComponent } from './UserSite/bidings/bidings.component';
     CustomermainpageComponent,
     CanvasJSChart,
     MyProjectsComponent,
-    BidingsComponent
+    BidingsComponent,
+
   ],
   imports: [
     AppRoutingModule,
@@ -88,7 +82,8 @@ import { BidingsComponent } from './UserSite/bidings/bidings.component';
 
     NgxRerenderModule,
     NgxMaskModule.forRoot(),
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+  
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],
