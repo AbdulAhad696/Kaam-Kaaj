@@ -12,71 +12,62 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6 mb-3">
-                        <input placeholder="Full Name" type="text" required
-                            [(ngModel)]="userName"
-                            maxlength="19"
-                            [ngModelOptions]="{standalone: true}"
-                            class="name form-control border-start-0 border-end-0
-                            border-top-0 rounded-0" id="inputUsername" >
+                        <input placeholder="Full Name" type="text" required [(ngModel)]="userName" maxlength="19"
+                            [ngModelOptions]="{standalone: true}" class="name form-control border-start-0 border-end-0
+                            border-top-0 rounded-0" id="inputUsername">
                     </div>
                     <div class="col-lg-6 d-flex justify-content-center mb-3">
-                        <input placeholder="Email" type="email" required
-                            [(ngModel)]="email" [ngModelOptions]="{standalone:
-                            true}"
-                            class="form-control border-start-0 border-end-0
+                        <input placeholder="Email" type="email" required [(ngModel)]="email" [ngModelOptions]="{standalone:
+                            true}" class="form-control border-start-0 border-end-0
                             border-top-0 rounded-0" id="inputEmail">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-lg-6 d-flex justify-content-center mb-3">
-                        <input placeholder="Password" type="password" minlength="6"
-                            [(ngModel)]="password"
-                            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                        <input placeholder="Password" [type]="showPassword ? 'text' : 'password'" minlength="6"
+                            [(ngModel)]="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
                             title="At least one number, one lowercase, one uppercase letter and at least six characters"
-                            [ngModelOptions]="{standalone: true}" 
-                            class="form-control border-start-0 border-end-0
-                            border-top-0 rounded-0" id="inputPassword" required/>
+                            [ngModelOptions]="{standalone: true}" class="form-control border-start-0 border-end-0
+                            border-top-0 rounded-0" id="inputPassword" required />
+                            <div class="ps-2 mt-3" (click)="showPassword = !showPassword">
+                                <i alt="show" class="fas fa-eye eye-show" [class.hide]="showPassword"></i>
+                                <i alt="hide" class="fas fa-eye-slash eye-hide" [class.hide]="!showPassword"></i>
+                            </div>
                     </div>
+
                     <div class="col-lg-6 mb-3">
-                        <input placeholder="CNIC" type="text" required
-                            pattern="[0-9]{5}-[0-9]{7}-[0-9]{1}"
-                            [mask]="'00000-0000000-0'"
-                            [(ngModel)]="cnic" [ngModelOptions]="{standalone:
-                            true}"
-                            class="form-control border-start-0 border-end-0
+                        <input placeholder="CNIC" type="text" required pattern="[0-9]{5}-[0-9]{7}-[0-9]{1}"
+                            [mask]="'00000-0000000-0'" [(ngModel)]="cnic" [ngModelOptions]="{standalone:
+                            true}" class="form-control border-start-0 border-end-0
                             border-top-0 rounded-0" id="inputCNIC">
                     </div>
                 </div>
                 <div class="row mb-5">
                     <div class="col-lg-6 d-flex justify-content-center mb-3">
                         <input placeholder="Phone Number" type="tel" required
-                            pattern="03[0-9]{2}-(?!1234567)(?!1111111)(?!7654321)[0-9]{7}"
-                            [(ngModel)]="phone" [ngModelOptions]="{standalone:
-                            true}"
-                            [mask]="'0000-0000000'"
-                            class="form-control border-start-0 border-end-0
+                            pattern="03[0-9]{2}-(?!1234567)(?!1111111)(?!7654321)[0-9]{7}" [(ngModel)]="phone"
+                            [ngModelOptions]="{standalone:
+                            true}" [mask]="'0000-0000000'" class="form-control border-start-0 border-end-0
                             border-top-0 rounded-0" id="inputPhoneNumber">
                     </div>
                     <div class="col-lg-6 d-flex justify-content-center mb-3">
-                        <button type="button" style="background:transparent; border:0;"><i (click)="getLocation()" class="bi bi-geo-alt-fill location"></i></button>
-                        <input placeholder="Address" type="text" required disabled="true"
-                            [(ngModel)]="address" [ngModelOptions]="{standalone:
-                            true}"
-                            class="form-control border-start-0 border-end-0
+                        <button type="button" style="background:transparent; border:0;"><i (click)="getLocation()"
+                                class="bi bi-geo-alt-fill location"></i></button>
+                        <input placeholder="Address" type="text" required disabled="true" [(ngModel)]="address"
+                            [ngModelOptions]="{standalone:
+                            true}" class="form-control border-start-0 border-end-0
                             border-top-0 rounded-0 bg-white" id="inputAddress">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-lg-6 d-flex justify-content-center mb-3">
-                        <button type="submit" (click)="clientClick()"
-                            class="px-3 btn btn-outline-dark fs-5 bg-dark
+                        <button type="submit" (click)="clientClick()" class="px-3 btn btn-outline-dark fs-5 bg-dark
                             text-light">Sign Up as client</button>
                     </div>
                     <div class="col-lg-6 d-flex justify-content-center mb-3">
-                        <button (click)="workerClick()" type="submit"
-                            class="px-3 btn btn-outline-dark fs-5 bg-dark
+                        <button (click)="workerClick()" type="submit" class="px-3 btn btn-outline-dark fs-5 bg-dark
                             text-light">Sign Up as worker</button>
                     </div>
 

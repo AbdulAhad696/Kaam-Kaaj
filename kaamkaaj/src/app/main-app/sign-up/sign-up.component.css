@@ -10,3 +10,7 @@ a{
     margin-bottom: 0px;
     padding-bottom: 0px;
 }
+
+.hide {
+    display: none;
+  }

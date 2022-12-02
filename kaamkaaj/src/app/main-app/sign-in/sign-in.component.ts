@@ -17,6 +17,7 @@ export class SignInComponent implements OnInit {
   private username = "";
   private password = "";
   loggedInUser: any = []
+  showPassword:boolean=false
   constructor(private signinService: SignInService, private router: Router, private SpinnerService: SpinnerService) { }
 
   async onLogin() {
@@ -52,6 +53,10 @@ export class SignInComponent implements OnInit {
   }
   logout() {
     this.signinService.clearsession();
+  }
+  openModal() {
+
+    $('#exampleModalCenter').modal('toggle')
   }
   ngOnInit(): void {
   }

@@ -46,6 +46,8 @@ import { BidingsComponent } from './UserSite/bidings/bidings.component';
 import { RunningJobsComponent } from './UserSite/running-jobs/running-jobs.component';
 import { PostedJobsComponent } from './UserSite/posted-jobs/posted-jobs.component';
 import { ClientProjectsComponent } from './UserSite/client-projects/client-projects.component';
+import { ChangePasswordModalComponent } from './UserSite/change-password-modal/change-password-modal.component';
+import { ChangePasswordConponentComponent } from './UserSite/change-password-conponent/change-password-conponent.component';
 
 
 
@@ -82,7 +84,9 @@ import { ClientProjectsComponent } from './UserSite/client-projects/client-proje
     BidingsComponent,
     RunningJobsComponent,
     PostedJobsComponent,
-    ClientProjectsComponent
+    ClientProjectsComponent,
+    ChangePasswordModalComponent,
+    ChangePasswordConponentComponent
   ],
   imports: [
     AppRoutingModule,

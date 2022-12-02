@@ -24,6 +24,8 @@ import { BidingsComponent } from './UserSite/bidings/bidings.component';
 import { RunningJobsComponent } from './UserSite/running-jobs/running-jobs.component';
 import { PostedJobsComponent } from './UserSite/posted-jobs/posted-jobs.component';
 import { ClientProjectsComponent } from './UserSite/client-projects/client-projects.component';
+import { ChangePasswordConponentComponent } from './UserSite/change-password-conponent/change-password-conponent.component';
+
 
 
 
@@ -33,6 +35,7 @@ const routes: Routes = [
   { path: '', component: MainPageComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'signin', component: SignInComponent },
+  { path: 'changepassword/:id',component:ChangePasswordConponentComponent},
 
   {
     path: 'customer-mainpage',
@@ -73,7 +76,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+exports: [RouterModule]
 })
 export class AppRoutingModule { }
 export const routingcomponents = [SignUpComponent,

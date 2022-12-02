@@ -5,6 +5,7 @@ import { SpinnerService } from 'src/app/Services/spinner/spinner.service';
 import { Router } from '@angular/router';
 import { GetLocationService } from './../../Services/location/get-location.service';
 
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -26,6 +27,8 @@ export class SignUpComponent implements OnInit {
   allUsers: any
   data: any
   location: any
+
+  showPassword:boolean=false
 
 
   async validateUser(user: any) {
