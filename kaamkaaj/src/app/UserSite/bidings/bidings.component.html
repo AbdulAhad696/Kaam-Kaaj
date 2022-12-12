@@ -99,8 +99,8 @@
                         </div>
                         <!-- ----------------------accept, decline buttons----------------------- -->
                         <div class="">
-                            <button type="button" class="btn declineBtn w-50">Decline</button>
-                            <button type="button" class="btn acceptBtn w-50 ">Accept</button>
+                            <button  (click)="changeBidStatus(bid._id)" type="button" class="btn declineBtn w-50">Decline</button>
+                            <button (click)="acceptBid(bid._id,bid.userDetails[0]?._id)" type="button" class="btn acceptBtn w-50 ">Accept</button>
                         </div>
                     </div>
                 </div>

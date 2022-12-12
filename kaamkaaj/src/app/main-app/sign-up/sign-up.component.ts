@@ -74,7 +74,7 @@ export class SignUpComponent implements OnInit {
   }
   async handleSubmit() {
     this.userData = {
-      userName: this.userName,
+      userName: this.userName.split(" ").map((word)=>{return word[0].toUpperCase() + word.substring(1)}).join(" "),
       email: this.email,
       password: this.password,
       cnic: this.cnic,

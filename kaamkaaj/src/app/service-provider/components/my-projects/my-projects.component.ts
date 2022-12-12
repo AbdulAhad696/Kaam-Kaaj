@@ -23,7 +23,8 @@ export class MyProjectsComponent implements OnInit {
 
   async getServiceProviderData(){
     this.serviceProviderData=await lastValueFrom( this.myProjectService.getServiceProviderDetails(this.SignInService.getcontactinfo().email))
-    this.serviceProviderData[0].profilePicture=environment.baseUrl + "/" + this.serviceProviderData[0].profilePicture
+    this.serviceProviderData[0].profilePicture=environment.baseUrl + "/" + this.serviceProviderData[0]?.profilePicture
+
   }
   async getServiceProviderProjects(){
     this.SpinnerService.requestStarted()

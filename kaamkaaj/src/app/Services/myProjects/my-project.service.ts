@@ -24,6 +24,7 @@ getServiceProviderDetails(email:string){
 
 // Getting service provider projects
 getServiceProviderProjects(_id:any){
+
   return this.http.get(`${environment.baseUrl}/serviceprovider/projects/${_id}`)
 }
 

@@ -26,6 +26,12 @@ export class BidingsComponent implements OnInit {
     this.allBids.sort((a:any, b:any) => (a?.amount > b?.amount ? 1 : -1));
   }
 
+
+  async changeBidStatus(id:any){
+    const result=await lastValueFrom(this.ViewBidsService.changeBidStatus(id))
+    this.ngOnInit()
+  }
+
   fillterButtonClick(value:any){
     this.activeButton=value
     switch(value){
@@ -37,6 +43,10 @@ export class BidingsComponent implements OnInit {
         break;
 
     }
+  }
+  async acceptBid(id:any,userId:any){
+    await lastValueFrom(this.ViewBidsService.acceptBid(id,userId)) 
+    this.router.navigate(['/customer-mainpage/jobs'])
   }
 
   ngOnInit(): void {
