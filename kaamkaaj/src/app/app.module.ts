@@ -42,6 +42,13 @@ import { MyProjectsComponent } from './service-provider/components/my-projects/m
 import { GooglePayButtonModule } from '@google-pay/button-angular';
 import { DatePipe } from '@angular/common';
 import { BidingsComponent } from './UserSite/bidings/bidings.component';
+import { AngularResizeEventModule } from 'angular-resize-event';
+
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -83,6 +90,10 @@ import { BidingsComponent } from './UserSite/bidings/bidings.component';
     NgxRerenderModule,
     NgxMaskModule.forRoot(),
     Ng2SearchPipeModule,
+
+
+
+    AngularResizeEventModule
   
   ],
   providers: [DatePipe],

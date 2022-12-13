@@ -35,7 +35,6 @@ export class JobGigsComponent implements OnInit {
   currentDuration = "Choose Duration";
   currentServiceProviderCategory:any;
   btnState:boolean = false;
-
 // -----------------------------schema variables-------------------------
   title:string;
   jobPostDate:string;
@@ -49,7 +48,7 @@ export class JobGigsComponent implements OnInit {
   jobAddress:string;
   estCompletionTime:Date;
   category:any
-  // jobAssignedTo:any;
+  jobAssignedTo:any;
   jobAssignedBy:any;
   // jobDescription:"";
   // clientAddress:"";
@@ -91,7 +90,8 @@ async handleSubmit(){
       estCompletionTime:(this.estCompletionTime),
       category:this.category,
       jobAssignedBy:this.jobAssignedBy,
-      gigPics: this.gigPics
+      gigPics: this.gigPics,
+      jobAssignedTo: this.jobAssignedTo
     }
     this.gigPics =await lastValueFrom(this.onMultipleSubmittingImages());
     this.SpinnerService.requestStarted();
@@ -145,7 +145,6 @@ async handleSubmit(){
     this.durationNumberField.nativeElement.focus();
   }
   
-
 // -----------------------------uploading images----------------------------
   selectMultipleImages(event){
     if(event.target.files.length > 0){
@@ -182,8 +181,9 @@ async handleSubmit(){
     this.gettingCurrentDate()
     this.gettingServices();
     this.jobAssignedBy = this.SignInService.getId()
-// ------------------------showing category ofspecific service provider-----------------------------
+// ------------------------showing category of specific service provider-----------------------------
     this.currentServiceProviderCategory = this.route.snapshot.paramMap.get('category');
+    this.jobAssignedTo = this.route.snapshot.paramMap.get('id');
     if(typeof(this.currentServiceProviderCategory) == "string"){
       this.currentCategory = this.currentServiceProviderCategory;
       this.currentService(this.currentServiceProviderCategory)
