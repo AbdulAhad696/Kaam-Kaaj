@@ -48,7 +48,7 @@ import { PostedJobsComponent } from './UserSite/posted-jobs/posted-jobs.componen
 import { ClientProjectsComponent } from './UserSite/client-projects/client-projects.component';
 import { ChangePasswordModalComponent } from './UserSite/change-password-modal/change-password-modal.component';
 import { ChangePasswordConponentComponent } from './UserSite/change-password-conponent/change-password-conponent.component';
-
+import { AngularResizeEventModule } from 'angular-resize-event';
 
 
 
@@ -101,7 +101,12 @@ import { ChangePasswordConponentComponent } from './UserSite/change-password-con
 
     NgxRerenderModule,
     NgxMaskModule.forRoot(),
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+
+
+
+    AngularResizeEventModule
+  
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],

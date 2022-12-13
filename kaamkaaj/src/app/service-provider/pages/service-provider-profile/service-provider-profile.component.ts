@@ -63,7 +63,7 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
 
     // -------------------------handling sending proposal-------------------------
     handleSendProposal(){
-      this.router.navigate([`customer-mainpage/jobgigs/${this.serviceProviderProfile[0].serviceDetails[0].tittle}`])
+      this.router.navigate([`customer-mainpage/jobgigs/${this.serviceProviderProfile[0].serviceDetails[0].tittle}/${this.serviceProviderProfile[0].serviceProvider}`])
     }
   ngOnInit(): void {
     this.email = this.ActivatedRoute.snapshot.params['email']
