@@ -12,6 +12,8 @@ import { SpinnerService } from './../../Services/spinner/spinner.service';
   providers: [SignInService]
 })
 export class SignInComponent implements OnInit {
+  message = "Failed to sign in. Username or password is incorrect"
+  success:any;
   userInput = "";
   passInput = "";
   private username = "";
@@ -47,7 +49,14 @@ export class SignInComponent implements OnInit {
 
     }
     else {
-      alert("Account Not Found")
+      this.success=true
+      
+      setTimeout(() => {
+        if (this.success == true) {
+          this.success = null;
+        }
+        this.success = null;
+      }, 5000);
 
     }
   }

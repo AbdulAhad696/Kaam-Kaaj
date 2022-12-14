@@ -19,13 +19,13 @@
                         <a class="nav-link active" aria-current="page"
                             routerLink={{button.ref}}>{{button.title}}</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item logout" style="padding-right: 5vw;">
                         <img type="button" class="btn dropdown-toggle"
                             data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false" class="img-fluid"
                             src="../../assets/PngItem_1300400.png"
                             style="height: 30px;">
-                        <div class="dropdown-menu logout">
+                        <div class="dropdown-menu" style="min-width:max-content !important;">
                             <a class="dropdown-item" href="">Settings</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" (click)="clearsession()"
