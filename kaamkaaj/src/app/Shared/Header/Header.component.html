@@ -14,7 +14,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <div class="col-lg-12 col-md-9 col-sm-10 col-8 d-flex" *ngIf="usertype!=null">
-                <ul class="col-lg-12 navbar-nav justify-content-around" *ngIf="usertype=='admin'">
+                <ul class="col-lg-12 navbar-nav justify-content-end" *ngIf="usertype=='Admin'">
                     <li class="nav-item" *ngFor="let button of adminbuttons">
                         <a class="nav-link active" aria-current="page"
                             routerLink={{button.ref}}>{{button.title}}</a>
@@ -25,8 +25,8 @@
                             aria-expanded="false" class="img-fluid"
                             src="../../assets/PngItem_1300400.png"
                             style="height: 30px;">
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="dropdown-menu logout">
+                            <a class="dropdown-item" href="">Settings</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" (click)="clearsession()"
                                 routerLink="/signin">logout</a>
@@ -46,7 +46,7 @@
                             src="../../assets/PngItem_1300400.png"
                             style="height: 30px;">
 
-                        <div class="dropdown-menu" style="min-width:max-content">
+                        <div class="dropdown-menu dropdown-menu-end" style="min-width:max-content">
                             <a class="dropdown-item" href="#">Settings</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" (click)="clearsession()"
@@ -68,12 +68,12 @@
                             src="../../assets/PngItem_1300400.png"
                             style="height: 30px;">
 
-                        <div class="dropdown-menu" style="min-width:max-content">
+                        <ul class="dropdown-menu" style="min-width:max-content">
                             <a class="dropdown-item" >Proposals</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" (click)="clearsession()"
                                 routerLink="/signin">logout</a>
-                        </div>
+                        </ul>
                     </li>
                 </ul>
             </div>

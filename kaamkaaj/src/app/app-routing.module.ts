@@ -25,6 +25,8 @@ import { RunningJobsComponent } from './UserSite/running-jobs/running-jobs.compo
 import { PostedJobsComponent } from './UserSite/posted-jobs/posted-jobs.component';
 import { ClientProjectsComponent } from './UserSite/client-projects/client-projects.component';
 import { ChangePasswordConponentComponent } from './UserSite/change-password-conponent/change-password-conponent.component';
+import { AdminDashboardComponent } from './admin/pages/admin-dashboard/admin-dashboard.component';
+import { AdminMainComponent } from './admin/pages/admin-main/admin-main.component';
 
 
 
@@ -48,7 +50,7 @@ const routes: Routes = [
       { path: 'contactadmin', component: ContactUsComponent },
       { path: 'serviceproviders/:service', component: FilterBarComponent },
       { path: 'serviceprovider/profile/:email', component: ServiceProviderProfileComponent },
-      {path:'jobs',component:PostedJobsComponent},
+        {path:'jobs',component:PostedJobsComponent},
       { path: 'jobs/bids/:id',component:BidingsComponent},
       { path:'running',component:RunningJobsComponent},
       { path: 'job/bids/:id',component:BidingsComponent},
@@ -56,7 +58,13 @@ const routes: Routes = [
     ]
   },
 
-
+  { path: 'admin',component:AdminMainComponent, 
+  canActivate:[AdminGuardGuard],
+  children:[
+    {path:'',component:AdminDashboardComponent},
+    {path:'wallet',component:SpDashboardComponent}
+  ]
+    },
   { path: 'contactus', component: ContactUsComponent },
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'services', component: ServiceComponent },

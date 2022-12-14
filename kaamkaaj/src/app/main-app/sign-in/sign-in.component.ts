@@ -42,7 +42,7 @@ export class SignInComponent implements OnInit {
         this.router.navigate(['/service-provider'])
       }
       else if (this.loggedInUser[0].role == "Admin") {
-        alert("Route Needs to be set")
+        this.router.navigate(['/admin'])
       }
 
     }

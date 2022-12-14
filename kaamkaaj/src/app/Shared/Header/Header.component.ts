@@ -9,7 +9,7 @@ import { SignInService } from 'src/app/Services/sign-in/sign-in.service';
   
 })
 export class HeaderComponent implements OnInit {
-  adminbuttons: any;
+  adminbuttons:any;
   email="";
   userbuttons=
   [{title:"Home",ref:"customer-mainpage"},
