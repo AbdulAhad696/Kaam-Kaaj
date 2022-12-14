@@ -4,9 +4,9 @@
     <div class="col-lg-4  serviceProviderDetail">
         <div class=" shadow-lg m-4  p-4 bg-body rounded-3 d-flex flex-column ">
             <div class=" d-flex flex-column justify-content-center align-items-center">
-                <img class="profileImage" src={{serviceProviderData[0].profilePicture}} alt="Avater">
-                <h1 class="mt-2 mb-0">{{serviceProviderData[0].serviceProviderDetails[0].userName}}</h1>
-                <h3>{{serviceProviderData[0].serviceDetails[0].tittle}}</h3>
+                <img class="profileImage" src={{serviceProviderData[0]?.profilePicture}} alt="Avater">
+                <h1 class="mt-2 mb-0">{{serviceProviderData[0]?.serviceProviderDetails[0]?.userName}}</h1>
+                <h3>{{serviceProviderData[0]?.serviceDetails[0]?.tittle}}</h3>
             </div>
             <hr>
             <table class="textColor">
@@ -14,46 +14,53 @@
                     <td>
                         <h4 class="m-0">Response Rate</h4>
                     </td>
-                    <td>
-                        <div class="flex-row row container-fluid m-0 p-0 justify-content-between align-items-center">
-                            <div class="col-9 progress p-0 " style="height: 8px ;">
+                    <td align="right">
+                        <div class="m-0 p-0 justify-content-between align-items-center">
+                            <div class=" progress p-0 " style="height: 8px; width: 100px;">
                                 <div class="progress-bar bgGradient" role="progressbar"
-                                    [style.width.%]="serviceProviderData[0].responseRate" aria-valuenow="80"
+                                    [style.width.%]="serviceProviderData[0]?.responseRate" aria-valuenow="80"
                                     aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-                            <p class="col-2 m-0">{{serviceProviderData[0].responseRate}}%</p>
                         </div>
+                    </td>
+                    <td>
+                        <p class="col-2 m-0">{{serviceProviderData[0]?.responseRate==null?0:serviceProviderData[0]?.responseRate}}%</p>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <h4 class="m-0">Delivered on Time</h4>
                     </td>
-                    <td>
-                        <div class="flex-row row container-fluid m-0 p-0 justify-content-between align-items-center">
-                            <div class="col-9 progress p-0 " style="height: 8px ;">
+                    <td align="right">
+                        <div class="m-0 p-0 justify-content-between align-items-center">
+                            <div class=" progress p-0 " style="height: 8px ;width: 100px">
                                 <div class="progress-bar bgGradient" role="progressbar"
-                                    [style.width.%]="serviceProviderData[0].deliverOnTime" aria-valuenow="80"
+                                    [style.width.%]="serviceProviderData[0]?.deliverOnTime" aria-valuenow="80"
                                     aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-                            <p class="col-2 m-0">{{serviceProviderData[0].deliverOnTime}}%</p>
                         </div>
+                    </td>
+                    <td>
+                        <p class="col-2 m-0">{{serviceProviderData[0]?.deliverOnTime==null?0:serviceProviderData[0]?.deliverOnTime}}%</p>
+
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <h4 class="m-0">Order Completion</h4>
                     </td>
-                    <td>
-                        <div
-                            class="d-flex flex-row row container-fluid m-0 p-0 justify-content-between align-items-center">
-                            <div class="col-9 progress p-0 " style="height: 8px ;">
+                    <td align="right">
+                        <div class="m-0 p-0 justify-content-between align-items-center">
+                            <div class=" progress p-0 " style="height: 8px ;width: 100px">
                                 <div class="progress-bar bgGradient" role="progressbar"
-                                    [style.width.%]="serviceProviderData[0].orderCompletion" aria-valuenow="80"
+                                    [style.width.%]="serviceProviderData[0]?.orderCompletion" aria-valuenow="80"
                                     aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
-                            <p class="col-2 m-0">{{serviceProviderData[0].orderCompletion}}%</p>
                         </div>
+                    </td>
+                    <td>
+                        <p class="col-2 m-0">{{serviceProviderData[0]?.orderCompletion==null?0:serviceProviderData[0]?.orderCompletion}}%</p>
+
                     </td>
                 </tr>
             </table>
@@ -65,7 +72,7 @@
                     </td>
                     <td class="d-flex flex-row">
                         <h4 class="m-0 price"><b>PKR</b></h4>
-                        <h4 class="ps-1 m-0 price"><b>{{serviceProviderData[0].totalEarning}}</b></h4>
+                        <h4 class="ps-1 m-0 price"><b>{{serviceProviderData[0]?.totalEarning}}</b></h4>
                     </td>
                 </tr>
                 <tr>
@@ -73,7 +80,7 @@
                         <h4 class="m-0">Experience</h4>
                     </td>
                     <td class="d-flex flex-row">
-                        <h4 class="m-0">{{serviceProviderData[0].experience}}</h4>
+                        <h4 class="m-0">{{serviceProviderData[0]?.experience}}</h4>
                         <h4 class="ps-1 m-0">Year</h4>
                     </td>
                 </tr>
@@ -82,14 +89,14 @@
                         <h4 class="m-0">Jobs Completed:</h4>
                     </td>
                     <td>
-                        <h4 class="m-0">{{serviceProviderData[0].jobsCompleted}}</h4>
+                        <h4 class="m-0">{{serviceProviderData[0]?.jobsCompleted}}</h4>
                     </td>
                 </tr>
             </table>
             <hr>
             <div class="rating">
                 <h4 class="mb-1">Rating</h4>
-                {{child.setSelectedValue(serviceProviderData[0].rating| number:
+                {{child.setSelectedValue(serviceProviderData[0]?.rating| number:
                 '1.0-0')}}
                 <app-rating #child></app-rating>
             </div>
@@ -136,12 +143,12 @@
                 <div class="row">
                     <div class="col-xl-4 ">
                         <div class="col-12 d-flex flex-row">
-                            <img class="clientImage" src={{serviceProviderProject.clientProfile[0].profileImage}}
+                            <img class="clientImage" src={{serviceProviderProject?.clientProfile[0]?.profileImage}}
                                 alt="Avater">
                             <div class="d-flex flex-column">
-                                <h1 class="mt-2 mb-0 ps-3">{{serviceProviderProject.clientDetails[0].userName}}</h1>
+                                <h1 class="mt-2 mb-0 ps-3">{{serviceProviderProject?.clientDetails[0]?.userName}}</h1>
                                 <span style="margin-left: 16px;"><i class="bi bi-geo-alt-fill location"></i>
-                                    {{serviceProviderProject.jobAddress}}</span>
+                                    {{serviceProviderProject?.jobAddress}}</span>
                             </div>
                         </div>
                     </div>
@@ -150,21 +157,21 @@
                             <div class="col-6 d-flex flex-column  align-items-center">
                                 <h3 class="mt-2 mb-0 jobRate">Price</h3>
                                 <h4 class="ps-1 mt-0 text-info"><b>PKR
-                                        {{serviceProviderProject.bidDetails[0].amount}}</b>
+                                        {{serviceProviderProject?.bidDetails[0]?.amount}}</b>
                                 </h4>
                             </div>
 
                             <div class="col-6 d-flex flex-column  align-items-center">
                                 <h3 class="mt-2 mb-0 jobRate">Delivery Time</h3>
-                                <h4 *ngIf="serviceProviderProject.timeStatus=='negative'"
+                                <h4 *ngIf="serviceProviderProject?.timeStatus=='negative'"
                                     class="ps-1 mt-0 text-danger ">
-                                    <b><i class="bi bi-clock"></i> {{serviceProviderProject.time}} Day Late</b>
+                                    <b><i class="bi bi-clock"></i> {{serviceProviderProject?.time}} Day Late</b>
                                 </h4>
-                                <h4 *ngIf="serviceProviderProject.timeStatus=='positive'"
+                                <h4 *ngIf="serviceProviderProject?.timeStatus=='positive'"
                                     class="ps-1 mt-0 text-success ">
-                                    <b><i class="bi bi-clock"></i> {{serviceProviderProject.time}} Day Left</b>
+                                    <b><i class="bi bi-clock"></i> {{serviceProviderProject?.time}} Day Left</b>
                                 </h4>
-                                <h4 *ngIf="serviceProviderProject.timeStatus=='zero'" class="ps-1 mt-0 text-warning ">
+                                <h4 *ngIf="serviceProviderProject?.timeStatus=='zero'" class="ps-1 mt-0 text-warning ">
                                     <b><i class="bi bi-clock"></i> Today</b>
                                 </h4>
 
@@ -175,9 +182,12 @@
                 <hr class="mb-0">
                 <div class="d-flex flex-row justify-content-center">
                     <div class="col-md-10 col-xs-8">
-                        <h3 *ngIf="serviceProviderProject.timeStatus=='zero'" class="mb-0 mt-2 text-secondary">Last day to submit.Done now to avoid negative rating</h3>
-                        <h3 *ngIf="serviceProviderProject.timeStatus=='positive'" class="mb-0 mt-2 text-secondary">Please done as soon as possible to enhance your rating</h3>
-                        <h3 *ngIf="serviceProviderProject.timeStatus=='negative'" class="mb-0 mt-2 text-secondary">You're running late.Done now to avoid negative rating</h3>
+                        <h3 *ngIf="serviceProviderProject?.timeStatus=='zero'" class="mb-0 mt-2 text-secondary">Last day
+                            to submit.Done now to avoid negative rating</h3>
+                        <h3 *ngIf="serviceProviderProject?.timeStatus=='positive'" class="mb-0 mt-2 text-secondary">
+                            Please done as soon as possible to enhance your rating</h3>
+                        <h3 *ngIf="serviceProviderProject?.timeStatus=='negative'" class="mb-0 mt-2 text-secondary">
+                            You're running late.Done now to avoid negative rating</h3>
                     </div>
                     <div class="col-md-2 col-xs-4 ps-2">
                         <button type="button" class="mt-2  btn btn-success"><b>Submit</b></button>

@@ -13,6 +13,12 @@ export class ViewBidsService {
     return this.http.get(`${environment.baseUrl}/bids/${id}`)
   }
 
+  changeBidStatus(id:any){
+    return this.http.patch(`${environment.baseUrl}/bids/${id}`,{status:"rejected"})
+  }
+  acceptBid(id:any,userId:any){
+    return this.http.patch(`${environment.baseUrl}/acceptbid/${id}/${userId}`,{status:"accepted"})
+  }
 }
 
 

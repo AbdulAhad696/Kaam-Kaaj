@@ -49,7 +49,7 @@ export class ClientProjectsComponent implements OnInit {
     
     this.clientProjects=await lastValueFrom(this.ClientProjectsService.getClientProjects(this.SignInService.getId()))
     this.clientProjects.forEach(element => {
-      element.serviceProviderProfile[0].profilePicture=environment.baseUrl + "/" + element.serviceProviderProfile[0].profilePicture
+      element.serviceProviderProfile[0].profilePicture=environment.baseUrl + "/" + element.serviceProviderProfile[0]?.profilePicture
       element.estCompletionTime=new Date(element.estCompletionTime)
       this.time=(element.estCompletionTime.getTime()-this.date.getTime())
       

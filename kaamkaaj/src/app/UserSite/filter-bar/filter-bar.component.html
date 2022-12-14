@@ -1,24 +1,23 @@
-<div class="container">
+<div class="container" (resized)="onResized($event)" >
     <!-- ---------------------heading------------------------ -->
     <div class="row text-center">
         <h1 class=" d-flex m-4 justify-content-center align-items-center">Service Providers by Category</h1>
     </div>
-    <!-- --------------------search bar------------------------------ -->
-
-
     <!-- ---------------------------filter bar--------------------------------- -->
-
     <div class="row">
-        <div class="col-lg-4">
+        <div class="togglerBtn ms-3 mb-2">
+            <button class="btn btn-primary"  (click)="sideBarToggler()">&#9776; </button>
+        </div>
+        <div class="col-lg-4 " id="filterBarTogglerId">
             <nav id="sidebarMenu" class=" d-lg-block sidebar">
                 <div class="position-sticky">
                     <div class="list-group list-group-flush mx-3 mt-4">
                         <h1 class="display-3">Filters</h1>
                         <hr>
                         <h3 class="display-1">Categories</h3>
-                        <a class="list-group-item list-group-item-action py-2 ripple" routerLink="/customer-mainpage/serviceproviders/Plumber" aria-current="true"><i class="fas fa-solid fa-wrench fa-fw me-3"></i><span>Plumber</span></a>
-                        <a class="list-group-item list-group-item-action py-2 ripple" routerLink="/customer-mainpage/serviceproviders/Electrician"><i class="fas fa-solid fa-plug-circle-plus fa-fw me-3"></i><span>Electrician</span></a>
-                        <a class="list-group-item list-group-item-action py-2 ripple" routerLink="/customer-mainpage/serviceproviders/Carpenter"><i class="fas fa-lock fa-fw me-3"></i><span>Carpanter</span></a>
+                        <a (click)="sideBarToggler()" class="list-group-item list-group-item-action py-2 ripple" routerLink="/customer-mainpage/serviceproviders/Plumber" aria-current="true"><i class="fas fa-solid fa-wrench fa-fw me-3"></i><span>Plumber</span></a>
+                        <a (click)="sideBarToggler()" class="list-group-item list-group-item-action py-2 ripple" routerLink="/customer-mainpage/serviceproviders/Electrician"><i class="fas fa-solid fa-plug-circle-plus fa-fw me-3"></i><span>Electrician</span></a>
+                        <a (click)="sideBarToggler()" class="list-group-item list-group-item-action py-2 ripple" routerLink="/customer-mainpage/serviceproviders/Carpenter"><i class="fas fa-lock fa-fw me-3"></i><span>Carpanter</span></a>
                         <a class="list-group-item list-group-item-action py-2 ripple" href="#"><i class="fas fa-chart-line fa-fw me-3"></i><span>Black Smith</span></a>
                         <a class="list-group-item list-group-item-action py-2 ripple" routerLink="/customer-mainpage/serviceproviders/Movers"><i class="fas fa-chart-pie fa-fw me-3"></i><span>Movers & Packers</span></a>
                         <a class="list-group-item list-group-item-action py-2 ripple" href="#"><i class="fas fa-chart-bar fa-fw me-3"></i><span>Construction </span></a>
@@ -78,6 +77,7 @@
                 </div>
             </nav>
         </div>
+<!-- --------------------loading service providers component------------------------ -->
         <div class="col-lg-8">
             <div class="container ">
                 <app-service-providers></app-service-providers>
