@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CustomerLandingPageComponent } from './UserSite/customer-landing-page/customer-landing-page.component';
 import { ServiceProvidersComponent } from './UserSite/service-providers/service-providers.component';
@@ -23,6 +23,12 @@ import { MyProjectsComponent } from './service-provider/components/my-projects/m
 import { BidingsComponent } from './UserSite/bidings/bidings.component';
 import { RunningJobsComponent } from './UserSite/running-jobs/running-jobs.component';
 import { PostedJobsComponent } from './UserSite/posted-jobs/posted-jobs.component';
+import { ClientProjectsComponent } from './UserSite/client-projects/client-projects.component';
+import { ChangePasswordConponentComponent } from './UserSite/change-password-conponent/change-password-conponent.component';
+import { AdminDashboardComponent } from './admin/pages/admin-dashboard/admin-dashboard.component';
+import { AdminMainComponent } from './admin/pages/admin-main/admin-main.component';
+
+
 
 import { WalletComponent } from './Shared/wallet/wallet.component';
 
@@ -32,6 +38,7 @@ const routes: Routes = [
   { path: '', component: MainPageComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'signin', component: SignInComponent },
+  { path: 'changepassword/:id', component: ChangePasswordConponentComponent },
 
   {
     path: 'customer-mainpage',
@@ -40,17 +47,25 @@ const routes: Routes = [
     children: [
       { path: '', component: CustomerLandingPageComponent },
       { path: 'jobgigs', component: JobGigsComponent },
-      { path: 'jobgigs/:category', component: JobGigsComponent },
+      { path: 'jobgigs/:category/:id', component: JobGigsComponent },
       { path: 'contactadmin', component: ContactUsComponent },
       { path: 'serviceproviders/:service', component: FilterBarComponent },
       { path: 'serviceprovider/profile/:email', component: ServiceProviderProfileComponent },
       { path: 'jobs', component: PostedJobsComponent },
       { path: 'jobs/bids/:id', component: BidingsComponent },
-      { path: 'running', component: RunningJobsComponent }
+      { path: 'running', component: RunningJobsComponent },
+      { path: 'myprojects', component: ClientProjectsComponent }
     ]
   },
 
-
+  {
+    path: 'admin', component: AdminMainComponent,
+    canActivate: [AdminGuardGuard],
+    children: [
+      { path: '', component: AdminDashboardComponent },
+      { path: 'wallet', component: SpDashboardComponent }
+    ]
+  },
   { path: 'contactus', component: ContactUsComponent },
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'services', component: ServiceComponent },

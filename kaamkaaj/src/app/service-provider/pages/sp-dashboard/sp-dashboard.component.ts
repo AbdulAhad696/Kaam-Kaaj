@@ -1,124 +1,69 @@
 import { Component, OnInit } from '@angular/core';
-import { globalcomponent } from 'src/app/objects/global';
+import { style,trigger,animate,transition,state,query,stagger,group} from '@angular/animations';
 
 @Component({
   selector: 'app-sp-dashboard',
   templateUrl: './sp-dashboard.component.html',
-  styleUrls: ['./sp-dashboard.component.css']
+  styleUrls: ['./sp-dashboard.component.css'],
+    animations:[
+      trigger('flyInOut', [
+        state('in', style({ transform: 'translateX(0)' })),
+        transition('void => *', [
+          style({ transform: 'translateX(-100%)' }),
+          animate(1000)
+        ]),
+        transition('* => void', [
+          animate(100, style({ transform: 'translateX(100%)' }))
+        ])
+      ]),
+      trigger('myInsertRemoveTrigger', [
+        transition(':enter', [
+          style({ opacity: 0 }),
+          animate('2000ms', style({ opacity: 1 })),
+        ]),
+        transition(':leave', [
+          animate('1000ms', style({ opacity: 0 }))
+        ])
+      ]),
+    ]
+  // animations: [
+  //   trigger('flyInOut', [
+  //     state('in', style({
+  //       width: '*',
+  //       transform: 'translateX(0)', opacity: 1
+  //     })),
+  //     transition(':enter', [
+  //       style({ width: 10, transform: 'translateX(50px)', opacity: 0 }),
+  //       group([
+  //         animate('1.0s 0.1s ease', style({
+  //           transform: 'translateX(0)',
+  //           width: '*'
+  //         })),
+  //         animate('6.0s ease', style({
+  //           opacity: 1
+  //         }))
+  //       ])
+  //     ]),
+  //     transition(':leave', [
+  //       group([
+  //         animate('0.3s ease', style({
+  //           transform: 'translateX(50px)',
+  //           width: 10
+  //         })),
+  //         animate('0.3s 0.2s ease', style({
+  //           opacity: 0
+  //         }))
+  //       ])
+  //     ])
+  //   ])
+  // ]
 })
 export class SpDashboardComponent implements OnInit {
-  public currency = globalcomponent.currency
+  
   constructor() { }
 
   ngOnInit(): void {
   }
-  earnLineChart=
-    {
-
-      
-      axisX: {
-        valueFormatString: "MMM",
-        interval:1,
-        intervalType: "month"
-      },
-      axisY:{
-        includeZero: false
-
-      },
-      data: [
-      {
-        type: "line",
-
-        dataPoints: [
-        { x: new Date(2012, 0, 1), y: 450 },
-        { x: new Date(2012, 1, 1), y: 414 , indexLabel: "lowest",markerColor: "DarkSlateGrey", markerType: "cross"},
-          { x: new Date(2012, 2, 1), y: 520, indexLabel: "highest",markerColor: "red", markerType: "triangle"},
-        { x: new Date(2012, 3, 1), y: 460 },
-        { x: new Date(2012, 4, 1), y: 450 },
-        { x: new Date(2012, 5, 1), y: 500 },
-        ]
-      }
-      ]
-    };
-
-  bidBarChart=
-    {
-
-      axisX: {
-        valueFormatString: "MMM",
-        interval: 1,
-        intervalType: "month"
-      },
-
-      data: [
-      {
-        type: "stackedBar",
-        legendText: "meals",
-        showInLegend: "true",
-        dataPoints: [
-        { x: new Date(2012, 1, 1), y: 71 },
-        { x: new Date(2012, 2, 1), y: 55},
-        { x: new Date(2012, 3, 1), y: 50 },
-        { x: new Date(2012, 4, 1), y: 65 },
-        { x: new Date(2012, 5, 1), y: 95 }
-
-        ]
-      },
-        {
-        type: "stackedBar",
-        legendText: "snacks",
-        showInLegend: "true",
-        dataPoints: [
-        { x: new Date(2012, 1, 1), y: 71 },
-        { x: new Date(2012, 2, 1), y: 55},
-        { x: new Date(2012, 3, 1), y: 50 },
-        { x: new Date(2012, 4, 1), y: 65 },
-        { x: new Date(2012, 5, 1), y: 95 }
-
-        ]
-      },
-        {
-        type: "stackedBar",
-        legendText: "drinks",
-        showInLegend: "true",
-        dataPoints: [
-        { x: new Date(2012, 1, 1), y: 71 },
-        { x: new Date(2012, 2, 1), y: 55},
-        { x: new Date(2012, 3, 1), y: 50 },
-        { x: new Date(2012, 4, 1), y: 65 },
-        { x: new Date(2012, 5, 1), y: 95 }
-
-        ]
-      },
-
-        {
-        type: "stackedBar",
-        legendText: "dessert",
-        showInLegend: "true",
-        dataPoints: [
-        { x: new Date(2012, 1, 1), y: 61 },
-        { x: new Date(2012, 2, 1), y: 75},
-        { x: new Date(2012, 3, 1), y: 80 },
-        { x: new Date(2012, 4, 1), y: 85 },
-        { x: new Date(2012, 5, 1), y: 105 }
-
-        ]
-      },
-        {
-        type: "stackedBar",
-        legendText: "takeaway",
-        showInLegend: "true",
-        dataPoints: [
-        { x: new Date(2012, 1, 1), y: 20 },
-        { x: new Date(2012, 2, 1), y: 35},
-        { x: new Date(2012, 3, 1), y: 30 },
-        { x: new Date(2012, 4, 1), y: 45 },
-        { x: new Date(2012, 5, 1), y: 25 }
-
-        ]
-      }
-
-      ]
-    };
+  
 
 }

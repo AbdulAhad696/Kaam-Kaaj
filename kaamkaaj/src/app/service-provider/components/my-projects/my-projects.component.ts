@@ -23,7 +23,7 @@ export class MyProjectsComponent implements OnInit {
 
   async getServiceProviderData(){
     this.serviceProviderData=await lastValueFrom( this.myProjectService.getServiceProviderDetails(this.SignInService.getcontactinfo().email))
-    this.serviceProviderData[0].profilePicture=environment.baseUrl + "/" + this.serviceProviderData[0].profilePicture
+    this.serviceProviderData[0].profilePicture=environment.baseUrl + "/" + this.serviceProviderData[0]?.profilePicture
 
   }
   async getServiceProviderProjects(){
@@ -47,6 +47,8 @@ export class MyProjectsComponent implements OnInit {
         element.timeStatus="zero"
       }
     });
+    this.serviceProviderProjects.sort((a:any, b:any) => (a?.estCompletionTime > b?.estCompletionTime ? 1 : -1));
+
     this.SpinnerService.requestEnded()
   }
 

@@ -4,3 +4,12 @@
     }
     
 }
+.forgotPassword{
+    color:blue;
+    font-size: x-small;
+    cursor: pointer;
+}
+
+.hide {
+    display: none;
+  }

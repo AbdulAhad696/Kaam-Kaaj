@@ -12,13 +12,16 @@ import { ServiceProviderProfileService } from 'src/app/Services/serviceProviderP
   providers: [SignInService]
 })
 export class SignInComponent implements OnInit {
+  message = "Failed to sign in. Username or password is incorrect"
+  success: any;
   userInput = "";
   passInput = "";
   private username = "";
   private password = "";
   loggedInUser: any = []
   category: any = []
-  constructor(private signinService: SignInService, private router: Router, private SpinnerService: SpinnerService, private spProfileService: ServiceProviderProfileService) { }
+  showPassword: boolean = false
+  constructor(private signinService: SignInService, private router: Router, private SpinnerService: SpinnerService) { }
 
   async onLogin() {
     this.username = this.userInput;
@@ -45,17 +48,28 @@ export class SignInComponent implements OnInit {
         this.router.navigate(['/service-provider'])
       }
       else if (this.loggedInUser[0].role == "Admin") {
-        alert("Route Needs to be set")
+        this.router.navigate(['/admin'])
       }
 
     }
     else {
-      alert("Account Not Found")
+      this.success = true
+
+      setTimeout(() => {
+        if (this.success == true) {
+          this.success = null;
+        }
+        this.success = null;
+      }, 5000);
 
     }
   }
   logout() {
     this.signinService.clearsession();
+  }
+  openModal() {
+
+    $('#exampleModalCenter').modal('toggle')
   }
   ngOnInit(): void {
   }

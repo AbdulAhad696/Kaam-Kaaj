@@ -49,8 +49,12 @@ import { WalletComponent } from './Shared/wallet/wallet.component';
 import { PayBalanceModalComponent } from './Shared/pay-balance-modal/pay-balance-modal.component';
 import { BalanceComponent } from './Shared/balance/balance.component';
 import { TransactionsComponent } from './Shared/transactions/transactions.component';
-
-
+import { ClientProjectsComponent } from './UserSite/client-projects/client-projects.component';
+import { ChangePasswordModalComponent } from './UserSite/change-password-modal/change-password-modal.component';
+import { ChangePasswordConponentComponent } from './UserSite/change-password-conponent/change-password-conponent.component';
+import { AdminDashboardComponent } from './admin/pages/admin-dashboard/admin-dashboard.component';
+import { AdminMainComponent } from './admin/pages/admin-main/admin-main.component';
+// import { AngularResizeEventModule } from 'angular-resize-event';
 
 @NgModule({
   declarations: [
@@ -84,7 +88,11 @@ import { TransactionsComponent } from './Shared/transactions/transactions.compon
     PayBalanceModalComponent,
     BalanceComponent,
     TransactionsComponent,
-
+    ClientProjectsComponent,
+    ChangePasswordModalComponent,
+    ChangePasswordConponentComponent,
+    AdminDashboardComponent,
+    AdminMainComponent
   ],
   imports: [
     AppRoutingModule,
@@ -98,7 +106,9 @@ import { TransactionsComponent } from './Shared/transactions/transactions.compon
     ReactiveFormsModule,
     NgxRerenderModule,
     NgxMaskModule.forRoot(),
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    // AngularResizeEventModule
+
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],
