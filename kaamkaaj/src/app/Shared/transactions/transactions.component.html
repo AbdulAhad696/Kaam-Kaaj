@@ -1,0 +1,51 @@
+<div class="row ">
+    <div class="col-lg-8 mt-4  w-100 ">
+        <!-- --------------------No record found------------------------------ -->
+    
+        <div class="input-group">
+            <div class="col-12 d-flex w-100  justify-content-end">
+                <div class="form-outline searchBox">
+                    <input placeholder="search..." [(ngModel)]="searchText" type="search"
+                        class="form-control searchFieled" />
+                    <label class="form-label" for="form1"></label>
+                </div>
+                <button type="button" class="btn btn-primary searchBtn ">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        <div *ngIf = "allTransactions.length == 0; else elseBlock" class="default">
+            <div class="m-5 d-flex justify-content-center flex-column">
+                <img src="../../../assets/noRecordFound.svg" alt="Avater">
+                <h1 class="record">No transactions found</h1>
+            </div>
+        </div>
+        <ng-template #elseBlock>
+            <div *ngFor="let transaction of allTransactions | filter:searchText" class="row shadow-lg rounded-3 review p-4 background mb-3 ms-4 me-4">
+                <div class="col-md-6">
+                    <div class="d-flex flex-row">
+                        <!-- --------------------------service provider profile pic------------------ -->
+                        <div class="reviewerImageDiv centerColumn ">
+                            <img src="../../../assets/kaamkaaj-removebg-preview.png" alt="profilePicture"
+                                class=" reviewerImage">
+                        </div>
+                        <div class="d-flex flex-column ps-3">
+                            <!-- -----------------------Transaction with------------------ -->
+                            <div class=""><h1><strong>{{transaction.to}}</strong></h1>
+                            </div>
+                            <!-- ------------------------Transaction Time---------------------- -->
+                            <div class="mb-3"><span>{{transaction.timeStamp}}</span></div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-md-6 d-flex justify-content-center align-items-center">
+                            <!-- ----------------------------Amount Transferred-------------------------- -->
+                            <span>
+                                <h1 class="mb-0 {{true?'negative':'positive'}}"> <strong>- {{transaction.amount}} PKR</strong></h1>
+                            </span>            
+                    </div>
+            </div>
+        </ng-template>
+    </div>
+</div>

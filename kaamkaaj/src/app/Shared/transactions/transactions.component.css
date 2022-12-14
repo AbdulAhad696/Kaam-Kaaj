@@ -1,0 +1,189 @@
+.profilePage {
+    height: 90vh;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centerColumn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profileImageColumns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profilePicture {
+    object-fit: cover;
+    height: 20vh;
+    width: 20vh;
+    border-radius: 50%;
+}
+
+.editProfileButton {
+    width: 8em;
+    min-height: max-content;
+}
+
+.infoBox {
+    background-color: whitesmoke;
+    height: 10em;
+}
+
+.reviewerImageDiv {
+    height: 4em;
+    width: 4em;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.reviewerImage {
+    object-fit: fill;
+    height: 4em;
+}
+
+.review {
+    background-color: whitesmoke;
+}
+
+.reviewsContainer,
+.portfolioContainer {
+    box-shadow: 5px 5px 5px 5px grey;
+    max-height: 90vh;
+    overflow-y: auto;
+    max-width: 80%
+}
+
+.portfolioPicture {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    box-shadow: 0px 4px 2px 5px whitesmoke;
+}
+
+.checked {
+    color: darkgoldenrod;
+}
+
+.addPortfolioBtn {
+    margin-left: 50%;
+}
+
+.serviceProviderProfile {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.background {
+    background-color: #ffffff;
+}
+
+.acceptBtn {
+    background-color: #01972a;
+    color: white;
+}
+
+.declineBtn {
+    background-color: #f5f5f5;
+    color: red;
+}
+
+.priceColor {
+    color: #01972a;
+}
+
+.displayToggler {
+    display: block;
+}
+
+@media only screen and (max-width: 1160px) {
+    .displayToggler {
+        display: none;
+    }
+}
+
+
+/* Search Field */
+.searchBtn {
+    height: 38px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.searchFieled {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+input:focus {
+    outline: none !important;
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+
+/* Filter Button */
+.filterButton {
+    /* background-color: gray; */
+    border: none;
+    background-color: #f2f2f2;
+    font-size: 15px;
+    height: 38px;
+    border-radius: 8px;
+    padding: 7px;
+    margin-bottom: 15px;
+    margin-right: 15px;
+}
+
+.filterButton:hover {
+    background-color: black;
+    color: white;
+}
+
+.filterButton.active {
+    background-color: black;
+    color: white;
+}
+
+
+.filter {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.record {
+    color: #b3b3b3;
+    text-align: center;
+}
+
+
+@media only screen and (max-width: 985px) {
+    .searchBox {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.searchFieled {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.negative {
+    color: red
+}
+
+.positive {
+    color: #01972a
+}

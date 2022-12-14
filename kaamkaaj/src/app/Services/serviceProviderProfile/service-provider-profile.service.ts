@@ -8,7 +8,7 @@ import { SpinnerService } from '../spinner/spinner.service';
   providedIn: 'root'
 })
 export class ServiceProviderProfileService {
-  constructor(private http: HttpClient ) { }
+  constructor(private http: HttpClient) { }
 
   fetchingServiceProviderProfile(email: any) {
     return (this.http.get(`${environment.baseUrl}/serviceprovider/profile/${email}`))
@@ -22,6 +22,9 @@ export class ServiceProviderProfileService {
   }
   uploadPortfolioImage(info: any) {
     return (this.http.put(`${environment.baseUrl}/serviceprovider/profile/updateProfile/uploadImage`, info))
+  }
+  fetchReviews(id: any) {
+    return (this.http.get(`${environment.baseUrl}/serviceprovider/profile/reviews/${id}`))
   }
 
 

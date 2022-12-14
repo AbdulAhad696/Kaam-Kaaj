@@ -26,6 +26,9 @@ export class SignInService {
     let data = localStorage.getItem("email") || "";
     return this.decrypt(data);
   }
+  setCategory(cat: any) {
+    localStorage.setItem("category", cat || "");
+  }
 
   getId() {
     if (localStorage.getItem("_id")) {
@@ -40,6 +43,9 @@ export class SignInService {
   getusertype() {
     return localStorage.getItem("usertype");
   }
+  getCategory() {
+    return localStorage.getItem("category");
+  }
 
   getcontactinfo() {
     return {
@@ -50,7 +56,7 @@ export class SignInService {
       type: localStorage.getItem("usertype")
     }
   }
-  getemail(){
+  getemail() {
     return this.decrypt(localStorage.getItem("email") || "")
   }
 

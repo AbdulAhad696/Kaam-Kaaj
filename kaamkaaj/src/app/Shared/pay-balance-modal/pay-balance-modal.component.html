@@ -1,0 +1,27 @@
+<!-- Button trigger modal -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header justify-content-center">
+          <h1>Pay with Kaam Kaaj</h1>
+        </div>
+        <div class="modal-body justify-content-center">
+            <div class="row">
+                <div class="col-6">
+                    <img src="../../../assets/kaamkaaj-removebg-preview.png" alt="">
+                </div>
+                <div class="col-6 d-flex align-items-center justify-content-around flex-column">
+                    <h1 class="fw-bold">Amount</h1>
+                    <h1 class="text-muted fs-1 fw-bold">PKR {{balance}}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+
+          <button type="button" class="btn btn-success" (click)="confirmPayment()">Pay to Kaam Kaaj</button>
+        </div>
+      </div>
+    </div>
+  </div>

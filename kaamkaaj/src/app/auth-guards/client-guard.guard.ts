@@ -9,14 +9,14 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class ClientGuardGuard implements CanActivate {
-  constructor(private signservice:SignInService,private router:Router){}
+  constructor(private signservice: SignInService, private router: Router) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (this.signservice.getusertype()=="Client"){
-        return true;
-      }
-      this.router.navigate(['/signin'],{queryParams:{returnUrl:state.url}});
-      return false;
+    if (this.signservice.getusertype() == "Client") {
+      return true;
+    }
+    this.router.navigate(['/signin'], { queryParams: { returnUrl: state.url } });
+    return false;
   }
 }

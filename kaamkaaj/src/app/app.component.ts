@@ -17,17 +17,7 @@ export class AppComponent implements OnInit {
   }
   amount = "1"
 
-  onLoadPaymentData(event: Event) {
-    const eventDetails = event as CustomEvent<google.payments.api.PaymentData>
-    console.log('load payment data', eventDetails)
-  }
-  onPaymentDataAuthorized: google.payments.api.PaymentAuthorizedHandler = (paymentData) => {
-    console.log("payment authorized", paymentData)
-    return { transactionState: "SUCCESS" }
-  }
-  onError = (event: ErrorEvent) => {
-    console.log("ERROR", event.error)
-  }
+
   ngOnInit() {
     this.initCount += 1;
     let usertype = this.signinservice.getusertype()

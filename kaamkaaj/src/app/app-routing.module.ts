@@ -14,7 +14,7 @@ import { AuthenticationGuard } from './auth-guards/authentication.guard';
 import { AdminGuardGuard } from './auth-guards/admin-guard.guard';
 import { ClientGuardGuard } from './auth-guards/client-guard.guard';
 import { ServiceProviderProfileComponent } from './service-provider/pages/service-provider-profile/service-provider-profile.component';
-
+import { CategoryGuardGuard } from './auth-guards/category-guard.guard';
 import { SpViewjobsComponent } from './service-provider/pages/sp-viewjobs/sp-viewjobs.component';
 import { ServiceprovidermainComponent } from './service-provider/pages/serviceprovidermain/serviceprovidermain.component';
 import { JobGigsComponent } from './UserSite/job-gigs/job-gigs.component';
@@ -24,6 +24,7 @@ import { BidingsComponent } from './UserSite/bidings/bidings.component';
 import { RunningJobsComponent } from './UserSite/running-jobs/running-jobs.component';
 import { PostedJobsComponent } from './UserSite/posted-jobs/posted-jobs.component';
 
+import { WalletComponent } from './Shared/wallet/wallet.component';
 
 
 const routes: Routes = [
@@ -43,9 +44,9 @@ const routes: Routes = [
       { path: 'contactadmin', component: ContactUsComponent },
       { path: 'serviceproviders/:service', component: FilterBarComponent },
       { path: 'serviceprovider/profile/:email', component: ServiceProviderProfileComponent },
-      {path:'jobs',component:PostedJobsComponent},
-      { path: 'jobs/bids/:id',component:BidingsComponent},
-      { path:'running',component:RunningJobsComponent}
+      { path: 'jobs', component: PostedJobsComponent },
+      { path: 'jobs/bids/:id', component: BidingsComponent },
+      { path: 'running', component: RunningJobsComponent }
     ]
   },
 
@@ -59,11 +60,12 @@ const routes: Routes = [
     path: 'service-provider',
     canActivate: [AuthenticationGuard],
     component: ServiceprovidermainComponent,
-    children: [{ path: '', component: SpDashboardComponent },
-    { path: 'viewjobs', component: SpViewjobsComponent },
-    { path: 'contactadmin', component: ContactUsComponent },
+    children: [{ path: '', canActivate: [CategoryGuardGuard], component: SpDashboardComponent },
+    { path: 'viewjobs', canActivate: [CategoryGuardGuard], component: SpViewjobsComponent },
+    { path: 'contactadmin', canActivate: [CategoryGuardGuard], component: ContactUsComponent },
     { path: 'profile/:email', component: ServiceProviderProfileComponent },
-    { path: 'myprojects' , component:MyProjectsComponent}]
+    { path: 'myprojects', canActivate: [CategoryGuardGuard], component: MyProjectsComponent },
+    { path: 'wallet', canActivate: [CategoryGuardGuard], component: WalletComponent }]
   }
 ];
 

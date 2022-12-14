@@ -3,7 +3,7 @@ import { SignInService } from 'src/app/Services/sign-in/sign-in.service';
 import { lastValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
 import { SpinnerService } from './../../Services/spinner/spinner.service';
-
+import { ServiceProviderProfileService } from 'src/app/Services/serviceProviderProfile/service-provider-profile.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -17,7 +17,8 @@ export class SignInComponent implements OnInit {
   private username = "";
   private password = "";
   loggedInUser: any = []
-  constructor(private signinService: SignInService, private router: Router, private SpinnerService: SpinnerService) { }
+  category: any = []
+  constructor(private signinService: SignInService, private router: Router, private SpinnerService: SpinnerService, private spProfileService: ServiceProviderProfileService) { }
 
   async onLogin() {
     this.username = this.userInput;
@@ -27,6 +28,7 @@ export class SignInComponent implements OnInit {
       password: this.password
     }
     this.SpinnerService.requestStarted()
+
     this.loggedInUser = await lastValueFrom(this.signinService.findUserLogin(credentials))
     console.log(this.loggedInUser)
     setTimeout(() => {
@@ -38,6 +40,8 @@ export class SignInComponent implements OnInit {
         this.router.navigate(['/customer-mainpage'])
       }
       else if (this.loggedInUser[0].role == "Worker") {
+        this.category = await lastValueFrom(this.spProfileService.fetchingServiceProviderProfile(this.username))
+        this.signinService.setCategory(this.category[0]?.serviceDetails[0]?.tittle)
         this.router.navigate(['/service-provider'])
       }
       else if (this.loggedInUser[0].role == "Admin") {

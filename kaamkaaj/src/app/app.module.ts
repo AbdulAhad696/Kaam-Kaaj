@@ -37,14 +37,19 @@ import * as CanvasJSAngularChart from '../canvasjs.angular.component';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 import { BidOverlayComponent } from './service-provider/components/bid-overlay/bid-overlay.component'
 import { ImgOverlayComponent } from './service-provider/components/img-overlay/img-overlay.component';
-import {NgxMaskModule} from 'ngx-mask';
-import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import { NgxMaskModule } from 'ngx-mask';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MyProjectsComponent } from './service-provider/components/my-projects/my-projects.component';
 import { GooglePayButtonModule } from '@google-pay/button-angular';
 import { DatePipe } from '@angular/common';
 import { BidingsComponent } from './UserSite/bidings/bidings.component';
 import { RunningJobsComponent } from './UserSite/running-jobs/running-jobs.component';
 import { PostedJobsComponent } from './UserSite/posted-jobs/posted-jobs.component';
+import { WalletComponent } from './Shared/wallet/wallet.component';
+import { PayBalanceModalComponent } from './Shared/pay-balance-modal/pay-balance-modal.component';
+import { BalanceComponent } from './Shared/balance/balance.component';
+import { TransactionsComponent } from './Shared/transactions/transactions.component';
+
 
 
 @NgModule({
@@ -74,7 +79,12 @@ import { PostedJobsComponent } from './UserSite/posted-jobs/posted-jobs.componen
     MyProjectsComponent,
     BidingsComponent,
     RunningJobsComponent,
-    PostedJobsComponent
+    PostedJobsComponent,
+    WalletComponent,
+    PayBalanceModalComponent,
+    BalanceComponent,
+    TransactionsComponent,
+
   ],
   imports: [
     AppRoutingModule,
@@ -86,7 +96,6 @@ import { PostedJobsComponent } from './UserSite/posted-jobs/posted-jobs.componen
     MatDialogModule,
     BrowserModule,
     ReactiveFormsModule,
-
     NgxRerenderModule,
     NgxMaskModule.forRoot(),
     Ng2SearchPipeModule

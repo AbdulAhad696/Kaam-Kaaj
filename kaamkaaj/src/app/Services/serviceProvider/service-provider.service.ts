@@ -12,7 +12,7 @@ export class ServiceProviderService {
     return (this.http.get(`${environment.baseUrl}/serviceproviders/${service}`))
   }
   fetchSPData(id: any) {
-    return (this.http.get(`${environment.baseUrl}/spdata/${id}`))
+    return (this.http.get(`${environment.baseUrl}/serviceprovider/profile/${id}`))
   }
 
 

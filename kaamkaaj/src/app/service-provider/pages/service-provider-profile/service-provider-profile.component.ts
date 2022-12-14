@@ -20,10 +20,12 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   loggedInUserType: string | null;
   imageUrl: string
   domain: string = environment.baseUrl
-  constructor(private spProfileService: ServiceProviderProfileService, private SpinnerService: SpinnerService, private signinService: SignInService, private ActivatedRoute: ActivatedRoute, private ServiceProviderProfileService: ServiceProviderProfileService ,private router:Router ) { }
+  constructor(private spProfileService: ServiceProviderProfileService, private SpinnerService: SpinnerService, private signinService: SignInService, private ActivatedRoute: ActivatedRoute, private ServiceProviderProfileService: ServiceProviderProfileService, private router: Router) { }
   email: any
   serviceProviderProfile: any
-  currentServiceProviderCategory:any
+  currentServiceProviderCategory: any
+  reviews: any
+  category = this.signinService.getCategory()
 
   async useImage(event: any) {
     var formData = new FormData();
@@ -36,7 +38,7 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
     setTimeout(() => {
       this.SpinnerService.requestEnded()
     }, 1000)
-    window.location.reload()
+    this.ngOnInit()
   }
   async getProfile(email: any) {
     this.SpinnerService.requestStarted()
@@ -44,7 +46,7 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
     this.serviceProviderProfile[0].profilePicture = environment.baseUrl + "/" + this.serviceProviderProfile[0].profilePicture
     console.log(this.serviceProviderProfile)
     this.SpinnerService.requestEnded()
-    this.currentServiceProviderCategory = this.serviceProviderProfile[0].serviceDetails[0].tittle;
+    this.currentServiceProviderCategory = this.serviceProviderProfile[0]?.serviceDetails[0]?.tittle;
 
   }
   openModal() {
@@ -57,23 +59,29 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
       this.SpinnerService.requestStarted()
       await lastValueFrom(this.ServiceProviderProfileService.deletePortfolioImage(this.email, imageUrl))
       this.SpinnerService.requestEnded()
-      window.location.reload()
+      this.ngOnInit()
     }
   }
+  async getReviews() {
+    this.reviews = await lastValueFrom(this.ServiceProviderProfileService.fetchReviews(this.signinService.getId()))
+    console.log(this.reviews)
+  }
 
-    // -------------------------handling sending proposal-------------------------
-    handleSendProposal(){
-      this.router.navigate([`customer-mainpage/jobgigs/${this.serviceProviderProfile[0].serviceDetails[0].tittle}`])
-    }
+  // -------------------------handling sending proposal-------------------------
+  handleSendProposal() {
+    this.router.navigate([`customer-mainpage/jobgigs/${this.serviceProviderProfile[0]?.serviceDetails[0]?.tittle}`])
+  }
   ngOnInit(): void {
     this.email = this.ActivatedRoute.snapshot.params['email']
     this.getProfile(this.email)
     this.usertype = this.signinService.getusertype()
     console.log(this.usertype)
     this.loggedInUserType = this.signinService.getusertype();
+    this.getReviews()
+
   }
   ngOnChanges(changes: SimpleChanges) {
     this.ngOnInit()
   }
-  
+
 }

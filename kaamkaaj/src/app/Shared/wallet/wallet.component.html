@@ -1,0 +1,123 @@
+<!---------------------------------- Handling the modal for payments -->
+<app-pay-balance-modal balance = {{balance}}></app-pay-balance-modal>
+<div class="container mt-4">
+    <div class="row mainWalletHeading">
+        <div class="col-lg-12 d-flex justify-content-center">
+            <h1 class ="fs-2">Wallet</h1>
+        </div>
+    </div>
+    <!------------------------------Balance and Transaction menu -->
+    
+<div class="row">
+    <div class="col-12 d-flex justify-content-center">
+        <button class="m-4 menuButton {{selectedBtn =='Balance'?'selected':''}}" (click)="balanceBtnClick()">Balance</button>
+        <button class="m-4 menuButton {{selectedBtn =='Transaction'?'selected':''}}" (click)="transactionBtnClick()">Transactions</button>
+    </div>
+</div>
+<hr class="text-muted">
+
+<!--  -->
+
+
+<div *ngIf="selectedBtn == 'Balance'">
+    <app-balance balance = {{balance}} income = {{income}}></app-balance>
+</div>
+<div *ngIf="selectedBtn == 'Transaction'">
+    <app-transactions></app-transactions>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+    <div class="row">
+        <div class="col-lg-6 border rounded-4 p-4">
+            <div class="row">
+                <div class="col-lg-12 centerDisplay m-3">
+                    <h1 class="p-0 my-0 mx-3">Balance</h1>
+                    <i data-toggle="tooltip" data-placement="right" title="This is the fees charged to connect clients and service providers" class="bi-question-diamond-fill fa-2x justify-content-center align-items-center"></i>
+                </div>
+                <div class="col-lg-6 centerDisplay">
+                    <h2>PKR {{balance}}</h2>
+                </div>
+                <div class="col-lg-6 centerDisplay">
+                    <app-googlepay amount={{balance}} buttonText = "pay"></app-googlepay>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 border rounded-4 justify-content-between">
+            <div class="row">
+                <div class="col-6 centerDisplay">
+                    <h1>Total Revenue</h1>
+                </div>
+                <div class="col-6 centerDisplay">
+                    <h1>PKR {{revenue}}</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 centerDisplay">
+                    <h1>Total Income</h1>
+                </div>
+                <div class="col-6 centerDisplay">
+                    <h1>PKR {{income}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
