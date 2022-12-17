@@ -43,10 +43,12 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   async getProfile(email: any) {
     this.SpinnerService.requestStarted()
     this.serviceProviderProfile = await lastValueFrom(this.ServiceProviderProfileService.fetchingServiceProviderProfile(email))
-    this.serviceProviderProfile[0].profilePicture = environment.baseUrl + "/" + this.serviceProviderProfile[0].profilePicture
-    console.log(this.serviceProviderProfile)
+    if (this.serviceProviderProfile) {
+      this.serviceProviderProfile[0].profilePicture = environment.baseUrl + "/" + this.serviceProviderProfile[0]?.profilePicture
+      console.log(this.serviceProviderProfile)
+      this.currentServiceProviderCategory = this.serviceProviderProfile[0]?.serviceDetails[0]?.tittle;
+    }
     this.SpinnerService.requestEnded()
-    this.currentServiceProviderCategory = this.serviceProviderProfile[0]?.serviceDetails[0]?.tittle;
 
   }
   openModal() {
@@ -71,17 +73,23 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   handleSendProposal() {
     this.router.navigate([`customer-mainpage/jobgigs/${this.serviceProviderProfile[0]?.serviceDetails[0]?.tittle}`])
   }
-  ngOnInit(): void {
-    this.email = this.ActivatedRoute.snapshot.params['email']
+  initializeData() {
+    console.log("Chal Bhai")
+    // console.log(this.ActivatedRoute.snapshot)
+    this.email = this.signinService.getemail()
+    console.log(this.email)
     this.getProfile(this.email)
     this.usertype = this.signinService.getusertype()
     console.log(this.usertype)
     this.loggedInUserType = this.signinService.getusertype();
     this.getReviews()
+    // this.ngOnInit()
+  }
+  ngOnInit(): void {
+    this.initializeData()
 
   }
   ngOnChanges(changes: SimpleChanges) {
-    this.ngOnInit()
   }
 
 }

@@ -1,17 +1,23 @@
-.serviceImage{
+.serviceImage {
     border-radius: 50%;
     height: 100px;
+    border: 0.5px solid lightgreen;
     width: 100px;
+    /* height:; */
+    object-fit: contain;
 }
-.rateStar{
+
+.rateStar {
     color: orange;
     font-size: 20px;
     margin-top: 5px;
 }
-.rating{
+
+.rating {
     width: 100%;
     float: left;
 }
-.cursorPointer{
+
+.cursorPointer {
     cursor: pointer;
 }

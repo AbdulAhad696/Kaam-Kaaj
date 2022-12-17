@@ -1,71 +1,85 @@
-.profileImage{
+.profileImage {
     border-radius: 50%;
     height: 150px;
     width: 150px;
+    object-fit: scale-down;
+    border: 2px solid lightgray;
 }
 
-.bgGradient{
-    background-image: linear-gradient(to right,#8a8bfb ,#a9edfb);
+.bgGradient {
+    background-image: linear-gradient(to right, #8a8bfb, #a9edfb);
 }
-.price{
+
+.price {
     color: #02db96;
     font-size: large;
 }
-.clientImage{
+
+.clientImage {
     border-radius: 50%;
     height: 70px;
     width: 70px;
 }
-.jobRate{
+
+.jobRate {
     color: gray;
     font-size: large;
 }
-.projectsBox{
+
+.projectsBox {
     border-radius: 10px;
     border: 1px solid gray;
     margin-bottom: 45px;
 }
-.filter{
+
+.filter {
     display: flex;
     flex-direction: row-reverse;
 }
+
 /* Search Field */
 .searchBtn {
     height: 38px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
 }
-.searchFieled{
+
+.searchFieled {
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
-  }
-input:focus { 
+}
+
+input:focus {
     outline: none !important;
     border-color: #719ECE;
     box-shadow: 0 0 10px #719ECE;
- }
- .default:not(:only-child) {
+}
+
+.default:not(:only-child) {
     display: none;
- }
- .record{
+}
+
+.record {
     color: #b3b3b3;
     text-align: center;
 }
+
 @media only screen and (max-width: 985px) {
     .searchBox {
         width: 100%;
         height: 100%;
     }
 }
-@media (max-width: 991.98px) { 
-    .serviceProviderDetail{
+
+@media (max-width: 991.98px) {
+    .serviceProviderDetail {
         display: none;
     }
- }
+}
 
 
 /* Filter Button */
-.filterButton{
+.filterButton {
     /* background-color: gray; */
     border: none;
     background-color: #f2f2f2;
@@ -74,13 +88,15 @@ input:focus {
     border-radius: 8px;
     padding: 7px;
     margin-bottom: 15px;
-    margin-right: 15px;    
+    margin-right: 15px;
 }
-.filterButton:hover{
+
+.filterButton:hover {
     background-color: black;
     color: white;
 }
-.filterButton.active{
+
+.filterButton.active {
     background-color: black;
     color: white;
 }
