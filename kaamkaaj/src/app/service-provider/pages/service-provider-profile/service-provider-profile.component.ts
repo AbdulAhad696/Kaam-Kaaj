@@ -20,7 +20,7 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   loggedInUserType: string | null;
   imageUrl: string
   domain: string = environment.baseUrl
-  constructor(private spProfileService: ServiceProviderProfileService, private SpinnerService: SpinnerService, private signinService: SignInService, private ActivatedRoute: ActivatedRoute, private ServiceProviderProfileService: ServiceProviderProfileService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private spProfileService: ServiceProviderProfileService, private SpinnerService: SpinnerService, private signinService: SignInService, private ActivatedRoute: ActivatedRoute, private ServiceProviderProfileService: ServiceProviderProfileService, private router: Router) { }
   email: any
   serviceProviderProfile: any
   currentServiceProviderCategory: any
@@ -84,6 +84,19 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
     this.loggedInUserType = this.signinService.getusertype();
     this.getReviews()
     // this.ngOnInit()
+  }
+  async toggleStatus() {
+    let data = {
+      "id": this.serviceProviderProfile[0]?.serviceProvider,
+      "status": this.serviceProviderProfile[0]?.status
+    }
+    await lastValueFrom(this.ServiceProviderProfileService.toggleProfileStatus(data)).then((doc) => {
+      this.refreshPage()
+    })
+  }
+  refreshPage() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false
+    this.router.navigate(['./'], { relativeTo: this.route })
   }
   ngOnInit(): void {
     this.initializeData()

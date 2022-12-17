@@ -26,6 +26,10 @@ export class ServiceProviderProfileService {
   fetchReviews(id: any) {
     return (this.http.get(`${environment.baseUrl}/serviceprovider/profile/reviews/${id}`))
   }
+  toggleProfileStatus(data: any) {
+    console.log(`${environment.baseUrl}/serviceprovider/profile/sp/status-update`)
+    return (this.http.patch(`${environment.baseUrl}/serviceprovider/profile/sp/status-update`, data))
+  }
 
 
 

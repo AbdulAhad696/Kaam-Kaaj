@@ -34,8 +34,7 @@
                         routerlink="customer-mainpage/jobgigs">Send Proposal</a></button>
                 <button
                     *ngIf="usertype==
-                    'Admin'" type="button" class="btn btn-success btn-lg
-                    editProfileButton fs-5" >{{serviceProviderProfile[0]?.status == "" || serviceProviderProfile[0]?.status == "Enabled"? "Disable Profile":"Enable Profile"}}</button>
+                    'Admin'" type="button" class="btn btn-lg editProfileButton fs-5 {{serviceProviderProfile[0]?.status == 'Enabled' || serviceProviderProfile[0]?.status == '' ? 'btn-warning' : 'btn-success'}}" (click)="toggleStatus()" >{{serviceProviderProfile[0]?.status == "" || serviceProviderProfile[0]?.status == "Enabled"? "Disable Profile":"Enable Profile"}}</button>
                 <div *ngIf="usertype=='Worker'" >
                 <button
                 type="button" class="btn btn-success btn-lg
@@ -91,7 +90,7 @@
             </div>
     
             <div class="container portfolioContainer p-5 mb-5">
-                <!-- <div class="row m-0"> -->
+                <div class="row m-0">
                     <div *ngIf = " serviceProviderProfile[0]?.portfolioImages.length == 0;else elseBlock1" class="m-5 d-flex justify-content-center flex-column align-items-center">
                         <img src="../../../assets/noRecordFound.svg" alt="Avater">
                         <h1 class="record">No Portfolio</h1>
@@ -105,9 +104,10 @@
                         (click)="deletePortfolioImage(image)"
                         alt="portfolioPic" class= 'portfolioPicture'>
                     </div>
+
                 </ng-template>
     
-                <!-- </div> -->
+                </div>
             </div>
         </div>
     
