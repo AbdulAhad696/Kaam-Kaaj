@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {  lastValueFrom } from 'rxjs';
-import { MyProjectService } from './../../../Services/myProjects/my-project.service';
-import { SignInService } from './../../../Services/sign-in/sign-in.service';
+import { MyProjectService } from '../../../Services/myProjects/my-project.service';
+import { SignInService } from '../../../Services/sign-in/sign-in.service';
 import { environment } from 'src/environments/environment';
-import { SpinnerService } from './../../../Services/spinner/spinner.service';
+import { SpinnerService } from '../../../Services/spinner/spinner.service';
 
 
 @Component({
@@ -19,6 +19,7 @@ export class MyProjectsComponent implements OnInit {
   time:any
   searchText:any
   activeButton:string="deadlines"
+  projectDetails:any
 
 
   async getServiceProviderData(){
@@ -64,6 +65,20 @@ export class MyProjectsComponent implements OnInit {
         break;
 
     }
+  }
+
+
+  openModal(jobId:any,clientName:any,clientProfile:any,jobAddress:any,earning:any) {
+
+    this.projectDetails={
+      jobId:jobId,
+      clientName:clientName,
+      clientProfile:clientProfile,
+      jobAddress:jobAddress,
+      earning:earning
+    }
+
+    $('#exampleModalCenter').modal('toggle')
   }
 
   ngOnInit(): void {

@@ -37,9 +37,9 @@ import * as CanvasJSAngularChart from '../canvasjs.angular.component';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 import { BidOverlayComponent } from './service-provider/components/bid-overlay/bid-overlay.component'
 import { ImgOverlayComponent } from './service-provider/components/img-overlay/img-overlay.component';
-import { NgxMaskModule } from 'ngx-mask';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { MyProjectsComponent } from './service-provider/components/my-projects/my-projects.component';
+import {NgxMaskModule} from 'ngx-mask';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import { MyProjectsComponent } from './service-provider/pages/my-projects/my-projects.component';
 import { GooglePayButtonModule } from '@google-pay/button-angular';
 import { DatePipe } from '@angular/common';
 import { BidingsComponent } from './UserSite/bidings/bidings.component';
@@ -55,6 +55,14 @@ import { ChangePasswordConponentComponent } from './UserSite/change-password-con
 import { AdminDashboardComponent } from './admin/pages/admin-dashboard/admin-dashboard.component';
 import { AdminMainComponent } from './admin/pages/admin-main/admin-main.component';
 // import { AngularResizeEventModule } from 'angular-resize-event';
+import { SubmitProjectModalComponent } from './service-provider/components/submit-project-modal/submit-project-modal.component';
+
+
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -92,7 +100,8 @@ import { AdminMainComponent } from './admin/pages/admin-main/admin-main.componen
     ChangePasswordModalComponent,
     ChangePasswordConponentComponent,
     AdminDashboardComponent,
-    AdminMainComponent
+    AdminMainComponent,
+    SubmitProjectModalComponent
   ],
   imports: [
     AppRoutingModule,

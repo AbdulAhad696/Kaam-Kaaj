@@ -1,0 +1,23 @@
+.clientInfo{
+    text-align: center;
+}
+.clientImage{
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+.selected {
+    color: orange;
+  }
+
+
+.stars{
+    cursor: pointer;
+}
+
+.ratingText{
+    /* float: right; */
+    border: none;
+    height: 0.5px;
+    width: 0.5px;
+}
