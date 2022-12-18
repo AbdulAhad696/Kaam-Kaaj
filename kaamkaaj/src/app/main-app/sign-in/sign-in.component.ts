@@ -21,7 +21,7 @@ export class SignInComponent implements OnInit {
   loggedInUser: any = []
   category: any = []
   showPassword: boolean = false
-  constructor(private signinService: SignInService, private router: Router, private SpinnerService: SpinnerService) { }
+  constructor(private signinService: SignInService, private router: Router, private SpinnerService: SpinnerService,private spProfileService:ServiceProviderProfileService) { }
 
   async onLogin() {
     this.username = this.userInput;
@@ -31,12 +31,12 @@ export class SignInComponent implements OnInit {
       password: this.password
     }
     this.SpinnerService.requestStarted()
-
-    this.loggedInUser = await lastValueFrom(this.signinService.findUserLogin(credentials))
-    console.log(this.loggedInUser)
     setTimeout(() => {
       this.SpinnerService.requestEnded()
-    }, 1000)
+    }, 5000)
+    this.loggedInUser = await lastValueFrom(this.signinService.findUserLogin(credentials))
+    console.log(this.loggedInUser)
+    
     if (this.loggedInUser.length > 0) {
       this.signinService.storeinlocalstorage(this.loggedInUser[0]);
       if (this.loggedInUser[0].role == "Client") {

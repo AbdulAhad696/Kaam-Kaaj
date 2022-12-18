@@ -42,7 +42,11 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   }
   async getProfile(email: any) {
     this.SpinnerService.requestStarted()
+    console.log("request started")
     this.serviceProviderProfile = await lastValueFrom(this.ServiceProviderProfileService.fetchingServiceProviderProfile(email))
+    console.log("last value from")
+    console.log(this.serviceProviderProfile)
+    this.ngOnInit
     this.serviceProviderProfile[0].profilePicture = environment.baseUrl + "/" + this.serviceProviderProfile[0].profilePicture
     console.log(this.serviceProviderProfile)
     this.SpinnerService.requestEnded()
@@ -71,9 +75,11 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   handleSendProposal() {
     this.router.navigate([`customer-mainpage/jobgigs/${this.serviceProviderProfile[0]?.serviceDetails[0]?.tittle}`])
   }
-  ngOnInit(): void {
+  async ngOnInit() {
     this.email = this.ActivatedRoute.snapshot.params['email']
-    this.getProfile(this.email)
+    console.log("HERE")
+    await (this.getProfile(this.email))
+    console.log("after get")
     this.usertype = this.signinService.getusertype()
     console.log(this.usertype)
     this.loggedInUserType = this.signinService.getusertype();

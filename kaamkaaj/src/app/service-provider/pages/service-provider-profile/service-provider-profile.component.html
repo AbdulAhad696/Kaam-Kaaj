@@ -1,4 +1,4 @@
-<app-edit-spmodal [profile]="serviceProviderProfile"></app-edit-spmodal>
+<app-edit-spmodal *ngIf="this.serviceProviderProfile!=null" [profile]="serviceProviderProfile"></app-edit-spmodal>
 <div *ngIf="category == 'Not Selected'" class="alert alert-danger p-3" role="alert">
     To get started, click on Edit Profile below and choose a category you want to provide services in.
     Mind that the service category once selected can not be changed again.

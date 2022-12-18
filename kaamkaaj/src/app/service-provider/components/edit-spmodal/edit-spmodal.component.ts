@@ -74,6 +74,7 @@ export class EditSPModalComponent implements OnInit, OnChanges {
     this.category = this.siginservice.getCategory()
   }
   ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.profile)
     this.editedAddress = this.profile[0]?.serviceProviderDetails[0]?.address
     this.editedName = this.profile[0]?.serviceProviderDetails[0]?.userName
     this.editedCategory = this.profile[0]?.serviceDetails[0]?.tittle

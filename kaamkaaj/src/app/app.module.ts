@@ -54,7 +54,7 @@ import { ChangePasswordModalComponent } from './UserSite/change-password-modal/c
 import { ChangePasswordConponentComponent } from './UserSite/change-password-conponent/change-password-conponent.component';
 import { AdminDashboardComponent } from './admin/pages/admin-dashboard/admin-dashboard.component';
 import { AdminMainComponent } from './admin/pages/admin-main/admin-main.component';
-// import { AngularResizeEventModule } from 'angular-resize-event';
+import { AngularResizeEventModule } from 'angular-resize-event';
 
 @NgModule({
   declarations: [
@@ -107,7 +107,7 @@ import { AdminMainComponent } from './admin/pages/admin-main/admin-main.componen
     NgxRerenderModule,
     NgxMaskModule.forRoot(),
     Ng2SearchPipeModule,
-    // AngularResizeEventModule
+    AngularResizeEventModule
 
   ],
   providers: [DatePipe],
