@@ -1,3 +1,9 @@
+
+<app-submit-project-modal [projectDetails]="projectDetails"></app-submit-project-modal>
+
+
+
+
 <h1 class=" d-flex m-4 justify-content-center align-items-center">My Projects</h1>
 
 <div class="row container-fluid">
@@ -190,7 +196,7 @@
                             You're running late.Done now to avoid negative rating</h3>
                     </div>
                     <div class="col-md-2 col-xs-4 ps-2">
-                        <button type="button" class="mt-2  btn btn-success"><b>Submit</b></button>
+                        <button (click)="openModal(serviceProviderProject?._id,serviceProviderProject?.clientDetails[0]?.userName,serviceProviderProject?.clientProfile[0]?.profileImage,serviceProviderProject?.jobAddress,serviceProviderProject?.bidDetails[0]?.amount)" type="button" class="mt-2  btn btn-success"><b>Submit</b></button>
                     </div>
                 </div>
             </div>

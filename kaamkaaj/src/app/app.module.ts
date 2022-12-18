@@ -39,7 +39,7 @@ import { BidOverlayComponent } from './service-provider/components/bid-overlay/b
 import { ImgOverlayComponent } from './service-provider/components/img-overlay/img-overlay.component';
 import {NgxMaskModule} from 'ngx-mask';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
-import { MyProjectsComponent } from './service-provider/components/my-projects/my-projects.component';
+import { MyProjectsComponent } from './service-provider/pages/my-projects/my-projects.component';
 import { GooglePayButtonModule } from '@google-pay/button-angular';
 import { DatePipe } from '@angular/common';
 import { BidingsComponent } from './UserSite/bidings/bidings.component';
@@ -48,6 +48,7 @@ import { PostedJobsComponent } from './UserSite/posted-jobs/posted-jobs.componen
 import { ClientProjectsComponent } from './UserSite/client-projects/client-projects.component';
 import { ChangePasswordModalComponent } from './UserSite/change-password-modal/change-password-modal.component';
 import { ChangePasswordConponentComponent } from './UserSite/change-password-conponent/change-password-conponent.component';
+import { SubmitProjectModalComponent } from './service-provider/components/submit-project-modal/submit-project-modal.component';
 
 
 
@@ -86,7 +87,8 @@ import { ChangePasswordConponentComponent } from './UserSite/change-password-con
     PostedJobsComponent,
     ClientProjectsComponent,
     ChangePasswordModalComponent,
-    ChangePasswordConponentComponent
+    ChangePasswordConponentComponent,
+    SubmitProjectModalComponent
   ],
   imports: [
     AppRoutingModule,
