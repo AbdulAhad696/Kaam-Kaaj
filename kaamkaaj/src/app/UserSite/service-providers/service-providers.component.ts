@@ -40,7 +40,9 @@ export class ServiceProvidersComponent implements OnInit {
       element.currentDistance = this.distance(element.serviceProviderDetails[0].location.latitude, this.currentLocation.latitude, element.serviceProviderDetails[0].location.longitude, this.currentLocation.longitude)
     });
     // console.log(this.serviceProviders[0])
-    this.SpinnerService.requestEnded()
+    setTimeout(() => {
+      this.SpinnerService.requestEnded()
+    }, 3000)
   }
   showServiceProviderProfile(email: any) {
     this.router.navigate([`customer-mainpage/serviceprovider/profile/${email}`])

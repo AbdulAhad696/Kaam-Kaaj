@@ -56,12 +56,7 @@ import { AdminDashboardComponent } from './admin/pages/admin-dashboard/admin-das
 import { AdminMainComponent } from './admin/pages/admin-main/admin-main.component';
 import { AngularResizeEventModule } from 'angular-resize-event';
 import { SubmitProjectModalComponent } from './service-provider/components/submit-project-modal/submit-project-modal.component';
-
-
-
-
-
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -116,8 +111,8 @@ import { SubmitProjectModalComponent } from './service-provider/components/submi
     NgxRerenderModule,
     NgxMaskModule.forRoot(),
     Ng2SearchPipeModule,
-    AngularResizeEventModule
-
+    AngularResizeEventModule,
+    NgbModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],

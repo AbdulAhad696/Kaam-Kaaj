@@ -22,7 +22,9 @@ constructor(private getServices:GetServicesService,private SpinnerService:Spinne
   async getAllServices(){
     this.SpinnerService.requestStarted()
     this.services=await lastValueFrom(this.getServices.fetchingServices())
-    this.SpinnerService.requestEnded()
+    setTimeout(() => {
+      this.SpinnerService.requestEnded()
+    }, 2000)
   }
   showServiceProviders(service:any){
 

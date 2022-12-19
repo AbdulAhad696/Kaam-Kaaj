@@ -38,16 +38,24 @@
                         </div>
                     </div>
                     <div class="ps-3 pb-3">
-                        <label style="color: grey;">{{this.gig?.estAmount}}</label>
+                        <label style="color: grey;">Max Amount:{{this.gig?.estAmount}}</label>
+                    </div>
+                    <div class="ps-3 pb-3">
+                        <label style="color: grey;">Estimated Completion:{{this.gig?.estCompletionTime}}</label>
                     </div>
                     <div class="p-3 pt-0 row">
                         <div class="col-sm-6">
                             <input placeholder="Bid Amount"
                             class="col-sm-6 form-control border-start-0 border-end-0 border-top-0 rounded-0 p-0"
-                            style="width:10vw ;" required [(ngModel)]="bidamount" [ngModelOptions]="{standalone:true}"/>
+                            style="width:10vw ;" required [(ngModel)]="bidamount" [ngModelOptions]="{standalone:true}"
+                            oninvalid="this.setCustomValidity(`Enter an appropriate value within client's budget`)"
+                            oninput="this.setCustomValidity('')" type="number"/>
                         </div>
                         <div class="col-sm-6">
-                            <input  placeholder="Duration"  required [(ngModel)]="bidDuration" [ngModelOptions]="{standalone:true}" type="number"/>
+                            <input required class="form-control border-start-0 border-end-0 border-top-0 rounded-0 p-0" 
+                            oninvalid="this.setCustomValidity('Enter the number of days')"
+                            oninput="this.setCustomValidity('')"
+                            placeholder="Duration"  required [(ngModel)]="bidDuration" [ngModelOptions]="{standalone:true}" type="number"/>
                         </div>
                     </div>
                 </div>

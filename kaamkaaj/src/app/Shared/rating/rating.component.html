@@ -1,4 +1,6 @@
 <ul class="list-inline rating-list" *ngFor="let star of stars; let i= index">
-    <li  [ngClass]="{'selected': (star <= selectedValue)}" > <span class="material-icons">star</span>
+    <li *ngIf="currentPage==null" [ngClass]="{'selected': (star <= selectedValue)}" > <span class="material-icons" >star</span>
+    </li>
+    <li *ngIf="currentPage!=null" [ngClass]="{'selected': (star <= selectedValue)}" > <span class="material-icons overridesize">star</span>
     </li>
 </ul>

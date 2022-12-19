@@ -49,7 +49,9 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
       console.log(this.serviceProviderProfile)
       this.currentServiceProviderCategory = this.serviceProviderProfile[0]?.serviceDetails[0]?.tittle;
     }
-    this.SpinnerService.requestEnded()
+    setTimeout(() => {
+      this.SpinnerService.requestEnded()
+    }, 3000)
 
   }
   openModal() {
@@ -61,7 +63,9 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
     if (confirm("Are you sure you want to delete the image?")) {
       this.SpinnerService.requestStarted()
       await lastValueFrom(this.ServiceProviderProfileService.deletePortfolioImage(this.email, imageUrl))
-      this.SpinnerService.requestEnded()
+      setTimeout(() => {
+        this.SpinnerService.requestEnded()
+      }, 2000)
       this.ngOnInit()
     }
   }

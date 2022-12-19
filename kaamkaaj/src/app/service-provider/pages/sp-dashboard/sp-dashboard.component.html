@@ -7,7 +7,7 @@
         <div class="col-md-6 align-items-center justify-content-center d-flex p-5">
             <div>
                 <div class="justify-content-center d-flex">
-                        <h1 class="fs-1" style="text-align: center;">Work and Earn at your own pace</h1>
+                        <h1 class="fs-1 fw-bold" style="text-align: center;">Work and Earn at your own pace</h1>
                 </div>
                 <div class="justify-content-center d-flex">
                     <button type="button" routerLink="viewjobs" class="fs-3 btn btn-dark">Find Jobs</button>
@@ -16,13 +16,49 @@
         </div>
     </div>
 </div>
-<div @myInsertRemoveTrigger class="container-fluid p-0 justify-content-center d-flex row">
-    <div class="col-lg-8">
-        <div class="">
-            <h1 class="fs-1">Total Earnings</h1>
+<div @myInsertRemoveTrigger class="container-fluid p-0 justify-content-center d-flex row pt-5 pb-5 mt-5 mb-5">
+    <div class="col-8">
+        <div class="profilePictureDiv centerColumn">
+            <img *ngIf="this.spProfile"
+                src={{this.spProfile[0]?.profilePicture}}
+                alt="profilePicture" class="profilePicture">
         </div>
-        <div class="">
-            <h1></h1>
+        <div class="pb-5 pt-5">
+            <div class="justify-content-center d-flex">
+                <h1 class="fs-1 fw-bold align" style="text-align: center;">Total Earnings</h1>
+            </div>
+            <div class="justify-content-center d-flex"><hr class="col-md-4  col-sm-6 col-8"></div>
+            <div class="justify-content-center d-flex">
+                <h1 class="fs-1 fw-bold">{{this.spProfile[0]?.totalEarning}}</h1>
+            </div>
+        </div>
+
+        <div class="pb-5 pt-5">
+            <div class="justify-content-center d-flex">
+                <h1 class="fs-1 fw-bold" style="text-align: center;">Jobs Completed</h1>
+            </div>
+            <div class="justify-content-center d-flex"><hr class="col-md-4  col-sm-6 col-8"></div>
+            <div class="justify-content-center d-flex">
+                <h1 class="fs-1 fw-bold">{{this.spProfile[0]?.jobsCompleted}}</h1>
+            </div>
+        </div>
+
+        <div class="pb-5 pt-5">
+            <div class="justify-content-center d-flex">
+                <h1 class="fs-1 fw-bold"style="text-align: center;">Your Rating</h1>
+            </div>
+            <div class="justify-content-center d-flex"><hr class="col-md-4  col-sm-6 col-8"></div>
+            <div class="justify-content-center d-flex">
+                <div>{{child.setSelectedValue(this.spProfile[0]?.rating |
+                    number: '1.0-0')}}
+                    <app-rating #child [currentPage]="'mainpage'"></app-rating></div>
+            </div>
+        </div>
+
+        <div class="pb-5">
+            <div class="justify-content-center d-flex">
+                <button routerLink="profile/{{this.email}}" type="button" class="btn btn-outline-dark">Go to Profile</button>
+            </div>
         </div>
     </div>
 </div>

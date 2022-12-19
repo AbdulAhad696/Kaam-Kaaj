@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { style,trigger,animate,transition,state,query,stagger,group} from '@angular/animations';
+import { ServiceProviderProfileService } from 'src/app/Services/serviceProviderProfile/service-provider-profile.service';
+import { SignInService } from 'src/app/Services/sign-in/sign-in.service';
+import { lastValueFrom } from 'rxjs';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-sp-dashboard',
@@ -59,11 +64,15 @@ import { style,trigger,animate,transition,state,query,stagger,group} from '@angu
   // ]
 })
 export class SpDashboardComponent implements OnInit {
-  
-  constructor() { }
+  email:string
+  spProfile:object
+  constructor(private spProfileService: ServiceProviderProfileService,private signInService: SignInService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.email = this.signInService.getemail()
+    this.spProfile = await lastValueFrom(this.spProfileService.fetchingServiceProviderProfile(this.email))
+    console.log(this.spProfile)
+    this.spProfile[0].profilePicture = environment.baseUrl + "/" + this.spProfile[0]?.profilePicture
   }
-  
 
 }

@@ -33,7 +33,7 @@ export class SignInComponent implements OnInit {
     this.SpinnerService.requestStarted()
     setTimeout(() => {
       this.SpinnerService.requestEnded()
-    }, 5000)
+    }, 2000)
     this.loggedInUser = await lastValueFrom(this.signinService.findUserLogin(credentials))
     console.log(this.loggedInUser)
     

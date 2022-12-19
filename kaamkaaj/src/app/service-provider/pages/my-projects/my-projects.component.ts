@@ -50,7 +50,9 @@ export class MyProjectsComponent implements OnInit {
     });
     this.serviceProviderProjects.sort((a:any, b:any) => (a?.estCompletionTime > b?.estCompletionTime ? 1 : -1));
 
-    this.SpinnerService.requestEnded()
+    setTimeout(() => {
+      this.SpinnerService.requestEnded()
+    }, 2000)
   }
 
   fillterButtonClick(value:any){

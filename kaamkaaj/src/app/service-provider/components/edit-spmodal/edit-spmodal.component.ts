@@ -57,7 +57,9 @@ export class EditSPModalComponent implements OnInit, OnChanges {
     this.closeModal()
     await lastValueFrom(this.spProfileService.updateServiceProviderProfile(formData)).then(() => {
       this.siginservice.setCategory(this.editedCategory)
-      this.SpinnerService.requestEnded()
+      setTimeout(() => {
+        this.SpinnerService.requestEnded()
+      }, 2000)
       this.refreshPage()
     })
   }

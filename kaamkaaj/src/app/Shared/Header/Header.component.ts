@@ -9,6 +9,7 @@ import { SignInService } from 'src/app/Services/sign-in/sign-in.service';
 
 })
 export class HeaderComponent implements OnInit {
+  isCollapsed=false;
   adminbuttons: any;
   email = "";
   userbuttons =
