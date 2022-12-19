@@ -21,7 +21,7 @@
                 <ng-template #oldProfilePhoto>
                     <img
                         alt="profilePicture" class="editProfilePicture"
-                        src={{profile[0]?.profilePicture}}>
+                        src={{profile[0]?.serviceProviderDetails[0]?.profilePicture}}>
                 </ng-template>
                 <div class="row justify-content-center align-items-center"
                     style="cursor: pointer;">
@@ -42,7 +42,7 @@
                         <input type="text" name="editedName"
                             [(ngModel)]="editedName"
                             class="form-control"
-                            value={{profile[0]?.serviceProviderDetails[0]?.userName}}>
+                            value={{profile[0]?.userName}}>
                     </div>
                 </div>
                 <div class="row editLocation mb-2 mt-2" style="width: 90%;">
@@ -55,7 +55,7 @@
                         <input type="text" name="editedName"
                             [(ngModel)]="editedAddress"
                             class="form-control"
-                            value={{profile[0]?.serviceProviderDetails[0]?.address}}>
+                            value={{profile[0]?.address}}>
                     </div>
                 </div>
                 <div *ngIf="category == 'Not Selected'" class=" row editCategory mb-2 mt-2" style="width: 90%;">

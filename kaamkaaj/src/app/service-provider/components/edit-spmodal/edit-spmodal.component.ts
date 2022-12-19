@@ -48,7 +48,7 @@ export class EditSPModalComponent implements OnInit, OnChanges {
     // console.log(imagefile)
     // console.log(imagefile.files[0]);
     formData.append("url", imagefile.files[0]);
-    formData.append("email", this.profile[0].serviceProviderDetails[0].email);
+    formData.append("email", this.profile[0].email);
     formData.append("name", this.editedName);
     formData.append("address", this.editedAddress);
     formData.append("category", this.editedCategory);
@@ -77,10 +77,10 @@ export class EditSPModalComponent implements OnInit, OnChanges {
   }
   ngOnChanges(changes: SimpleChanges): void {
     if (this.profile != undefined) {
-      this.editedAddress = this.profile[0]?.serviceProviderDetails[0]?.address
-      this.editedName = this.profile[0]?.serviceProviderDetails[0]?.userName
+      this.editedAddress = this.profile[0]?.address
+      this.editedName = this.profile[0]?.userName
       this.editedCategory = this.profile[0]?.serviceDetails[0]?.tittle
-      this.URL = this.profile[0].profilePicture
+      this.URL = this.profile[0]?.serviceProviderDetails[0]?.profilePicture
     }
   }
 
