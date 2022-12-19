@@ -45,7 +45,7 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
     console.log("request started")
     this.serviceProviderProfile = await lastValueFrom(this.ServiceProviderProfileService.fetchingServiceProviderProfile(email))
     if (this.serviceProviderProfile) {
-      this.serviceProviderProfile[0].profilePicture = environment.baseUrl + "/" + this.serviceProviderProfile[0]?.profilePicture
+      this.serviceProviderProfile[0].serviceProviderDetails[0].profilePicture = environment.baseUrl + "/" + this.serviceProviderProfile[0]?.serviceProviderDetails[0]?.profilePicture
       console.log(this.serviceProviderProfile)
       this.currentServiceProviderCategory = this.serviceProviderProfile[0]?.serviceDetails[0]?.tittle;
     }
@@ -70,7 +70,7 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
     }
   }
   async getReviews() {
-    this.reviews = await lastValueFrom(this.ServiceProviderProfileService.fetchReviews(this.signinService.getId()))
+    this.reviews = await lastValueFrom(this.ServiceProviderProfileService.fetchReviews(this.ActivatedRoute.snapshot.params["email"]))
     console.log(this.reviews)
   }
 
@@ -81,7 +81,7 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   initializeData() {
     console.log("Chal Bhai")
     // console.log(this.ActivatedRoute.snapshot)
-    this.email = this.signinService.getemail()
+    this.email = this.ActivatedRoute.snapshot.params['email'];
     console.log(this.email)
     this.getProfile(this.email)
     this.usertype = this.signinService.getusertype()
@@ -92,8 +92,8 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   }
   async toggleStatus() {
     let data = {
-      "id": this.serviceProviderProfile[0]?.serviceProvider,
-      "status": this.serviceProviderProfile[0]?.status
+      "id": this.serviceProviderProfile[0]?._id,
+      "status": this.serviceProviderProfile[0]?.serviceProviderDetails[0]?.status
     }
     await lastValueFrom(this.ServiceProviderProfileService.toggleProfileStatus(data)).then((doc) => {
       this.refreshPage()
@@ -105,7 +105,6 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   }
   ngOnInit(): void {
     this.initializeData()
-
   }
   ngOnChanges(changes: SimpleChanges) {
   }

@@ -55,8 +55,10 @@ import { ChangePasswordConponentComponent } from './UserSite/change-password-con
 import { AdminDashboardComponent } from './admin/pages/admin-dashboard/admin-dashboard.component';
 import { AdminMainComponent } from './admin/pages/admin-main/admin-main.component';
 import { AngularResizeEventModule } from 'angular-resize-event';
+import { ShowServiceProvidersComponent } from './admin/pages/show-service-providers/show-service-providers.component';
 import { SubmitProjectModalComponent } from './service-provider/components/submit-project-modal/submit-project-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @NgModule({
@@ -78,6 +80,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     JobGigsComponent,
     SpViewjobsComponent,
     ServiceprovidermainComponent,
+    ShowServiceProvidersComponent,
     GigCardComponent,
     CustomermainpageComponent,
     CanvasJSChart,

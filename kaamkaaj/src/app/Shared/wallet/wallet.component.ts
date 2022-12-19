@@ -24,9 +24,9 @@ export class WalletComponent implements OnInit {
 
   async getBalance() {
     var bal = (await lastValueFrom(this.spData.fetchSPData(this.signiService.getemail())))
-    this.balance = bal[0]?.balance || 0
-    this.revenue = bal[0]?.revenue || 0
-    this.income = bal[0]?.totalEarning || 0
+    console.log(bal)
+    this.balance = bal[0]?.serviceProviderDetails[0]?.balance || 0
+    this.income = bal[0]?.totalEarning || bal[0]?.serviceProviderDetails[0]?.totalEarning || 0
     console.log(this.balance, "Balance")
     console.log(this.income, "Income")
 

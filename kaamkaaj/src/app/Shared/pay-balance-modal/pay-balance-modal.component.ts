@@ -11,7 +11,7 @@ import { lastValueFrom } from "rxjs"
 export class PayBalanceModalComponent implements OnInit {
   @Input() balance;
   userId;
-
+  @Input() refreshWallet: () => void;
   profileDetails: any;
   constructor(private serviceProviderProfile: ServiceProviderProfileService, private signinService: SignInService, private transactionService: TransactionsService) { }
 
@@ -19,16 +19,23 @@ export class PayBalanceModalComponent implements OnInit {
     var paymentData = {
       amount: this.balance,
       from: this.userId,
-      to: 'Admin',
+      to: "639726e583fb10e22a7bb183",
       timeStamp: new Date()
     }
     await lastValueFrom(this.transactionService.spBalanceTransaction(paymentData)).then(
       () => {
-        lastValueFrom(this.transactionService.spBalanceReset(this.userId))
+        lastValueFrom(this.transactionService.spBalanceReset(this.userId)).then(
+          () => {
+            lastValueFrom(this.transactionService.payMoneyToAdmin(paymentData.amount))
+          }
+        )
         console.log("Done")
       }
     ).catch(err => { console.log(err) })
+    $('#exampleModalCenter').modal('toggle')
+    this.refreshWallet()
   }
+
 
   ngOnInit(): void {
     this.userId = this.signinService.getId()

@@ -11,6 +11,7 @@ export class TransactionsComponent implements OnInit {
 
   constructor(private transactionService: TransactionsService, private signinService: SignInService) { }
   allTransactions: any = []
+  currentUserId: any = this.signinService.getId()
   async getAllTransactions() {
     this.allTransactions = await lastValueFrom(this.transactionService.getTransactions(this.signinService.getId()))
   }
