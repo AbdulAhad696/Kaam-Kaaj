@@ -21,7 +21,7 @@ export class SignInComponent implements OnInit {
   loggedInUser: any = []
   category: any = []
   showPassword: boolean = false
-  constructor(private signinService: SignInService, private router: Router, private SpinnerService: SpinnerService) { }
+  constructor(private signinService: SignInService, private router: Router, private SpinnerService: SpinnerService,private spProfileService:ServiceProviderProfileService) { }
 
   async onLogin() {
     this.username = this.userInput;

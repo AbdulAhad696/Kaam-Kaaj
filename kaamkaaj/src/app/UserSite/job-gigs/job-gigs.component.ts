@@ -7,7 +7,7 @@ import { GetServicesService } from '../../Services/get-services/get-services.ser
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import {HttpClient,HttpParams} from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { Router ,ActivatedRoute } from '@angular/router';
 import { ViewChild,ElementRef } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Inject }  from '@angular/core';
@@ -24,7 +24,7 @@ export class JobGigsComponent implements OnInit {
   @ViewChild("amountNumberField") amountNumberField;
   @ViewChild("durationNumberField") durationNumberField;
 
-  constructor( private GetServicesService:GetServicesService , private AddJobService:AddJobService , private SignInService:SignInService , private SpinnerService: SpinnerService , private http: HttpClient  , private route: ActivatedRoute , private datePipe:DatePipe,  @Inject(DOCUMENT) document: Document ) { }
+  constructor( private GetServicesService:GetServicesService , private AddJobService:AddJobService , private SignInService:SignInService , private SpinnerService: SpinnerService , private http: HttpClient  , private route: ActivatedRoute , private datePipe:DatePipe,  @Inject(DOCUMENT) document: Document ,private router:Router) { }
 // -----------------------variable required--------------------------
   allServices: any;
   jobData:any;
@@ -35,6 +35,9 @@ export class JobGigsComponent implements OnInit {
   currentDuration = "Choose Duration";
   currentServiceProviderCategory:any;
   btnState:boolean = false;
+  amountText:any;
+  categoryText:any;
+
 // -----------------------------schema variables-------------------------
   title:string;
   jobPostDate:string;
@@ -122,8 +125,14 @@ async handleSubmit(){
     setTimeout(()=>{
       alert(this.isJobAdded);
     },10)
+    this.refreshComponent()
+  }
 
-    window.location.reload();
+// ------------------------refresing a specific component ----------------------
+  refreshComponent(){
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['./'] , { relativeTo: this.route } )
   }
 
   // --------------------------getting all services-----------------------------
@@ -136,6 +145,8 @@ async handleSubmit(){
     document.getElementById("amountdropdown")?.classList.add("hide");
     document.getElementById("amountFields")?.classList.remove("hide");
     this.amountNumberField.nativeElement.focus();
+    // ------------removing validation from amount dropdown-----------
+    this.amountText = "a";
   }
 
 // ----------------------------converting duration dropdown to input field-----------------------
@@ -145,7 +156,7 @@ async handleSubmit(){
     this.durationNumberField.nativeElement.focus();
   }
   
-// -----------------------------uploading images----------------------------
+// -----------------------------uploading  images----------------------------
   selectMultipleImages(event){
     if(event.target.files.length > 0){
       this.gigPics = event.target.files;
@@ -159,7 +170,7 @@ async handleSubmit(){
       }
     }
     return this.http.post<any>(`${environment.baseUrl}/addJobs/multipleImages` , formData)  }
-  
+  // ----------------getting current date--------------------
     gettingCurrentDate(){
       var dtToday = new Date();
       var month = dtToday.getMonth() + 1;
@@ -174,9 +185,17 @@ async handleSubmit(){
       var currentDate= year + '-' + month + '-' + day;
       (<HTMLInputElement>document.getElementById('date')).min = currentDate;
     }
-      
-
-
+    // -------------------removing validation from select amount dropdown----------
+    removingValidationAmountDropdown(){
+      document.getElementById("amountDropdownDivId")?.classList.add("hide");
+      this.amountText = "a";
+    }
+    // -------------------removing validation from select category dropdown----------
+    removingValidationCategoryDropdown(){
+      document.getElementById("categoryDropdownDivId")?.classList.add("hide");
+      this.categoryText = "a";
+    }
+    
   ngOnInit(): void {
     this.gettingCurrentDate()
     this.gettingServices();
@@ -188,6 +207,8 @@ async handleSubmit(){
       this.currentCategory = this.currentServiceProviderCategory;
       this.currentService(this.currentServiceProviderCategory)
       this.btnState = true;
+      // ------------removing validation from category dropdown-----------
+      this.categoryText = "a";
     }
   }
 }

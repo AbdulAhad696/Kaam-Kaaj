@@ -3,7 +3,7 @@ import { environment } from '../../../environments/environment';
 import { Router,NavigationEnd,Event } from '@angular/router';
 import { Inject }  from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-// import { ResizedEvent } from 'angular-resize-event';
+import { ResizedEvent } from 'angular-resize-event';
 
 @Component({
   selector: 'app-filter-bar',
@@ -40,16 +40,16 @@ export class FilterBarComponent implements OnInit {
   }
 
   // -------------------------checking page width on resizing-----------------------------
-  // onResized(event: ResizedEvent) {
-  //   if(window.innerWidth > 600 ){
-  //     document.getElementById("filterBarTogglerId")?.classList.remove("hide");
-  //     document.getElementById("filterBarTogglerId")?.classList.add("show");
-  //     this.toggler = false
-  //   }
+  onResized(event: ResizedEvent) {
+    if(window.innerWidth > 600 ){
+      document.getElementById("filterBarTogglerId")?.classList.remove("hide");
+      document.getElementById("filterBarTogglerId")?.classList.add("show");
+      this.toggler = false
+    }
 
-  //   else if(window.innerWidth <= 600 && this.toggler == false ){
-  //     document.getElementById("filterBarTogglerId")?.classList.remove("show");
-  //     document.getElementById("filterBarTogglerId")?.classList.add("hide");
-  //   }
-  // }
+    else if(window.innerWidth <= 600 && this.toggler == false ){
+      document.getElementById("filterBarTogglerId")?.classList.remove("show");
+      document.getElementById("filterBarTogglerId")?.classList.add("hide");
+    }
+  }
 }

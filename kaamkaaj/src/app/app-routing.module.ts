@@ -31,6 +31,8 @@ import { AdminMainComponent } from './admin/pages/admin-main/admin-main.componen
 
 
 import { WalletComponent } from './Shared/wallet/wallet.component';
+import { ComplaintsComponent } from './admin/pages/complaints/complaints.component';
+
 
 
 const routes: Routes = [
@@ -63,7 +65,8 @@ const routes: Routes = [
     canActivate: [AdminGuardGuard],
     children: [
       { path: '', component: AdminDashboardComponent },
-      { path: 'wallet', component: SpDashboardComponent }
+      { path: 'wallet', component: SpDashboardComponent },
+      {path:  'complaints', component: ComplaintsComponent}
     ]
   },
   { path: 'contactus', component: ContactUsComponent },
