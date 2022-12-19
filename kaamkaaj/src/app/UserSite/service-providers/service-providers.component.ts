@@ -42,7 +42,7 @@ export class ServiceProvidersComponent implements OnInit {
     // console.log(this.serviceProviders[0])
     setTimeout(() => {
       this.SpinnerService.requestEnded()
-    }, 3000)
+    }, 2000)
   }
   showServiceProviderProfile(email: any) {
     this.router.navigate([`../../serviceprovider/profile/${email}`], { relativeTo: this.ActivatedRoute })

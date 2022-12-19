@@ -26,6 +26,12 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   currentServiceProviderCategory: any
   reviews: any
   category = this.signinService.getCategory()
+  delete:boolean
+  setDelete(setval:boolean){
+    this.delete=setval
+    $('#exampleModalCenter').modal('toggle')
+    this.deleteimg()
+  }
 
   async useImage(event: any) {
     var formData = new FormData();
@@ -59,10 +65,14 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
     $('#exampleModalCenter').modal('toggle')
   }
   async deletePortfolioImage(image: string) {
-    let imageUrl = image.replace(environment.baseUrl + "/", "")
-    if (confirm("Are you sure you want to delete the image?")) {
+    this.imageUrl = image.replace(environment.baseUrl + "/", "")
+    $('#exampleModalCenter').modal('toggle')
+  }
+
+  async deleteimg(){
+    if (this.delete) {
       this.SpinnerService.requestStarted()
-      await lastValueFrom(this.ServiceProviderProfileService.deletePortfolioImage(this.email, imageUrl))
+      await lastValueFrom(this.ServiceProviderProfileService.deletePortfolioImage(this.email, this.imageUrl))
       setTimeout(() => {
         this.SpinnerService.requestEnded()
       }, 2000)

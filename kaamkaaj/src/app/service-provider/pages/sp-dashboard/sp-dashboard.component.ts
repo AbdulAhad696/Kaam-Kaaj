@@ -72,7 +72,9 @@ export class SpDashboardComponent implements OnInit {
     this.email = this.signInService.getemail()
     this.spProfile = await lastValueFrom(this.spProfileService.fetchingServiceProviderProfile(this.email))
     console.log(this.spProfile)
-    this.spProfile[0].profilePicture = environment.baseUrl + "/" + this.spProfile[0]?.profilePicture
+    if(this.spProfile!=null){
+    this.spProfile[0].serviceProviderDetails[0].profilePicture = environment.baseUrl + "/" + this.spProfile[0]?.serviceProviderDetails[0]?.profilePicture
+    }
   }
 
 }

@@ -16,11 +16,11 @@
         </div>
     </div>
 </div>
-<div @myInsertRemoveTrigger class="container-fluid p-0 justify-content-center d-flex row pt-5 pb-5 mt-5 mb-5">
+<div *ngIf="this.spProfile" @myInsertRemoveTrigger class="container-fluid p-0 justify-content-center d-flex row pt-5 pb-5 mt-5 mb-5">
     <div class="col-8">
         <div class="profilePictureDiv centerColumn">
             <img *ngIf="this.spProfile"
-                src={{this.spProfile[0]?.profilePicture}}
+                src={{this.spProfile[0]?.serviceProviderDetails[0]?.profilePicture}}
                 alt="profilePicture" class="profilePicture">
         </div>
         <div class="pb-5 pt-5">
@@ -29,7 +29,7 @@
             </div>
             <div class="justify-content-center d-flex"><hr class="col-md-4  col-sm-6 col-8"></div>
             <div class="justify-content-center d-flex">
-                <h1 class="fs-1 fw-bold">{{this.spProfile[0]?.totalEarning}}</h1>
+                <h1 class="fs-1 fw-bold">{{this.spProfile[0]?.serviceProviderDetails[0]?.totalEarning}}</h1>
             </div>
         </div>
 
@@ -39,7 +39,7 @@
             </div>
             <div class="justify-content-center d-flex"><hr class="col-md-4  col-sm-6 col-8"></div>
             <div class="justify-content-center d-flex">
-                <h1 class="fs-1 fw-bold">{{this.spProfile[0]?.jobsCompleted}}</h1>
+                <h1 class="fs-1 fw-bold">{{this.spProfile[0]?.serviceProviderDetails[0]?.jobsCompleted}}</h1>
             </div>
         </div>
 
@@ -49,7 +49,7 @@
             </div>
             <div class="justify-content-center d-flex"><hr class="col-md-4  col-sm-6 col-8"></div>
             <div class="justify-content-center d-flex">
-                <div>{{child.setSelectedValue(this.spProfile[0]?.rating |
+                <div>{{child.setSelectedValue(this.spProfile[0]?.serviceProviderDetails[0]?.rating |
                     number: '1.0-0')}}
                     <app-rating #child [currentPage]="'mainpage'"></app-rating></div>
             </div>
