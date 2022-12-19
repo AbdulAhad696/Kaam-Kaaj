@@ -41,12 +41,12 @@ export class SubmitProjectModalComponent implements OnInit {
       review:this.review
     }
     const result=await lastValueFrom(this.SubmitJobByWorkerService.submitJob(this.projectDetails.jobId,this.submit))
+    this.projectDetails.reload()
     $('#exampleModalCenter').modal('toggle')
     this.rating=0
     this.review=""
     this.ratingText=""
     
-    window.location.reload()
 
   }
 
