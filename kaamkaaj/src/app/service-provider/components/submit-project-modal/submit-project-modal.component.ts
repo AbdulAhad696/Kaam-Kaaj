@@ -1,6 +1,8 @@
 import { Component, OnInit, OnChanges ,Input} from '@angular/core';
 import { SubmitJobByWorkerService } from './../../../Services/submitJobByWorker/submit-job-by-worker.service';
 import { lastValueFrom } from 'rxjs';
+import { SignInService } from 'src/app/Services/sign-in/sign-in.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-submit-project-modal',
@@ -16,7 +18,7 @@ export class SubmitProjectModalComponent implements OnInit {
   ratingText:any
   submit:any
 
-  constructor(public SubmitJobByWorkerService:SubmitJobByWorkerService) { }
+  constructor(public SubmitJobByWorkerService:SubmitJobByWorkerService, public SignInService:SignInService,public router:Router) { }
 
   ngOnInit(): void {
   }
@@ -43,6 +45,8 @@ export class SubmitProjectModalComponent implements OnInit {
     this.rating=0
     this.review=""
     this.ratingText=""
+    
+    window.location.reload()
 
   }
 
