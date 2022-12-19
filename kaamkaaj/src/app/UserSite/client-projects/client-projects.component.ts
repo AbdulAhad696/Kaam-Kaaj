@@ -19,6 +19,8 @@ export class ClientProjectsComponent implements OnInit {
   clientProjects:any
   time:any
   date=new Date()
+  projectDetails:any
+
 
 
 
@@ -68,6 +70,19 @@ export class ClientProjectsComponent implements OnInit {
     this.clientProjects.sort((a:any, b:any) => (a?.estCompletionTime > b?.estCompletionTime ? 1 : -1));
 
     this.SpinnerService.requestEnded()
+  }
+
+  openModal(jobId:any,clientName:any,clientProfile:any,jobAddress:any,earning:any) {
+
+    this.projectDetails={
+      jobId:jobId,
+      clientName:clientName,
+      clientProfile:clientProfile,
+      jobAddress:jobAddress,
+      earning:earning
+    }
+
+    $('#exampleModalCenter').modal('toggle')
   }
 
   ngOnInit(): void {
