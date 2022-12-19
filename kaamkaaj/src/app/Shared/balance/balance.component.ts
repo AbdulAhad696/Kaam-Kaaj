@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BalanceComponent implements OnInit {
   @Input() balance;
+
   @Input() income;
   constructor() { }
 

@@ -15,7 +15,7 @@ import { SignInService } from 'src/app/Services/sign-in/sign-in.service';
 export class EditSPModalComponent implements OnInit, OnChanges {
   URL: string | ArrayBuffer | undefined = environment.baseUrl
   @Input() profile: any;
-  @Input() refreshParent: () => void;
+  @Input() refreshPage: () => void;
   allService: any;
   editedAddress: any;
   editedName: any;
@@ -81,10 +81,7 @@ export class EditSPModalComponent implements OnInit, OnChanges {
       this.URL = this.profile[0].profilePicture
     }
   }
-  refreshPage() {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false
-    this.router.navigate(['./'], { relativeTo: this.route })
-  }
+
 
 
 }

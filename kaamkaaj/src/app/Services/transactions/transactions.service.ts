@@ -10,6 +10,7 @@ export class TransactionsService {
   constructor(private http: HttpClient) { }
 
   spBalanceTransaction(transactionData: any) {
+
     console.log(environment.baseUrl + "/transactions/spToAdmin")
     return this.http.post(environment.baseUrl + "/transactions/spToAdmin", transactionData)
   }
@@ -17,6 +18,9 @@ export class TransactionsService {
     console.log(environment.baseUrl + "/transactions/spToAdmin")
     console.log(environment.baseUrl + "/transactions/spToAdmin" + spId)
     return this.http.patch(`${environment.baseUrl}/transactions/spToAdmin/${spId}`, {})
+  }
+  payMoneyToAdmin(amount: any) {
+    return this.http.patch(`${environment.baseUrl}/transactions/getMoney/${amount}`, {})
   }
   getTransactions(spId: any) {
     console.log(environment.baseUrl + "/getTransactions/" + spId)

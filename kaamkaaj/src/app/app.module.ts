@@ -54,6 +54,7 @@ import { ChangePasswordModalComponent } from './UserSite/change-password-modal/c
 import { ChangePasswordConponentComponent } from './UserSite/change-password-conponent/change-password-conponent.component';
 import { AdminDashboardComponent } from './admin/pages/admin-dashboard/admin-dashboard.component';
 import { AdminMainComponent } from './admin/pages/admin-main/admin-main.component';
+import { ShowServiceProvidersComponent } from './admin/pages/show-service-providers/show-service-providers.component';
 // import { AngularResizeEventModule } from 'angular-resize-event';
 
 @NgModule({
@@ -75,6 +76,7 @@ import { AdminMainComponent } from './admin/pages/admin-main/admin-main.componen
     JobGigsComponent,
     SpViewjobsComponent,
     ServiceprovidermainComponent,
+    ShowServiceProvidersComponent,
     GigCardComponent,
     CustomermainpageComponent,
     CanvasJSChart,

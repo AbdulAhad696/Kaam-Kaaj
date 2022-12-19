@@ -11,8 +11,8 @@ export class ServiceProviderService {
   fetchingServiceProviders(service: any) {
     return (this.http.get(`${environment.baseUrl}/serviceproviders/${service}`))
   }
-  fetchSPData(id: any) {
-    return (this.http.get(`${environment.baseUrl}/serviceprovider/profile/${id}`))
+  fetchSPData(email: any) {
+    return (this.http.get(`${environment.baseUrl}/serviceprovider/profile/${email}`))
   }
 
 
