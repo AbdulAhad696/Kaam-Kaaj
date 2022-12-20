@@ -1,3 +1,9 @@
+<div *ngIf="success==true" class="alert alert-success p-3" role="alert">
+    {{this.successmsg}}
+</div>
+<div *ngIf="success==false" class="alert alert-danger p-3" role="alert">
+    {{this.failmsg}}
+</div>
 <div class="container">
     <!-- --------------------------------main heading----------------------- -->
     <h1 class=" d-flex m-4 justify-content-center align-items-center">Add a Job</h1>

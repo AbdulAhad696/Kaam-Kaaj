@@ -1,6 +1,8 @@
+<app-submit-project-modal [projectDetails]="projectDetails"></app-submit-project-modal>
+
 <h1 class=" d-flex m-4 justify-content-center align-items-center">My Projects</h1>
 
-<div class="row container-fluid">
+<div *ngIf="clientData" class="row container-fluid">
     <div class="col-lg-4  serviceProviderDetail">
         <div class=" shadow-lg m-4  p-4 bg-body rounded-3 d-flex flex-column ">
             <div class=" d-flex flex-column justify-content-center align-items-center">
@@ -9,7 +11,7 @@
             </div>
             <hr>
             <table class="textColor">
-                <tr>
+                <!-- <tr>
                     <td>
                         <h4 class="m-0">Delivered on Time</h4>
                     </td>
@@ -25,7 +27,7 @@
                     <td>
                         <p class="col-2 m-0">{{clientData[0]?.deliverOnTime==null?0:clientData[0]?.deliverOnTime}}%</p>
                     </td>
-                </tr>
+                </tr> -->
                 <tr>
                     <td>
                         <h4 class="m-0">Order Completion</h4>
@@ -159,7 +161,7 @@
                         <h3 *ngIf="clientProject?.timeStatus=='negative'" class="mb-0 mt-2 text-secondary">Sorry for the inconvience.Inshallah will be submitted soon</h3>
                     </div>
                     <div class="col-md-2 col-xs-4 ps-2">
-                        <button type="button" class="mt-2  btn btn-success"><b>Done</b></button>
+                        <button (click)="openModal(clientProject?._id,clientProject?.serviceProviderDetails[0]?.userName,clientProject?.serviceProviderProfile[0]?.profilePicture,clientProject?.jobAddress,clientProject?.bidDetails[0]?.amount)" type="button" class="mt-2  btn btn-success"><b>Done</b></button>
                     </div>
                 </div>
             </div>

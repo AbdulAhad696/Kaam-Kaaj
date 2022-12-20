@@ -31,7 +31,8 @@
                         </div>
                         <div class="d-flex flex-column ps-3">
                             <!-- -----------------------Transaction with------------------ -->
-                            <div class=""><h1><strong>{{transaction.to}}</strong></h1>
+                            
+                            <div class=""><h1><strong>{{currentUserId == transaction.to[0]._id?transaction.from[0].userName:transaction.to[0].userName }}</strong></h1>
                             </div>
                             <!-- ------------------------Transaction Time---------------------- -->
                             <div class="mb-3"><span>{{transaction.timeStamp}}</span></div>
@@ -42,7 +43,7 @@
                 <div class="col-md-6 d-flex justify-content-center align-items-center">
                             <!-- ----------------------------Amount Transferred-------------------------- -->
                             <span>
-                                <h1 class="mb-0 {{true?'negative':'positive'}}"> <strong>- {{transaction.amount}} PKR</strong></h1>
+                                <h1 class="mb-0 {{currentUserId == transaction.from[0]._id?'negative':'positive'}}"> <strong>{{currentUserId == transaction.from[0]._id?'-':'+'}} {{transaction.amount}} PKR</strong></h1>
                             </span>            
                     </div>
             </div>

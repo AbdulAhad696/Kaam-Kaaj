@@ -23,8 +23,12 @@ export class ServiceProviderProfileService {
   uploadPortfolioImage(info: any) {
     return (this.http.put(`${environment.baseUrl}/serviceprovider/profile/updateProfile/uploadImage`, info))
   }
-  fetchReviews(id: any) {
-    return (this.http.get(`${environment.baseUrl}/serviceprovider/profile/reviews/${id}`))
+  fetchReviews(email: any) {
+    return (this.http.get(`${environment.baseUrl}/serviceprovider/profile/reviews/${email}`))
+  }
+  toggleProfileStatus(data: any) {
+    console.log(`${environment.baseUrl}/serviceprovider/profile/sp/status-update`)
+    return (this.http.patch(`${environment.baseUrl}/serviceprovider/profile/sp/status-update`, data))
   }
 
 

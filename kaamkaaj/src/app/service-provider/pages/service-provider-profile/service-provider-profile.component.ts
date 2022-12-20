@@ -20,12 +20,18 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   loggedInUserType: string | null;
   imageUrl: string
   domain: string = environment.baseUrl
-  constructor(private spProfileService: ServiceProviderProfileService, private SpinnerService: SpinnerService, private signinService: SignInService, private ActivatedRoute: ActivatedRoute, private ServiceProviderProfileService: ServiceProviderProfileService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private spProfileService: ServiceProviderProfileService, private SpinnerService: SpinnerService, private signinService: SignInService, private ActivatedRoute: ActivatedRoute, private ServiceProviderProfileService: ServiceProviderProfileService, private router: Router) { }
   email: any
   serviceProviderProfile: any
   currentServiceProviderCategory: any
   reviews: any
   category = this.signinService.getCategory()
+  delete:boolean
+  setDelete(setval:boolean){
+    this.delete=setval
+    $('#exampleModalCenter').modal('toggle')
+    this.deleteimg()
+  }
 
   async useImage(event: any) {
     var formData = new FormData();
@@ -42,11 +48,16 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   }
   async getProfile(email: any) {
     this.SpinnerService.requestStarted()
+    console.log("request started")
     this.serviceProviderProfile = await lastValueFrom(this.ServiceProviderProfileService.fetchingServiceProviderProfile(email))
-    this.serviceProviderProfile[0].profilePicture = environment.baseUrl + "/" + this.serviceProviderProfile[0].profilePicture
-    console.log(this.serviceProviderProfile)
-    this.SpinnerService.requestEnded()
-    this.currentServiceProviderCategory = this.serviceProviderProfile[0]?.serviceDetails[0]?.tittle;
+    if (this.serviceProviderProfile) {
+      this.serviceProviderProfile[0].serviceProviderDetails[0].profilePicture = environment.baseUrl + "/" + this.serviceProviderProfile[0]?.serviceProviderDetails[0]?.profilePicture
+      console.log(this.serviceProviderProfile)
+      this.currentServiceProviderCategory = this.serviceProviderProfile[0]?.serviceDetails[0]?.tittle;
+    }
+    setTimeout(() => {
+      this.SpinnerService.requestEnded()
+    }, 3000)
 
   }
   openModal() {
@@ -54,16 +65,22 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
     $('#exampleModalCenter').modal('toggle')
   }
   async deletePortfolioImage(image: string) {
-    let imageUrl = image.replace(environment.baseUrl + "/", "")
-    if (confirm("Are you sure you want to delete the image?")) {
+    this.imageUrl = image.replace(environment.baseUrl + "/", "")
+    $('#exampleModalCenter').modal('toggle')
+  }
+
+  async deleteimg(){
+    if (this.delete) {
       this.SpinnerService.requestStarted()
-      await lastValueFrom(this.ServiceProviderProfileService.deletePortfolioImage(this.email, imageUrl))
-      this.SpinnerService.requestEnded()
+      await lastValueFrom(this.ServiceProviderProfileService.deletePortfolioImage(this.email, this.imageUrl))
+      setTimeout(() => {
+        this.SpinnerService.requestEnded()
+      }, 2000)
       this.ngOnInit()
     }
   }
   async getReviews() {
-    this.reviews = await lastValueFrom(this.ServiceProviderProfileService.fetchReviews(this.signinService.getId()))
+    this.reviews = await lastValueFrom(this.ServiceProviderProfileService.fetchReviews(this.ActivatedRoute.snapshot.params["email"]))
     console.log(this.reviews)
   }
 
@@ -71,17 +88,35 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   handleSendProposal() {
     this.router.navigate([`customer-mainpage/jobgigs/${this.serviceProviderProfile[0]?.serviceDetails[0]?.tittle}/${this.serviceProviderProfile[0]?.serviceProvider}`])
   }
-  ngOnInit(): void {
-    this.email = this.ActivatedRoute.snapshot.params['email']
+  initializeData() {
+    console.log("Chal Bhai")
+    // console.log(this.ActivatedRoute.snapshot)
+    this.email = this.ActivatedRoute.snapshot.params['email'];
+    console.log(this.email)
     this.getProfile(this.email)
     this.usertype = this.signinService.getusertype()
     console.log(this.usertype)
     this.loggedInUserType = this.signinService.getusertype();
     this.getReviews()
-
+    // this.ngOnInit()
+  }
+  async toggleStatus() {
+    let data = {
+      "id": this.serviceProviderProfile[0]?._id,
+      "status": this.serviceProviderProfile[0]?.serviceProviderDetails[0]?.status
+    }
+    await lastValueFrom(this.ServiceProviderProfileService.toggleProfileStatus(data)).then((doc) => {
+      this.refreshPage()
+    })
+  }
+  refreshPage() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false
+    this.router.navigate(['./'], { relativeTo: this.route })
+  }
+  ngOnInit(): void {
+    this.initializeData()
   }
   ngOnChanges(changes: SimpleChanges) {
-    this.ngOnInit()
   }
 
 }

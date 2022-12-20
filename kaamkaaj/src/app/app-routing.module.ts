@@ -19,7 +19,7 @@ import { SpViewjobsComponent } from './service-provider/pages/sp-viewjobs/sp-vie
 import { ServiceprovidermainComponent } from './service-provider/pages/serviceprovidermain/serviceprovidermain.component';
 import { JobGigsComponent } from './UserSite/job-gigs/job-gigs.component';
 import { CustomermainpageComponent } from './UserSite/customermainpage/customermainpage.component';
-import { MyProjectsComponent } from './service-provider/components/my-projects/my-projects.component';
+import { MyProjectsComponent } from './service-provider/pages/my-projects/my-projects.component';
 import { BidingsComponent } from './UserSite/bidings/bidings.component';
 import { RunningJobsComponent } from './UserSite/running-jobs/running-jobs.component';
 import { PostedJobsComponent } from './UserSite/posted-jobs/posted-jobs.component';
@@ -33,6 +33,7 @@ import { AdminMainComponent } from './admin/pages/admin-main/admin-main.componen
 import { WalletComponent } from './Shared/wallet/wallet.component';
 import { ComplaintsComponent } from './admin/pages/complaints/complaints.component';
 
+import { ShowServiceProvidersComponent } from './admin/pages/show-service-providers/show-service-providers.component';
 
 
 const routes: Routes = [
@@ -65,8 +66,13 @@ const routes: Routes = [
     canActivate: [AdminGuardGuard],
     children: [
       { path: '', component: AdminDashboardComponent },
-      { path: 'wallet', component: SpDashboardComponent },
-      {path:  'complaints', component: ComplaintsComponent}
+
+      {path:  'complaints', component: ComplaintsComponent},
+      { path: 'wallet', component: WalletComponent },
+      { path: 'serviceproviders/:service', component: FilterBarComponent },
+      { path: 'serviceprovider/profile/:email', component: ServiceProviderProfileComponent }
+
+
     ]
   },
   { path: 'contactus', component: ContactUsComponent },
@@ -88,7 +94,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: "reload" })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

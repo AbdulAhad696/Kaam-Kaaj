@@ -1,166 +1,190 @@
-<app-edit-spmodal [profile]="serviceProviderProfile"></app-edit-spmodal>
+
+<div id="exampleModalCenter" class="modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="fs-3 modal-title">Confirm Deletion</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <h1 class="fs-4 fw-bold">Are you sure you want to delete?</h1>
+        </div>
+        <div class="modal-footer">
+            <button (click)="setDelete(true)" type="button"  class="btn btn-danger">Delete</button>
+            <button (click)="setDelete(false)" type="button"  class="btn btn-success">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div *ngIf="serviceProviderProfile">
+<app-edit-spmodal [refreshPage] = "refreshPage" [profile]="serviceProviderProfile"></app-edit-spmodal>
 <div *ngIf="category == 'Not Selected'" class="alert alert-danger p-3" role="alert">
     To get started, click on Edit Profile below and choose a category you want to provide services in.
     Mind that the service category once selected can not be changed again.
 </div>
-<div class="container mt-4">
-    <div class="row profileImageRow mb-5">
-        <div class="col-xs-12 profileImageColumns">
-            <div class="profilePictureDiv centerColumn">
-                <img
-                    src={{serviceProviderProfile[0]?.profilePicture}}
-                    alt="profilePicture" class="profilePicture">
-            </div>
-            <h5 class="profileName fs-3 mt-3">{{serviceProviderProfile[0]?.serviceProviderDetails[0]?.userName}}</h5>
-            <div class="starsContainer">
-                {{child.setSelectedValue(serviceProviderProfile[0]?.rating |
-                number: '1.0-0')}}
-                <app-rating #child></app-rating>
+    <div class="container mt-4">
+        <div class="row profileImageRow mb-5">
+            <div class="col-xs-12 profileImageColumns">
+                <div class="profilePictureDiv centerColumn">
+                    <img *ngIf="serviceProviderProfile"
+                        src={{serviceProviderProfile[0]?.serviceProviderDetails[0]?.profilePicture}}
+                        alt="profilePicture" class="profilePicture">
+                </div>
+                <h5 class="profileName fs-3 mt-3" *ngIf="serviceProviderProfile">{{serviceProviderProfile[0]?.userName}}</h5>
+                <div class="starsContainer">
+                    {{child.setSelectedValue(serviceProviderProfile[0]?.serviceProviderDetails[0]?.rating |
+                    number: '1.0-0')}}
+                    <app-rating #child></app-rating>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row profilInfoRow mb-5">
-        <div class="col-md-4 col-6 col-sm-6 mb-3 centerColumn">
-            <i class="fa fa-list-ul fa-2x mb-3"></i>
-            <h4 class="fs-5">{{serviceProviderProfile[0]?.serviceDetails[0]?.tittle}}</h4>
-        </div>
-
-        <div class="col-md-4 col-6 col-sm-6 mb-3 centerColumn">
-            <button (click)="handleSendProposal()"
-                *ngIf="usertype==
-                'Client'" type="button" class="btn btn-success btn-lg
-                editProfileButton fs-5">
-                <!-- <a class="text-white" routerlink="customer-mainpage/jobgigs">Send Proposal</a> -->
-                Send Proposal
-            </button>
-            <button
-                *ngIf="usertype==
-                'Worker'" type="button" class="btn btn-success btn-lg
+        <div class="row profilInfoRow mb-5">
+            <div class="col-md-4 col-6 col-sm-6 mb-3 centerColumn">
+                <i class="fa fa-list-ul fa-2x mb-3"></i>
+                <h4 class="fs-5">{{serviceProviderProfile[0]?.serviceDetails[0]?.tittle}}</h4>
+            </div>
+    
+            <div class="col-md-4 col-6 col-sm-6 mb-3 centerColumn">
+                <button (click)="handleSendProposal()"
+                    *ngIf="usertype==
+                    'Client'" type="button" class="btn btn-success btn-lg
+                    editProfileButton fs-5"><a class="text-white"
+                        routerlink="customer-mainpage/jobgigs">Send Proposal</a></button>
+                <button
+                    *ngIf="usertype==
+                    'Admin'" type="button" class="btn btn-lg editProfileButton fs-5 {{serviceProviderProfile[0]?.serviceProviderDetails[0]?.status == 'Enabled' || serviceProviderProfile[0]?.serviceProviderDetails[0]?.status == '' ? 'btn-warning' : 'btn-success'}}" (click)="toggleStatus()" >{{serviceProviderProfile[0]?.serviceProviderDetails[0]?.status == "" || serviceProviderProfile[0]?.serviceProviderDetails[0]?.status == "Enabled"? "Disable Profile":"Enable Profile"}}</button>
+                <div *ngIf="usertype=='Worker'" >
+                <button
+                type="button" class="btn btn-success btn-lg
                 editProfileButton fs-5" (click)="openModal()">Edit Profile</button>
-            <button
-                *ngIf="usertype
-                ==
-                'Admin'" type="button" class="btn btn-success btn-lg
-                editProfileButton fs-5">Disable Profile</button>
-        </div>
-        <div class="col-md-4 col-12 centerColumn">
-            <i class='fas fa-map-marker-alt fa-2x mb-3'></i>
-            <h5 class="fs-5">{{serviceProviderProfile[0]?.serviceProviderDetails[0]?.address}}</h5>
-        </div>
-        <div class="col-md-4 mb-4">
-            <div class="infoBox centerColumn">
-                <h4 class="fs-2 fw-bold">Total Earnings</h4>
-                <h5 class="fs-4 mt-3 text-secondary fw-bold">{{serviceProviderProfile[0]?.totalEarning}}</h5>
-            </div>
-
-        </div>
-        <div class="col-md-4 mb-4">
-            <div class="infoBox centerColumn">
-                <h4 class="fs-2 fw-bold">Experience</h4>
-                <h5 class="fs-4 mt-3 text-secondary fw-bold">{{serviceProviderProfile[0]?.experience}}</h5>
-            </div>
-        </div>
-        <div class="col-md-4 mb-4">
-            <div class="infoBox centerColumn">
-                <h4 class="fs-2 fw-bold">Jobs Completed</h4>
-                <h5 class="fs-4 mt-3 text-secondary fw-bold">{{serviceProviderProfile[0]?.jobsCompleted}}</h5>
-            </div>
-        </div>
-    </div>
-    <div>
-        <div class="container"
-            style="max-width: 80%;">
-            <div class="row">
-                <div class="col-sm-2 col-0"></div>
-                <div class="col-sm-8 col-12">
-                    <h4 class="fs-3 centerColumn">Portfolio</h4>
                 </div>
-                <div class="col-sm-2 col-12 d-flex justify-content-end" *ngIf = "loggedInUserType == 'Worker'">
-                    <div class="row justify-content-center align-items-center"
-                        style="cursor: pointer;">
-                        <label for="portfolioImageCapturer">
-                            <i class='far fa-edit fa-2x' style="cursor:
-                                pointer;"></i>
-                        </label>
-                        <input type="file" accept="image/png, image/gif, image/jpeg,image/jfif"
-                            id="portfolioImageCapturer"
-                            style="display: none;" (change)="useImage($event)">
+            </div>
+            <div class="col-md-4 col-12 centerColumn">
+                <i class='fas fa-map-marker-alt fa-2x mb-3'></i>
+                <h5 class="fs-5">{{serviceProviderProfile[0]?.address}}</h5>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="infoBox centerColumn">
+                    <h4 class="fs-2 fw-bold">Total Earnings</h4>
+                    <h5 class="fs-4 mt-3 text-secondary fw-bold">PKR {{serviceProviderProfile[0]?.serviceProviderDetails[0]?.totalEarning}}</h5>
+                </div>
+    
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="infoBox centerColumn">
+                    <h4 class="fs-2 fw-bold">Experience</h4>
+                    <h5 class="fs-4 mt-3 text-secondary fw-bold">{{serviceProviderProfile[0]?.serviceProviderDetails[0]?.experience}}</h5>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="infoBox centerColumn">
+                    <h4 class="fs-2 fw-bold">Jobs Completed</h4>
+                    <h5 class="fs-4 mt-3 text-secondary fw-bold">{{serviceProviderProfile[0]?.serviceProviderDetails[0]?.jobsCompleted}}</h5>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="container"
+                style="max-width: 80%;">
+                <div class="row">
+                    <div class="col-sm-2 col-0"></div>
+                    <div class="col-sm-8 col-12">
+                        <h4 class="fs-3 centerColumn">Portfolio</h4>
                     </div>
-                    <!-- <button class="btn btn-sm btn-success addPortfolioBtn">Upload</button> -->
+                    <div class="col-sm-2 col-12 d-flex justify-content-end" *ngIf = "loggedInUserType == 'Worker'">
+                        <div class="row justify-content-center align-items-center"
+                            style="cursor: pointer;">
+                            <label for="portfolioImageCapturer">
+                                <i class='far fa-edit fa-2x' style="cursor:
+                                    pointer;"></i>
+                            </label>
+                            <input type="file" accept="image/png, image/gif, image/jpeg,image/jfif"
+                                id="portfolioImageCapturer"
+                                style="display: none;" (change)="useImage($event)">
+                        </div>
+                        <!-- <button class="btn btn-sm btn-success addPortfolioBtn">Upload</button> -->
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="container portfolioContainer p-5 mb-5">
-            <!-- <div class="row m-0"> -->
-                <div *ngIf = " serviceProviderProfile[0]?.portfolioImages.length == 0;else elseBlock1" class="m-5 d-flex justify-content-center flex-column align-items-center">
-                    <img src="../../../assets/noRecordFound.svg" alt="Avater">
-                    <h1 class="record">No Portfolio</h1>
-                </div>
-                <ng-template #elseBlock1>
-                    <div class="col-md-6 col-lg-4 mb-5 col-sm-12 centerColumn"
-                    *ngFor="let image of
-                    serviceProviderProfile[0]?.portfolioImages">
-                    <img
-                    src="{{domain + '/' + image}}"
-                    (click)="deletePortfolioImage(image)"
-                    alt="portfolioPic" class= 'portfolioPicture'>
-                </div>
-            </ng-template>
-
-            <!-- </div> -->
-        </div>
-    </div>
-
-    <div>
-        <h4 class="fs-3 centerColumn">Reviews</h4>
-        <div class="container reviewsContainer p-5 mb-5">
-            <div *ngIf = "reviews.length == 0;else elseBlock" class="m-5 d-flex justify-content-center flex-column align-items-center">
-                <img src="../../../assets/noRecordFound.svg" alt="Avater">
-                <h1 class="record">No Reviews</h1>
-            </div>
-            <ng-template #elseBlock>
-            <div *ngFor="let review of reviews" class="row mb-5 review p-4">
-                <div class="col-md-1">
-                    <div class="reviewerImageDiv centerColumn">
+    
+            <div class="container portfolioContainer p-5 mb-5">
+                <div class="row m-0">
+                    <div *ngIf = "serviceProviderProfile[0]?.serviceProviderDetails[0]?.portfolioImages?.length == 0;else elseBlock1" class="m-5 d-flex justify-content-center flex-column align-items-center">
+                        <img src="../../../assets/noRecordFound.svg" alt="Avater">
+                        <h1 class="record">No Portfolio</h1>
+                    </div>
+                    <ng-template #elseBlock1>
+                        <div class="col-md-6 col-lg-4 mb-5 col-sm-12 centerColumn"
+                        *ngFor="let image of
+                        serviceProviderProfile[0]?.serviceProviderDetails[0]?.portfolioImages">
                         <img
-                            src="{{domain + '/' + review?.profile[0]?.profileImage}}"
-                            alt="profilePicture" class="reviewerImage">
+                        src="{{domain + '/' + image}}"
+                        *ngIf = "usertype == 'Worker'; else simpleImage" 
+                        (click)="deletePortfolioImage(image)"
+                        alt="portfolioPic" class= 'portfolioPicture'>
+                        <ng-template #simpleImage>
+                            <img 
+                            src="{{domain + '/' + image}}" 
+                            alt="portfolioPic" class= 'portfolioPicture'>
+                        </ng-template>
                     </div>
-                </div>
-                <div class="col-md-10">
-                    <div class="row ">
-                        <div class="col-md-12 reviewerName d-flex justify-content-between">
-                            <h5>{{review?.client[0]?.userName}}</h5>
-                            <h5>{{review?.reviewDate}}</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 reviewMessage">
-                            <p>{{review?.review}}</p>
-                        </div>
-                    </div>
-                    <!-- <div class="row">
-                        <div class="col-md-3 reviewRating center
-                            justify-content-start">
-                            <p class="m-0">Ratings</p>
-                            <div class="starsContainer mx-2">
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                            </div>
 
-                        </div>
-                        <div class="col-md-4 reviewTime
-                            justify-content-start">
-                            <p class="m-0">10 hrs Ago</p>
-                        </div>
-                    </div> -->
+                </ng-template>
+    
                 </div>
             </div>
-            </ng-template>
+        </div>
+    
+        <div>
+            <h4 class="fs-3 centerColumn">Reviews</h4>
+            <div class="container reviewsContainer p-5 mb-5">
+                <div *ngIf = "reviews && (reviews.length == 0);else elseBlock" class="m-5 d-flex justify-content-center flex-column align-items-center">
+                    <img src="../../../assets/noRecordFound.svg" alt="Avater">
+                    <h1 class="record">No Reviews</h1>
+                </div>
+                <ng-template #elseBlock>
+                <div *ngFor="let review of reviews" class="row mb-5 review p-4">
+                    <div class="col-md-1">
+                        <div class="reviewerImageDiv centerColumn">
+                            <img
+                                src="{{domain + '/' + review?.profile[0]?.profileImage}}"
+                                alt="profilePicture" class="reviewerImage">
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="row ">
+                            <div class="col-md-12 reviewerName d-flex justify-content-between">
+                                <h5>{{review?.client[0]?.userName}}</h5>
+                                <h5>{{review?.reviewDate}}</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 reviewMessage">
+                                <p>{{review?.review}}</p>
+                            </div>
+                        </div>
+                        <!-- <div class="row">
+                            <div class="col-md-3 reviewRating center
+                                justify-content-start">
+                                <p class="m-0">Ratings</p>
+                                <div class="starsContainer mx-2">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+    
+                            </div>
+                            <div class="col-md-4 reviewTime
+                                justify-content-start">
+                                <p class="m-0">10 hrs Ago</p>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                </ng-template>
+            </div>
         </div>
     </div>
 </div>

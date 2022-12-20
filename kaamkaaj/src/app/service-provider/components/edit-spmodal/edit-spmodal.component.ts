@@ -4,7 +4,7 @@ import { lastValueFrom } from 'rxjs';
 import { ServiceProviderProfileService } from '../../../Services/serviceProviderProfile/service-provider-profile.service';
 import { SpinnerService } from '../../../Services/spinner/spinner.service';
 import { environment } from 'src/environments/environment';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SignInService } from 'src/app/Services/sign-in/sign-in.service';
 @Component({
   selector: 'app-edit-spmodal',
@@ -15,13 +15,14 @@ import { SignInService } from 'src/app/Services/sign-in/sign-in.service';
 export class EditSPModalComponent implements OnInit, OnChanges {
   URL: string | ArrayBuffer | undefined = environment.baseUrl
   @Input() profile: any;
+  @Input() refreshPage: () => void;
   allService: any;
   editedAddress: any;
-  editedName: string;
-  editedCategory: string;
+  editedName: any;
+  editedCategory: any;
   category: string | null
 
-  constructor(private router: Router, private getServices: GetServicesService, private SpinnerService: SpinnerService, private spProfileService: ServiceProviderProfileService, private siginservice: SignInService) {
+  constructor(private route: ActivatedRoute, private router: Router, private getServices: GetServicesService, private SpinnerService: SpinnerService, private spProfileService: ServiceProviderProfileService, private siginservice: SignInService) {
   }
 
 
@@ -44,22 +45,23 @@ export class EditSPModalComponent implements OnInit, OnChanges {
   async updateProfile() {
     var formData = new FormData();
     var imagefile: any = document.querySelector('#imageCapturer');
-    console.log(imagefile)
-    console.log(imagefile.files[0]);
+    // console.log(imagefile)
+    // console.log(imagefile.files[0]);
     formData.append("url", imagefile.files[0]);
-    formData.append("email", this.profile[0].serviceProviderDetails[0].email);
+    formData.append("email", this.profile[0].email);
     formData.append("name", this.editedName);
     formData.append("address", this.editedAddress);
     formData.append("category", this.editedCategory);
 
     this.SpinnerService.requestStarted()
     this.closeModal()
-    await lastValueFrom(this.spProfileService.updateServiceProviderProfile(formData))
-    this.siginservice.setCategory(this.editedCategory)
-    setTimeout(() => {
-      this.SpinnerService.requestEnded()
-    }, 1000)
-    this.ngOnInit()
+    await lastValueFrom(this.spProfileService.updateServiceProviderProfile(formData)).then(() => {
+      this.siginservice.setCategory(this.editedCategory)
+      setTimeout(() => {
+        this.SpinnerService.requestEnded()
+      }, 2000)
+      this.refreshPage()
+    })
   }
   async getAllServices() {
     this.allService = await lastValueFrom(this.getServices.fetchingServices())
@@ -74,11 +76,14 @@ export class EditSPModalComponent implements OnInit, OnChanges {
     this.category = this.siginservice.getCategory()
   }
   ngOnChanges(changes: SimpleChanges): void {
-    this.editedAddress = this.profile[0]?.serviceProviderDetails[0]?.address
-    this.editedName = this.profile[0]?.serviceProviderDetails[0]?.userName
-    this.editedCategory = this.profile[0]?.serviceDetails[0]?.tittle
-    this.URL = this.profile[0].profilePicture
+    if (this.profile != undefined) {
+      this.editedAddress = this.profile[0]?.address
+      this.editedName = this.profile[0]?.userName
+      this.editedCategory = this.profile[0]?.serviceDetails[0]?.tittle
+      this.URL = this.profile[0]?.serviceProviderDetails[0]?.profilePicture
+    }
   }
+
 
 
 }
