@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceProviderService } from 'src/app/Services/serviceProvider/service-provider.service';
 import { SignInService } from 'src/app/Services/sign-in/sign-in.service';
 import { lastValueFrom } from "rxjs"
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class WalletComponent implements OnInit {
   userType = this.signiService.getusertype()
   income = 0
   selectedBtn = "Balance"
-  constructor(private spData: ServiceProviderService, private signiService: SignInService) { }
+  constructor(private spData: ServiceProviderService, private signiService: SignInService,public router: Router) { }
 
 
   ngOnInit(): void {

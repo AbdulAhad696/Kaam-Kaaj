@@ -50,11 +50,11 @@
           </a>
         </li>
         <li>
-          <a *ngIf="currentPage!='/admin/complaints'" routerLink="complaints" class="nav-link text-white">
+          <a *ngIf="currentPage!='/admin/complaints'" data-bs-dismiss="offcanvas" routerLink="complaints" class="nav-link text-white">
             <svg class="bi me-2" width="16" height="16"></svg>
             View Complaints
           </a>
-          <a *ngIf="currentPage!='/admin/complaints'" active routerLink="complaints" class="nav-link text-white">
+          <a *ngIf="currentPage=='/admin/complaints'" active routerLink="complaints" class="nav-link text-white">
             <svg class="bi me-2" width="16" height="16"></svg>
             View Complaints
           </a>
