@@ -90,7 +90,7 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
 
   // -------------------------handling sending proposal-------------------------
   handleSendProposal() {
-    this.router.navigate([`customer-mainpage/jobgigs/${this.serviceProviderProfile[0]?.serviceDetails[0]?.tittle}`])
+    this.router.navigate([`customer-mainpage/jobgigs/${this.serviceProviderProfile[0]?.serviceDetails[0]?.tittle}/${this.serviceProviderProfile[0]?.serviceProviderDetails[0].serviceProvider}`])
   }
   initializeData() {
     console.log("Chal Bhai")

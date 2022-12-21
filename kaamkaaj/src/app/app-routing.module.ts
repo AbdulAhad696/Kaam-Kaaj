@@ -28,7 +28,7 @@ import { ChangePasswordConponentComponent } from './UserSite/change-password-con
 import { AdminDashboardComponent } from './admin/pages/admin-dashboard/admin-dashboard.component';
 import { AdminMainComponent } from './admin/pages/admin-main/admin-main.component';
 import { WalletComponent } from './Shared/wallet/wallet.component';
-import { AlljobsComponent } from './admin/pages/alljobs/alljobs.component';
+import { ComplaintsComponent } from './admin/pages/complaints/complaints.component';
 import { CategoriesComponent } from './admin/pages/categories/categories.component';
 
 
@@ -60,7 +60,7 @@ const routes: Routes = [
     path: 'admin', component: AdminMainComponent,
     canActivate: [AdminGuardGuard],
     children: [
-      
+      {path:  'complaints', component: ComplaintsComponent},
       { path: 'wallet', component: WalletComponent },
       { path: 'serviceproviders/:service', component: FilterBarComponent },
       { path: 'serviceprovider/profile/:email', component: ServiceProviderProfileComponent },

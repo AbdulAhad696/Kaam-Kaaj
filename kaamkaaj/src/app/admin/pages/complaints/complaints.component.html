@@ -1,0 +1,20 @@
+<div class="container">
+    <!-- ---------------------compalints heading---------------------- -->
+    <h1 class=" d-flex m-4 justify-content-center align-items-center">Complaints</h1>
+    <!-- --------------------complaints container--------------------- -->
+    <div class="row rounded bg-light m-2" *ngFor="let eachComplaint of allComplaints ;" >
+    <!-- --------------------------image of complaint-------------------------- -->
+        <!-- <div class="col-sm-3 my-3 d-flex aligns-items-center">
+            <img  class="w-100 rounded" src="{{domain+'/'+eachComplaint.image}}" alt="image">
+        </div> -->
+    <!-- -------------------------other descriptions of complaint----------------------- -->
+        <div class="col-sm-9 mt-4">
+            <h1 class="text-success mb-0" >     <span><i class="fa-solid fa-user"></i> {{eachComplaint?.name}}</span></h1>
+            <h3 class="mb-0" ><span><i class="fa fa-envelope me-2"></i> {{eachComplaint?.email}}</span></h3>
+            <h4  ><span><i class="fa fa-phone me-2"></i> {{eachComplaint?.phoneNumber}}</span></h4>
+            <p>{{eachComplaint?.message}}</p>
+        </div>
+    </div>
+
+
+</div>

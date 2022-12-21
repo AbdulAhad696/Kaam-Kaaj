@@ -54,10 +54,10 @@ import { ChangePasswordModalComponent } from './UserSite/change-password-modal/c
 import { ChangePasswordConponentComponent } from './UserSite/change-password-conponent/change-password-conponent.component';
 import { AdminDashboardComponent } from './admin/pages/admin-dashboard/admin-dashboard.component';
 import { AdminMainComponent } from './admin/pages/admin-main/admin-main.component';
-// import { AngularResizeEventModule } from 'angular-resize-event';
+import { AngularResizeEventModule } from 'angular-resize-event';
+import { ComplaintsComponent } from './admin/pages/complaints/complaints.component';
 import { SubmitProjectModalComponent } from './service-provider/components/submit-project-modal/submit-project-modal.component';
 import { CategoriesComponent } from './admin/pages/categories/categories.component';
-import { AngularResizeEventModule } from 'angular-resize-event';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlljobsComponent } from './admin/pages/alljobs/alljobs.component';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
@@ -101,6 +101,8 @@ import { NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
     ChangePasswordConponentComponent,
     AdminDashboardComponent,
     AdminMainComponent,
+    ComplaintsComponent,
+    // SubmitProjectModalComponent
     SubmitProjectModalComponent,
     AlljobsComponent,
     CategoriesComponent
