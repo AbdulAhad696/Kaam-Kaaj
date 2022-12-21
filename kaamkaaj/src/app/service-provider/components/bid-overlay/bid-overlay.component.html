@@ -49,8 +49,10 @@
                             class="col-sm-6 form-control border-start-0 border-end-0 border-top-0 rounded-0 p-0"
                             style="width:10vw ;" required [(ngModel)]="bidamount" [ngModelOptions]="{standalone:true}"
                             oninvalid="this.setCustomValidity(`Enter an appropriate value within client's budget`)"
-                            oninput="this.setCustomValidity('')" type="number"/>
+                            oninput="this.setCustomValidity('')" type="number" id="bidamount"/>
+                            <label *ngIf="bidamount>this.gig?.estAmount" style="color: red;">Enter value within budget</label>
                         </div>
+
                         <div class="col-sm-6">
                             <input required class="form-control border-start-0 border-end-0 border-top-0 rounded-0 p-0" 
                             oninvalid="this.setCustomValidity('Enter the number of days')"
