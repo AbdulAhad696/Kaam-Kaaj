@@ -1,5 +1,5 @@
 <!---------------------------------- Handling the modal for payments -->
-<app-pay-balance-modal [refreshWallet]="this.ngOnInit" balance = {{balance}}></app-pay-balance-modal>
+<app-pay-balance-modal  balance = {{balance}}></app-pay-balance-modal>
 <div class="container mt-4" style="min-height: 70vh;">
     <div class="row mainWalletHeading">
         <div class="col-lg-12 d-flex justify-content-center">
@@ -25,27 +25,7 @@
 <div *ngIf="selectedBtn == 'Transaction'">
     <app-transactions></app-transactions>
 </div>
-<div *ngIf="this.router.url.includes('admin')" id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" >
-    <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="2000">
-        <img src="../../../../assets/main_page_business_meeting.jpg" style="height: 50vh; object-fit: contain;" class="img-fluid d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item" data-bs-interval="2000">
-        <img src="../../../../assets/main_page_deal_done.png" style="height: 50vh; object-fit: contain;" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item"  data-bs-interval="2000">
-        <img src="../../../../assets/main_page_carpenter.jpg" style="height: 50vh; object-fit: contain;" class="d-block w-100" alt="...">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
+
 
 
 

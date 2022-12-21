@@ -19,9 +19,10 @@
                 <!-- --------------------------------job description----------------------- -->
                 <div class="row">
                     <div class="mb-3  ms-3 jobNameWidth">
-                        <label for="exampleInputEmail1" class="form-label"><strong>Choose a description of your
+                        <label for="exampleInputEmail1" class="form-label pe-1"><strong>Choose a description of your
                                 job</strong></label>
-                        <textarea class="form-control textFields" id="exampleFormControlTextarea1 " rows="3" required
+                                <label *ngIf="this.numinText==true || this.numinText2==true || this.numinText3==true" style="color: red;">PLEASE DONT ADD PERSONAL INFORMATION</label>
+                        <textarea (keyup)="checkText()" class="form-control textFields" id="exampleFormControlTextarea1 " rows="3" required
                             [(ngModel)]="description" [ngModelOptions]="{standalone: true}"></textarea>
                     </div>
                 </div>

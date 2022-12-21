@@ -37,6 +37,7 @@ export class BidOverlayComponent implements OnInit,OnChanges {
       this.bidamount=""
       this.duration=parseInt(this.bidDuration)
       this.bidDuration=""
+      console.log("JOB ID:",this.gig._id)
       this.viewjobservice.submitbid(this.amount,this.gig._id,this.duration)
     }
   }

@@ -48,6 +48,17 @@ export class JobGigsComponent implements OnInit {
   category:any
   jobAssignedTo:any;
   jobAssignedBy:any;
+  numinText:any
+  numinText2:any
+  numinText3:any
+  checkText(){
+    let pattern = /[0]{1}[3]{1}[0-9]{9}/g
+    let pattern2 = /[0]{1}[3]{1}[0-9]{2}[ ]{1}[0-9]{7}/g
+    let pattern3 = /[0]{1}[3]{1}[0-9]{2}[-]{1}[0-9]{7}/g
+    this.numinText = pattern.test(this.description)
+    this.numinText2 = pattern2.test(this.description)
+    this.numinText3 = pattern3.test(this.description)
+  }
   // ----------------------------posting job-----------------------
   async addingJob(job:any){
     if(await lastValueFrom( this.AddJobService.postJobApi(job) )){
@@ -70,35 +81,37 @@ export class JobGigsComponent implements OnInit {
   }
 // -----------------------------------form submission--------------------------
 async handleSubmit(){
-    const now = Date.now();
-    const myFormattedDate = this.datePipe.transform(now, 'short');
-    this.jobData = {
-      title:this.title,
-      jobPostDate:myFormattedDate,
-      description:this.description,
-      estAmount:this.estAmount,
-      status:"punched",
-      jobAddress:this.jobAddress,
-      estCompletionTime:(this.estCompletionTime),
-      category:this.category,
-      jobAssignedBy:this.jobAssignedBy,
-      gigPics: this.gigPics,
-      jobAssignedTo: this.jobAssignedTo
-    }
-    this.gigPics =await lastValueFrom(this.onMultipleSubmittingImages());
-    this.SpinnerService.requestStarted();
-    this.isJobAdded =await this.addingJob(this.jobData);
-    this.SpinnerService.requestEnded();
+  if(this.numinText != true){
+      const now = Date.now();
+      const myFormattedDate = this.datePipe.transform(now, 'short');
+      this.jobData = {
+        title:this.title,
+        jobPostDate:myFormattedDate,
+        description:this.description,
+        estAmount:this.estAmount,
+        status:"punched",
+        jobAddress:this.jobAddress,
+        estCompletionTime:(this.estCompletionTime),
+        category:this.category,
+        jobAssignedBy:this.jobAssignedBy,
+        gigPics: this.gigPics,
+        jobAssignedTo: this.jobAssignedTo
+      }
+      this.gigPics =await lastValueFrom(this.onMultipleSubmittingImages());
+      this.SpinnerService.requestStarted();
+      this.isJobAdded =await this.addingJob(this.jobData);
+      this.SpinnerService.requestEnded();
 
-// -------------------------------------resetting the form--------------------------------
-    setTimeout(()=>{
-      alert(this.isJobAdded);
-    },10)
-    // --------------------refreshinh the component---------------------
-    let currenturl = this.router.url
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate([currenturl]);
-    });
+  // -------------------------------------resetting the form--------------------------------
+      setTimeout(()=>{
+        alert(this.isJobAdded);
+      },10)
+      // --------------------refreshinh the component---------------------
+      let currenturl = this.router.url
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.router.navigate([currenturl]);
+      });
+    }
   }
   // --------------------------getting all services-----------------------------
   async gettingServices(){

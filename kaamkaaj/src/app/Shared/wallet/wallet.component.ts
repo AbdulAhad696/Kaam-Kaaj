@@ -18,12 +18,6 @@ export class WalletComponent implements OnInit {
   selectedBtn = "Balance"
   constructor(private spData: ServiceProviderService, private signiService: SignInService,public router: Router) { }
 
-
-  ngOnInit(): void {
-    this.getBalance()
-    // console.log(spdata)
-  }
-
   async getBalance() {
     var bal = (await lastValueFrom(this.spData.fetchSPData(this.signiService.getemail())))
     console.log(bal)
@@ -33,6 +27,13 @@ export class WalletComponent implements OnInit {
     console.log(this.income, "Income")
 
   }
+  ngOnInit(): void {
+    this.getBalance()
+    // console.log(spdata)
+  }
+  
+
+  
   transactionBtnClick() {
     this.selectedBtn = "Transaction"
   }
