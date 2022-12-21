@@ -58,8 +58,6 @@ import { AdminMainComponent } from './admin/pages/admin-main/admin-main.componen
 import { SubmitProjectModalComponent } from './service-provider/components/submit-project-modal/submit-project-modal.component';
 import { CategoriesComponent } from './admin/pages/categories/categories.component';
 import { AngularResizeEventModule } from 'angular-resize-event';
-import { ShowServiceProvidersComponent } from './admin/pages/show-service-providers/show-service-providers.component';
-import { SubmitProjectModalComponent } from './service-provider/components/submit-project-modal/submit-project-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
