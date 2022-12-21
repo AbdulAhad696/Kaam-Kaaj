@@ -21,13 +21,17 @@ export class ServiceComponent implements OnInit {
   services: any = []
   async getAllServices() {
     this.SpinnerService.requestStarted()
-    this.services=await lastValueFrom(this.getServices.fetchingServices())
+    this.services = await lastValueFrom(this.getServices.fetchingServices())
     setTimeout(() => {
       this.SpinnerService.requestEnded()
     }, 2000)
   }
   showServiceProviders(service: any) {
-    this.router.navigate([`../serviceproviders/${service}`], { relativeTo: this.ActivatedRoute })
+    if (this.router.url.includes("services")) {
+
+      this.router.navigate([`../customer-mainpage/serviceproviders/${service}`], { relativeTo: this.ActivatedRoute })
+    }
+    else { this.router.navigate([`../serviceproviders/${service}`], { relativeTo: this.ActivatedRoute }) }
     // this.router.navigateByUrl('/serviceproviders', { state: { service:service} });
   }
   ngOnInit(): void {
