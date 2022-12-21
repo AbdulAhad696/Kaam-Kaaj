@@ -6,7 +6,7 @@
 
 <h1 class=" d-flex m-4 justify-content-center align-items-center">My Projects</h1>
 
-<div class="row container-fluid">
+<div *ngIf="serviceProviderData" class="row container-fluid">
     <div class="col-lg-4  serviceProviderDetail">
         <div class=" shadow-lg m-4  p-4 bg-body rounded-3 d-flex flex-column ">
             <div class=" d-flex flex-column justify-content-center align-items-center">
@@ -33,7 +33,7 @@
                         <p class="col-2 m-0">{{serviceProviderData[0]?.responseRate==null?0:serviceProviderData[0]?.responseRate}}%</p>
                     </td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <td>
                         <h4 class="m-0">Delivered on Time</h4>
                     </td>
@@ -50,7 +50,7 @@
                         <p class="col-2 m-0">{{serviceProviderData[0]?.deliverOnTime==null?0:serviceProviderData[0]?.deliverOnTime}}%</p>
 
                     </td>
-                </tr>
+                </tr> -->
                 <tr>
                     <td>
                         <h4 class="m-0">Order Completion</h4>

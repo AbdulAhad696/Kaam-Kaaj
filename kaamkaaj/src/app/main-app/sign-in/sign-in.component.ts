@@ -12,7 +12,7 @@ import { ServiceProviderProfileService } from 'src/app/Services/serviceProviderP
   providers: [SignInService]
 })
 export class SignInComponent implements OnInit {
-  message = "Failed to sign in. Username or password is incorrect"
+  message="Failed to sign in. Username or password is incorrect"
   success: any;
   userInput = "";
   passInput = "";
@@ -21,7 +21,7 @@ export class SignInComponent implements OnInit {
   loggedInUser: any = []
   category: any = []
   showPassword: boolean = false
-  constructor(private signinService: SignInService, private router: Router, private spProfileService: ServiceProviderProfileService, private SpinnerService: SpinnerService) { }
+  constructor(private signinService: SignInService, private router: Router, private SpinnerService: SpinnerService,private spProfileService:ServiceProviderProfileService) { }
 
   async onLogin() {
     this.username = this.userInput;
@@ -31,13 +31,14 @@ export class SignInComponent implements OnInit {
       password: this.password
     }
     this.SpinnerService.requestStarted()
-
-    this.loggedInUser = await lastValueFrom(this.signinService.findUserLogin(credentials))
-    console.log(this.loggedInUser)
     setTimeout(() => {
       this.SpinnerService.requestEnded()
-    }, 1000)
+    }, 2000)
+    this.loggedInUser = await lastValueFrom(this.signinService.findUserLogin(credentials))
+    console.log(this.loggedInUser)
+    
     if (this.loggedInUser.length > 0) {
+      this.message = "Failed to sign in. Username or password is incorrect"
       this.signinService.storeinlocalstorage(this.loggedInUser[0]);
       if (this.loggedInUser[0].role == "Client") {
         this.router.navigate(['/customer-mainpage'])
@@ -54,11 +55,14 @@ export class SignInComponent implements OnInit {
     }
     else {
       this.success = true
-
+      if (this.loggedInUser.msg!=null){
+        this.message = this.loggedInUser.msg
+      }
       setTimeout(() => {
         if (this.success == true) {
           this.success = null;
         }
+        
         this.success = null;
       }, 5000);
 

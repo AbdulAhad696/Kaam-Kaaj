@@ -1,6 +1,6 @@
 <app-bid-overlay *ngIf="loggedin=='Worker'" [gig]="editgig"></app-bid-overlay>
 
-<div class="row d-flex pt-3 pb-3">
+<div class="row d-flex pt-3 pb-3 mb-3">
     <!-- filter -->
     <div class="col-md-6 mb-0 filter pb-3">
         <div class="col-12 d-flex " id="filterButtons">
@@ -54,7 +54,7 @@
         <div class="ps-3 pt-3 row d-flex justify-content-around">
             <div class="col-lg-4 col-md-6 col-sm-6 d-flex flex-row">
                 <p class="m-0">Client Rating:</p>
-                {{child.setSelectedValue(gig?.clientDetails[0]?.rating | number:'1.0-0')}}
+                {{child.setSelectedValue(gig.clientDetails[0]?.rating | number:'1.0-0')}}
                 <app-rating class="star" #child></app-rating>
             </div>
             <div class="col-lg-5 col-md-6 col-sm-6 d-flex row">

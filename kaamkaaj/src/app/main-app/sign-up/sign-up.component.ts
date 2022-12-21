@@ -87,7 +87,9 @@ export class SignUpComponent implements OnInit {
 
     this.SpinnerService.requestStarted()
     this.isRegister = await this.addUser(this.userData)
-    this.SpinnerService.requestEnded()
+    setTimeout(() => {
+      this.SpinnerService.requestEnded()
+    }, 2000)
     this.userName = "";
     this.email = "";
     this.password = "";

@@ -28,6 +28,9 @@ export class AppComponent implements OnInit {
     else if (usertype == "Worker") {
       this.router.navigate(['/service-provider'])
     }
+    else if(usertype =="Admin"){
+      this.router.navigate(['/admin'])
+    }
     navigator.geolocation.getCurrentPosition((pos) => {
       this.getLocationService.getAddress(pos.coords.latitude, pos.coords.longitude).subscribe((res) => {
         // @ts-ignore

@@ -70,7 +70,9 @@ export class ClientProjectsComponent implements OnInit {
     });
     this.clientProjects.sort((a: any, b: any) => (a?.estCompletionTime > b?.estCompletionTime ? 1 : -1));
 
-    this.SpinnerService.requestEnded()
+    setTimeout(() => {
+      this.SpinnerService.requestEnded()
+    }, 3000)
   }
 
   openModal(jobId: any, clientName: any, clientProfile: any, jobAddress: any, earning: any) {
@@ -80,7 +82,8 @@ export class ClientProjectsComponent implements OnInit {
       clientName: clientName,
       clientProfile: clientProfile,
       jobAddress: jobAddress,
-      earning: earning
+      earning: earning,
+      reload: this.ngOnInit.bind(this)
     }
 
     $('#exampleModalCenter').modal('toggle')

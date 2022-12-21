@@ -7,11 +7,12 @@ import { GetServicesService } from '../../Services/get-services/get-services.ser
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import {HttpClient,HttpParams} from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ViewChild,ElementRef } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Inject }  from '@angular/core';
 import { DOCUMENT } from '@angular/common'; 
+import { NONE_TYPE } from '@angular/compiler';
 
 @Component({
   selector: 'app-job-gigs',
@@ -24,7 +25,7 @@ export class JobGigsComponent implements OnInit {
   @ViewChild("amountNumberField") amountNumberField;
   @ViewChild("durationNumberField") durationNumberField;
 
-  constructor( private GetServicesService:GetServicesService , private AddJobService:AddJobService , private SignInService:SignInService , private SpinnerService: SpinnerService , private http: HttpClient  , private route: ActivatedRoute , private datePipe:DatePipe,  @Inject(DOCUMENT) document: Document ) { }
+  constructor( private GetServicesService:GetServicesService , private AddJobService:AddJobService , private SignInService:SignInService , private SpinnerService: SpinnerService , private http: HttpClient  , private route: ActivatedRoute , private datePipe:DatePipe,  @Inject(DOCUMENT) document: Document,private router: Router ) { }
 // -----------------------variable required--------------------------
   allServices: any;
   jobData:any;
@@ -35,13 +36,14 @@ export class JobGigsComponent implements OnInit {
   currentDuration = "Choose Duration";
   currentServiceProviderCategory:any;
   btnState:boolean = false;
+  successmsg="Job was added successfully"
+  failmsg = "Failed to add job"
+  success:any
 // -----------------------------schema variables-------------------------
   title:string;
   jobPostDate:string;
   description:string;
   estAmount:number;
-  // clientRating:number;
-  // bids:any;
   gigPics:any;
   // spRating:number;
   status:string;
@@ -56,10 +58,11 @@ export class JobGigsComponent implements OnInit {
   // ----------------------------posting job-----------------------
   async addingJob(job:any){
     if(await lastValueFrom( this.AddJobService.postJobApi(job) )){
-      return "Job is added successfully!!!!..........";
+      this.success=true
     }
     else{
-      return "Service is down currently. You may try later..";
+      this.success=false
+
     }
   }
 
@@ -93,37 +96,25 @@ async handleSubmit(){
       gigPics: this.gigPics,
       jobAssignedTo: this.jobAssignedTo
     }
+    
+    
+    ///////////////////////////////////
     this.gigPics =await lastValueFrom(this.onMultipleSubmittingImages());
     this.SpinnerService.requestStarted();
-    this.isJobAdded =await this.addingJob(this.jobData);
-    this.SpinnerService.requestEnded();
-
-// -------------------------------------resetting the form--------------------------------
-    // this.title="";
-    // this.jobPostDate= ;
-    // this.description="";
-    // this.estAmount=0;
-    // this.status="";
-    // this.jobAddress="";
-    // this.estCompletionTime=0;
-    // this.category="";
-    // this.jobAssignedBy="";
-    // if(this.btnState == false){
-    //   this.currentCategory="Choose Category";
-    // }
-    // else{
-    //   this.currentCategory = this.currentServiceProviderCategory;
-    //   this.btnState = true;
-    // }
-    // this.currentAmount = "Choose Amount";
-    // this.currentDuration = "Choose Duration";
-    // this.fileUploader.nativeElement.value = null;
+    setTimeout(() => {
+      this.SpinnerService.requestEnded()
+    }, 2000)
+    await this.addingJob(this.jobData);
     
-    setTimeout(()=>{
-      alert(this.isJobAdded);
-    },10)
-
-    window.location.reload();
+    setTimeout(() => {
+      if (this.success == true) {
+        this.success = null;
+      }
+      this.success = null;
+    }, 5000);
+    setTimeout(() => {
+      this.router.navigate(["customer-mainpage"])
+    }, 4000);
   }
 
   // --------------------------getting all services-----------------------------

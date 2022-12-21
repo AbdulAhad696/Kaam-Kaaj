@@ -1,4 +1,5 @@
 import { _isNumberValue } from '@angular/cdk/coercion';
+import { DatePipe } from '@angular/common';
 import { Component, OnInit,Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ViewjobService } from 'src/app/Services/viewjob/viewjob.service';
 
@@ -17,7 +18,7 @@ export class BidOverlayComponent implements OnInit,OnChanges {
   // date:date
   currentDate:string
   gigImages:[]
-  constructor(private viewjobservice:ViewjobService) { 
+  constructor(private viewjobservice:ViewjobService,private datePipe:DatePipe) { 
     // this.hiddenImgOverlay=false;
   }
 
@@ -28,10 +29,9 @@ export class BidOverlayComponent implements OnInit,OnChanges {
   }
   submitBid(){
     if (this.bidamount>this.gig.estAmount || this.bidamount==null || !_isNumberValue(this.bidamount)){
-      alert("Enter an amount less than the budget!")
+      
     }
     else{
-      alert("Good Oye")
       this.closeModal()
       this.amount=parseInt(this.bidamount)
       this.bidamount=""
@@ -42,6 +42,9 @@ export class BidOverlayComponent implements OnInit,OnChanges {
   }
   ngOnChanges(changes: SimpleChanges): void {
     console.log(this.gig)
+    if(this.gig!=null){
+      this.gig.estCompletionTime = this.datePipe.transform(this.gig?.estCompletionTime, 'short');
+    }
   }
   reOpenModal(){
     $('#exampleModalCenter').modal('toggle') 

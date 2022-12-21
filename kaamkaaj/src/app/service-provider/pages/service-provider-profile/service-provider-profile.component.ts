@@ -26,6 +26,12 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   currentServiceProviderCategory: any
   reviews: any
   category = this.signinService.getCategory()
+  delete:boolean
+  setDelete(setval:boolean){
+    this.delete=setval
+    $('#exampleModalCenter').modal('toggle')
+    this.deleteimg()
+  }
 
   async useImage(event: any) {
     var formData = new FormData();
@@ -42,13 +48,16 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   }
   async getProfile(email: any) {
     this.SpinnerService.requestStarted()
+    console.log("request started")
     this.serviceProviderProfile = await lastValueFrom(this.ServiceProviderProfileService.fetchingServiceProviderProfile(email))
     if (this.serviceProviderProfile) {
       this.serviceProviderProfile[0].serviceProviderDetails[0].profilePicture = environment.baseUrl + "/" + this.serviceProviderProfile[0]?.serviceProviderDetails[0]?.profilePicture
       console.log(this.serviceProviderProfile)
       this.currentServiceProviderCategory = this.serviceProviderProfile[0]?.serviceDetails[0]?.tittle;
     }
-    this.SpinnerService.requestEnded()
+    setTimeout(() => {
+      this.SpinnerService.requestEnded()
+    }, 3000)
 
   }
   openModal() {
@@ -56,11 +65,17 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
     $('#exampleModalCenter').modal('toggle')
   }
   async deletePortfolioImage(image: string) {
-    let imageUrl = image.replace(environment.baseUrl + "/", "")
-    if (confirm("Are you sure you want to delete the image?")) {
+    this.imageUrl = image.replace(environment.baseUrl + "/", "")
+    $('#exampleModalCenter').modal('toggle')
+  }
+
+  async deleteimg(){
+    if (this.delete) {
       this.SpinnerService.requestStarted()
-      await lastValueFrom(this.ServiceProviderProfileService.deletePortfolioImage(this.email, imageUrl))
-      this.SpinnerService.requestEnded()
+      await lastValueFrom(this.ServiceProviderProfileService.deletePortfolioImage(this.email, this.imageUrl))
+      setTimeout(() => {
+        this.SpinnerService.requestEnded()
+      }, 2000)
       this.ngOnInit()
     }
   }
