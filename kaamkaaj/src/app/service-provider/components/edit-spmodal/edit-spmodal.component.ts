@@ -35,7 +35,7 @@ export class EditSPModalComponent implements OnInit, OnChanges {
       const reader = new FileReader();
       reader.readAsDataURL(event.target.files[0]); // Read file as data url
       reader.onloadend = (e) => { // function call once readAsDataUrl is completed  
-        console.log(e.target?.result)
+        // console.log(e.target?.result)
         if (e.target?.result) {
           this.URL = e.target?.result
         }

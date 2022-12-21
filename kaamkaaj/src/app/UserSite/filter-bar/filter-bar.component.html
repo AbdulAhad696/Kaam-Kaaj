@@ -16,7 +16,7 @@
                         <h1 class="display-3">Filters</h1>
                         <hr>
                         <h3 class="display-1">Categories</h3>
-
+                        <a *ngIf = "currentUser == 'Admin'"  class="list-group-item list-group-item-action py-2 ripple" routerLink="../All" aria-current="true"><i class="fas fa-solid fa-wrench fa-fw me-3"></i><span>All</span></a>
                         <a *ngFor = "let service of allServices"  class="list-group-item list-group-item-action py-2 ripple" routerLink="../{{service.tittle}}" aria-current="true"><i class="fas fa-solid fa-wrench fa-fw me-3"></i><span>{{service?.tittle}}</span></a>
 
                         <hr>
@@ -74,7 +74,7 @@
 <!-- --------------------loading service providers component------------------------ -->
         <div class="col-lg-8">
             <div class="container ">
-                <app-service-providers></app-service-providers>
+                <app-service-providers [userType]="currentUser"></app-service-providers>
             </div>
         </div>
     </div>

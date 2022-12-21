@@ -12,7 +12,8 @@ export class PayBalanceModalComponent implements OnInit {
   @Input() balance;
   userId;
   @Input() refreshWallet: () => void;
-  profileDetails: any;
+  userType: any;
+
   constructor(private serviceProviderProfile: ServiceProviderProfileService, private signinService: SignInService, private transactionService: TransactionsService) { }
 
   async confirmPayment() {
@@ -38,6 +39,7 @@ export class PayBalanceModalComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.userType = this.signinService.getusertype()
     this.userId = this.signinService.getId()
   }
 
