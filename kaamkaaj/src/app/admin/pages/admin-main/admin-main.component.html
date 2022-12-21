@@ -1,45 +1,79 @@
-<div class="container-fluid p-0 d-flex">
-    <div class="d-flex flex-column flex-shrink-0 p-3 text-white sidecol" style="width: 280px;">
-        <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-          <svg class="bi me-2" width="40" height="32"></svg>
-          <span class="fs-4">Sidebar</span>
-        </a>
-        <hr>
-        <ul class="nav nav-pills flex-column mb-auto">
-          <li class="nav-item">
-            <a routerLink="./" class="nav-link text-white" aria-current="page">
-              <svg class="bi me-2" width="16" height="16"></svg>
-              Home
-            </a>
-          </li>
-          <li>
-            <a routerLink="wallet" class="nav-link text-white">
-              <svg class="bi me-2" width="16" height="16"></svg>
-              Wallet
-            </a>
-          </li>
-          <li>
-            <a routerLink="alljobs" class="nav-link text-white">
-              <svg class="bi me-2" width="16" height="16"></svg>
-              Jobs
-            </a>
-          </li>
-          <li>
-            <a routerLink="categories" class="nav-link text-white">
-              <svg class="bi me-2" width="16" height="16"></svg>
-              Categories
-            </a>
-          </li>
-          <li>
-            <a routerLink="serviceproviders/Plumber" class="nav-link text-white">
-              <svg class="bi me-2" width="16" height="16"></svg>
-              Service Providers
-            </a>
-          </li>
-        </ul>
+
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+<div style="background-color: black !important;" class="offcanvas offcanvas-start text-bg-dark" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header">
+    <img class="img-fluid" src="../../assets/kaamkaaj-removebg-preview.png"
+            style="height: 50px;">
+            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">
+              <a class="navbar-brand fs-2 text-white" routerLink="/">KaamKaaj</a>
+      </h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a *ngIf="currentPage!='/admin'" routerLink="./" class="nav-link text-white" data-bs-dismiss="offcanvas" aria-current="page">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Home
+          </a>
+          <a *ngIf="currentPage=='/admin'" routerLink="./" class="nav-link active text-white" aria-current="page">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Home
+          </a>
+    
+        </li>
+        <li>
+          <a *ngIf="currentPage!='/admin/wallet'" routerLink="wallet" data-bs-dismiss="offcanvas" class="nav-link text-white">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Wallet
+          </a>
+          <a *ngIf="currentPage=='/admin/wallet'" routerLink="wallet" class="nav-link active text-white">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Wallet
+          </a>
+        </li>
+        <li>
+          <a *ngIf="currentPage!='/admin/alljobs'" routerLink="alljobs" data-bs-dismiss="offcanvas" class="nav-link  text-white">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Jobs
+          </a>
+          <a *ngIf="currentPage=='/admin/alljobs'" routerLink="alljobs" class="nav-link active text-white">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Jobs
+          </a>
+        </li>
+        <li>
+          <a *ngIf="currentPage!='/admin/categories'" routerLink="categories" data-bs-dismiss="offcanvas" class="nav-link text-white">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Categories
+          </a>
+          <a *ngIf="currentPage=='/admin/categories'" routerLink="categories" class="nav-link active text-white">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Categories
+          </a>
+        </li>
+        <li>
+          <a *ngIf="!currentPage.includes('/admin/serviceproviders')" routerLink="serviceproviders/Plumber"
+            class="nav-link text-white" data-bs-dismiss="offcanvas">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Service Providers
+          </a>
+          <a *ngIf="currentPage.includes('/admin/serviceproviders')" routerLink="serviceproviders/Plumber"
+            class="nav-link active text-white">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Service Providers
+          </a>
+        </li>
+      </ul>
     </div>
-    <div class="container-fluid p-0">
-        <!-- <div class="container-fluid p-0 header"></div> -->
-        <router-outlet></router-outlet>
-    </div>
+  </div>
+</div>
+<div class="container-fluid p-0">
+  <!-- <div class="container-fluid p-0 header"></div> -->
+  <router-outlet></router-outlet>
 </div>

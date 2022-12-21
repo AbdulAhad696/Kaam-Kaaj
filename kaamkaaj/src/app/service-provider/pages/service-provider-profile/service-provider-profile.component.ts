@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ServiceProviderProfileService } from './../../../Services/serviceProviderProfile/service-provider-profile.service';
 import { SpinnerService } from './../../../Services/spinner/spinner.service';
 import { lastValueFrom } from 'rxjs';
-
+import { DatePipe } from '@angular/common';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 
@@ -20,7 +20,7 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   loggedInUserType: string | null;
   imageUrl: string
   domain: string = environment.baseUrl
-  constructor(private route: ActivatedRoute, private spProfileService: ServiceProviderProfileService, private SpinnerService: SpinnerService, private signinService: SignInService, private ActivatedRoute: ActivatedRoute, private ServiceProviderProfileService: ServiceProviderProfileService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private spProfileService: ServiceProviderProfileService, private SpinnerService: SpinnerService, private signinService: SignInService, private ActivatedRoute: ActivatedRoute, private ServiceProviderProfileService: ServiceProviderProfileService, private router: Router,private datePipe:DatePipe) { }
   email: any
   serviceProviderProfile: any
   currentServiceProviderCategory: any
@@ -29,7 +29,7 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   delete:boolean
   setDelete(setval:boolean){
     this.delete=setval
-    $('#exampleModalCenter').modal('toggle')
+    $('#ModalCenter').modal('toggle')
     this.deleteimg()
   }
 
@@ -66,7 +66,7 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   }
   async deletePortfolioImage(image: string) {
     this.imageUrl = image.replace(environment.baseUrl + "/", "")
-    $('#exampleModalCenter').modal('toggle')
+    $('#ModalCenter').modal('toggle')
   }
 
   async deleteimg(){
@@ -82,6 +82,10 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   async getReviews() {
     this.reviews = await lastValueFrom(this.ServiceProviderProfileService.fetchReviews(this.ActivatedRoute.snapshot.params["email"]))
     console.log(this.reviews)
+
+    this.reviews.forEach(element => {
+      element.reviewDate = this.datePipe.transform(element.reviewDate, 'short');
+    });
   }
 
   // -------------------------handling sending proposal-------------------------
@@ -90,15 +94,11 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
   }
   initializeData() {
     console.log("Chal Bhai")
-    // console.log(this.ActivatedRoute.snapshot)
     this.email = this.ActivatedRoute.snapshot.params['email'];
-    console.log(this.email)
     this.getProfile(this.email)
     this.usertype = this.signinService.getusertype()
-    console.log(this.usertype)
     this.loggedInUserType = this.signinService.getusertype();
     this.getReviews()
-    // this.ngOnInit()
   }
   async toggleStatus() {
     let data = {
@@ -109,9 +109,13 @@ export class ServiceProviderProfileComponent implements OnInit, OnChanges {
       this.refreshPage()
     })
   }
-  refreshPage() {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false
-    this.router.navigate(['./'], { relativeTo: this.route })
+  async refreshPage() {
+    // this.router.routeReuseStrategy.shouldReuseRoute = () =>false
+    // await this.router.navigate(['./'], { relativeTo: this.route })
+    let currenturl = this.router.url
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currenturl]);
+    }); 
   }
   ngOnInit(): void {
     this.initializeData()

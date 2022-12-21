@@ -32,21 +32,20 @@ import { AdminMainComponent } from './admin/pages/admin-main/admin-main.componen
 
 import { WalletComponent } from './Shared/wallet/wallet.component';
 import { ShowServiceProvidersComponent } from './admin/pages/show-service-providers/show-service-providers.component';
+import { AlljobsComponent } from './admin/pages/alljobs/alljobs.component';
 
 
 const routes: Routes = [
   // Main page, Sign In, Sign up Components routing
-  { path: '', component: MainPageComponent },
-  { path: 'signup', component: SignUpComponent },
-  { path: 'signin', component: SignInComponent },
-  { path: 'changepassword/:id', component: ChangePasswordConponentComponent },
+  
+  
 
   {
     path: 'customer-mainpage',
     canActivate: [ClientGuardGuard],
     component: CustomermainpageComponent,
     children: [
-      { path: '', component: CustomerLandingPageComponent },
+      
       { path: 'jobgigs', component: JobGigsComponent },
       { path: 'jobgigs/:category/:id', component: JobGigsComponent },
       { path: 'contactadmin', component: ContactUsComponent },
@@ -55,7 +54,8 @@ const routes: Routes = [
       { path: 'jobs', component: PostedJobsComponent },
       { path: 'jobs/bids/:id', component: BidingsComponent },
       { path: 'running', component: RunningJobsComponent },
-      { path: 'myprojects', component: ClientProjectsComponent }
+      { path: 'myprojects', component: ClientProjectsComponent },
+      { path: '', component: CustomerLandingPageComponent },
     ]
   },
 
@@ -63,30 +63,39 @@ const routes: Routes = [
     path: 'admin', component: AdminMainComponent,
     canActivate: [AdminGuardGuard],
     children: [
-      { path: '', component: AdminDashboardComponent },
+      
       { path: 'wallet', component: WalletComponent },
       { path: 'serviceproviders/:service', component: FilterBarComponent },
-      { path: 'serviceprovider/profile/:email', component: ServiceProviderProfileComponent }
+      { path: 'serviceprovider/profile/:email', component: ServiceProviderProfileComponent },
+      { path: 'alljobs',component:AlljobsComponent},
+      { path: '', component: AdminDashboardComponent },
 
 
     ]
   },
-  { path: 'contactus', component: ContactUsComponent },
-  { path: 'aboutus', component: AboutUsComponent },
-  { path: 'services', component: ServiceComponent },
+  
 
 
   {
     path: 'service-provider',
     canActivate: [AuthenticationGuard],
     component: ServiceprovidermainComponent,
-    children: [{ path: '', canActivate: [CategoryGuardGuard], component: SpDashboardComponent },
+    children: [
+      
     { path: 'viewjobs', canActivate: [CategoryGuardGuard], component: SpViewjobsComponent },
     { path: 'contactadmin', canActivate: [CategoryGuardGuard], component: ContactUsComponent },
     { path: 'profile/:email', component: ServiceProviderProfileComponent },
     { path: 'myprojects', canActivate: [CategoryGuardGuard], component: MyProjectsComponent },
-    { path: 'wallet', canActivate: [CategoryGuardGuard], component: WalletComponent }]
-  }
+    { path: 'wallet', canActivate: [CategoryGuardGuard], component: WalletComponent },
+    { path: '', canActivate: [CategoryGuardGuard], component: SpDashboardComponent },]
+  },
+  { path: 'signup', component: SignUpComponent },
+  { path: 'signin', component: SignInComponent },
+  { path: 'changepassword/:id', component: ChangePasswordConponentComponent },
+  { path: '', component: MainPageComponent },
+  { path: 'contactus', component: ContactUsComponent },
+  { path: 'aboutus', component: AboutUsComponent },
+  { path: 'services', component: ServiceComponent },
 ];
 
 @NgModule({

@@ -58,8 +58,10 @@ import { AngularResizeEventModule } from 'angular-resize-event';
 import { ShowServiceProvidersComponent } from './admin/pages/show-service-providers/show-service-providers.component';
 import { SubmitProjectModalComponent } from './service-provider/components/submit-project-modal/submit-project-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-
+import { AlljobsComponent } from './admin/pages/alljobs/alljobs.component';
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
+// import { NgFor } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -99,7 +101,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ChangePasswordConponentComponent,
     AdminDashboardComponent,
     AdminMainComponent,
-    SubmitProjectModalComponent
+    SubmitProjectModalComponent,
+    AlljobsComponent
   ],
   imports: [
     AppRoutingModule,
@@ -115,7 +118,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgxMaskModule.forRoot(),
     Ng2SearchPipeModule,
     AngularResizeEventModule,
-    NgbModule
+    NgbModule,
+    NgbCollapseModule,
+    NgbCarouselModule, 
+    // NgFor,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],
