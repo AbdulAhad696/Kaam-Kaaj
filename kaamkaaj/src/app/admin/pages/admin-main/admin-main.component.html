@@ -38,26 +38,6 @@
           </a>
         </li>
         <li>
-          <a *ngIf="currentPage!='/admin/alljobs'" routerLink="alljobs" data-bs-dismiss="offcanvas" class="nav-link  text-white">
-            <svg class="bi me-2" width="16" height="16"></svg>
-            Jobs
-          </a>
-          <a *ngIf="currentPage=='/admin/alljobs'" routerLink="alljobs" class="nav-link active text-white">
-            <svg class="bi me-2" width="16" height="16"></svg>
-            Jobs
-          </a>
-        </li>
-        <li>
-          <a *ngIf="currentPage!='/admin/categories'" routerLink="categories" data-bs-dismiss="offcanvas" class="nav-link text-white">
-            <svg class="bi me-2" width="16" height="16"></svg>
-            Categories
-          </a>
-          <a *ngIf="currentPage=='/admin/categories'" routerLink="categories" class="nav-link active text-white">
-            <svg class="bi me-2" width="16" height="16"></svg>
-            Categories
-          </a>
-        </li>
-        <li>
           <a *ngIf="!currentPage.includes('/admin/serviceproviders')" routerLink="serviceproviders/Plumber"
             class="nav-link text-white" data-bs-dismiss="offcanvas">
             <svg class="bi me-2" width="16" height="16"></svg>

@@ -62,11 +62,9 @@ const routes: Routes = [
     children: [
       
       { path: 'wallet', component: WalletComponent },
-      { path: 'categories', component: CategoriesComponent },
       { path: 'serviceproviders/:service', component: FilterBarComponent },
       { path: 'serviceprovider/profile/:email', component: ServiceProviderProfileComponent },
-      { path: 'alljobs',component:AlljobsComponent},
-      { path: '', component: AdminDashboardComponent },
+      { path: '', component: CategoriesComponent },
 
 
     ]

@@ -19,6 +19,7 @@ export class GigCardComponent implements OnInit, OnChanges {
   time: string
   editgig: any
   loggedin: any
+  proposal:any = ""
   searchText: any
   activeButton: string = "amount"
   constructor(private signinservice: SignInService, private router: Router, private serviceProvideDataService: ServiceProviderService) {
@@ -58,6 +59,7 @@ export class GigCardComponent implements OnInit, OnChanges {
   }
   filterButtonClick(value: any) {
     this.activeButton = value
+    this.proposal = ""
     switch (value) {
       case "amount":
         this.Alljobgigs.sort((a: any, b: any) => (a?.estAmount > b?.estAmount ? 1 : -1));
@@ -65,6 +67,9 @@ export class GigCardComponent implements OnInit, OnChanges {
       case "duration":
         this.Alljobgigs.sort((a: any, b: any) => (a?.estCompletionTime > b?.estCompletionTime ? 1 : -1));
         break;
+      case "proposal":
+          this.proposal= this.signinservice.getId()
+          break;
 
     }
   }

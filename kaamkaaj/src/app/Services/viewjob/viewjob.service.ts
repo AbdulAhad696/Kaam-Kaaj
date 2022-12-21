@@ -19,7 +19,8 @@ export class ViewjobService {
     
   }
   async getjobs(cat:string){
-    return await lastValueFrom(this.http.get(`${environment.baseUrl}/service-provider/viewjobs/categoryjobs/${cat}`))
+    let id = this.signinservice.getId()
+    return await lastValueFrom(this.http.get(`${environment.baseUrl}/service-provider/viewjobs/categoryjobs/${cat}/${id}`))
   }
   async submitbid(bidamount:number,id1:string,duration:number){
     let mail = await this.signinservice.getemail()
