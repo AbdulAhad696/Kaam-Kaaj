@@ -37,8 +37,8 @@ import * as CanvasJSAngularChart from '../canvasjs.angular.component';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 import { BidOverlayComponent } from './service-provider/components/bid-overlay/bid-overlay.component'
 import { ImgOverlayComponent } from './service-provider/components/img-overlay/img-overlay.component';
-import {NgxMaskModule} from 'ngx-mask';
-import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import { NgxMaskModule } from 'ngx-mask';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MyProjectsComponent } from './service-provider/pages/my-projects/my-projects.component';
 import { GooglePayButtonModule } from '@google-pay/button-angular';
 import { DatePipe } from '@angular/common';
@@ -54,9 +54,9 @@ import { ChangePasswordModalComponent } from './UserSite/change-password-modal/c
 import { ChangePasswordConponentComponent } from './UserSite/change-password-conponent/change-password-conponent.component';
 import { AdminDashboardComponent } from './admin/pages/admin-dashboard/admin-dashboard.component';
 import { AdminMainComponent } from './admin/pages/admin-main/admin-main.component';
-import { ShowServiceProvidersComponent } from './admin/pages/show-service-providers/show-service-providers.component';
 // import { AngularResizeEventModule } from 'angular-resize-event';
 import { SubmitProjectModalComponent } from './service-provider/components/submit-project-modal/submit-project-modal.component';
+import { CategoriesComponent } from './admin/pages/categories/categories.component';
 
 
 
@@ -84,7 +84,6 @@ import { SubmitProjectModalComponent } from './service-provider/components/submi
     JobGigsComponent,
     SpViewjobsComponent,
     ServiceprovidermainComponent,
-    ShowServiceProvidersComponent,
     GigCardComponent,
     CustomermainpageComponent,
     CanvasJSChart,
@@ -103,7 +102,8 @@ import { SubmitProjectModalComponent } from './service-provider/components/submi
     ChangePasswordConponentComponent,
     AdminDashboardComponent,
     AdminMainComponent,
-    SubmitProjectModalComponent
+    SubmitProjectModalComponent,
+    CategoriesComponent
   ],
   imports: [
     AppRoutingModule,

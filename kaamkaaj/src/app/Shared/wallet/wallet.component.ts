@@ -12,6 +12,7 @@ import { lastValueFrom } from "rxjs"
 export class WalletComponent implements OnInit {
   balance = 0
   revenue = 0
+  userType = this.signiService.getusertype()
   income = 0
   selectedBtn = "Balance"
   constructor(private spData: ServiceProviderService, private signiService: SignInService) { }

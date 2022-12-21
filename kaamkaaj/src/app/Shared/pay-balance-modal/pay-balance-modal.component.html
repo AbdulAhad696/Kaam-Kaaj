@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal-footer justify-content-center">
+        <div class="modal-footer justify-content-center" *ngIf = "userType != 'Admin'">
 
           <button type="button" class="btn btn-success" (click)="confirmPayment()">Pay to Kaam Kaaj</button>
         </div>

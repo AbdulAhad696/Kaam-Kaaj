@@ -50,6 +50,7 @@ export class HeaderComponent implements OnInit {
           this.usertype = null
         }
         else {
+          window.scrollTo(0, 0)
           this.usertype = this.signinservice.getusertype();
           this.email = this.signinservice.getdata();
           this.spbuttons[5].ref = `service-provider/profile/${this.email}`

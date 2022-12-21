@@ -3,8 +3,8 @@ import { RatingComponent } from '../../Shared/rating/rating.component';
 import { GetServicesService } from '../../Services/get-services/get-services.service';
 import { lastValueFrom } from 'rxjs';
 import { SpinnerService } from '../../Services/spinner/spinner.service';
-import { Router } from '@angular/router';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -14,10 +14,10 @@ import { Router } from '@angular/router';
 })
 export class ServiceComponent implements OnInit {
   @Input() rating: RatingComponent
-  constructor(private getServices: GetServicesService, private SpinnerService: SpinnerService, private router: Router) {
+  constructor(private getServices: GetServicesService, private ActivatedRoute: ActivatedRoute, private SpinnerService: SpinnerService, private router: Router) {
 
   }
-
+  domain = environment.baseUrl;
   services: any = []
   async getAllServices() {
     this.SpinnerService.requestStarted()
@@ -25,9 +25,7 @@ export class ServiceComponent implements OnInit {
     this.SpinnerService.requestEnded()
   }
   showServiceProviders(service: any) {
-
-    this.router.navigate([`customer-mainpage/serviceproviders/${service}`])
-
+    this.router.navigate([`../serviceproviders/${service}`], { relativeTo: this.ActivatedRoute })
     // this.router.navigateByUrl('/serviceproviders', { state: { service:service} });
   }
   ngOnInit(): void {

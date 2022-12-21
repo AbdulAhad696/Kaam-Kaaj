@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { SignInService } from 'src/app/Services/sign-in/sign-in.service';
 
 @Component({
   selector: 'app-balance',
@@ -9,8 +10,8 @@ export class BalanceComponent implements OnInit {
   @Input() balance;
 
   @Input() income;
-  constructor() { }
-
+  constructor(private signinservice: SignInService) { }
+  userType = this.signinservice.getusertype()
   ngOnInit(): void {
   }
 
