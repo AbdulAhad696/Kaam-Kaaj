@@ -21,6 +21,13 @@ export class MyProjectsComponent implements OnInit {
   activeButton:string="deadlines"
   projectDetails:any
 
+  status1: any = "doneByClient"
+  status2: any = "doneByWorker"
+  status3: any = ""
+  status4: any = "inProgress"
+  deadlinebutton:any
+  completetedbutton:any
+  compensationbutton:any
 
   async getServiceProviderData(){
     this.serviceProviderData=await lastValueFrom( this.myProjectService.getServiceProviderDetails(this.SignInService.getcontactinfo().email))
@@ -31,6 +38,7 @@ export class MyProjectsComponent implements OnInit {
     this.SpinnerService.requestStarted()
     
     this.serviceProviderProjects=await lastValueFrom(this.myProjectService.getServiceProviderProjects(this.SignInService.getId()))
+    console.log(this.serviceProviderProjects)
     this.serviceProviderProjects.forEach(element => {
       element.clientProfile[0].profileImage=environment.baseUrl + "/" + element.clientProfile[0].profileImage
       element.estCompletionTime=new Date(element.estCompletionTime)
@@ -57,14 +65,29 @@ export class MyProjectsComponent implements OnInit {
 
   fillterButtonClick(value:any){
     this.activeButton=value
-
     switch(value){
       case "deadlines":
+        this.status3 = ""
+        this.status1 = "doneByClient"
+        this.status2 = "doneByWorker"
+        this.status4 = "inProgress"
+        
         this.serviceProviderProjects.sort((a:any, b:any) => (a?.estCompletionTime > b?.estCompletionTime ? 1 : -1));
         break;
       case "compensation":
+        this.status3 = ""
+        this.status1 = "doneByClient"
+        this.status2 = "doneByWorker"
+        this.status4 = "inProgress"
         this.serviceProviderProjects.sort((a:any, b:any) => (a?.bidDetails[0].amount > b?.bidDetails[0].amount ? -1 : 1));
         break;
+        case "completed":
+          this.serviceProviderProjects.sort((a:any, b:any) => (a?.bidDetails[0].amount > b?.bidDetails[0].amount ? -1 : 1));
+          this.status3 = "jobCompleted"  
+          this.status1 =""
+          this.status2 =""
+          this.status4 =""
+          break;
 
     }
   }

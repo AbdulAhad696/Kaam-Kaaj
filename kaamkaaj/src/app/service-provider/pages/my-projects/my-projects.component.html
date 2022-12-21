@@ -1,4 +1,3 @@
-
 <app-submit-project-modal [projectDetails]="projectDetails"></app-submit-project-modal>
 
 
@@ -30,7 +29,8 @@
                         </div>
                     </td>
                     <td>
-                        <p class="col-2 m-0">{{serviceProviderData[0]?.responseRate==null?0:serviceProviderData[0]?.responseRate}}%</p>
+                        <p class="col-2 m-0">
+                            {{serviceProviderData[0]?.responseRate==null?0:serviceProviderData[0]?.responseRate}}%</p>
                     </td>
                 </tr>
                 <!-- <tr>
@@ -65,7 +65,9 @@
                         </div>
                     </td>
                     <td>
-                        <p class="col-2 m-0">{{serviceProviderData[0]?.orderCompletion==null?0:serviceProviderData[0]?.orderCompletion}}%</p>
+                        <p class="col-2 m-0">
+                            {{serviceProviderData[0]?.orderCompletion==null?0:serviceProviderData[0]?.orderCompletion}}%
+                        </p>
 
                     </td>
                 </tr>
@@ -132,6 +134,8 @@
                     class="{{'btn btn-outline-dark  filterButton '+ (activeButton=='deadlines'?'active':'')}}">Deadlines</button>
                 <button (click)="fillterButtonClick('compensation')"
                     class="{{'btn btn-outline-dark  filterButton '+ (activeButton=='compensation'?'active':'')}}">Compensation</button>
+                <button (click)="fillterButtonClick('completed')"
+                    class="{{'btn btn-outline-dark  filterButton '+ (activeButton=='completed'?'active':'')}}">Completed</button>
             </div>
 
         </div>
@@ -144,62 +148,76 @@
                     <h1 class="record">No record found</h1>
                 </div>
             </div>
-            <div class=" shadow-lg m-4  p-4 pb-2 bg-body rounded-3"
-                *ngFor="let serviceProviderProject of serviceProviderProjects | filter:searchText">
-                <div class="row">
-                    <div class="col-xl-4 ">
-                        <div class="col-12 d-flex flex-row">
-                            <img class="clientImage" src={{serviceProviderProject?.clientProfile[0]?.profileImage}}
-                                alt="Avater">
-                            <div class="d-flex flex-column">
-                                <h1 class="mt-2 mb-0 ps-3">{{serviceProviderProject?.clientDetails[0]?.userName}}</h1>
-                                <span style="margin-left: 16px;"><i class="bi bi-geo-alt-fill location"></i>
-                                    {{serviceProviderProject?.jobAddress}}</span>
+                <div class=" shadow-lg m-4  p-4 pb-2 bg-body rounded-3"
+                    *ngFor="let serviceProviderProject of serviceProviderProjects | filter:searchText| filter:status3">
+                    <div class="row">
+                        <div class="col-xl-4 ">
+                            <div class="col-12 d-flex flex-row">
+                                <img class="clientImage" src={{serviceProviderProject?.clientProfile[0]?.profileImage}}
+                                    alt="Avater">
+                                <div class="d-flex flex-column">
+                                    <h1 class="mt-2 mb-0 ps-3">{{serviceProviderProject?.clientDetails[0]?.userName}}
+                                    </h1>
+                                    <span style="margin-left: 16px;"><i class="bi bi-geo-alt-fill location"></i>
+                                        {{serviceProviderProject?.jobAddress}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-8 ">
+                            <div class="row">
+                                <div class="col-6 d-flex flex-column  align-items-center">
+                                    <h3 class="mt-2 mb-0 jobRate">Price</h3>
+                                    <h4 class="ps-1 mt-0 text-info"><b>PKR
+                                            {{serviceProviderProject?.bidDetails[0]?.amount}}</b>
+                                    </h4>
+                                </div>
+
+                                <div class="col-6 d-flex flex-column  align-items-center">
+                                    <h3 class="mt-2 mb-0 jobRate">Delivery Time</h3>
+                                    <h4 *ngIf="serviceProviderProject?.timeStatus=='negative'"
+                                        class="ps-1 mt-0 text-danger ">
+                                        <b><i class="bi bi-clock"></i> {{serviceProviderProject?.time}} Day Late</b>
+                                    </h4>
+                                    <h4 *ngIf="serviceProviderProject?.timeStatus=='positive'"
+                                        class="ps-1 mt-0 text-success ">
+                                        <b><i class="bi bi-clock"></i> {{serviceProviderProject?.time}} Day Left</b>
+                                    </h4>
+                                    <h4 *ngIf="serviceProviderProject?.timeStatus=='zero'"
+                                        class="ps-1 mt-0 text-warning ">
+                                        <b><i class="bi bi-clock"></i> Today</b>
+                                    </h4>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-8 ">
-                        <div class="row">
-                            <div class="col-6 d-flex flex-column  align-items-center">
-                                <h3 class="mt-2 mb-0 jobRate">Price</h3>
-                                <h4 class="ps-1 mt-0 text-info"><b>PKR
-                                        {{serviceProviderProject?.bidDetails[0]?.amount}}</b>
-                                </h4>
-                            </div>
 
-                            <div class="col-6 d-flex flex-column  align-items-center">
-                                <h3 class="mt-2 mb-0 jobRate">Delivery Time</h3>
-                                <h4 *ngIf="serviceProviderProject?.timeStatus=='negative'"
-                                    class="ps-1 mt-0 text-danger ">
-                                    <b><i class="bi bi-clock"></i> {{serviceProviderProject?.time}} Day Late</b>
-                                </h4>
-                                <h4 *ngIf="serviceProviderProject?.timeStatus=='positive'"
-                                    class="ps-1 mt-0 text-success ">
-                                    <b><i class="bi bi-clock"></i> {{serviceProviderProject?.time}} Day Left</b>
-                                </h4>
-                                <h4 *ngIf="serviceProviderProject?.timeStatus=='zero'" class="ps-1 mt-0 text-warning ">
-                                    <b><i class="bi bi-clock"></i> Today</b>
-                                </h4>
+                    <hr class="mb-0">
+                    <div class="d-flex flex-row justify-content-center">
+                        <div class="col-md-10 col-xs-8">
+                            <h3 *ngIf="serviceProviderProject?.status == 'jobCompleted' ;else notcompleted"
+                                class="mb-0 mt-2 text-secondary">Job has been completed</h3>
+                            <ng-template #notcompleted>
+                                <p style="color: maroon;">
+                                <h3 *ngIf="serviceProviderProject?.timeStatus=='zero'" class="mb-0 mt-2 text-secondary">
+                                    Last day
+                                    to submit.Done now to avoid negative rating</h3>
+                                <h3 *ngIf="serviceProviderProject?.timeStatus=='positive'"
+                                    class="mb-0 mt-2 text-secondary">
+                                    Please done as soon as possible to enhance your rating</h3>
+                                <h3 *ngIf="serviceProviderProject?.timeStatus=='negative'"
+                                    class="mb-0 mt-2 text-secondary">
+                                    You're running late.Done now to avoid negative rating</h3>
+                            </ng-template>
+                        </div>
+                        <div class="col-md-2 col-xs-4 ps-2">
 
-                            </div>
+                            <button *ngIf="serviceProviderProject?.status != 'jobCompleted'"
+                                (click)="openModal(serviceProviderProject?._id,serviceProviderProject?.clientDetails[0]?.userName,serviceProviderProject?.clientProfile[0]?.profileImage,serviceProviderProject?.jobAddress,serviceProviderProject?.bidDetails[0]?.amount)"
+                                type="button" class="mt-2  btn btn-success"><b>Submit</b></button>
+
                         </div>
                     </div>
                 </div>
-                <hr class="mb-0">
-                <div class="d-flex flex-row justify-content-center">
-                    <div class="col-md-10 col-xs-8">
-                        <h3 *ngIf="serviceProviderProject?.timeStatus=='zero'" class="mb-0 mt-2 text-secondary">Last day
-                            to submit.Done now to avoid negative rating</h3>
-                        <h3 *ngIf="serviceProviderProject?.timeStatus=='positive'" class="mb-0 mt-2 text-secondary">
-                            Please done as soon as possible to enhance your rating</h3>
-                        <h3 *ngIf="serviceProviderProject?.timeStatus=='negative'" class="mb-0 mt-2 text-secondary">
-                            You're running late.Done now to avoid negative rating</h3>
-                    </div>
-                    <div class="col-md-2 col-xs-4 ps-2">
-                        <button (click)="openModal(serviceProviderProject?._id,serviceProviderProject?.clientDetails[0]?.userName,serviceProviderProject?.clientProfile[0]?.profileImage,serviceProviderProject?.jobAddress,serviceProviderProject?.bidDetails[0]?.amount)" type="button" class="mt-2  btn btn-success"><b>Submit</b></button>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-</div>

@@ -31,7 +31,7 @@ export class ServiceComponent implements OnInit {
 
       this.router.navigate([`../customer-mainpage/serviceproviders/${service}`], { relativeTo: this.ActivatedRoute })
     }
-    else { this.router.navigate([`../serviceproviders/${service}`], { relativeTo: this.ActivatedRoute }) }
+    else { this.router.navigate([`./serviceproviders/${service}`], { relativeTo: this.ActivatedRoute }) }
     // this.router.navigateByUrl('/serviceproviders', { state: { service:service} });
   }
   ngOnInit(): void {
