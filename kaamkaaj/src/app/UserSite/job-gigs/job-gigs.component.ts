@@ -8,18 +8,15 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import {HttpClient,HttpParams} from '@angular/common/http';
 import { Router ,ActivatedRoute } from '@angular/router';
-// import { ActivatedRoute, Router } from '@angular/router';
 import { ViewChild,ElementRef } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Inject }  from '@angular/core';
 import { DOCUMENT } from '@angular/common'; 
-import { NONE_TYPE } from '@angular/compiler';
 
 @Component({
   selector: 'app-job-gigs',
   templateUrl: './job-gigs.component.html',
   styleUrls: ['./job-gigs.component.css']
-  
 })
 export class JobGigsComponent implements OnInit {
   @ViewChild('fileUploader') fileUploader:ElementRef;
@@ -27,7 +24,6 @@ export class JobGigsComponent implements OnInit {
   @ViewChild("durationNumberField") durationNumberField;
 
   constructor( private GetServicesService:GetServicesService , private AddJobService:AddJobService , private SignInService:SignInService , private SpinnerService: SpinnerService , private http: HttpClient  , private route: ActivatedRoute , private datePipe:DatePipe,  @Inject(DOCUMENT) document: Document ,private router:Router) { }
-  // constructor( private GetServicesService:GetServicesService , private AddJobService:AddJobService , private SignInService:SignInService , private SpinnerService: SpinnerService , private http: HttpClient  , private route: ActivatedRoute , private datePipe:DatePipe,  @Inject(DOCUMENT) document: Document,private router: Router ) { }
 // -----------------------variable required--------------------------
   allServices: any;
   jobData:any;
@@ -40,49 +36,38 @@ export class JobGigsComponent implements OnInit {
   btnState:boolean = false;
   amountText:any;
   categoryText:any;
-  successmsg="Job was added successfully"
-  failmsg = "Failed to add job"
-  success:any
 // -----------------------------schema variables-------------------------
   title:string;
   jobPostDate:string;
   description:string;
   estAmount:number;
   gigPics:any;
-  // spRating:number;
   status:string;
   jobAddress:string;
   estCompletionTime:Date;
   category:any
   jobAssignedTo:any;
   jobAssignedBy:any;
-  // jobDescription:"";
-  // clientAddress:"";
-
   // ----------------------------posting job-----------------------
   async addingJob(job:any){
     if(await lastValueFrom( this.AddJobService.postJobApi(job) )){
-      this.success=true
+      return "Job is added successfully!!!!..........";
     }
     else{
-      this.success=false
-
+      return "Service is down currently. You may try later..";
     }
   }
-
   // ------------------------geting selected service -----------------
   async currentService(currentService:string){
     this.selectedServiceObject =await lastValueFrom(this.AddJobService.getSpecificJob(currentService))
     this.category = this.selectedServiceObject[0]._id;
     this.currentCategory = currentService;
   }
-
   // ----------------------------getting selected amount--------------------
   gettingAmount(amount:number){
     this.estAmount = amount;
     this.currentAmount = String(amount);
   }
-
 // -----------------------------------form submission--------------------------
 async handleSubmit(){
     const now = Date.now();
@@ -100,45 +85,21 @@ async handleSubmit(){
       gigPics: this.gigPics,
       jobAssignedTo: this.jobAssignedTo
     }
-    
-    
-    ///////////////////////////////////
     this.gigPics =await lastValueFrom(this.onMultipleSubmittingImages());
     this.SpinnerService.requestStarted();
-    setTimeout(() => {
-      this.SpinnerService.requestEnded()
-    }, 2000)
-    await this.addingJob(this.jobData);
-    
+    this.isJobAdded =await this.addingJob(this.jobData);
+    this.SpinnerService.requestEnded();
+
+// -------------------------------------resetting the form--------------------------------
     setTimeout(()=>{
       alert(this.isJobAdded);
     },10)
-
-
-
-    setTimeout(() => {
-      if (this.success == true) {
-        this.success = null;
-      }
-      this.success = null;
-    }, 5000);
-    setTimeout(() => {
-      this.router.navigate(["customer-mainpage"])
-    }, 4000);
-
-
-
-    this.refreshComponent()
+    // --------------------refreshinh the component---------------------
+    let currenturl = this.router.url
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currenturl]);
+    });
   }
-
-// ------------------------refresing a specific component ----------------------
-  refreshComponent(){
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate(['./'] , { relativeTo: this.route } )
-
-  }
-
   // --------------------------getting all services-----------------------------
   async gettingServices(){
     this.allServices = await lastValueFrom(this.GetServicesService.fetchingServices());
@@ -152,14 +113,6 @@ async handleSubmit(){
     // ------------removing validation from amount dropdown-----------
     this.amountText = "a";
   }
-
-// ----------------------------converting duration dropdown to input field-----------------------
-  timeToogle(){
-    document.getElementById("Durationdropdown")?.classList.add("hide");
-    document.getElementById("DurationFields")?.classList.remove("hide");
-    this.durationNumberField.nativeElement.focus();
-  }
-  
 // -----------------------------uploading  images----------------------------
   selectMultipleImages(event){
     if(event.target.files.length > 0){

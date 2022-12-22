@@ -1,15 +1,9 @@
-<div *ngIf="success==true" class="alert alert-success p-3" role="alert">
-    {{this.successmsg}}
-</div>
-<div *ngIf="success==false" class="alert alert-danger p-3" role="alert">
-    {{this.failmsg}}
-</div>
 <div class="container">
     <!-- --------------------------------main heading----------------------- -->
     <h1 class=" d-flex m-4 justify-content-center align-items-center">Add a Job</h1>
     <!-- --------------------------------form----------------------- -->
     <div>
-        <form ngNativeValidate (ngSubmit)="handleSubmit()" >
+        <form ngNativeValidate (ngSubmit)="handleSubmit()">
             <!-- --------------------------------services dropdown----------------------- -->
             <div class="formContainer">
                 <!-- --------------------------------job tittle----------------------- -->
@@ -47,32 +41,36 @@
                         <div class="mb-0 " id="amountdropdown">
                             <div class="btn-group mt-3">
                                 <button type="button"
-                                    class="btn btn-secondary dropDownBtn  dropdown-toggle-split timeDurationBtn text-dark"
-                                    id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                                    aria-expanded="false">{{currentAmount}}
+                                    class="btn btn-secondary dropDownBtn dropdown-toggle-split timeDurationBtn text-dark"
+                                    id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    {{currentAmount}}
                                 </button>
                                 <div class="dropdown">
                                     <button type="button" class="btn btn-secondary  dropdown-toggle-split dropDownIcon"
-                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
                                         <i class="fa fa-arrow-circle-down fa-2xl"></i>
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                        <!-- <li><a  class="dropdown-item" href="#">Flexible</a></li> -->
-                                        <li><a (click)="gettingAmount(500)" (click)="removingValidationAmountDropdown()" class="dropdown-item">500</a></li>
-                                        <li><a (click)="gettingAmount(1000)" (click)="removingValidationAmountDropdown()" class="dropdown-item">1000</a></li>
+                                        <li><a (click)="gettingAmount(500)" (click)="removingValidationAmountDropdown()"
+                                                class="dropdown-item">500</a></li>
+                                        <li><a (click)="gettingAmount(1000)"
+                                                (click)="removingValidationAmountDropdown()"
+                                                class="dropdown-item">1000</a></li>
                                         <li (click)="amountToogle()"><a class="dropdown-item">others...</a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                             <!-- ------------------ validation of select amount dropdown------------- -->
-                            <div class="amountCategoryDropdownDivProperties"  id="amountDropdownDivId" >
-                                <input name="amountValidator" type="text" class="amountCategoryDropdownProperties" required 
-                                aria-describedby="emailHelp"  [(ngModel)]="amountText"
-                                [ngModelOptions]="{standalone: true}" >         
-                            </div> 
+                            <div class="amountCategoryDropdownDivProperties" id="amountDropdownDivId">
+                                <input name="amountValidator" type="text" class="amountCategoryDropdownProperties"
+                                    required aria-describedby="emailHelp" [(ngModel)]="amountText"
+                                    [ngModelOptions]="{standalone: true}">
+                            </div>
                         </div>
-                        <!-- ------------enter amount inpu field-------------- -->
+                        <!-- ------------enter amount input field-------------- -->
                         <div class="mb-3  hide" id="amountFields">
                             <label for="exampleInputEmail1" class="form-label"><strong>Enter amount: </strong>
                             </label>
@@ -80,20 +78,22 @@
                                 id="exampleInputEmail1" aria-describedby="emailHelp" required [(ngModel)]="estAmount"
                                 [ngModelOptions]="{standalone: true}">
                         </div>
-                    </div>       
+                    </div>
                     <!-- -----------------choose job category--------------------- -->
-                    <div class="col-xxl-3"  >
+                    <div class="col-xxl-3">
                         <div class="mb-0">
                             <div class="btn-group mt-3">
                                 <button [disabled]="btnState" type="button"
-                                    class="timeDurationBtn btn btn-secondary dropDownBtn dropdown-toggle-split text-dark"
-                                    id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                                    aria-expanded="false">{{currentCategory}}
+                                    class="btn btn-secondary dropDownBtn dropdown-toggle-split timeDurationBtn text-dark"
+                                    id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    {{currentCategory}}
                                 </button>
                                 <div class="dropdown">
-                                    <button [disabled]="btnState" type="button"
+                                    <button  [disabled]="btnState" type="button"
                                         class="btn btn-secondary  dropdown-toggle-split dropDownIcon"
-                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
                                         <i class="fa fa-arrow-circle-down fa-2xl"></i>
                                     </button>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"
@@ -107,12 +107,12 @@
                                 </div>
                             </div>
                             <!-- ------------------ validation of select category dropdown------------- -->
-                            <div class="amountCategoryDropdownDivProperties" id="categoryDropdownDivId" >
-                                <input name="categoryValidator" type="text" class="amountCategoryDropdownProperties" required   
-                                aria-describedby="emailHelp"  [(ngModel)]="categoryText"
-                                [ngModelOptions]="{standalone: true}" >         
+                            <div class="amountCategoryDropdownDivProperties" id="categoryDropdownDivId">
+                                <input name="categoryValidator" type="text" class="amountCategoryDropdownProperties"
+                                    required aria-describedby="emailHelp" [(ngModel)]="categoryText"
+                                    [ngModelOptions]="{standalone: true}">
                             </div>
-                        </div> 
+                        </div>
                     </div>
                 </div>
                 <!-- --------------------------------enter address----------------------- -->
