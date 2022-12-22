@@ -16,6 +16,7 @@ export class ClientProjectsComponent implements OnInit {
   clientData: any
   searchText: any
   activeButton: string = "deadlines"
+  currentusertype = this.SignInService.getusertype()
   clientProjects: any
   time: any
   date = new Date()

@@ -149,7 +149,7 @@
                 </div>
             </div>
                 <div class=" shadow-lg m-4  p-4 pb-2 bg-body rounded-3"
-                    *ngFor="let serviceProviderProject of serviceProviderProjects | filter:searchText| filter:status3">
+                    *ngFor="let serviceProviderProject of serviceProviderProjects | filter:searchText| filter:status3 ">
                     <div class="row">
                         <div class="col-xl-4 ">
                             <div class="col-12 d-flex flex-row">
@@ -195,24 +195,33 @@
                     <hr class="mb-0">
                     <div class="d-flex flex-row justify-content-center">
                         <div class="col-md-10 col-xs-8">
-                            <h3 *ngIf="serviceProviderProject?.status == 'jobCompleted' ;else notcompleted"
-                                class="mb-0 mt-2 text-secondary">Job has been completed</h3>
+                            <h3 *ngIf="serviceProviderProject?.status == 'jobCompleted' ;else second"
+                                class="mb-0 mt-2 text-success">Job has been completed</h3>
+                            
+                            <ng-template #second>
+                                <h3 *ngIf="serviceProviderProject?.status == 'doneByWorker' && currentusertype == 'Worker' ;else third"
+                                class="mb-0 mt-2 text-secondary">Waiting for client to mark the job as jobCompleted</h3>
+                            </ng-template>
+                            <ng-template #third>
+                                <h3 *ngIf="serviceProviderProject?.status == 'doneByClient' && currentusertype == 'Worker' ;else notcompleted"
+                                class="mb-0 mt-2 text-warning">Your client marked the job as done. Make sure to click submit to mark the job as completed</h3>
+                            </ng-template>
                             <ng-template #notcompleted>
                                 <p style="color: maroon;">
                                 <h3 *ngIf="serviceProviderProject?.timeStatus=='zero'" class="mb-0 mt-2 text-secondary">
                                     Last day
-                                    to submit.Done now to avoid negative rating</h3>
+                                    to submit. Submit  now to avoid negative rating</h3>
                                 <h3 *ngIf="serviceProviderProject?.timeStatus=='positive'"
                                     class="mb-0 mt-2 text-secondary">
-                                    Please done as soon as possible to enhance your rating</h3>
+                                    Please submit the job as soon as possible to enhance your rating</h3>
                                 <h3 *ngIf="serviceProviderProject?.timeStatus=='negative'"
                                     class="mb-0 mt-2 text-secondary">
-                                    You're running late.Done now to avoid negative rating</h3>
+                                    You're running late. Submit now to avoid negative rating</h3>
                             </ng-template>
                         </div>
                         <div class="col-md-2 col-xs-4 ps-2">
 
-                            <button *ngIf="serviceProviderProject?.status != 'jobCompleted'"
+                            <button *ngIf="serviceProviderProject?.status != 'jobCompleted' && serviceProviderProject?.status != 'doneByWorker'"
                                 (click)="openModal(serviceProviderProject?._id,serviceProviderProject?.clientDetails[0]?.userName,serviceProviderProject?.clientProfile[0]?.profileImage,serviceProviderProject?.jobAddress,serviceProviderProject?.bidDetails[0]?.amount)"
                                 type="button" class="mt-2  btn btn-success"><b>Submit</b></button>
 

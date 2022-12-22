@@ -156,12 +156,21 @@
                 <hr class="mb-0">
                 <div class="d-flex flex-row justify-content-center">
                     <div class="col-md-10 col-xs-8">
-                        <h3 *ngIf="clientProject?.timeStatus=='zero'" class="mb-0 mt-2 text-secondary">Inshallah will be submitted soon</h3>
-                        <h3 *ngIf="clientProject?.timeStatus=='positive'" class="mb-0 mt-2 text-secondary">Trying to accomplish this as soon as possible</h3>
-                        <h3 *ngIf="clientProject?.timeStatus=='negative'" class="mb-0 mt-2 text-secondary">Sorry for the inconvience.Inshallah will be submitted soon</h3>
+                            <h3 *ngIf="clientProject?.status == 'doneByClient' ;else second"
+                            class="mb-0 mt-2 text-secondary">Waiting for worker to mark the job as completed</h3>
+                        <ng-template #second>
+                            <h3 *ngIf="clientProject?.status == 'doneByWorker' ;else final"
+                            class="mb-0 mt-2 text-secondary">Job marked as done by the worker. Make sure you set the job as completed.</h3>
+                        </ng-template>
+                        <ng-template #final>
+
+                            <h3 *ngIf="clientProject?.timeStatus=='zero'" class="mb-0 mt-2 text-secondary">Inshallah will be submitted soon</h3>
+                            <h3 *ngIf="clientProject?.timeStatus=='positive'" class="mb-0 mt-2 text-secondary">Trying to accomplish this as soon as possible</h3>
+                            <h3 *ngIf="clientProject?.timeStatus=='negative'" class="mb-0 mt-2 text-secondary">Sorry for the inconvience.Inshallah will be submitted soon</h3>
+                        </ng-template>
                     </div>
                     <div class="col-md-2 col-xs-4 ps-2">
-                        <button (click)="openModal(clientProject?._id,clientProject?.serviceProviderDetails[0]?.userName,clientProject?.serviceProviderProfile[0]?.profilePicture,clientProject?.jobAddress,clientProject?.bidDetails[0]?.amount)" type="button" class="mt-2  btn btn-success"><b>Done</b></button>
+                        <button *ngIf="clientProject?.status != 'doneByClient'" (click)="openModal(clientProject?._id,clientProject?.serviceProviderDetails[0]?.userName,clientProject?.serviceProviderProfile[0]?.profilePicture,clientProject?.jobAddress,clientProject?.bidDetails[0]?.amount)" type="button" class="mt-2  btn btn-success"><b>Done</b></button>
                     </div>
                 </div>
             </div>
