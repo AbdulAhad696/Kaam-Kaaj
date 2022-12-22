@@ -29,7 +29,6 @@ import { AdminDashboardComponent } from './admin/pages/admin-dashboard/admin-das
 import { AdminMainComponent } from './admin/pages/admin-main/admin-main.component';
 import { WalletComponent } from './Shared/wallet/wallet.component';
 import { ComplaintsComponent } from './admin/pages/complaints/complaints.component';
-import { ShowServiceProvidersComponent } from './admin/pages/show-service-providers/show-service-providers.component';
 import { CategoriesComponent } from './admin/pages/categories/categories.component';
 
 

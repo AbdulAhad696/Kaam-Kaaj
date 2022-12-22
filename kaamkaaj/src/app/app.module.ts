@@ -56,10 +56,8 @@ import { AdminDashboardComponent } from './admin/pages/admin-dashboard/admin-das
 import { AdminMainComponent } from './admin/pages/admin-main/admin-main.component';
 import { AngularResizeEventModule } from 'angular-resize-event';
 import { ComplaintsComponent } from './admin/pages/complaints/complaints.component';
-import { ShowServiceProvidersComponent } from './admin/pages/show-service-providers/show-service-providers.component';
 import { SubmitProjectModalComponent } from './service-provider/components/submit-project-modal/submit-project-modal.component';
 import { CategoriesComponent } from './admin/pages/categories/categories.component';
-// import { AngularResizeEventModule } from 'angular-resize-event';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
