@@ -27,13 +27,10 @@ import { ClientProjectsComponent } from './UserSite/client-projects/client-proje
 import { ChangePasswordConponentComponent } from './UserSite/change-password-conponent/change-password-conponent.component';
 import { AdminDashboardComponent } from './admin/pages/admin-dashboard/admin-dashboard.component';
 import { AdminMainComponent } from './admin/pages/admin-main/admin-main.component';
-
-
-
 import { WalletComponent } from './Shared/wallet/wallet.component';
 import { ComplaintsComponent } from './admin/pages/complaints/complaints.component';
-
 import { ShowServiceProvidersComponent } from './admin/pages/show-service-providers/show-service-providers.component';
+import { CategoriesComponent } from './admin/pages/categories/categories.component';
 
 
 const routes: Routes = [
@@ -69,6 +66,7 @@ const routes: Routes = [
 
       {path:  'complaints', component: ComplaintsComponent},
       { path: 'wallet', component: WalletComponent },
+      { path: 'categories', component: CategoriesComponent },
       { path: 'serviceproviders/:service', component: FilterBarComponent },
       { path: 'serviceprovider/profile/:email', component: ServiceProviderProfileComponent }
 

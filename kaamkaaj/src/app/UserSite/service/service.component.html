@@ -2,14 +2,14 @@
 
 
 <div class="row m-0 p-0 container-fluid">
-    <div (click)="showServiceProviders(service.tittle)" class="col-lg-3 col-md-6 col-sm-12 col-12 " *ngFor="let service of services; ">
+    <div (click)="showServiceProviders(service.tittle)" class="col-lg-3 col-md-6 col-sm-12 col-12" *ngFor="let service of services; ">
         <div class=" shadow-lg m-4 p-4 bg-body rounded-3 d-flex flex-column  justify-content-center align-items-center cursorPointer">
-            <img class="serviceImage" src={{service.image}} alt="Avatar">
+            <img class="serviceImage" src="{{service.image.includes('Images')?domain+'/'+service.image:service.image}}" alt="Avatar">
             <h1 class="mt-2 mb-0">{{service.tittle}}</h1>
             <div class="d-flex flex-row">
                 <!-- <i class=" fa fa-star rateStar"></i> -->
                 <span class="material-icons rateStar">star</span>
-                <h2>{{service.rating}}</h2><h2>/5</h2>
+                <h2>{{service.rating.toFixed(1)}}</h2><h2>/5</h2>
             </div>
             <div class="rating">
                 <h4 class="mb-1">Rating</h4>

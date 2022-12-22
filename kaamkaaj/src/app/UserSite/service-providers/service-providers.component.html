@@ -18,6 +18,10 @@
 
 <!-- --------------------Filter Buttons------------------------------ -->
 <div id="filterButtons">
+    <button (click)="fillterButtonClick('enabled')" *ngIf="userType =='Admin'"
+    class="{{'btn btn-outline-dark  filterButton '+ (activeButton=='enabled'?'active':'')}}">Enabled</button>
+    <button (click)="fillterButtonClick('disabled')" *ngIf="userType =='Admin'"
+    class="{{'btn btn-outline-dark  filterButton '+ (activeButton=='disabled'?'active':'')}}">Disabled</button>
     <button (click)="fillterButtonClick('rating')"
         class="{{'btn btn-outline-dark  filterButton '+ (activeButton=='rating'?'active':'')}}">Rating</button>
     <button (click)="fillterButtonClick('jobsCompleted')"
@@ -40,7 +44,7 @@
         </div>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 col-12"
-        *ngFor="let serviceProvider of serviceProviders | filter:searchText">
+        *ngFor="let serviceProvider of serviceProviders | filter:searchText | filter:enabledDisabled">
         <!-- <div class=""> -->
         <div (click)="showServiceProviderProfile(serviceProvider.serviceProviderDetails[0].email)"
             class="flexInner pointerClass">

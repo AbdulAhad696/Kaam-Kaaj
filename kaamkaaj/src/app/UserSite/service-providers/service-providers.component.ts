@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ServiceProviderService } from '../../Services/serviceProvider/service-provider.service';
 import { lastValueFrom } from 'rxjs';
 import { ActivatedRoute, Router, NavigationEnd, Event } from '@angular/router';
@@ -15,8 +15,10 @@ export class ServiceProvidersComponent implements OnInit {
   service: any
   serviceProviders: any = []
   imgUrl: string;
+  @Input() userType: any;
   activeButton: string = "rating"
   currentLocation: any
+  enabledDisabled: any
 
   constructor(private ServiceProviderService: ServiceProviderService, private ActivatedRoute: ActivatedRoute, private SpinnerService: SpinnerService, private router: Router) {
 
@@ -31,6 +33,7 @@ export class ServiceProvidersComponent implements OnInit {
   async getServiceProviders(service: any) {
     this.SpinnerService.requestStarted()
     this.serviceProviders = await lastValueFrom(this.ServiceProviderService.fetchingServiceProviders(service))
+    console.log(this.serviceProviders)
     this.serviceProviders.forEach(element => {
       element.profilePicture = environment.baseUrl + "/" + element.profilePicture
 
@@ -60,8 +63,9 @@ export class ServiceProvidersComponent implements OnInit {
 
   fillterButtonClick(value: any) {
     this.activeButton = value
-
+    this.enabledDisabled = ""
     switch (value) {
+
       case "rating":
         this.serviceProviders.sort((a: any, b: any) => (a?.rating > b?.rating ? -1 : 1));
         break;
@@ -73,6 +77,12 @@ export class ServiceProvidersComponent implements OnInit {
         break;
       case "experience":
         this.serviceProviders.sort((a: any, b: any) => (a?.experience > b?.experience ? -1 : 1));
+        break;
+      case "enabled":
+        this.enabledDisabled = "enabled"
+        break;
+      case "disabled":
+        this.enabledDisabled = "disabled"
         break;
       case "location":
         this.serviceProviders.sort((a: any, b: any) => (a?.currentDistance > b?.currentDistance ? 1 : -1));

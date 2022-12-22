@@ -77,7 +77,8 @@ export class MyProjectsComponent implements OnInit {
       clientName:clientName,
       clientProfile:clientProfile,
       jobAddress:jobAddress,
-      earning:earning
+      earning:earning,
+      reload:this.ngOnInit.bind(this)
     }
 
     $('#exampleModalCenter').modal('toggle')

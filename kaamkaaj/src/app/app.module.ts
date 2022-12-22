@@ -37,8 +37,8 @@ import * as CanvasJSAngularChart from '../canvasjs.angular.component';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 import { BidOverlayComponent } from './service-provider/components/bid-overlay/bid-overlay.component'
 import { ImgOverlayComponent } from './service-provider/components/img-overlay/img-overlay.component';
-import {NgxMaskModule} from 'ngx-mask';
-import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import { NgxMaskModule } from 'ngx-mask';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MyProjectsComponent } from './service-provider/pages/my-projects/my-projects.component';
 import { GooglePayButtonModule } from '@google-pay/button-angular';
 import { DatePipe } from '@angular/common';
@@ -58,6 +58,8 @@ import { AngularResizeEventModule } from 'angular-resize-event';
 import { ComplaintsComponent } from './admin/pages/complaints/complaints.component';
 import { ShowServiceProvidersComponent } from './admin/pages/show-service-providers/show-service-providers.component';
 import { SubmitProjectModalComponent } from './service-provider/components/submit-project-modal/submit-project-modal.component';
+import { CategoriesComponent } from './admin/pages/categories/categories.component';
+// import { AngularResizeEventModule } from 'angular-resize-event';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -81,7 +83,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     JobGigsComponent,
     SpViewjobsComponent,
     ServiceprovidermainComponent,
-    ShowServiceProvidersComponent,
     GigCardComponent,
     CustomermainpageComponent,
     CanvasJSChart,
@@ -101,7 +102,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AdminDashboardComponent,
     AdminMainComponent,
     ComplaintsComponent,
-    SubmitProjectModalComponent
+    // SubmitProjectModalComponent
+    SubmitProjectModalComponent,
+    CategoriesComponent
   ],
   imports: [
     AppRoutingModule,
