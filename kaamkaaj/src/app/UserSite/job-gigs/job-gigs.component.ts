@@ -51,6 +51,9 @@ export class JobGigsComponent implements OnInit {
   numinText:any
   numinText2:any
   numinText3:any
+  successmsg="Job was added successfully"
+  failmsg = "Failed to add job"
+  success:any
   checkText(){
     let pattern = /[0]{1}[3]{1}[0-9]{9}/g
     let pattern2 = /[0]{1}[3]{1}[0-9]{2}[ ]{1}[0-9]{7}/g
@@ -62,10 +65,12 @@ export class JobGigsComponent implements OnInit {
   // ----------------------------posting job-----------------------
   async addingJob(job:any){
     if(await lastValueFrom( this.AddJobService.postJobApi(job) )){
-      return "Job is added successfully!!!!..........";
+      // return "Job is added successfully!!!!..........";
+      this.success=true
     }
     else{
-      return "Service is down currently. You may try later..";
+      // return "Service is down currently. You may try later..";
+      this.success=false
     }
   }
   // ------------------------geting selected service -----------------
@@ -103,14 +108,20 @@ async handleSubmit(){
       this.SpinnerService.requestEnded();
 
   // -------------------------------------resetting the form--------------------------------
-      setTimeout(()=>{
-        alert(this.isJobAdded);
-      },10)
       // --------------------refreshinh the component---------------------
       let currenturl = this.router.url
-      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-        this.router.navigate([currenturl]);
-      });
+      setTimeout(() => {
+        if (this.success == true) {
+          this.success = null;
+        }
+        this.success = null;
+      }, 5000);
+      setTimeout(() => {
+        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+          this.router.navigate([currenturl]);
+        });
+      }, 4000);
+      
     }
   }
   // --------------------------getting all services-----------------------------
